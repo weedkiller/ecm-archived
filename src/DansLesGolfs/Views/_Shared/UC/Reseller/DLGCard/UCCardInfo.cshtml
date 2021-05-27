@@ -1,0 +1,74 @@
+﻿@using DansLesGolfs.Base
+@{
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    Card Information
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <label for="CardName"> Card Name</label>
+                        </div>
+                        <div class="col-md-10">
+                            @Html.TextBox("CardName", (string)ViewBag.CardName, new { required = "required", maxlength = 100, @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <label for="CardName"> Amount</label>
+                        </div>
+                        <div class="col-md-10">
+                            @Html.TextBox("Amount", (string)ViewBag.Amount, new { required = "required", maxlength = 100, @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <label for="CardName"> Qualtity </label>
+                        </div>
+                        <div class="col-md-10">
+                            @Html.TextBox("Qualtity", (string)ViewBag.Qualtity, new { required = "required", maxlength = 100, @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    Card Images
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>@Resources.ItemImageUploadDescription</p>
+                        <input type="file" accept="image/*" id="card-image-file" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul id="card-images-area" class="sortable-images"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

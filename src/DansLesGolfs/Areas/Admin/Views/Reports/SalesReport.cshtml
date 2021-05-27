@@ -1,0 +1,123 @@
+﻿@using DansLesGolfs.Base
+@using DansLesGolfs.BLL
+@model SalesReportModel
+
+@{
+    Layout = "~/Views/_Shared/MP/_Admin.cshtml";
+    DateTime endDate = (DateTime)ViewBag.StartDate;
+    DateTime startDate = (DateTime)ViewBag.EndDate;
+}
+@section head
+{
+
+    <style>
+        .modal-dialog {
+            left: 0 !important;
+            width: 100% !important;
+            padding:20px;
+            height:550px;
+        }
+        select
+       .modal-content {
+           
+            padding:10px;
+        }
+    </style>
+    <script>
+        function GetUrl(url) {
+            url = "@Href("~/")" + url;
+            return url;
+        }
+    </script>
+
+}
+
+@section foot
+{ 
+    <script type="text/javascript" src="~/Assets/Admin/scripts/page/salesreport.js"></script> 
+    
+   
+      <script>
+     //   $('.info-form').validate();
+        $('.datepicker').datepicker({
+            format: 'dd/mm/yy',
+            todayHighlight: true,
+            firstDay: 1
+        });
+    </script>
+@*    <script type="text/javascript" src="~/Scripts/tableExport.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.base64.js"></script>
+    <script type="text/javascript" src="~/Scripts/html2canvas.js"></script>
+    <script type="text/javascript" src="~/Scripts/jspdf/libs/sprintf.js"></script>
+    <script type="text/javascript" src="~/Scripts/jspdf/jspdf.js"></script>
+    <script type="text/javascript" src="~/Scripts/jspdf/libs/base64.js"></script>
+    <script type="text/javascript" src="//cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.js"></script>
+    *@
+}
+ 
+
+
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="float-left col-md-2">@Resources.StartDate</div>
+        <div class="float-left col-md-4 filter-content" >
+         
+         
+            <input type="text" id="dtp_input1" name="dtp_input1" class="datepicker  form-control" placeholder="dd/mm/yyyy" value="@startDate.ToString("dd/MM/yyyy")"  />
+@*            <div class="input-group date form_date startdate" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input1" data-link-format="yyyy-mm-dd">
+                <input class="form-control" size="16" type="text" value="" readonly>
+                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+            </div>
+            <input type="hidden" id="dtp_input1" value="" />*@ 
+        </div>
+
+        <div class="float-left col-md-2">@Resources.EndDate</div>
+        <div class="float-left col-md-4  filter-content">         
+            <input type="text" id="dtp_input2" name="dtp_input2" class="datepicker  form-control" placeholder="dd/mm/yyyy" value="@endDate.ToString("dd/MM/yyyy")" />
+
+        @*    <div class="input-group date form_date enddate float-left" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                <input class="form-control" size="16" type="text" value="" readonly>
+                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+            </div>
+            <input type="hidden" id="dtp_input2" value="" /><br />*@
+        </div>
+        <div class="clean"></div>
+        <div class="fl_l">
+            <select id="Status" class="form-control">
+                <option value="all">@Resources.All</option>
+                <option value="success">@Resources.Success</option>
+                <option value="unsuccess">@Resources.Unsuccess</option>
+            </select>
+        </div>
+        <div class="fl_l mar_l10">
+            <button id="refresh" type="button" class="btn btn-primary">@Resources.Refresh</button>
+        </div>
+        <div class="fl_l mar_l10">
+            <button id="view-report" type="button" class="btn  btn-primary view-report">@Resources.ViewReport</button> 
+        </div>
+        <div class="clean"></div>
+    </div>
+        <div class="clean"></div> 
+    <div class="col-md-12">
+        <div class="clean10"></div>
+    <table id="saleorder" class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>@Resources.OrderNumber</th>
+                <th>@Resources.OrderDate</th>
+                <th>@Resources.CustomerName</th>
+              @*     <th>Item Name</th>
+                <th>UnitPrice</th>
+                <th>Quantity</th>*@
+                <th>Extended Price</th>
+                <th>Flag</th>
+                <th>@Resources.PaymentStatus</th>
+            </tr>
+  
+        </thead> 
+            <tbody></tbody>
+       
+     </table>
+    </div>
+</div>

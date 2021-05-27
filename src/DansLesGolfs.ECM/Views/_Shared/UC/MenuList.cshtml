@@ -1,0 +1,339 @@
+﻿
+<ul class="page-sidebar-menu">
+    @*<li class="menu-dashboard">
+        <a href="@Url.Content("~/Dashboard")">
+            <i class="fa fa-home"></i>
+            <span class="title">
+                @Resources.Dashboard
+            </span>
+        </a>
+    </li>*@
+    @if (ViewBag.LogonUserType == DansLesGolfs.BLL.UserType.Type.SuperAdmin || ViewBag.LogonUserType == DansLesGolfs.BLL.UserType.Type.Admin)
+    {
+        @*<li class="menu-category">
+            <a href="@Url.Content("~/Category")">
+                <i class="fa"></i>
+                <span class="title">
+                    @Resources.Categories
+                </span>
+            </a>
+        </li>
+        <li class="menu-impressum">
+            <a href="@Url.Content("~/Impressum")">
+                <i class="fa"></i>
+                <span class="title">
+                    @Resources.PrivacyPolicy
+                </span>
+            </a>
+        </li>*@
+        <li>
+            <a href="javascript:void(0)">
+                <i class="fa fa-envelope"></i>
+                <span class="title">
+                    @Resources.Newsletter
+                </span>
+                <span class="arrow">
+                </span>
+            </a>
+            <ul class="sub-menu">
+                <li class="menu-emailing">
+                    <a href="@Url.Content("~/Emailing")">
+                        <i class="fa"></i>
+                        <span class="title">
+                            @Resources.SendingEmail
+                        </span>
+                    </a>
+                </li>
+                @*<li class="menu-mailinglist">
+                    <a href="@Url.Content("~/MailingList")">
+                        <i class="fa"></i>
+                        <span class="title">
+                            @Resources.MailingList
+                        </span>
+                    </a>
+                </li>*@
+                <li class="menu-emailtemplate">
+                    <a href="@Url.Content("~/EmailTemplate")">
+                        <i class="fa"></i>
+                        <span class="title">
+                            @Resources.EmailTemplates
+                        </span>
+                    </a>
+                </li>
+                <li class="menu-globalsettings">
+                    <a href="@Url.Content("~/GlobalSettings")">
+                        <i class="fa"></i>
+                        <span class="title">
+                            @Resources.GlobalSettings
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        @*<li class="menu-emailaccount">
+            <a href="@Url.Content("~/EmailAccount")">
+                <i class="fa"></i>
+                <span class="title">
+                    @Resources.EmailAccount
+                </span>
+            </a>
+        </li>*@
+        <li>
+            <a href="javascrip:void(0);">
+                <i class="fa fa-user"></i>
+                <span class="title">
+                    @Resources.CustomerManagement
+                </span>
+                <span class="arrow">
+                </span>
+            </a>
+            <ul class="sub-menu">
+                <li class="menu-customer">
+                    <a href="@Url.Content("~/Customer")">
+                        <span class="title">
+                            @Resources.Subscribers
+                        </span>
+                    </a>
+                </li>
+                <li class="menu-unsubscriber">
+                    <a href="@Url.Content("~/Unsubscriber")">
+                        <span class="title">
+                            @Resources.Unsubscribers
+                        </span>
+                    </a>
+                </li>
+                <li class="menu-add-customer">
+                    <a href="@Url.Content("~/Customer/Form")">
+                        <span class="title">
+                            @Resources.AddSubscriber
+                        </span>
+                    </a>
+                </li>
+                <li class="menu-customertype">
+                    <a href="@Url.Content("~/CustomerType")">
+                        <span class="title">
+                            @Resources.CustomerTypes
+                        </span>
+                    </a>
+                </li>
+                <li class="menu-customergroup">
+                    <a href="@Url.Content("~/CustomerGroup")">
+                        <span class="title">
+                            @Resources.CustomerGroups
+                        </span>
+                    </a>
+                </li>
+                <li class="menu-importcustomer">
+                    <a href="@Url.Content("~/Customer/Import")">
+                        <span class="title">
+                            @Resources.ImportCustomers
+                        </span>
+                    </a>
+                </li>
+                <li class="menu-bulkeditcustomer">
+                    <a href="@Url.Content("~/Customer/BulkEdit")">
+                        <span class="title">
+                            @Resources.BulkEdit
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascrip:void(0);">
+                <i class="fa fa-user"></i>
+                <span class="title">
+                    @Resources.UserManagement
+                </span>
+                <span class="arrow">
+                </span>
+            </a>
+            <ul class="sub-menu">
+                <li class="menu-user">
+                    <a href="@Url.Content("~/User")">
+                        <i class="fa"></i>
+                        <span class="title">
+                            @Resources.Users
+                        </span>
+                    </a>
+                </li>
+                <li class="menu-add-user">
+                    <a href="@Url.Content("~/User/Form")">
+                        <i class="fa"></i>
+                        <span class="title">
+                            @Resources.AddUser
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascrip:void(0);">
+                <i class="fa fa-table"></i>
+                <span class="title">
+                    @Resources.Preference
+                </span>
+                <span class="arrow">
+                </span>
+            </a>
+            <ul class="sub-menu">
+                <li class="menu-site">
+                    <a href="@Url.Content("~/Site")">
+                        <i class="fa"></i>
+                        <span class="title">
+                            @Resources.Sites
+                        </span>
+                    </a>
+                </li>
+                <li class="menu-brand">
+                    <a href="@Url.Content("~/Brand")">
+                        <i class="fa"></i>
+                        <span class="title">
+                            @Resources.Brand
+                        </span>
+                    </a>
+                </li>
+            </ul>
+            @*<ul class="sub-menu">
+                <li class="menu-emailsetting">
+                    <a href="@Url.Content("~/EmailSetting")">
+                        <i class="fa"></i>
+                        <span class="title">
+                            @Resources.EmailSetting
+                        </span>
+                    </a>
+                </li>
+            </ul>*@
+        </li>
+    }
+    else if (ViewBag.LogonUserType == DansLesGolfs.BLL.UserType.Type.SiteManager || ViewBag.LogonUserType == DansLesGolfs.BLL.UserType.Type.Staff)
+    {
+        @*<li class="menu-category">
+            <a href="@Url.Content("~/Category")">
+                <i class="fa"></i>
+                <span class="title">
+                    @Resources.Categories
+                </span>
+            </a>
+        </li>
+        <li class="menu-impressum">
+            <a href="@Url.Content("~/Impressum")">
+                <i class="fa"></i>
+                <span class="title">
+                    @Resources.PrivacyPolicy
+                </span>
+            </a>
+        </li>*@
+        <li>
+            <a href="javascript:void(0)">
+                <i class="fa fa-envelope"></i>
+                <span class="title">
+                    @Resources.Newsletter
+                </span>
+                <span class="arrow">
+                </span>
+            </a>
+            <ul class="sub-menu">
+                <li class="menu-emailing">
+                    <a href="@Url.Content("~/Emailing")">
+                        <i class="fa"></i>
+                        <span class="title">
+                            @Resources.SendingEmail
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascrip:void(0);">
+                <i class="fa fa-user"></i>
+                <span class="title">
+                    @Resources.CustomerManagement
+                </span>
+                <span class="arrow">
+                </span>
+            </a>
+            <ul class="sub-menu">
+                <li class="menu-customer">
+                    <a href="@Url.Content("~/Customer")">
+                        <span class="title">
+                            @Resources.Subscribers
+                        </span>
+                    </a>
+                </li>
+                <li class="menu-unsubscriber">
+                    <a href="@Url.Content("~/Unsubscriber")">
+                        <span class="title">
+                            @Resources.Unsubscribers
+                        </span>
+                    </a>
+                </li>
+                <li class="menu-add-customer">
+                    <a href="@Url.Content("~/Customer/Form")">
+                        <span class="title">
+                            @Resources.AddCustomer
+                        </span>
+                    </a>
+                </li>
+                <li class="menu-customertype">
+                    <a href="@Url.Content("~/CustomerType")">
+                        <span class="title">
+                            @Resources.CustomerTypes
+                        </span>
+                    </a>
+                </li>
+                <li class="menu-customergroup">
+                    <a href="@Url.Content("~/CustomerGroup")">
+                        <span class="title">
+                            @Resources.CustomerGroups
+                        </span>
+                    </a>
+                </li>
+                <li class="menu-importcustomer">
+                    <a href="@Url.Content("~/Customer/Import")">
+                        <span class="title">
+                            @Resources.ImportCustomers
+                        </span>
+                    </a>
+                </li>
+                <li class="menu-bulkeditcustomer">
+                    <a href="@Url.Content("~/Customer/BulkEdit")">
+                        <span class="title">
+                            @Resources.BulkEdit
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        if (ViewBag.LogonUserType == DansLesGolfs.BLL.UserType.Type.SiteManager)
+        {
+            <li>
+                <a href="javascrip:void(0);">
+                    <i class="fa fa-user"></i>
+                    <span class="title">
+                        @Resources.UserManagement
+                    </span>
+                    <span class="arrow">
+                    </span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="menu-user">
+                        <a href="@Url.Content("~/User")">
+                            <i class="fa"></i>
+                            <span class="title">
+                                @Resources.Users
+                            </span>
+                        </a>
+                    </li>
+                    <li class="menu-add-user">
+                        <a href="@Url.Content("~/User/Form")">
+                            <i class="fa"></i>
+                            <span class="title">
+                                @Resources.AddUser
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </li>}
+    }
+</ul>

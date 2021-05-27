@@ -1,0 +1,34 @@
+﻿@{
+    Layout = "~/Views/_Shared/MP/_Admin.cshtml";
+}
+@section head
+{
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Assets/Libraries/uploadifive/uploadifive.css")" />
+}
+@section foot
+{
+    <script>
+        window.itemId = '@ViewBag.id';
+    </script>
+    <script src="@Url.Content("~/Assets/Libraries/uploadifive/jquery.uploadifive.min.js")"></script>
+    <script src="@Url.Content("~/Assets/Admin/scripts/page/dlg-card.js")"></script>
+}
+
+<form method="post" id="form-@ViewBag.ClassName" class="info-form" enctype="multipart/form-data">
+    
+    <div class="tab-content">
+        <div class="tab-pane active" id="site-info">@Html.Partial("~/Views/_Shared/UC/Admin/DLGCard/UCCardInfo.cshtml")</div>
+    </div>
+
+    <input type="hidden" name="id" value="@ViewBag.id" />
+
+    <div class="action-buttons">
+
+        <input type="submit" id="submit" name="submit" value="@Resources.Save" class="btn btn-primary" />
+        <input type="reset" id="reset" name="reset" value="@Resources.Reset" class="btn" />
+        <a href="@Url.Content("~/Admin/Site")" class="btn btn-default">@Resources.Back</a>
+
+    </div>
+
+</form>
+    

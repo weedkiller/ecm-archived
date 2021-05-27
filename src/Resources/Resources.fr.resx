@@ -1,0 +1,3133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AdditionalInformation" xml:space="preserve">
+    <value>Informations complémentaires</value>
+  </data>
+  <data name="AddModifier" xml:space="preserve">
+    <value>Ajouter modificateur</value>
+  </data>
+  <data name="AllowReview" xml:space="preserve">
+    <value>Laisser un avis</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Retour</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>Catégorie</value>
+  </data>
+  <data name="ChoiceName" xml:space="preserve">
+    <value>Choix Nom</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="EmailNotExists" xml:space="preserve">
+    <value>Email : {0} n'existe pas dans notre base.</value>
+  </data>
+  <data name="EnterUsernameAndPassword" xml:space="preserve">
+    <value>Saisissez un nom d'utilisateur et mot de passe.</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>Mot de passe oublié</value>
+  </data>
+  <data name="ForgotPasswordDescription" xml:space="preserve">
+    <value>Saisissez votre adresse e-mail pour recevoir un message indiquant la marche à suivre pour réinitialiser votre mot de passe.</value>
+  </data>
+  <data name="FullDescription" xml:space="preserve">
+    <value>Description complète</value>
+  </data>
+  <data name="InStock" xml:space="preserve">
+    <value>En Stock</value>
+  </data>
+  <data name="ItemSlugDescription" xml:space="preserve">
+    <value>Slug sera utilisé pour faire de jolies URL, ce qui contribue à stimuler Sur la page SEO.</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Connexion</value>
+  </data>
+  <data name="Modifiers" xml:space="preserve">
+    <value>modificateurs</value>
+  </data>
+  <data name="OldPrice" xml:space="preserve">
+    <value>ancien prix</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Mot de passe</value>
+  </data>
+  <data name="PasswordHasBeenSent" xml:space="preserve">
+    <value>Votre mot de passe a été envoyé à votre adresse e-mail.</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Prix</value>
+  </data>
+  <data name="Pricing" xml:space="preserve">
+    <value>établissement des prix</value>
+  </data>
+  <data name="ProductCode" xml:space="preserve">
+    <value>Code de produit</value>
+  </data>
+  <data name="ProductCost" xml:space="preserve">
+    <value>Coût du produit</value>
+  </data>
+  <data name="ProductImages" xml:space="preserve">
+    <value>Images du produit</value>
+  </data>
+  <data name="ProductInfo" xml:space="preserve">
+    <value>Informations sur le produit</value>
+  </data>
+  <data name="ProductInformation" xml:space="preserve">
+    <value>Informations sur le produit</value>
+  </data>
+  <data name="ProductName" xml:space="preserve">
+    <value>Nom du produit</value>
+  </data>
+  <data name="Publish" xml:space="preserve">
+    <value>Publier</value>
+  </data>
+  <data name="RecoverPassword" xml:space="preserve">
+    <value>récupérer mot de passe</value>
+  </data>
+  <data name="RememberMe" xml:space="preserve">
+    <value>Se souvenir de moi</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>remettre</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Enregister</value>
+  </data>
+  <data name="SaveModifiers" xml:space="preserve">
+    <value>enregistrer modificateurs</value>
+  </data>
+  <data name="SaveModifiersSuccessful" xml:space="preserve">
+    <value>Enregistrer modificateurs succès.</value>
+  </data>
+  <data name="ShortDescription" xml:space="preserve">
+    <value>description courte</value>
+  </data>
+  <data name="ShowOnHomepage" xml:space="preserve">
+    <value>Voir sur la page d'accueil</value>
+  </data>
+  <data name="Site" xml:space="preserve">
+    <value>Golf</value>
+  </data>
+  <data name="Slug" xml:space="preserve">
+    <value>Slug</value>
+  </data>
+  <data name="SpecialPrice" xml:space="preserve">
+    <value>Prix ​​spécial</value>
+  </data>
+  <data name="Supplier" xml:space="preserve">
+    <value>fournisseur</value>
+  </data>
+  <data name="TaxType" xml:space="preserve">
+    <value>Type de l'impôt</value>
+  </data>
+  <data name="Username" xml:space="preserve">
+    <value>Nom d'utilisateur</value>
+  </data>
+  <data name="Variations" xml:space="preserve">
+    <value>variations</value>
+  </data>
+  <data name="AddToCart" xml:space="preserve">
+    <value>Ajouter au panier</value>
+  </data>
+  <data name="Course" xml:space="preserve">
+    <value>Parcours</value>
+  </data>
+  <data name="Dashboard" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
+  <data name="Products" xml:space="preserve">
+    <value>Articles</value>
+  </data>
+  <data name="Store" xml:space="preserve">
+    <value>magasin</value>
+  </data>
+  <data name="TeeSheet" xml:space="preserve">
+    <value>T Fiche</value>
+  </data>
+  <data name="Reports" xml:space="preserve">
+    <value>rapports</value>
+  </data>
+  <data name="LoginWithFacebook" xml:space="preserve">
+    <value>Connectez-vous avec Facebook</value>
+  </data>
+  <data name="Or" xml:space="preserve">
+    <value>Ou</value>
+  </data>
+  <data name="PleaseEnterYourInformation" xml:space="preserve">
+    <value>S'il vous plaît Entrez votre information</value>
+  </data>
+  <data name="RequiredError" xml:space="preserve">
+    <value>requis</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>Prénom</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>Nom</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>S'inscrire</value>
+  </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>confirmer mot de passe</value>
+  </data>
+  <data name="IsReceiveNewsletters" xml:space="preserve">
+    <value>Voulez-vous recevoir notre newsletter?</value>
+  </data>
+  <data name="RegisterFailed" xml:space="preserve">
+    <value>Inscrivez-vous manqué</value>
+  </data>
+  <data name="UseExistsAccount" xml:space="preserve">
+    <value>Utilisez un compte qui existe</value>
+  </data>
+  <data name="CreateNewAccount" xml:space="preserve">
+    <value>Créer un nouveau compte</value>
+  </data>
+  <data name="ItemNotFound" xml:space="preserve">
+    <value>Article non trouvé</value>
+  </data>
+  <data name="CantRemoveItemFromCart" xml:space="preserve">
+    <value>Vous ne pouvez pas supprimer l'article du panier.</value>
+  </data>
+  <data name="DrivingRanges" xml:space="preserve">
+    <value>Carte de Practice</value>
+  </data>
+  <data name="GolfLessons" xml:space="preserve">
+    <value>Stages</value>
+  </data>
+  <data name="GreenFees" xml:space="preserve">
+    <value>Green Fees</value>
+  </data>
+  <data name="StayPackages" xml:space="preserve">
+    <value>Séjour</value>
+  </data>
+  <data name="ThereIsNoProduct" xml:space="preserve">
+    <value>Il n'ya pas de produit</value>
+  </data>
+  <data name="Cart" xml:space="preserve">
+    <value>Panier</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Effacer</value>
+  </data>
+  <data name="DeliveryTime" xml:space="preserve">
+    <value>Délai de Livraison</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="Quantity" xml:space="preserve">
+    <value>Quantité</value>
+  </data>
+  <data name="TotalPrice" xml:space="preserve">
+    <value>Prix ​​total</value>
+  </data>
+  <data name="UnitPrice" xml:space="preserve">
+    <value>Prix unitaire</value>
+  </data>
+  <data name="TheBasketIsEmpty" xml:space="preserve">
+    <value>Le panier est vide.</value>
+  </data>
+  <data name="BackToShopping" xml:space="preserve">
+    <value>Retour Shopping</value>
+  </data>
+  <data name="Checkout" xml:space="preserve">
+    <value>Finaliser ma commande</value>
+  </data>
+  <data name="UpdateCart" xml:space="preserve">
+    <value>Mise à jour panier</value>
+  </data>
+  <data name="ItemImageUploadDescription" xml:space="preserve">
+    <value>Vous pouvez télécharger plusieurs fichiers à la fois. Vous pouvez organiser les images par glisser-déposez. Première image sera utilisée comme image principale.</value>
+  </data>
+  <data name="PageNotFound" xml:space="preserve">
+    <value>Page non trouvée</value>
+  </data>
+  <data name="InternalServerError" xml:space="preserve">
+    <value>Erreur interne du serveur</value>
+  </data>
+  <data name="OopsSomethingWentWrong" xml:space="preserve">
+    <value>Oops! Quelque chose s'est mal passé.</value>
+  </data>
+  <data name="PageNotFoundDescription" xml:space="preserve">
+    <value>Nous ne pouvons pas trouver la page que vous cherchez.</value>
+  </data>
+  <data name="PleaseComeBackInaWhile" xml:space="preserve">
+    <value>S'il vous plaît revenir de temps en temps.</value>
+  </data>
+  <data name="WeAreFixingIt" xml:space="preserve">
+    <value>Nous nous efforçons de solutionner ce petit problème.</value>
+  </data>
+  <data name="TaxCalculation" xml:space="preserve">
+    <value>Calcul de l'impôt</value>
+  </data>
+  <data name="GolfCourse" xml:space="preserve">
+    <value>cours de golf</value>
+  </data>
+  <data name="End" xml:space="preserve">
+    <value>Au</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>Démarrer</value>
+  </data>
+  <data name="Materials" xml:space="preserve">
+    <value>Matières</value>
+  </data>
+  <data name="ViewOffer" xml:space="preserve">
+    <value>Voir l'offre</value>
+  </data>
+  <data name="Product" xml:space="preserve">
+    <value>Article</value>
+  </data>
+  <data name="BookingReport" xml:space="preserve">
+    <value>Rapport Réservation</value>
+  </data>
+  <data name="ContentManagement" xml:space="preserve">
+    <value>gestion de contenu</value>
+  </data>
+  <data name="GiftCard" xml:space="preserve">
+    <value>Carte-cadeau</value>
+  </data>
+  <data name="Lessons" xml:space="preserve">
+    <value>Stages</value>
+  </data>
+  <data name="News" xml:space="preserve">
+    <value>Nouvelles</value>
+  </data>
+  <data name="ReferenceTables" xml:space="preserve">
+    <value>Tableaux de référence</value>
+  </data>
+  <data name="SalesReport" xml:space="preserve">
+    <value>Rapport des ventes</value>
+  </data>
+  <data name="Slideshow" xml:space="preserve">
+    <value>Diaporama</value>
+  </data>
+  <data name="SpecialOffers" xml:space="preserve">
+    <value>Offres spéciales</value>
+  </data>
+  <data name="SpecialOffer" xml:space="preserve">
+    <value>Offres spéciale</value>
+  </data>
+  <data name="SaveSlideImagesFailed" xml:space="preserve">
+    <value>Enregistrer des images diapositives échoué.</value>
+  </data>
+  <data name="SaveSlideImagesSuccessful" xml:space="preserve">
+    <value>Enregistrez les images de diapositives succès.</value>
+  </data>
+  <data name="InterestDescription" xml:space="preserve">
+    <value>intérêt Description</value>
+  </data>
+  <data name="InterestName" xml:space="preserve">
+    <value>Nom d'intérêt</value>
+  </data>
+  <data name="UserInteresting" xml:space="preserve">
+    <value>Intéressant utilisateur</value>
+  </data>
+  <data name="Suppliers" xml:space="preserve">
+    <value>fournisseurs</value>
+  </data>
+  <data name="EditProfile" xml:space="preserve">
+    <value>Editer le profil</value>
+  </data>
+  <data name="Membership" xml:space="preserve">
+    <value>Adhésion</value>
+  </data>
+  <data name="Sites" xml:space="preserve">
+    <value>Golfs</value>
+  </data>
+  <data name="Taxes" xml:space="preserve">
+    <value>TVA</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>utilisateurs</value>
+  </data>
+  <data name="UserTypes" xml:space="preserve">
+    <value>Types d'utilisateurs</value>
+  </data>
+  <data name="SaveUserProfileFailed" xml:space="preserve">
+    <value>Merci de renseigner les champs obligatoires</value>
+  </data>
+  <data name="SaveUserProfileSuccess" xml:space="preserve">
+    <value>Enregistrement profil de l'utilisateur avec succès.</value>
+  </data>
+  <data name="UserInformation" xml:space="preserve">
+    <value>Informations de l'utilisateur</value>
+  </data>
+  <data name="Map" xml:space="preserve">
+    <value>Carte</value>
+  </data>
+  <data name="BillingAddress" xml:space="preserve">
+    <value>adresse de facturation</value>
+  </data>
+  <data name="ShippingAddress" xml:space="preserve">
+    <value>Livraison à l'adresse suivante</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Suivant</value>
+  </data>
+  <data name="AddDrivingRange" xml:space="preserve">
+    <value>Ajouter une adresse</value>
+  </data>
+  <data name="AddLesson" xml:space="preserve">
+    <value>Ajouter Stage</value>
+  </data>
+  <data name="AddGreenFee" xml:space="preserve">
+    <value>Ajouter Green Fee</value>
+  </data>
+  <data name="AddProduct" xml:space="preserve">
+    <value>Ajouter un produit</value>
+  </data>
+  <data name="AddStayPackage" xml:space="preserve">
+    <value>Ajouter séjour</value>
+  </data>
+  <data name="GiftCardInformation" xml:space="preserve">
+    <value>Informations sur la carte-cadeau</value>
+  </data>
+  <data name="GiftCardName" xml:space="preserve">
+    <value>Carte-cadeau Nom</value>
+  </data>
+  <data name="ConfirmDeleteMessage" xml:space="preserve">
+    <value>Cet article sera définitivement supprimé, vous êtes sûr de la suppression?</value>
+  </data>
+  <data name="SearchPlaceholder" xml:space="preserve">
+    <value>Recherchez...</value>
+  </data>
+  <data name="ResultForSearchTerm" xml:space="preserve">
+    <value>Résultat pour le terme de recherche</value>
+  </data>
+  <data name="SignOut" xml:space="preserve">
+    <value>Se deconnecter</value>
+  </data>
+  <data name="ProductCategories" xml:space="preserve">
+    <value>Les catégories de produit</value>
+  </data>
+  <data name="Categories" xml:space="preserve">
+    <value>Catégories</value>
+  </data>
+  <data name="CustomerGroups" xml:space="preserve">
+    <value>Groupes de clients</value>
+  </data>
+  <data name="CustomerManagement" xml:space="preserve">
+    <value>Gestion des clients</value>
+  </data>
+  <data name="Customers" xml:space="preserve">
+    <value>clientèle</value>
+  </data>
+  <data name="EmailTemplates" xml:space="preserve">
+    <value>Modèles Email</value>
+  </data>
+  <data name="MailingLists" xml:space="preserve">
+    <value>Listes</value>
+  </data>
+  <data name="Newsletter" xml:space="preserve">
+    <value>Newsletter</value>
+  </data>
+  <data name="PrivacyPolicy" xml:space="preserve">
+    <value>Politique de confidentialité</value>
+  </data>
+  <data name="SendEmail" xml:space="preserve">
+    <value>Envoyer un email</value>
+  </data>
+  <data name="AdminDashboard" xml:space="preserve">
+    <value>administrateur tableau de bord</value>
+  </data>
+  <data name="Detail" xml:space="preserve">
+    <value>Détail</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Nom</value>
+  </data>
+  <data name="PrivacyInformation" xml:space="preserve">
+    <value>Protection des renseignements</value>
+  </data>
+  <data name="PrivacyPolicyName" xml:space="preserve">
+    <value>Politique de confidentialité Nom</value>
+  </data>
+  <data name="CategoryName" xml:space="preserve">
+    <value>Nom de la catégorie</value>
+  </data>
+  <data name="Customer" xml:space="preserve">
+    <value>Client</value>
+  </data>
+  <data name="CustomerGroup" xml:space="preserve">
+    <value>Groupe de clients</value>
+  </data>
+  <data name="CustomerGroupName" xml:space="preserve">
+    <value>Nom du groupe de clients</value>
+  </data>
+  <data name="CustomerMailList" xml:space="preserve">
+    <value>Liste de messagerie client</value>
+  </data>
+  <data name="EmailBody" xml:space="preserve">
+    <value>Contenu du courrier électronique</value>
+  </data>
+  <data name="EmailInformation" xml:space="preserve">
+    <value>E-mail Informations</value>
+  </data>
+  <data name="EmailName" xml:space="preserve">
+    <value>Email Nom</value>
+  </data>
+  <data name="EmailReport" xml:space="preserve">
+    <value>Email Rapport</value>
+  </data>
+  <data name="EmailsIsInSchedule" xml:space="preserve">
+    <value>Les e-mails ont été dans le calendrier.</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>Du</value>
+  </data>
+  <data name="FromName" xml:space="preserve">
+    <value>De Nom</value>
+  </data>
+  <data name="InvalidEmailOrPassword" xml:space="preserve">
+    <value>E-mail ou mot de passe invalide.</value>
+  </data>
+  <data name="MailingList" xml:space="preserve">
+    <value>Liste d'envoi</value>
+  </data>
+  <data name="MailingListName" xml:space="preserve">
+    <value>Liste d'envoi Nom</value>
+  </data>
+  <data name="MiddleName" xml:space="preserve">
+    <value>Deuxième nom</value>
+  </data>
+  <data name="Report" xml:space="preserve">
+    <value>Rapport</value>
+  </data>
+  <data name="SendingEmail" xml:space="preserve">
+    <value>envoi d'un courriel</value>
+  </data>
+  <data name="Subject" xml:space="preserve">
+    <value>Objet</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>Utilisateur</value>
+  </data>
+  <data name="UserType" xml:space="preserve">
+    <value>Types d'utilisateur</value>
+  </data>
+  <data name="UserTypeName" xml:space="preserve">
+    <value>Type d'utilisateur Nom</value>
+  </data>
+  <data name="CourseName" xml:space="preserve">
+    <value>Nom du cours</value>
+  </data>
+  <data name="Holes" xml:space="preserve">
+    <value>Holes</value>
+  </data>
+  <data name="SiteImages" xml:space="preserve">
+    <value>imagini site-ului</value>
+  </data>
+  <data name="SiteInformation" xml:space="preserve">
+    <value>Informații site-ul</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Adresse</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>Ville</value>
+  </data>
+  <data name="Fax" xml:space="preserve">
+    <value>Fax</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Téléphone</value>
+  </data>
+  <data name="PostalCode" xml:space="preserve">
+    <value>Code postal</value>
+  </data>
+  <data name="SiteName" xml:space="preserve">
+    <value>Nom du golf</value>
+  </data>
+  <data name="SiteSlug" xml:space="preserve">
+    <value>Golf Slug</value>
+  </data>
+  <data name="State" xml:space="preserve">
+    <value>Département</value>
+  </data>
+  <data name="Street" xml:space="preserve">
+    <value>Rue</value>
+  </data>
+  <data name="Website" xml:space="preserve">
+    <value>site Web</value>
+  </data>
+  <data name="Accommodation" xml:space="preserve">
+    <value>Hébergement</value>
+  </data>
+  <data name="ArrivalDate" xml:space="preserve">
+    <value>Mois de départ</value>
+  </data>
+  <data name="ReserveGreenFee" xml:space="preserve">
+    <value>Réservez&lt;br /&gt;un green fee</value>
+  </data>
+  <data name="Buy" xml:space="preserve">
+    <value>Acheter</value>
+  </data>
+  <data name="BuyA" xml:space="preserve">
+    <value>Trouver Un</value>
+  </data>
+  <data name="BuyPracticeCard" xml:space="preserve">
+    <value>Achetez vos cartes de pratice aux meilleurs prix</value>
+  </data>
+  <data name="Destination" xml:space="preserve">
+    <value>Destination</value>
+  </data>
+  <data name="Dexterity" xml:space="preserve">
+    <value>Dextérité</value>
+  </data>
+  <data name="FindOutOurLatestHolidayDeals" xml:space="preserve">
+    <value>Retrouvez tous nos bon plans!</value>
+  </data>
+  <data name="Golf" xml:space="preserve">
+    <value>Golf</value>
+  </data>
+  <data name="Level" xml:space="preserve">
+    <value>Niveau</value>
+  </data>
+  <data name="Material" xml:space="preserve">
+    <value>Matière</value>
+  </data>
+  <data name="SelectCountry" xml:space="preserve">
+    <value>Choisir un pays</value>
+  </data>
+  <data name="SelectCourse" xml:space="preserve">
+    <value>Choisir un cours</value>
+  </data>
+  <data name="SelectDepartment" xml:space="preserve">
+    <value>Choisir un département</value>
+  </data>
+  <data name="SelectMonth" xml:space="preserve">
+    <value>Sélectionner un mois</value>
+  </data>
+  <data name="SelectRegion" xml:space="preserve">
+    <value>Choisir une région</value>
+  </data>
+  <data name="ShowResults" xml:space="preserve">
+    <value>Afficher les résultats</value>
+  </data>
+  <data name="SubCategories" xml:space="preserve">
+    <value>Sous-catégories</value>
+  </data>
+  <data name="TimeSlot" xml:space="preserve">
+    <value>Créneau horaire</value>
+  </data>
+  <data name="ToTheDLGShop" xml:space="preserve">
+    <value>Dans la DLG Shop</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Bienvenue</value>
+  </data>
+  <data name="WhereToPlay" xml:space="preserve">
+    <value>Où jouer ?</value>
+  </data>
+  <data name="OrderConfirm" xml:space="preserve">
+    <value>Confirmer Ordre</value>
+  </data>
+  <data name="SecurePaymentsByPaypal" xml:space="preserve">
+    <value>Paiements sécurisés par Paypal</value>
+  </data>
+  <data name="PaymentFailed" xml:space="preserve">
+    <value>Paiement a échoué</value>
+  </data>
+  <data name="PaymentFailedDescription" xml:space="preserve">
+    <value>Ll ya des problèmes pendant que nous faisons transaction. Donc, votre paiement a échoué. S'il vous plaît nous en informer.</value>
+  </data>
+  <data name="Qty" xml:space="preserve">
+    <value>Qté</value>
+  </data>
+  <data name="AccountDashboard" xml:space="preserve">
+    <value>Compte Tableau De Bord</value>
+  </data>
+  <data name="MyCouponsAndDiscount" xml:space="preserve">
+    <value>Mes bons d'achat et de réduction</value>
+  </data>
+  <data name="MyCreditCard" xml:space="preserve">
+    <value>Mes cartes bancaires</value>
+  </data>
+  <data name="MyDetails" xml:space="preserve">
+    <value>Mes coordonnées</value>
+  </data>
+  <data name="MyListingsForNewsletters" xml:space="preserve">
+    <value>Mes inscriptions aux newsletters</value>
+  </data>
+  <data name="MyMessages" xml:space="preserve">
+    <value>Mes messages</value>
+  </data>
+  <data name="MyOrders" xml:space="preserve">
+    <value>Mes commandes</value>
+  </data>
+  <data name="MySponsorship" xml:space="preserve">
+    <value>Mon parrainage</value>
+  </data>
+  <data name="MyAddresses" xml:space="preserve">
+    <value>Mon carnet d'adresses</value>
+  </data>
+  <data name="DLGCard" xml:space="preserve">
+    <value>DLG Card</value>
+  </data>
+  <data name="Shpping" xml:space="preserve">
+    <value>Livraison</value>
+  </data>
+  <data name="Available" xml:space="preserve">
+    <value>disponible</value>
+  </data>
+  <data name="Return" xml:space="preserve">
+    <value>Retour</value>
+  </data>
+  <data name="Accept" xml:space="preserve">
+    <value>Acceptés</value>
+  </data>
+  <data name="PrintFile" xml:space="preserve">
+    <value>Imprimer Ficher</value>
+  </data>
+  <data name="SendOfferToAFriend" xml:space="preserve">
+    <value>envoyer l'offre à un ami</value>
+  </data>
+  <data name="Specifications" xml:space="preserve">
+    <value>Caractéristiques</value>
+  </data>
+  <data name="DeliveryDetail" xml:space="preserve">
+    <value>Détails Livraison</value>
+  </data>
+  <data name="Review" xml:space="preserve">
+    <value>Avis</value>
+  </data>
+  <data name="Genre" xml:space="preserve">
+    <value>Genre</value>
+  </data>
+  <data name="Brand" xml:space="preserve">
+    <value>Marque</value>
+  </data>
+  <data name="Shaft" xml:space="preserve">
+    <value>Shaft</value>
+  </data>
+  <data name="Size" xml:space="preserve">
+    <value>Taille</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="StateOfTheObject" xml:space="preserve">
+    <value>État de l'objet</value>
+  </data>
+  <data name="DeliveryDate" xml:space="preserve">
+    <value>Date de livraison</value>
+  </data>
+  <data name="BirthDate" xml:space="preserve">
+    <value>Date de Naissance</value>
+  </data>
+  <data name="MyDetails_HeaderDescription" xml:space="preserve">
+    <value>Vous pouvez, ci-dessous, modifier les données personnelles de votre compte utilisateur</value>
+  </data>
+  <data name="MyPassword" xml:space="preserve">
+    <value>Mon mot de passe</value>
+  </data>
+  <data name="MyAccount_Header" xml:space="preserve">
+    <value>Mon compte</value>
+  </data>
+  <data name="MyAddresses_Remark" xml:space="preserve">
+    <value>Modifiez vos adresses de livraison.</value>
+  </data>
+  <data name="MyCouponsAndDiscount_Remark" xml:space="preserve">
+    <value>Utilisez vos bons à disposition.</value>
+  </data>
+  <data name="MyCreditCard_Remark" xml:space="preserve">
+    <value>Enregistrez vos cartes bancaires.</value>
+  </data>
+  <data name="MyDetails_Civility" xml:space="preserve">
+    <value>Civilité</value>
+  </data>
+  <data name="MyDetails_Complement" xml:space="preserve">
+    <value>Complément</value>
+  </data>
+  <data name="MyDetails_Country" xml:space="preserve">
+    <value>Pays</value>
+  </data>
+  <data name="MyDetails_Receive" xml:space="preserve">
+    <value>Je souhaite recevoir des information ou des offres commerciales de la part des partenaires de DanslesGolfs.com.</value>
+  </data>
+  <data name="MyDetails_Remark" xml:space="preserve">
+    <value>Modifiez et completez vos coordonnées personnelles.</value>
+  </data>
+  <data name="MyDetails_Require" xml:space="preserve">
+    <value>Champs Obligatories</value>
+  </data>
+  <data name="MyDetails_Save" xml:space="preserve">
+    <value>VALIDER LES MODIFICATIONS</value>
+  </data>
+  <data name="MyListingsForNewsletters_Remark" xml:space="preserve">
+    <value>Gérer vos inscriptions aux newsletters.</value>
+  </data>
+  <data name="MyMessages_Remark" xml:space="preserve">
+    <value>Consultez et gérez vos messages personnels.</value>
+  </data>
+  <data name="MyOrders_Remark" xml:space="preserve">
+    <value>Retrouvez ici toutes vos commandes.</value>
+  </data>
+  <data name="MyPassword_Remark" xml:space="preserve">
+    <value>Modifiez votre mot de passe.</value>
+  </data>
+  <data name="MyPassword_RemarkLink" xml:space="preserve">
+    <value>DansLesGolfs.com</value>
+  </data>
+  <data name="MySponsorship_Remark" xml:space="preserve">
+    <value>Gérez votre parrainage.</value>
+  </data>
+  <data name="YourReview" xml:space="preserve">
+    <value>Votre Commentaire</value>
+  </data>
+  <data name="SubmitReview" xml:space="preserve">
+    <value>Poster le commentaire</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Fermer</value>
+  </data>
+  <data name="YourReviewGoHere" xml:space="preserve">
+    <value>Donner votre avis</value>
+  </data>
+  <data name="CreateTeeSheet" xml:space="preserve">
+    <value>Créer Tee Sheet</value>
+  </data>
+  <data name="DefaultPrice" xml:space="preserve">
+    <value>Défaut Prix</value>
+  </data>
+  <data name="CourseDescription" xml:space="preserve">
+    <value>Course Description</value>
+  </data>
+  <data name="CourseType" xml:space="preserve">
+    <value>Course Type</value>
+  </data>
+  <data name="Duration" xml:space="preserve">
+    <value>Duration</value>
+  </data>
+  <data name="EndTime" xml:space="preserve">
+    <value>End Time</value>
+  </data>
+  <data name="Hole" xml:space="preserve">
+    <value>Hole</value>
+  </data>
+  <data name="StartTime" xml:space="preserve">
+    <value>Start Time</value>
+  </data>
+  <data name="ChooseYourOffer" xml:space="preserve">
+    <value>Choisissez votre offre</value>
+  </data>
+  <data name="TeeSheetConfirmPopupTitle" xml:space="preserve">
+    <value>Vous allez ajouter à votre panier l'article suivant</value>
+  </data>
+  <data name="ContinueToShopping" xml:space="preserve">
+    <value>Poursuivre Vos Achats</value>
+  </data>
+  <data name="GreenFeeType" xml:space="preserve">
+    <value>Green Fee Type</value>
+  </data>
+  <data name="NoReviewText" xml:space="preserve">
+    <value>Soyez le premier à ecrire un avis</value>
+  </data>
+  <data name="MakeAComment" xml:space="preserve">
+    <value>émettre un commentaire</value>
+  </data>
+  <data name="AddAddress" xml:space="preserve">
+    <value>Ajouter une Adresse</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>CHANGER LE MOT DE PASSE</value>
+  </data>
+  <data name="ChangeYourPassword" xml:space="preserve">
+    <value>Pour proceder au changement de votre mot de passe, veuillez rentrer les informations suivantes :</value>
+  </data>
+  <data name="Chooseyourpassword" xml:space="preserve">
+    <value>Choisissez votre mot de passe</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>Pays</value>
+  </data>
+  <data name="MobilePhone" xml:space="preserve">
+    <value>Téléphone mobile</value>
+  </data>
+  <data name="MonMotDePasse" xml:space="preserve">
+    <value>Mon mot de passe</value>
+  </data>
+  <data name="OldPassword" xml:space="preserve">
+    <value>Ancien mot de passe</value>
+  </data>
+  <data name="SelectShape" xml:space="preserve">
+    <value>Choisir la forme</value>
+  </data>
+  <data name="Unused" xml:space="preserve">
+    <value>Neuf</value>
+  </data>
+  <data name="Used" xml:space="preserve">
+    <value>Utilisé</value>
+  </data>
+  <data name="Junior" xml:space="preserve">
+    <value>Junior</value>
+  </data>
+  <data name="LeftHand" xml:space="preserve">
+    <value>Left Hand</value>
+  </data>
+  <data name="Man" xml:space="preserve">
+    <value>Homme</value>
+  </data>
+  <data name="RightHand" xml:space="preserve">
+    <value>Main Droit</value>
+  </data>
+  <data name="SelectDexterity" xml:space="preserve">
+    <value>Choisir un Dextérité</value>
+  </data>
+  <data name="SelectGenre" xml:space="preserve">
+    <value>Choisir un Genre</value>
+  </data>
+  <data name="Woman" xml:space="preserve">
+    <value>Femme</value>
+  </data>
+  <data name="Shape" xml:space="preserve">
+    <value>Forme</value>
+  </data>
+  <data name="SelectShaft" xml:space="preserve">
+    <value>Choisir un arbre</value>
+  </data>
+  <data name="Aluminum" xml:space="preserve">
+    <value>Aluminium</value>
+  </data>
+  <data name="Composite" xml:space="preserve">
+    <value>Composite</value>
+  </data>
+  <data name="Graphite" xml:space="preserve">
+    <value>Graphite</value>
+  </data>
+  <data name="SelectCategory" xml:space="preserve">
+    <value>Choisir une catégorie</value>
+  </data>
+  <data name="SelectSubCategory" xml:space="preserve">
+    <value>Sélectionnez Sous catégorie</value>
+  </data>
+  <data name="Steel" xml:space="preserve">
+    <value>Acier</value>
+  </data>
+  <data name="Titanium" xml:space="preserve">
+    <value>Titane</value>
+  </data>
+  <data name="Wood" xml:space="preserve">
+    <value>Bois</value>
+  </data>
+  <data name="ViewComments" xml:space="preserve">
+    <value>Voir les commentaires</value>
+  </data>
+  <data name="FindTheItems" xml:space="preserve">
+    <value>Où trouver l'articles</value>
+  </data>
+  <data name="Rating" xml:space="preserve">
+    <value>Avis</value>
+  </data>
+  <data name="RegisterFailedMessage" xml:space="preserve">
+    <value>Inscription échoué. S'il vous plaît essayez de nouveau.</value>
+  </data>
+  <data name="PleaseInputYourInfo" xml:space="preserve">
+    <value>Veuillez entrer vos informations</value>
+  </data>
+  <data name="PleaseInputYourInfoDescription" xml:space="preserve">
+    <value>Nous avons presque terminé! S'il vous plaît choisissez votre email et votre mot de passe.</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
+  <data name="NewCustomer" xml:space="preserve">
+    <value>Nouveau client</value>
+  </data>
+  <data name="Remarks" xml:space="preserve">
+    <value>Remarques</value>
+  </data>
+  <data name="ConfirmationEmail" xml:space="preserve">
+    <value>Confirmation Email</value>
+  </data>
+  <data name="ExistsCustomer" xml:space="preserve">
+    <value>Déjà Client</value>
+  </data>
+  <data name="IWishSubscription" xml:space="preserve">
+    <value>Je souhaite m'inscrire  a la newsletter DanslesGolfs.com</value>
+  </data>
+  <data name="Order_LoginDescription" xml:space="preserve">
+    <value>Remplissez les champs ci dessous pour accéder à votre compte</value>
+  </data>
+  <data name="Order_RegisterDescription" xml:space="preserve">
+    <value>Pas encore membre? Inscrivez gratuitement</value>
+  </data>
+  <data name="Order_SubscriptionDescription" xml:space="preserve">
+    <value>Si vous disposez d'une Carte LeClub Golf ou d'un Pass DLG Suprême &lt;br /&gt;remplissez les champs suivants</value>
+  </data>
+  <data name="Subscription" xml:space="preserve">
+    <value>Abonnement</value>
+  </data>
+  <data name="Validate" xml:space="preserve">
+    <value>Valider</value>
+  </data>
+  <data name="Delivery" xml:space="preserve">
+    <value>Livraison</value>
+  </data>
+  <data name="DeliveryToTheFollowingAddress" xml:space="preserve">
+    <value>Livraison à l'adresse suivante</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Modifier</value>
+  </data>
+  <data name="Order_ShippingMobilePhoneDescription" xml:space="preserve">
+    <value>Afin d'assurer le meilleur suivi possible, merci de valider ou de modifier le numéro de téléphone ci-contre.</value>
+  </data>
+  <data name="Order_ShippingMobilePhoneDescription2" xml:space="preserve">
+    <value>Nous vous recommandons la saisie d'un téléphone portable.</value>
+  </data>
+  <data name="ThereIsNoAddress" xml:space="preserve">
+    <value>Il n'y a pas de bonne adresse, s'il vous plaît créer un.</value>
+  </data>
+  <data name="BasketSummary" xml:space="preserve">
+    <value>Récapitulatif de votre panier</value>
+  </data>
+  <data name="Confirmation" xml:space="preserve">
+    <value>Confirmation</value>
+  </data>
+  <data name="Identification" xml:space="preserve">
+    <value>Identification</value>
+  </data>
+  <data name="Payment" xml:space="preserve">
+    <value>Paiement</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Supprimer</value>
+  </data>
+  <data name="MyCart" xml:space="preserve">
+    <value>Mon Panier</value>
+  </data>
+  <data name="AddressName" xml:space="preserve">
+    <value>Nom de I'adresse</value>
+  </data>
+  <data name="AddShippingAddress" xml:space="preserve">
+    <value>Ajouter une adresse de livraison</value>
+  </data>
+  <data name="BackToPreviousStep" xml:space="preserve">
+    <value>Revenir À L'étape Précédente</value>
+  </data>
+  <data name="EditShippingAddress" xml:space="preserve">
+    <value>Modifier une adresse de livraison</value>
+  </data>
+  <data name="Floor" xml:space="preserve">
+    <value>Étage</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Domicile</value>
+  </data>
+  <data name="Office" xml:space="preserve">
+    <value>Bureau</value>
+  </data>
+  <data name="Shipping" xml:space="preserve">
+    <value>Livraison</value>
+  </data>
+  <data name="UserHasNotLoggedIn" xml:space="preserve">
+    <value>L'utilisateur ne s'est pas connecté</value>
+  </data>
+  <data name="ConfirmDeleteAddress" xml:space="preserve">
+    <value>Cette adresse sera définitivement supprimée, voulez-vous continuer?</value>
+  </data>
+  <data name="AcceptThe" xml:space="preserve">
+    <value>J'accepte les</value>
+  </data>
+  <data name="Check" xml:space="preserve">
+    <value>Chèque</value>
+  </data>
+  <data name="ChooseYourPaymentGateway" xml:space="preserve">
+    <value>Choisissez Votre Moyen De Paiement</value>
+  </data>
+  <data name="CompleteOrder" xml:space="preserve">
+    <value>Finaliser la commande</value>
+  </data>
+  <data name="SSLDescription" xml:space="preserve">
+    <value>La transaction s'effectue par paiement sécurisé standard SSL</value>
+  </data>
+  <data name="SSLDescription2" xml:space="preserve">
+    <value>de notre partenaire Lydia</value>
+  </data>
+  <data name="TermsAndAgreements" xml:space="preserve">
+    <value>conditions generales de vente</value>
+  </data>
+  <data name="TheInforrmationInTheCard" xml:space="preserve">
+    <value>les informations de la carte de paiement</value>
+  </data>
+  <data name="Untitled" xml:space="preserve">
+    <value>Untitled</value>
+  </data>
+  <data name="ApplyToCart" xml:space="preserve">
+    <value>Appliquer au panier</value>
+  </data>
+  <data name="PromotionalCode" xml:space="preserve">
+    <value>Code promotionnel</value>
+  </data>
+  <data name="WithoutShipping" xml:space="preserve">
+    <value>Hors frais de port</value>
+  </data>
+  <data name="AllowCustomerReview" xml:space="preserve">
+    <value>Permettre une révision à la clientèle de ce produit</value>
+  </data>
+  <data name="DisplayThisProductOnHomepage" xml:space="preserve">
+    <value>Voir cet article sur la page d'accueil</value>
+  </data>
+  <data name="PublishThisProduct" xml:space="preserve">
+    <value>Publier ce produit</value>
+  </data>
+  <data name="SearchResultFor" xml:space="preserve">
+    <value>Résultat De La Recherche Pour</value>
+  </data>
+  <data name="SelectSite" xml:space="preserve">
+    <value>Choisir un golf</value>
+  </data>
+  <data name="SelectState" xml:space="preserve">
+    <value>Choisir un département</value>
+  </data>
+  <data name="ThereIsNoPrice" xml:space="preserve">
+    <value>Il n'y a pas n'importe quel prix</value>
+  </data>
+  <data name="AddPrice" xml:space="preserve">
+    <value>Ajouter Prix</value>
+  </data>
+  <data name="TeeSheetAdminNote" xml:space="preserve">
+    <value>Remarque: Si vous définissez prix discount inférieure ou égale à zéro. C'est teesheet sera caché dans l'extrémité avant.</value>
+  </data>
+  <data name="Resellers" xml:space="preserve">
+    <value>Revendeurs</value>
+  </data>
+  <data name="Reseller" xml:space="preserve">
+    <value>Revendeur</value>
+  </data>
+  <data name="YouJustAddFollowingItemToYourCart" xml:space="preserve">
+    <value>Vous venez d'ajouter à votre panier l'article suivant</value>
+  </data>
+  <data name="SignIn" xml:space="preserve">
+    <value>Se Connecter</value>
+  </data>
+  <data name="EnterYourPassword" xml:space="preserve">
+    <value>Entrez votre mot de passe</value>
+  </data>
+  <data name="EnterYourUsername" xml:space="preserve">
+    <value>Entrez votre identifiant</value>
+  </data>
+  <data name="Hello" xml:space="preserve">
+    <value>Bonjour</value>
+  </data>
+  <data name="LoginToYourAccount" xml:space="preserve">
+    <value>Connectez-vous à votre compte</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="FindACourse" xml:space="preserve">
+    <value>Trouver Un Golf</value>
+  </data>
+  <data name="Imprint" xml:space="preserve">
+    <value>Mentions Légales</value>
+  </data>
+  <data name="InformationAndHelp" xml:space="preserve">
+    <value>Informations Et Aide</value>
+  </data>
+  <data name="JoinNow" xml:space="preserve">
+    <value>S'Inscrire</value>
+  </data>
+  <data name="MenuStage" xml:space="preserve">
+    <value>Stage</value>
+  </data>
+  <data name="MenuPractice" xml:space="preserve">
+    <value>Cartes De Practice</value>
+  </data>
+  <data name="MenuStay" xml:space="preserve">
+    <value>Séjour</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="OurServiceAndSocialNetworks" xml:space="preserve">
+    <value>Nos services &amp; Réseaux Sociaux</value>
+  </data>
+  <data name="ReferYourFriends" xml:space="preserve">
+    <value>Parrainez vos amis et gagnez un bon d'achat.</value>
+  </data>
+  <data name="SubscribeToOurNewsletter" xml:space="preserve">
+    <value>Inscrivez-vous à notre Newsletter</value>
+  </data>
+  <data name="Telephone" xml:space="preserve">
+    <value>Téléphone</value>
+  </data>
+  <data name="ContactUsVerySimple" xml:space="preserve">
+    <value>Pour nous contacter c'est très simple</value>
+  </data>
+  <data name="SeeAllOurGolfs" xml:space="preserve">
+    <value>Voir Tous Nos Golfs</value>
+  </data>
+  <data name="ResellerInformation" xml:space="preserve">
+    <value>Informations Revendeur</value>
+  </data>
+  <data name="CustomerInformation" xml:space="preserve">
+    <value>Informations Client</value>
+  </data>
+  <data name="Female" xml:space="preserve">
+    <value>Femme</value>
+  </data>
+  <data name="Gender" xml:space="preserve">
+    <value>Sexe</value>
+  </data>
+  <data name="Male" xml:space="preserve">
+    <value>Homme</value>
+  </data>
+  <data name="PaymentByCheck" xml:space="preserve">
+    <value>Paiement par chèque</value>
+  </data>
+  <data name="ContentCategory" xml:space="preserve">
+    <value>Catégorie de Contenu</value>
+  </data>
+  <data name="ContentKey" xml:space="preserve">
+    <value>Clé Contenu</value>
+  </data>
+  <data name="ContentText" xml:space="preserve">
+    <value>Texte Contenu</value>
+  </data>
+  <data name="TopicName" xml:space="preserve">
+    <value>Nom de la Rubrique</value>
+  </data>
+  <data name="WebContentInformation" xml:space="preserve">
+    <value>Informations Sur le Contenu Web</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Validation</value>
+  </data>
+  <data name="SecurePayment" xml:space="preserve">
+    <value>Paiement Sécurisé</value>
+  </data>
+  <data name="New" xml:space="preserve">
+    <value>Neuf</value>
+  </data>
+  <data name="AGreenFee" xml:space="preserve">
+    <value>un green fee</value>
+  </data>
+  <data name="FromOurSelection" xml:space="preserve">
+    <value>Parmi notre sélection.</value>
+  </data>
+  <data name="FromOurSelectionOfOffers" xml:space="preserve">
+    <value>Parmi notre sélection d'offres</value>
+  </data>
+  <data name="IncludeDealsWithAccommodation" xml:space="preserve">
+    <value>Inclure les offres avec hébergement</value>
+  </data>
+  <data name="Reserve" xml:space="preserve">
+    <value>Réservez</value>
+  </data>
+  <data name="YourStage" xml:space="preserve">
+    <value>Votre Stage</value>
+  </data>
+  <data name="YourStay" xml:space="preserve">
+    <value>Votre Séjour</value>
+  </data>
+  <data name="YourGolfLesson" xml:space="preserve">
+    <value>your stage</value>
+  </data>
+  <data name="EmailFooterText" xml:space="preserve">
+    <value>Cet email envoyer de {0} système d'automatisation. Se il vous plaît ne pas répondre à cet e-mail.</value>
+  </data>
+  <data name="LoginLinkText" xml:space="preserve">
+    <value>Cliquez ici pour accéder à la page de connexion.</value>
+  </data>
+  <data name="ConnectWithFacebook" xml:space="preserve">
+    <value>Connectez-vous avec Facebook</value>
+  </data>
+  <data name="PasswordCantBeEmpty" xml:space="preserve">
+    <value>Mot de passe ne peut pas être vide.</value>
+  </data>
+  <data name="ConnectWithFacebookAgreement" xml:space="preserve">
+    <value>Si vous ne faites pas confiance à ce site, vous pouvez vous connecter sur facebook.com directement. En instance. vous acceptez les Facebook Platform Conditions d'utilisation de l'utilisateur.</value>
+  </data>
+  <data name="ConnectWithFacebookDescription" xml:space="preserve">
+    <value>Connectez DANS LES Golfs avec Facebook pour interagir avec vos amis sur ce site et de partager des informations à travers Facebook.</value>
+  </data>
+  <data name="EmailCantBeEmpty" xml:space="preserve">
+    <value>Email peut pas être vide.</value>
+  </data>
+  <data name="AmountOfTransaction" xml:space="preserve">
+    <value>Montant de la transaction</value>
+  </data>
+  <data name="CardNo" xml:space="preserve">
+    <value>N° de carte</value>
+  </data>
+  <data name="CreditCardSecureFeature1" xml:space="preserve">
+    <value>Notre partenaire bancaire conserve et garantit la confidentialité de vos données</value>
+  </data>
+  <data name="CreditCardSecureFeature2" xml:space="preserve">
+    <value>DansLesGolfs.com n'a pas accès à vos coordonnées bancaires</value>
+  </data>
+  <data name="CreditCardSecureFeature3" xml:space="preserve">
+    <value>Pour encore plus de sécurité votre numéro de contrôle vous sera toujours demande afin de valider vos futurs paiements</value>
+  </data>
+  <data name="EnterYourCardDescription" xml:space="preserve">
+    <value>Veuillez saisir votre cryptogramme visuel, les trois derniers chiffres apparaissent sur le panneau signature au verso de votre carte bancaire</value>
+  </data>
+  <data name="EnterYourCreditCard" xml:space="preserve">
+    <value>Saisir votre carte de paiement</value>
+  </data>
+  <data name="ExpiredAt" xml:space="preserve">
+    <value>Expiré fin</value>
+  </data>
+  <data name="FacebookPermissionAgreement" xml:space="preserve">
+    <value>Nous ne publions rien sur votre mur sans votre accords.</value>
+  </data>
+  <data name="LearnMoreAboutVisualCryptogram" xml:space="preserve">
+    <value>En savoir plus sur le cryptogramme visuel</value>
+  </data>
+  <data name="MerchantID" xml:space="preserve">
+    <value>Identifiant commerçant</value>
+  </data>
+  <data name="RegisterYourCardTitle" xml:space="preserve">
+    <value>Enregistrez votre carte, commander l'esprit léger!</value>
+  </data>
+  <data name="SignupWithFacebook" xml:space="preserve">
+    <value>S'Inscrire avec Facebook</value>
+  </data>
+  <data name="TransactionReference" xml:space="preserve">
+    <value>Référence de transaction</value>
+  </data>
+  <data name="TwoSecondsWithFacebook" xml:space="preserve">
+    <value>&lt;strong&gt;en 2 secondes&lt;/strong&gt; avec Facebook</value>
+  </data>
+  <data name="EnterANameForThisCard" xml:space="preserve">
+    <value>Saisissez un nom pour cette carte</value>
+  </data>
+  <data name="ForAFuturePurchase" xml:space="preserve">
+    <value>pour un futur achat</value>
+  </data>
+  <data name="IWishTo" xml:space="preserve">
+    <value>Je souhaite</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Non</value>
+  </data>
+  <data name="Optional" xml:space="preserve">
+    <value>Facultatif</value>
+  </data>
+  <data name="RegisterMyBankDetail" xml:space="preserve">
+    <value>enregistrer mes coordonnées bancaires</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Oui</value>
+  </data>
+  <data name="ExcludingShippingCosts" xml:space="preserve">
+    <value>Hors frais de livraison</value>
+  </data>
+  <data name="MyCouponsAndDiscounts" xml:space="preserve">
+    <value>Mes bons d'achat et réductions</value>
+  </data>
+  <data name="ProductOneOrMany" xml:space="preserve">
+    <value>Article(s)</value>
+  </data>
+  <data name="ShippingCost" xml:space="preserve">
+    <value>Frais de Port</value>
+  </data>
+  <data name="TotalTTCPaid" xml:space="preserve">
+    <value>Total TTC Payé</value>
+  </data>
+  <data name="Latitude" xml:space="preserve">
+    <value>Latitude</value>
+  </data>
+  <data name="Longitude" xml:space="preserve">
+    <value>Longitude</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>Montant</value>
+  </data>
+  <data name="CustomerName" xml:space="preserve">
+    <value>Nom du client</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>Commande</value>
+  </data>
+  <data name="OrderNumber" xml:space="preserve">
+    <value>Numéro de Commande</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Statut</value>
+  </data>
+  <data name="TransactionID" xml:space="preserve">
+    <value>Transaction ID</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Rechercher</value>
+  </data>
+  <data name="Include" xml:space="preserve">
+    <value>Avec</value>
+  </data>
+  <data name="DepartureMonth" xml:space="preserve">
+    <value>Mois de départ</value>
+  </data>
+  <data name="ContactPerson" xml:space="preserve">
+    <value>personne de contact:</value>
+  </data>
+  <data name="CompanyName" xml:space="preserve">
+    <value>Nom de l'entreprise</value>
+  </data>
+  <data name="Item" xml:space="preserve">
+    <value>Article</value>
+  </data>
+  <data name="FreeShipping" xml:space="preserve">
+    <value>Livraison Gratuite</value>
+  </data>
+  <data name="CanReturn" xml:space="preserve">
+    <value>Peut retour?</value>
+  </data>
+  <data name="RefundWithIn" xml:space="preserve">
+    <value>Remboursement sous</value>
+  </data>
+  <data name="Day" xml:space="preserve">
+    <value>Jour</value>
+  </data>
+  <data name="Days" xml:space="preserve">
+    <value>Jours</value>
+  </data>
+  <data name="DeliveryChargeAccordingToShipping" xml:space="preserve">
+    <value>Frais de livraison selon l'expédition</value>
+  </data>
+  <data name="Within" xml:space="preserve">
+    <value>Sous</value>
+  </data>
+  <data name="AndThe" xml:space="preserve">
+    <value>et le</value>
+  </data>
+  <data name="EstimatedBetween" xml:space="preserve">
+    <value>Estimée entre le</value>
+  </data>
+  <data name="ItemAvailable" xml:space="preserve">
+    <value>Article disponible</value>
+  </data>
+  <data name="ItemOutOfStock" xml:space="preserve">
+    <value>Article épuisé</value>
+  </data>
+  <data name="RemainingItem" xml:space="preserve">
+    <value>Article restant</value>
+  </data>
+  <data name="RemainingItems" xml:space="preserve">
+    <value>Articles restant</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Alerte</value>
+  </data>
+  <data name="YouMustAcceptTermsAndAgreements" xml:space="preserve">
+    <value>Vous devez accepter les conditions générales de vente pour finaliser votre commande. Merci</value>
+  </data>
+  <data name="ShippingType" xml:space="preserve">
+    <value>Type d'expédition</value>
+  </data>
+  <data name="SeeThisGolfShop" xml:space="preserve">
+    <value>Voir la boutique de ce golf</value>
+  </data>
+  <data name="Amounttitle" xml:space="preserve">
+    <value>Montant</value>
+  </data>
+  <data name="Datetitle" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="Deliverystatustitle" xml:space="preserve">
+    <value>État de livraison</value>
+  </data>
+  <data name="Ordertitle" xml:space="preserve">
+    <value>commande N ํ</value>
+  </data>
+  <data name="Salestitle" xml:space="preserve">
+    <value>Ventes</value>
+  </data>
+  <data name="CategoryNametitle" xml:space="preserve">
+    <value>Nom de la catégorie</value>
+  </data>
+  <data name="Deliverystatuscontentlink" xml:space="preserve">
+    <value>Détail de la commande&lt;br/&gt; Relève de facture&lt;/br&gt; Aide</value>
+  </data>
+  <data name="ItemNametitle" xml:space="preserve">
+    <value>Nom de l'article</value>
+  </data>
+  <data name="Myorderdetail" xml:space="preserve">
+    <value>Détail de la commande</value>
+  </data>
+  <data name="Quantitytitle" xml:space="preserve">
+    <value>quantité</value>
+  </data>
+  <data name="TotalPricetitle" xml:space="preserve">
+    <value>Prix total</value>
+  </data>
+  <data name="UnitPricetitle" xml:space="preserve">
+    <value>prix unitaire</value>
+  </data>
+  <data name="SubCategory" xml:space="preserve">
+    <value>Sous catégorie</value>
+  </data>
+  <data name="BrandName" xml:space="preserve">
+    <value>Marque</value>
+  </data>
+  <data name="BrandInformation" xml:space="preserve">
+    <value>Informations Marque</value>
+  </data>
+  <data name="Logo" xml:space="preserve">
+    <value>Logo</value>
+  </data>
+  <data name="Brands" xml:space="preserve">
+    <value>Marques</value>
+  </data>
+  <data name="DansLesGolfsTeam" xml:space="preserve">
+    <value>L'équipe &lt;a href="{0}"&gt;DansLesGolfs.com&lt;/a&gt;</value>
+  </data>
+  <data name="RegisterMailBodyText" xml:space="preserve">
+    <value>Nous vous remercions pour votre inscription.&lt;br /&gt;Voici un rappel de vos identifiants de connexion :</value>
+  </data>
+  <data name="RegisterMailTitleText" xml:space="preserve">
+    <value>Bienvenue sur</value>
+  </data>
+  <data name="Sincerely" xml:space="preserve">
+    <value>Sincèrement</value>
+  </data>
+  <data name="RegisterMailBodyTextBottom" xml:space="preserve">
+    <value>Gardez les précieusement, ils vous permettront de suivre l'évolution de vos commandes et de profiter de promotions spéciales !</value>
+  </data>
+  <data name="IncludeAccommodation" xml:space="preserve">
+    <value>Inclure Hébergement</value>
+  </data>
+  <data name="SearchDrivingRangeTab" xml:space="preserve">
+    <value>Cartes de&lt;br /&gt;practices</value>
+  </data>
+  <data name="PricingPeriods" xml:space="preserve">
+    <value>Tarifs Périodes</value>
+  </data>
+  <data name="PricePerPeriod" xml:space="preserve">
+    <value>Prix par période</value>
+  </data>
+  <data name="BeginAt" xml:space="preserve">
+    <value>À partir de</value>
+  </data>
+  <data name="Dlgcard_agree_step4" xml:space="preserve">
+    <value>J'accepte et je reconnais avoir pris connaissances des</value>
+  </data>
+  <data name="Dlgcard_cardtype_step2" xml:space="preserve">
+    <value>Type de carte</value>
+  </data>
+  <data name="Dlgcard_content_step1" xml:space="preserve">
+    <value>Attention ! Après validation, l’adresse email du destinataire n’est plus modifiable.</value>
+  </data>
+  <data name="Dlgcard_content_step3" xml:space="preserve">
+    <value>Avec l'univers de votre choix, personnaliser votre DLG Card</value>
+  </data>
+  <data name="Dlgcard_header" xml:space="preserve">
+    <value>Offrez la DLG CARD</value>
+  </data>
+  <data name="Dlgcard_header_step1" xml:space="preserve">
+    <value>Saisissez l’identité et l’email du destinataire</value>
+  </data>
+  <data name="Dlgcard_header_step2" xml:space="preserve">
+    <value>Choisissez votre type de carte</value>
+  </data>
+  <data name="Dlgcard_header_step3" xml:space="preserve">
+    <value>Sélectionnez le thème de votre carte-cadeau</value>
+  </data>
+  <data name="Dlgcard_header_step4" xml:space="preserve">
+    <value>Rédigez votre message et ne oubliez pas de le signer!</value>
+  </data>
+  <data name="Dlgcard_Personalmessage_step4" xml:space="preserve">
+    <value>Message personnel: (limite à 400 caractères)</value>
+  </data>
+  <data name="Dlgcard_title1" xml:space="preserve">
+    <value>Vous désirez offrir la DLG Card à l'un de vos proches ? Rien de plus facile !</value>
+  </data>
+  <data name="Dlgcard_title2" xml:space="preserve">
+    <value>Il vous suffit de suivre les 4 étapes ci-dessous.</value>
+  </data>
+  <data name="Dlgcard_totalamount_step2" xml:space="preserve">
+    <value>Montant Total</value>
+  </data>
+  <data name="Dlgcard_validate_step4" xml:space="preserve">
+    <value>&gt; Valider</value>
+  </data>
+  <data name="Dlgcard_viewgiftcard_step4" xml:space="preserve">
+    <value>Voir votre carte-cadeau</value>
+  </data>
+  <data name="Footer_findus_contenttab" xml:space="preserve">
+    <value>Retrouvez-nous sur</value>
+  </data>
+  <data name="Footer_sendbutton_tabcontract" xml:space="preserve">
+    <value>ENVOYER</value>
+  </data>
+  <data name="Footer_title_contenttab" xml:space="preserve">
+    <value>Restez connecté</value>
+  </data>
+  <data name="Footer_title_tabinfo" xml:space="preserve">
+    <value>Pour mieux vous servir</value>
+  </data>
+  <data name="accessthessale_promotion" xml:space="preserve">
+    <value>Accèder à la vente</value>
+  </data>
+  <data name="InvalidPassword" xml:space="preserve">
+    <value>Mot de passe incorrect</value>
+  </data>
+  <data name="PasswordHasBeenChanged" xml:space="preserve">
+    <value>Mot de passe a été changé</value>
+  </data>
+  <data name="PasswordNotMatch" xml:space="preserve">
+    <value>Mot de passe ne correspond</value>
+  </data>
+  <data name="SaleActivities" xml:space="preserve">
+    <value>Vente Activités</value>
+  </data>
+  <data name="Seemore_golfcourses_footer" xml:space="preserve">
+    <value>voir tous stages de golf</value>
+  </data>
+  <data name="Seemore_golftrips_footer" xml:space="preserve">
+    <value>voir tous nos séjours de golf</value>
+  </data>
+  <data name="Seemore_greenfees_footer" xml:space="preserve">
+    <value>voir tous nos green fees</value>
+  </data>
+  <data name="Seemore_ourpractices_footer" xml:space="preserve">
+    <value>voir tous nos practices</value>
+  </data>
+  <data name="SelectTypeOfLesson" xml:space="preserve">
+    <value>Choisir un type de stage</value>
+  </data>
+  <data name="GolfLessonType" xml:space="preserve">
+    <value>Type de stage</value>
+  </data>
+  <data name="SendMessageToVendor" xml:space="preserve">
+    <value>Envoyer un message au vendeur</value>
+  </data>
+  <data name="Recipient" xml:space="preserve">
+    <value>Destinataire</value>
+  </data>
+  <data name="CannotSentEmail" xml:space="preserve">
+    <value>Vous ne pouvez pas envoyer des email.</value>
+  </data>
+  <data name="FindAGolfCourse" xml:space="preserve">
+    <value>Trouver un golf</value>
+  </data>
+  <data name="FindAllOur" xml:space="preserve">
+    <value>Retrouvez tous nos</value>
+  </data>
+  <data name="GoodDeals" xml:space="preserve">
+    <value>bon plans!</value>
+  </data>
+  <data name="RecipientEmail" xml:space="preserve">
+    <value>Email Destinataire</value>
+  </data>
+  <data name="RecipientName" xml:space="preserve">
+    <value>Nom du bénéficiaire</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Envoyer</value>
+  </data>
+  <data name="RecommendedProduct" xml:space="preserve">
+    <value>Produit Recommandé</value>
+  </data>
+  <data name="FromEmail" xml:space="preserve">
+    <value>De Email</value>
+  </data>
+  <data name="PracticeCard" xml:space="preserve">
+    <value>Carte De Practice</value>
+  </data>
+  <data name="SeeTheProshopAt" xml:space="preserve">
+    <value>Voir le proshop de</value>
+  </data>
+  <data name="Annuler" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
+  <data name="Buildingflooranddoor" xml:space="preserve">
+    <value>Bâtiment, étage et porte</value>
+  </data>
+  <data name="Descriptive" xml:space="preserve">
+    <value>Descriptif</value>
+  </data>
+  <data name="Location" xml:space="preserve">
+    <value>Localisation</value>
+  </data>
+  <data name="PracticalInfo" xml:space="preserve">
+    <value>Infos pratiques</value>
+  </data>
+  <data name="Restoration" xml:space="preserve">
+    <value>Restauration</value>
+  </data>
+  <data name="GreenFeeSettings" xml:space="preserve">
+    <value>Green Fee Paramètres</value>
+  </data>
+  <data name="CategoryFor" xml:space="preserve">
+    <value>Catégorie pour</value>
+  </data>
+  <data name="ControlType" xml:space="preserve">
+    <value>Control Type</value>
+  </data>
+  <data name="ModifierName" xml:space="preserve">
+    <value>Modifier Nom</value>
+  </data>
+  <data name="AddChoice" xml:space="preserve">
+    <value>Ajouter choix</value>
+  </data>
+  <data name="Choices" xml:space="preserve">
+    <value>Choix</value>
+  </data>
+  <data name="ThereIsNoChoice" xml:space="preserve">
+    <value>Il n'y a pas le choix</value>
+  </data>
+  <data name="GolfBrands" xml:space="preserve">
+    <value>Marques de Golf</value>
+  </data>
+  <data name="GolfBrand" xml:space="preserve">
+    <value>Marque de Golf</value>
+  </data>
+  <data name="GolfBrandInformation" xml:space="preserve">
+    <value>Golf Informations Marque</value>
+  </data>
+  <data name="GolfBrandName" xml:space="preserve">
+    <value>Golf Marque Nom</value>
+  </data>
+  <data name="Tip" xml:space="preserve">
+    <value>Tip</value>
+  </data>
+  <data name="UseCtrlKeyGreenFee" xml:space="preserve">
+    <value>Utilisez CTRL + clic gauche pour sélectionner plusieurs créneaux</value>
+  </data>
+  <data name="RightClickGreenFee" xml:space="preserve">
+    <value>Utilisez le clic droit sur le/les créneaux sélectionnés pour entrer vos tarifs</value>
+  </data>
+  <data name="HowToOpenYourProShopOnline" xml:space="preserve">
+    <value>Comment ouvrir votre proshop en ligne?</value>
+  </data>
+  <data name="OpenDLGShopDescriptionText" xml:space="preserve">
+    <value>Nous vous invitons à faire votre demande en remplissant le formulaire ci-dessous. Un de nos conseillers vous contactera prochainement.</value>
+  </data>
+  <data name="OpenDLGShopOfferText" xml:space="preserve">
+    <value>Vous êtes gérant d'un golf et vous souhaitez déstocker votre proshop ? DansLesGolfs.com vous en offre la possibilité en créant votre boutique virtuelle dans la DLG SHOP.</value>
+  </data>
+  <data name="NameTitle" xml:space="preserve">
+    <value>Civilité</value>
+  </data>
+  <data name="YourEmailIsAlreadyInUse" xml:space="preserve">
+    <value>Votre e-mail est déjà utilisée</value>
+  </data>
+  <data name="AlbatrosCourse" xml:space="preserve">
+    <value>Albatros Course</value>
+  </data>
+  <data name="Restaurant" xml:space="preserve">
+    <value>Restauration</value>
+  </data>
+  <data name="Region" xml:space="preserve">
+    <value>Région</value>
+  </data>
+  <data name="AvailableDepature" xml:space="preserve">
+    <value>Place disponible</value>
+  </data>
+  <data name="DepartureTime" xml:space="preserve">
+    <value>Heure de départ</value>
+  </data>
+  <data name="Discount" xml:space="preserve">
+    <value>Réduction</value>
+  </data>
+  <data name="GoodChoice" xml:space="preserve">
+    <value>Bon choix</value>
+  </data>
+  <data name="Rate" xml:space="preserve">
+    <value>Tarif</value>
+  </data>
+  <data name="Reservation" xml:space="preserve">
+    <value>Réservation</value>
+  </data>
+  <data name="ThereisNoAvailableSlot" xml:space="preserve">
+    <value>Il n'y a pas emplacement disponible</value>
+  </data>
+  <data name="Coupon" xml:space="preserve">
+    <value>Coupon</value>
+  </data>
+  <data name="CouponCode" xml:space="preserve">
+    <value>Coupon Code</value>
+  </data>
+  <data name="CouponName" xml:space="preserve">
+    <value>Coupon Nom</value>
+  </data>
+  <data name="AddCoupon" xml:space="preserve">
+    <value>Ajouter Coupon</value>
+  </data>
+  <data name="CashValue" xml:space="preserve">
+    <value>Cash Value</value>
+  </data>
+  <data name="CouponDescription" xml:space="preserve">
+    <value>Coupon Description</value>
+  </data>
+  <data name="CouponInformation" xml:space="preserve">
+    <value>Coupon Information</value>
+  </data>
+  <data name="CouponType" xml:space="preserve">
+    <value>Type de Coupon</value>
+  </data>
+  <data name="DiscountOff" xml:space="preserve">
+    <value>Discount Off</value>
+  </data>
+  <data name="DiscountType" xml:space="preserve">
+    <value>Type de Réduction</value>
+  </data>
+  <data name="EndDate" xml:space="preserve">
+    <value>Date de Fin</value>
+  </data>
+  <data name="Percent" xml:space="preserve">
+    <value>Pourcentage</value>
+  </data>
+  <data name="PerItem" xml:space="preserve">
+    <value>Par article</value>
+  </data>
+  <data name="PerOrder" xml:space="preserve">
+    <value>Par Commande</value>
+  </data>
+  <data name="Reduction" xml:space="preserve">
+    <value>Réduction</value>
+  </data>
+  <data name="Remaining" xml:space="preserve">
+    <value>Restant</value>
+  </data>
+  <data name="StartDate" xml:space="preserve">
+    <value>Date de Début</value>
+  </data>
+  <data name="CouponCodeIsInvalid" xml:space="preserve">
+    <value>Code Promo ne est pas valide</value>
+  </data>
+  <data name="SelectDate" xml:space="preserve">
+    <value>Choisir une date</value>
+  </data>
+  <data name="Accounttextnewemail" xml:space="preserve">
+    <value>Nouvel Email de</value>
+  </data>
+  <data name="Account_confirmemail" xml:space="preserve">
+    <value>Confirmez I'Email</value>
+  </data>
+  <data name="Account_newemail" xml:space="preserve">
+    <value>Choisissez votre nouvel Email</value>
+  </data>
+  <data name="Account_Verify" xml:space="preserve">
+    <value>Modifier votre Email</value>
+  </data>
+  <data name="Account_VerifyEmailButton" xml:space="preserve">
+    <value>Confirmer</value>
+  </data>
+  <data name="April" xml:space="preserve">
+    <value>Avril</value>
+  </data>
+  <data name="August" xml:space="preserve">
+    <value>Août</value>
+  </data>
+  <data name="December" xml:space="preserve">
+    <value>Décembre</value>
+  </data>
+  <data name="February" xml:space="preserve">
+    <value>Février</value>
+  </data>
+  <data name="January" xml:space="preserve">
+    <value>Janvier</value>
+  </data>
+  <data name="July" xml:space="preserve">
+    <value>Juillet</value>
+  </data>
+  <data name="June" xml:space="preserve">
+    <value>Juin</value>
+  </data>
+  <data name="March" xml:space="preserve">
+    <value>Mars</value>
+  </data>
+  <data name="May" xml:space="preserve">
+    <value>Mai</value>
+  </data>
+  <data name="November" xml:space="preserve">
+    <value>Novembre</value>
+  </data>
+  <data name="October" xml:space="preserve">
+    <value>Octobre</value>
+  </data>
+  <data name="September" xml:space="preserve">
+    <value>Septembre</value>
+  </data>
+  <data name="Calendar" xml:space="preserve">
+    <value>Calendrier</value>
+  </data>
+  <data name="Prefix" xml:space="preserve">
+    <value>Préfixe</value>
+  </data>
+  <data name="CouponGroupInformation" xml:space="preserve">
+    <value>Coupon Informations du groupe</value>
+  </data>
+  <data name="Coupons" xml:space="preserve">
+    <value>Coupons</value>
+  </data>
+  <data name="GenerateCoupons" xml:space="preserve">
+    <value>Générer Coupons</value>
+  </data>
+  <data name="EmailAddress" xml:space="preserve">
+    <value>Adresse e-mail</value>
+  </data>
+  <data name="PerCategorie" xml:space="preserve">
+    <value>Par catégorie</value>
+  </data>
+  <data name="PerItems" xml:space="preserve">
+    <value>Par articles</value>
+  </data>
+  <data name="CouponGroupDescription" xml:space="preserve">
+    <value>Groupe Promo Description</value>
+  </data>
+  <data name="CouponGroupName" xml:space="preserve">
+    <value>Coupon Nom du groupe</value>
+  </data>
+  <data name="coupons_select" xml:space="preserve">
+    <value>Sélectionnez</value>
+  </data>
+  <data name="coupons_title" xml:space="preserve">
+    <value>Intitulé de l'offre</value>
+  </data>
+  <data name="Sponsor" xml:space="preserve">
+    <value>Parrainer</value>
+  </data>
+  <data name="ChooseItems" xml:space="preserve">
+    <value>Choisissez Articles</value>
+  </data>
+  <data name="ItemName" xml:space="preserve">
+    <value>Nom de l'article</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>Sélectionner</value>
+  </data>
+  <data name="DeleteAll" xml:space="preserve">
+    <value>Supprimer Tout</value>
+  </data>
+  <data name="DeleteSelectedItems" xml:space="preserve">
+    <value>Supprimer les éléments sélectionnés</value>
+  </data>
+  <data name="ShippingAddressModifiedWarning" xml:space="preserve">
+    <value>Vous ne avez pas enregistré votre adresse de livraison. Voulez-vous enregistrer avant de la caisse?</value>
+  </data>
+  <data name="EnterYourLogin" xml:space="preserve">
+    <value>Entrez votre identifiant</value>
+  </data>
+  <data name="mailinvitation" xml:space="preserve">
+    <value>Email d'invitation</value>
+  </data>
+  <data name="savenewletter" xml:space="preserve">
+    <value>Enregistrer vos préférences</value>
+  </data>
+  <data name="ItemType" xml:space="preserve">
+    <value>Type d'élément</value>
+  </data>
+  <data name="Condition" xml:space="preserve">
+    <value>État</value>
+  </data>
+  <data name="Duplicate" xml:space="preserve">
+    <value>Dupliquer</value>
+  </data>
+  <data name="CreateAddressSuggestion" xml:space="preserve">
+    <value>Voulez-vous utiliser votre adresse de profil pour créer une adresse de livraison?</value>
+  </data>
+  <data name="DefaultShippingAddress" xml:space="preserve">
+    <value>Adresse de livraison par défaut</value>
+  </data>
+  <data name="Information" xml:space="preserve">
+    <value>Informations</value>
+  </data>
+  <data name="TotalTTC" xml:space="preserve">
+    <value>Total TTC</value>
+  </data>
+  <data name="NoPermissionErrorDetail" xml:space="preserve">
+    <value>Vous n'êtes pas autorisé à accéder à cette page.</value>
+  </data>
+  <data name="NoPermissionErrorTitle" xml:space="preserve">
+    <value>Aucune Autorisation</value>
+  </data>
+  <data name="NotLogInErrorDetail" xml:space="preserve">
+    <value>Cette page permet seulement les membres de ce site.</value>
+  </data>
+  <data name="NotLogInErrorTitle" xml:space="preserve">
+    <value>Vous n'êtes pas connecté.</value>
+  </data>
+  <data name="RegisterHere" xml:space="preserve">
+    <value>Inscrivez-vous ici</value>
+  </data>
+  <data name="SelectAlbatrosSite" xml:space="preserve">
+    <value>Choisir Albatros Golf</value>
+  </data>
+  <data name="YouMustEnterRequireField" xml:space="preserve">
+    <value>Vous devez renseigner les champs obligatoires pour continuer. Merci.</value>
+  </data>
+  <data name="Next7Days" xml:space="preserve">
+    <value>Les 7 prochains jours</value>
+  </data>
+  <data name="Previous7Days" xml:space="preserve">
+    <value>Précédent 7 jours</value>
+  </data>
+  <data name="InvoiceItemTitle" xml:space="preserve">
+    <value>Titre de l'article Facture</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>À</value>
+  </data>
+  <data name="YourRating" xml:space="preserve">
+    <value>Votre avis</value>
+  </data>
+  <data name="CustomTeeSheetCategories" xml:space="preserve">
+    <value>Catégories qui utilisent tee-Sheet</value>
+  </data>
+  <data name="InvoiceInformation" xml:space="preserve">
+    <value>Informations de facturation</value>
+  </data>
+  <data name="NotSpecificSite" xml:space="preserve">
+    <value>Non golf spécifique</value>
+  </data>
+  <data name="PleaseEnterPostalCode" xml:space="preserve">
+    <value>S'il vous plaît entrer un code postal valide</value>
+  </data>
+  <data name="ProductsInThisSite" xml:space="preserve">
+    <value>Produits dans ce site</value>
+  </data>
+  <data name="Advertisement" xml:space="preserve">
+    <value>Publicité</value>
+  </data>
+  <data name="PleaseInputAdsetName" xml:space="preserve">
+    <value>Please input the adset name</value>
+  </data>
+  <data name="AdsetNameAlreadyInUse" xml:space="preserve">
+    <value>Adset name already in use</value>
+  </data>
+  <data name="ErrorSaveFailed" xml:space="preserve">
+    <value>Enregistrer échoué, s'il vous plaît essayer à nouveau.</value>
+  </data>
+  <data name="Adset" xml:space="preserve">
+    <value>Adset</value>
+  </data>
+  <data name="PleaseAddAdset" xml:space="preserve">
+    <value>Please add adset</value>
+  </data>
+  <data name="CreateAds" xml:space="preserve">
+    <value>Create Ads</value>
+  </data>
+  <data name="ThereIsNoAdsInAdset" xml:space="preserve">
+    <value>There is no ads in adset</value>
+  </data>
+  <data name="AdName" xml:space="preserve">
+    <value>Ad Name</value>
+  </data>
+  <data name="LinkUrl" xml:space="preserve">
+    <value>Link URL</value>
+  </data>
+  <data name="SavedSuccessfully" xml:space="preserve">
+    <value>Enregistré avec succès</value>
+  </data>
+  <data name="YourAdsSavedSuccessfully" xml:space="preserve">
+    <value>Vos annonces enregistrées avec succès</value>
+  </data>
+  <data name="ChangingOfInvoice" xml:space="preserve">
+    <value>Relevé de facture</value>
+  </data>
+  <data name="DetailsOfTheOrder" xml:space="preserve">
+    <value>Détail de la commande</value>
+  </data>
+  <data name="Help" xml:space="preserve">
+    <value>Aide</value>
+  </data>
+  <data name="CountryCode" xml:space="preserve">
+    <value>Country Code</value>
+  </data>
+  <data name="YieldMgt" xml:space="preserve">
+    <value>Tarifs</value>
+  </data>
+  <data name="NumberOfPlayers" xml:space="preserve">
+    <value>Nbre de joueur(s)</value>
+  </data>
+  <data name="AdsManager" xml:space="preserve">
+    <value>Ads Manager</value>
+  </data>
+  <data name="SelectAll" xml:space="preserve">
+    <value>Tout Sélectionner</value>
+  </data>
+  <data name="RequestTimeout" xml:space="preserve">
+    <value>Durée de la demande</value>
+  </data>
+  <data name="PaymentWasCancelled" xml:space="preserve">
+    <value>Paiement a été annulé</value>
+  </data>
+  <data name="WriteYourReview" xml:space="preserve">
+    <value>Donner votre avis</value>
+  </data>
+  <data name="At" xml:space="preserve">
+    <value>à</value>
+  </data>
+  <data name="BeTheFirstToReview" xml:space="preserve">
+    <value>Soyez le premier à donner un avis</value>
+  </data>
+  <data name="MyApprentices" xml:space="preserve">
+    <value>Mes filleuls</value>
+  </data>
+  <data name="SponsorDate" xml:space="preserve">
+    <value>Sponsor Date</value>
+  </data>
+  <data name="MsgDetailSponsor" xml:space="preserve">
+    <value>Bonjour,
+Rejoins-moi sur DansLesGolfs.com, le premier site des vente en ligne
+des golfs français.
+Gràce à DansLesGolfs.com, j'ai accés au meilleur du golf en ligne : 
+green-fees, séjours, matériel,stages, cartes de practice...!
+A tout de suite sur DansLesGolfs.com!</value>
+  </data>
+  <data name="Action" xml:space="preserve">
+    <value>Effectuer</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>Ajouter</value>
+  </data>
+  <data name="AddCustomer" xml:space="preserve">
+    <value>Ajouter clientèle</value>
+  </data>
+  <data name="AddUser" xml:space="preserve">
+    <value>Ajouter un utilisateur</value>
+  </data>
+  <data name="Administrator" xml:space="preserve">
+    <value>Administrator</value>
+  </data>
+  <data name="CategoryInformation" xml:space="preserve">
+    <value>Catégorie information</value>
+  </data>
+  <data name="EmailIsInSchedule" xml:space="preserve">
+    <value>Email est dans le calendrier</value>
+  </data>
+  <data name="Preference" xml:space="preserve">
+    <value>Préférence</value>
+  </data>
+  <data name="SiteManager" xml:space="preserve">
+    <value>Site Manager</value>
+  </data>
+  <data name="Staff" xml:space="preserve">
+    <value>Staff</value>
+  </data>
+  <data name="UserManagement" xml:space="preserve">
+    <value>Gestion des utilisateurs</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Précédent</value>
+  </data>
+  <data name="BusinessAddress" xml:space="preserve">
+    <value>Adresse d'affaires</value>
+  </data>
+  <data name="BusinessCity" xml:space="preserve">
+    <value>Ville de commerce</value>
+  </data>
+  <data name="BusinessCountry" xml:space="preserve">
+    <value>Pays de commerce</value>
+  </data>
+  <data name="BusinessPostalCode" xml:space="preserve">
+    <value>Code postal de Business</value>
+  </data>
+  <data name="ChooseCustomer" xml:space="preserve">
+    <value>Choisissez clientèle</value>
+  </data>
+  <data name="CustomerGroupInformation" xml:space="preserve">
+    <value>Informations Groupe de clients</value>
+  </data>
+  <data name="DeleteSelectedCustomers" xml:space="preserve">
+    <value>Supprimer clients sélectionnés</value>
+  </data>
+  <data name="MembershipEnd" xml:space="preserve">
+    <value>Adhésion Fin</value>
+  </data>
+  <data name="PersonalAddress" xml:space="preserve">
+    <value>Adresse personnelle</value>
+  </data>
+  <data name="PersonalCity" xml:space="preserve">
+    <value>Ville personnelles</value>
+  </data>
+  <data name="PersonalCountry" xml:space="preserve">
+    <value>Personal Pays</value>
+  </data>
+  <data name="PersonalPostalCode" xml:space="preserve">
+    <value>Personal Code postal</value>
+  </data>
+  <data name="DeliveryToADifferenceAddress" xml:space="preserve">
+    <value>Livraison à une adresse différente</value>
+  </data>
+  <data name="SponsorEmail" xml:space="preserve">
+    <value>Sponsor Email</value>
+  </data>
+  <data name="NoTeeTimeAvailable" xml:space="preserve">
+    <value>Pas de départ disponible</value>
+  </data>
+  <data name="GlobalNote" xml:space="preserve">
+    <value>Note globale</value>
+  </data>
+  <data name="DeselectAll" xml:space="preserve">
+    <value>Tout Déselectionner</value>
+  </data>
+  <data name="AdsManagerTip1" xml:space="preserve">
+    <value>S'il vous plaît cliquez sur le bouton Enregistrer après vous ajoutez petite images et des liens.</value>
+  </data>
+  <data name="AdsManagerTip2" xml:space="preserve">
+    <value>L'image ne devrait pas plus large que 300 pixels.</value>
+  </data>
+  <data name="GreenFeeCategories" xml:space="preserve">
+    <value>Green Fee Catégories</value>
+  </data>
+  <data name="PageTemporaryUnavailable" xml:space="preserve">
+    <value>Page temporairement indisponible</value>
+  </data>
+  <data name="Connect" xml:space="preserve">
+    <value>Mettre en contact</value>
+  </data>
+  <data name="FetchCourses" xml:space="preserve">
+    <value>Fetch Cours</value>
+  </data>
+  <data name="TransactionIsInvalid" xml:space="preserve">
+    <value>Transaction est invalide</value>
+  </data>
+  <data name="Images" xml:space="preserve">
+    <value>Images</value>
+  </data>
+  <data name="Visible" xml:space="preserve">
+    <value>Visible</value>
+  </data>
+  <data name="Hidden" xml:space="preserve">
+    <value>Hidden</value>
+  </data>
+  <data name="Show" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="ThankYouForYourPatience" xml:space="preserve">
+    <value>Merci de votre patience.</value>
+  </data>
+  <data name="WeSaveYourOrder" xml:space="preserve">
+    <value>Nous avons bien enregistré votre commande réglée par</value>
+  </data>
+  <data name="AmountOfYourOrder" xml:space="preserve">
+    <value>Montant de votre commande</value>
+  </data>
+  <data name="ClickHere" xml:space="preserve">
+    <value>Cliquez ici</value>
+  </data>
+  <data name="ConfirmPaymentTitle" xml:space="preserve">
+    <value>Confirmation de votre paiement par</value>
+  </data>
+  <data name="HereIsTheSummaryOfYourOrder" xml:space="preserve">
+    <value>Voici le récapitulatif de votre commande</value>
+  </data>
+  <data name="IfYouWantToDownlodYourInvoice" xml:space="preserve">
+    <value>Si vous souhaitez télécharger votre facture</value>
+  </data>
+  <data name="InSection" xml:space="preserve">
+    <value>dans la rubrique</value>
+  </data>
+  <data name="MyAccount" xml:space="preserve">
+    <value>Mon Compte</value>
+  </data>
+  <data name="SubTotal" xml:space="preserve">
+    <value>Sous total</value>
+  </data>
+  <data name="ThankYouForYourConfidence" xml:space="preserve">
+    <value>Merci de votre confiance</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="TotalAmount" xml:space="preserve">
+    <value>Montant Total</value>
+  </data>
+  <data name="UnitAmount" xml:space="preserve">
+    <value>Montant unitaire</value>
+  </data>
+  <data name="YouCanDirectMonitorYourOrder" xml:space="preserve">
+    <value>Vous pouvez suivre directement l'évolution de votre commande à partir du site</value>
+  </data>
+  <data name="CreditCard" xml:space="preserve">
+    <value>Carte Bancaire</value>
+  </data>
+  <data name="EmailWasSentSuccessfully" xml:space="preserve">
+    <value>Message envoyé avec succès</value>
+  </data>
+  <data name="ThankYouForSubscription" xml:space="preserve">
+    <value>Vous êtes bien inscrit à la Newsletter {0}</value>
+  </data>
+  <data name="YourEmailIsInvalid" xml:space="preserve">
+    <value>Votre Email est invalide</value>
+  </data>
+  <data name="PaidBy" xml:space="preserve">
+    <value>Payé Par</value>
+  </data>
+  <data name="PlaceAnOrder" xml:space="preserve">
+    <value>Commander</value>
+  </data>
+  <data name="LoadMore" xml:space="preserve">
+    <value>Voir plus d'offres</value>
+  </data>
+  <data name="TopNavigationLink" xml:space="preserve">
+    <value>Top Navigation Link</value>
+  </data>
+  <data name="ThankYouYourMessageHasBeenSent" xml:space="preserve">
+    <value>Merci, votre message à bien été envoyé</value>
+  </data>
+  <data name="AddEmailTemplate" xml:space="preserve">
+    <value>Ajouter Modèle d'Email</value>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>Preview</value>
+  </data>
+  <data name="Menu" xml:space="preserve">
+    <value>Menu</value>
+  </data>
+  <data name="YourMenuWasSaved" xml:space="preserve">
+    <value>Votre menu a été sauvé</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Titre</value>
+  </data>
+  <data name="EditingMenu" xml:space="preserve">
+    <value>Editing menu</value>
+  </data>
+  <data name="DateOfPurchase" xml:space="preserve">
+    <value>Date d'achat</value>
+  </data>
+  <data name="ItemReview" xml:space="preserve">
+    <value>Article Avis</value>
+  </data>
+  <data name="SiteReview" xml:space="preserve">
+    <value>Golf Avis</value>
+  </data>
+  <data name="Export" xml:space="preserve">
+    <value>Exportation</value>
+  </data>
+  <data name="Approve" xml:space="preserve">
+    <value>Approve</value>
+  </data>
+  <data name="On" xml:space="preserve">
+    <value>Sur</value>
+  </data>
+  <data name="Approved" xml:space="preserve">
+    <value>Approuvé</value>
+  </data>
+  <data name="Unapproved" xml:space="preserve">
+    <value>Unapproved</value>
+  </data>
+  <data name="ConfirmDeleteSelectedItems" xml:space="preserve">
+    <value>Êtes-vous sûr de supprimer ces numéros?</value>
+  </data>
+  <data name="ReviewThankYou" xml:space="preserve">
+    <value>L'équipe DansLesGolfs.com vous remercie ! Votre commentaire va être contrôlé et publié dans les 48h. Vous recevrez un email de validation une fois votre commentaire en ligne</value>
+  </data>
+  <data name="NotAvailable" xml:space="preserve">
+    <value>Non disponible</value>
+  </data>
+  <data name="OrderHelpEmailText" xml:space="preserve">
+    <value>Le client suffit d'envoyer le message à vous, afin d'obtenir de l'aide dans leur commande.</value>
+  </data>
+  <data name="OrderHelpText" xml:space="preserve">
+    <value>Vous avez besoin d'aide?&lt;br /&gt;
+Merci de compléter le formulaire ci-dessous</value>
+  </data>
+  <data name="OrderHelpThankYouText" xml:space="preserve">
+    <value>Une réponse vous sera apportée dans les plus brefs délais</value>
+  </data>
+  <data name="OrderSupport" xml:space="preserve">
+    <value>Demande d'Aide</value>
+  </data>
+  <data name="WantYouToDiscover" xml:space="preserve">
+    <value>want you to discover</value>
+  </data>
+  <data name="DateRange" xml:space="preserve">
+    <value>Date de Gamme</value>
+  </data>
+  <data name="DuplicateSelectedItems" xml:space="preserve">
+    <value>Dupliquer les éléments sélectionnés</value>
+  </data>
+  <data name="FromAlt" xml:space="preserve">
+    <value>De</value>
+  </data>
+  <data name="SaleDetail" xml:space="preserve">
+    <value>Vente Détail</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>Mois</value>
+  </data>
+  <data name="NumberOfWeeks" xml:space="preserve">
+    <value>Nombre de semaines</value>
+  </data>
+  <data name="PaymentType" xml:space="preserve">
+    <value>Type de paiement</value>
+  </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>Rafraîchir</value>
+  </data>
+  <data name="ReserveDate" xml:space="preserve">
+    <value>Date réservée</value>
+  </data>
+  <data name="TotalWithVAT" xml:space="preserve">
+    <value>Total avec TVA</value>
+  </data>
+  <data name="ViewReport" xml:space="preserve">
+    <value>Voir le rapport</value>
+  </data>
+  <data name="InvoiceNumber" xml:space="preserve">
+    <value>Facture N°</value>
+  </data>
+  <data name="OrderInvoice" xml:space="preserve">
+    <value>Commande Facture</value>
+  </data>
+  <data name="OrderNumberInvoice" xml:space="preserve">
+    <value>Commande N°</value>
+  </data>
+  <data name="InvoiceMemo" xml:space="preserve">
+    <value>{0} vous remercie de votre commande!
+N'hésitez pas à nous faire part de vos suggestions en écrivant à</value>
+  </data>
+  <data name="MethodOfSettlement" xml:space="preserve">
+    <value>Mode de règlement</value>
+  </data>
+  <data name="ByDay" xml:space="preserve">
+    <value>Par Jour</value>
+  </data>
+  <data name="ByWeek" xml:space="preserve">
+    <value>Par Semaine</value>
+  </data>
+  <data name="TimesToUse" xml:space="preserve">
+    <value>Moments pour utiliser</value>
+  </data>
+  <data name="UsagePeriod" xml:space="preserve">
+    <value>Période d'utilisation</value>
+  </data>
+  <data name="CouponHasAlreadyBeenUsed" xml:space="preserve">
+    <value>Ce code promotionnel n'est pas valide</value>
+  </data>
+  <data name="CouponReachToUsageLimitPerDay" xml:space="preserve">
+    <value>Coupon a été atteint pour limiter l'utilisation par jour.</value>
+  </data>
+  <data name="CouponReachToUsageLimitPerWeek" xml:space="preserve">
+    <value>Coupon a été atteint pour limiter l'utilisation par semaine.</value>
+  </data>
+  <data name="DLGCardTermsAndAgreements" xml:space="preserve">
+    <value>conditions de vente de la DLG</value>
+  </data>
+  <data name="FromLong" xml:space="preserve">
+    <value>De la part de</value>
+  </data>
+  <data name="CityNotFound" xml:space="preserve">
+    <value>Ville Introuvable</value>
+  </data>
+  <data name="SelectCity" xml:space="preserve">
+    <value>Choisir ville</value>
+  </data>
+  <data name="PaymentConfirmation" xml:space="preserve">
+    <value>Confirmation de votre paiement</value>
+  </data>
+  <data name="Invoice" xml:space="preserve">
+    <value>Facture</value>
+  </data>
+  <data name="PressConnectToChooseCourse" xml:space="preserve">
+    <value>Appuyez connecter à choisir bien sûr</value>
+  </data>
+  <data name="FollowingAreTheCustomerInformation" xml:space="preserve">
+    <value>Suivants sont les informations du client.</value>
+  </data>
+  <data name="YourRequestHasBeenSent" xml:space="preserve">
+    <value>Votre demande a bien été envoyée</value>
+  </data>
+  <data name="Created" xml:space="preserve">
+    <value>Créé</value>
+  </data>
+  <data name="Import" xml:space="preserve">
+    <value>Importer</value>
+  </data>
+  <data name="PerItemType" xml:space="preserve">
+    <value>Par type d'article</value>
+  </data>
+  <data name="PleaseSaveBeforeExport" xml:space="preserve">
+    <value>S'il vous plaît enregistrer les données avant l'exportation</value>
+  </data>
+  <data name="ItemCode" xml:space="preserve">
+    <value>Code de l'article</value>
+  </data>
+  <data name="OrderDate" xml:space="preserve">
+    <value>Date de commande</value>
+  </data>
+  <data name="ThisCustomerContactYou" xml:space="preserve">
+    <value>Ce client vous a contacté au sujet de la commande</value>
+  </data>
+  <data name="InvalidUsernameOrPassword" xml:space="preserve">
+    <value>Identifiant ou mot de passe incorrect</value>
+  </data>
+  <data name="IfYouWantToUnsubscrice" xml:space="preserve">
+    <value>Pour vous désinscrire, cliquez sur ce lien</value>
+  </data>
+  <data name="Unsubscribe" xml:space="preserve">
+    <value>Se désabonner</value>
+  </data>
+  <data name="UnsubscribeConfirmText" xml:space="preserve">
+    <value>Souhaitez-vous réellement désinscrire l'adresse email suivante? &lt;strong&gt;{0}&lt;/strong&gt;</value>
+  </data>
+  <data name="UnsubscribeSuccessfully" xml:space="preserve">
+    <value>Votre demande a bien été traitée</value>
+  </data>
+  <data name="WeWillRedirectYouToHomepage" xml:space="preserve">
+    <value>Nous allons vous rediriger vers la page d'accueil dans 3 secondes</value>
+  </data>
+  <data name="MinimumAmount" xml:space="preserve">
+    <value>Montant minimum</value>
+  </data>
+  <data name="ThisOrderIsNotFree" xml:space="preserve">
+    <value>Cette commande est pas gratuit.</value>
+  </data>
+  <data name="CartMinimumAmountIsInvalidForThisCoupon" xml:space="preserve">
+    <value>Cart minimum amount is invalid for this coupon</value>
+  </data>
+  <data name="Free" xml:space="preserve">
+    <value>Free</value>
+  </data>
+  <data name="GetFree" xml:space="preserve">
+    <value>Obtenez gratuitement</value>
+  </data>
+  <data name="NoCancel" xml:space="preserve">
+    <value>Non, annuler</value>
+  </data>
+  <data name="YourRequestHasBeenProcessed" xml:space="preserve">
+    <value>Votre demande a bien été traitée</value>
+  </data>
+  <data name="TotalBasePrice" xml:space="preserve">
+    <value>Base TTC</value>
+  </data>
+  <data name="CannotCreateAnOrder" xml:space="preserve">
+    <value>Vous ne pouvez pas créer un ordre.</value>
+  </data>
+  <data name="OrderDetail" xml:space="preserve">
+    <value>Commande détail</value>
+  </data>
+  <data name="OrderInformation" xml:space="preserve">
+    <value>Informations sur la commande</value>
+  </data>
+  <data name="AdditionalAddress" xml:space="preserve">
+    <value>Complément d'adresse</value>
+  </data>
+  <data name="BookingAdvanceDescription" xml:space="preserve">
+    <value>Ce créneau ne peut être réservé que {0} jour(s) avant</value>
+  </data>
+  <data name="NameOfYourSite" xml:space="preserve">
+    <value>Nom de votre golf</value>
+  </data>
+  <data name="DLGShopRegisterSuccessText" xml:space="preserve">
+    <value>Votre demande a bien été envoyée. Un de nos conseillers vous contactera prochainement.</value>
+  </data>
+  <data name="EmailSetting" xml:space="preserve">
+    <value>Email Cadre</value>
+  </data>
+  <data name="TestEmail" xml:space="preserve">
+    <value>Test Email</value>
+  </data>
+  <data name="TestEmailWasSent" xml:space="preserve">
+    <value>Test de courriel a été envoyé. S'il vous plaît vérifier le message dans votre boîte de réception ou le dossier de SPAM.</value>
+  </data>
+  <data name="TestSendingEmail" xml:space="preserve">
+    <value>Tester l'envoi Email</value>
+  </data>
+  <data name="Career" xml:space="preserve">
+    <value>Profession</value>
+  </data>
+  <data name="Index" xml:space="preserve">
+    <value>Index</value>
+  </data>
+  <data name="LicenseNumber" xml:space="preserve">
+    <value>License Number</value>
+  </data>
+  <data name="EmailAccount" xml:space="preserve">
+    <value>Compte email</value>
+  </data>
+  <data name="EmailAccountName" xml:space="preserve">
+    <value>Email Nom de compte</value>
+  </data>
+  <data name="EmailSettings" xml:space="preserve">
+    <value>Paramètres de messagerie</value>
+  </data>
+  <data name="SMTPPassword" xml:space="preserve">
+    <value>SMTP Password</value>
+  </data>
+  <data name="SMTPPort" xml:space="preserve">
+    <value>SMTP Port</value>
+  </data>
+  <data name="SMTPServer" xml:space="preserve">
+    <value>SMTP Server</value>
+  </data>
+  <data name="SMTPUsername" xml:space="preserve">
+    <value>SMTP Username</value>
+  </data>
+  <data name="TrackingLinkClick" xml:space="preserve">
+    <value>Tracking Link Click</value>
+  </data>
+  <data name="TrackingOpenMail" xml:space="preserve">
+    <value>Tracking Open Mail</value>
+  </data>
+  <data name="CustomerType" xml:space="preserve">
+    <value>Type de client</value>
+  </data>
+  <data name="SubCustomerType" xml:space="preserve">
+    <value>Sous Type de client</value>
+  </data>
+  <data name="AdditionalEmails" xml:space="preserve">
+    <value>Les e-mails supplémentaires</value>
+  </data>
+  <data name="ObjectHasBeenSaved" xml:space="preserve">
+    <value>{0} a été enregistré.</value>
+  </data>
+  <data name="UseSemiColonToSplitEachEmail" xml:space="preserve">
+    <value>Utilisez-virgule (;) pour séparer chaque e-mail.</value>
+  </data>
+  <data name="MailingListInformation" xml:space="preserve">
+    <value>Liste de diffusion de l'information</value>
+  </data>
+  <data name="CustomerTypeInformation" xml:space="preserve">
+    <value>Type d'information à la clientèle</value>
+  </data>
+  <data name="CustomerTypeName" xml:space="preserve">
+    <value>Type de client Nom</value>
+  </data>
+  <data name="CustomerTypes" xml:space="preserve">
+    <value>Types de clients</value>
+  </data>
+  <data name="Parent" xml:space="preserve">
+    <value>Parent</value>
+  </data>
+  <data name="ThereIsNoEmptySlotForPlayer" xml:space="preserve">
+    <value>Il n'y a pas emplacement vide pour le joueur</value>
+  </data>
+  <data name="YouAlreadyBookingOnThisTime" xml:space="preserve">
+    <value>Vous réservation déjà à cette date et de l'heure.</value>
+  </data>
+  <data name="ThisTeeTimeAlreadyOccupied" xml:space="preserve">
+    <value>Cette heure de départ déjà occupée</value>
+  </data>
+  <data name="None" xml:space="preserve">
+    <value>Aucun</value>
+  </data>
+  <data name="PleaseSelectAtLeastOneMailingList" xml:space="preserve">
+    <value>S'il vous plaît sélectionner au moins une liste de diffusion</value>
+  </data>
+  <data name="CustomerNotFound" xml:space="preserve">
+    <value>Client introuvable</value>
+  </data>
+  <data name="PleaseInputOnlyValidEmails" xml:space="preserve">
+    <value>Veuillez entrer uniquement les e-mails valides</value>
+  </data>
+  <data name="SMTPSettingsNotFound" xml:space="preserve">
+    <value>Paramètres SMTP introuvables dans le site sélectionné</value>
+  </data>
+  <data name="UseGlobalSettings" xml:space="preserve">
+    <value>Utilisez Paramètres globaux</value>
+  </data>
+  <data name="PleaseSelectSite" xml:space="preserve">
+    <value>S'il vous plaît sélectionnez le site</value>
+  </data>
+  <data name="EmailsAreSendingPleaseWait" xml:space="preserve">
+    <value>Emails envoient, s'il vous plaît patienter.</value>
+  </data>
+  <data name="CreateHereAndReloadThisPage" xml:space="preserve">
+    <value>Créer ici et recharger cette page.</value>
+  </data>
+  <data name="OpenNewWindow" xml:space="preserve">
+    <value>Ouvrir une nouvelle fenêtre</value>
+  </data>
+  <data name="ThereIsNoMailingList" xml:space="preserve">
+    <value>Il n'y a aucune liste de diffusion.</value>
+  </data>
+  <data name="CampaignName" xml:space="preserve">
+    <value>Nom de la campagne</value>
+  </data>
+  <data name="EmailCampaignInformation" xml:space="preserve">
+    <value>Informations de campagne d'email</value>
+  </data>
+  <data name="GlobalSettings" xml:space="preserve">
+    <value>Paramètres globaux</value>
+  </data>
+  <data name="DefaultSenderEmail" xml:space="preserve">
+    <value>Par défaut Sender Email</value>
+  </data>
+  <data name="DefaultSenderName" xml:space="preserve">
+    <value>Par défaut Sender Nom</value>
+  </data>
+  <data name="Click" xml:space="preserve">
+    <value>Cliquez</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>Ouvert</value>
+  </data>
+  <data name="ReportOf" xml:space="preserve">
+    <value>Rapport de</value>
+  </data>
+  <data name="ThereIsNoEmailInQueue" xml:space="preserve">
+    <value>Il n'y a pas e-mail dans la file d'attente</value>
+  </data>
+  <data name="ImportCustomers" xml:space="preserve">
+    <value>Clients à l'importation</value>
+  </data>
+  <data name="ChooseCorrespondColumns" xml:space="preserve">
+    <value>Choisissez Correspondent Colonnes</value>
+  </data>
+  <data name="ChooseYourFile" xml:space="preserve">
+    <value>Choisissez votre fichier</value>
+  </data>
+  <data name="Database" xml:space="preserve">
+    <value>Base de données</value>
+  </data>
+  <data name="Step" xml:space="preserve">
+    <value>Étape</value>
+  </data>
+  <data name="YourFile" xml:space="preserve">
+    <value>Votre fichier</value>
+  </data>
+  <data name="BounceRate" xml:space="preserve">
+    <value>Taux de rebond</value>
+  </data>
+  <data name="Clicks" xml:space="preserve">
+    <value>Clics</value>
+  </data>
+  <data name="Opens" xml:space="preserve">
+    <value>Ouvre</value>
+  </data>
+  <data name="ViewMore" xml:space="preserve">
+    <value>Voir plus</value>
+  </data>
+  <data name="Complete" xml:space="preserve">
+    <value>Compléter</value>
+  </data>
+  <data name="CustomerImporter" xml:space="preserve">
+    <value>Importateur client</value>
+  </data>
+  <data name="ValueCannotBeEmpty" xml:space="preserve">
+    <value>{0} ne peux pas être vide.</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>Tout</value>
+  </data>
+  <data name="PaymentStatus" xml:space="preserve">
+    <value>Statut de paiement</value>
+  </data>
+  <data name="Success" xml:space="preserve">
+    <value>Le Succès</value>
+  </data>
+  <data name="Unsuccess" xml:space="preserve">
+    <value>Échec</value>
+  </data>
+  <data name="YouMayNeedToEditLater" xml:space="preserve">
+    <value>Vous devrez peut-être modifier {0} plus tard.</value>
+  </data>
+  <data name="BulkEdit" xml:space="preserve">
+    <value>Modifier vrac</value>
+  </data>
+  <data name="CannotBookingRightNow" xml:space="preserve">
+    <value>Vous ne pouvez pas réserver dès maintenant, s'il vous plaît réessayer plus tard.</value>
+  </data>
+  <data name="CannotGetTeeTimesFromPrimaGolfRightNow" xml:space="preserve">
+    <value>Vous ne pouvez pas obtenir des heures de départ de Prima Golf dès maintenant, s'il vous plaît réessayer plus tard.</value>
+  </data>
+  <data name="TeeTimeAlreadyLocked" xml:space="preserve">
+    <value>Tee temps déjà verrouillé.</value>
+  </data>
+  <data name="Other" xml:space="preserve">
+    <value>Autre</value>
+  </data>
+  <data name="YouAlreadyLockSomeOfTeeTimePleaseTry15Minutes" xml:space="preserve">
+    <value>Vous verrouillez déjà certains des temps de départ, s'il vous plaît essayer de nouveau après 15 minutes.</value>
+  </data>
+  <data name="AddSubscriber" xml:space="preserve">
+    <value>Ajouter abonné</value>
+  </data>
+  <data name="Subscriber" xml:space="preserve">
+    <value>Abonné</value>
+  </data>
+  <data name="SubscriberInformation" xml:space="preserve">
+    <value>Information Abonné</value>
+  </data>
+  <data name="Subscribers" xml:space="preserve">
+    <value>Les abonnés</value>
+  </data>
+  <data name="UnsubscriberInformation" xml:space="preserve">
+    <value>Information Unsubscriber</value>
+  </data>
+  <data name="Unsubscribers" xml:space="preserve">
+    <value>Unsubscribers</value>
+  </data>
+  <data name="Unsubscriber" xml:space="preserve">
+    <value>Unsubscriber</value>
+  </data>
+  <data name="PleaseTellUsToImproveService" xml:space="preserve">
+    <value>Please tell us to improve our service</value>
+  </data>
+  <data name="SiteJournal" xml:space="preserve">
+    <value>Journal du Golf</value>
+  </data>
+  <data name="Communication" xml:space="preserve">
+    <value>La Communication</value>
+  </data>
+  <data name="DailyJournal" xml:space="preserve">
+    <value>Journal Quotidien</value>
+  </data>
+  <data name="DataHasBeenSaved" xml:space="preserve">
+    <value>Les données ont été sauvegardées.</value>
+  </data>
+  <data name="Event" xml:space="preserve">
+    <value>Un Événement</value>
+  </data>
+  <data name="Financial" xml:space="preserve">
+    <value>Financier</value>
+  </data>
+  <data name="YearlyJournal" xml:space="preserve">
+    <value>Journal Annuel</value>
+  </data>
+  <data name="MemberAmount" xml:space="preserve">
+    <value>Montant Membre</value>
+  </data>
+  <data name="PaymentDate" xml:space="preserve">
+    <value>Date de paiement</value>
+  </data>
+  <data name="UseSSLTLS" xml:space="preserve">
+    <value>Use SSL/TLS</value>
+  </data>
+  <data name="EmailCampaigns" xml:space="preserve">
+    <value>Campagnes Email</value>
+  </data>
+  <data name="Sample" xml:space="preserve">
+    <value>Prélévement</value>
+  </data>
+  <data name="Transfer" xml:space="preserve">
+    <value>Virement</value>
+  </data>
+  <data name="Availability" xml:space="preserve">
+    <value>Disponibilité</value>
+  </data>
+  <data name="LoadData" xml:space="preserve">
+    <value>Load Data</value>
+  </data>
+  <data name="Year" xml:space="preserve">
+    <value>Année</value>
+  </data>
+  <data name="CommercialFollowUp" xml:space="preserve">
+    <value>Suivi commercial</value>
+  </data>
+  <data name="VisitDate" xml:space="preserve">
+    <value>Date de Visite</value>
+  </data>
+  <data name="DailyJournalFor" xml:space="preserve">
+    <value>Journal quotidien de</value>
+  </data>
+  <data name="YearlyJournalFor" xml:space="preserve">
+    <value>Journal annuel de</value>
+  </data>
+  <data name="DontWantToReceiveThisTypeOfEmail" xml:space="preserve">
+    <value>Vous ne voulez pas recevoir ce type d'e-mail?</value>
+  </data>
+  <data name="ThisEmailWasSentTo" xml:space="preserve">
+    <value>Ce courriel a été envoyé à</value>
+  </data>
+  <data name="CommercialInformation" xml:space="preserve">
+    <value>Information Commerciale</value>
+  </data>
+  <data name="HotelInformation" xml:space="preserve">
+    <value>Informations sur l'hôtel</value>
+  </data>
+  <data name="OnSite" xml:space="preserve">
+    <value>Sur place</value>
+  </data>
+  <data name="Partner" xml:space="preserve">
+    <value>Partenaire</value>
+  </data>
+  <data name="PhoneAndEmailDatabase" xml:space="preserve">
+    <value>Téléphone &amp; Email Database</value>
+  </data>
+  <data name="Associative" xml:space="preserve">
+    <value>Associatif</value>
+  </data>
+  <data name="Commercial" xml:space="preserve">
+    <value>Commercial</value>
+  </data>
+  <data name="Direct" xml:space="preserve">
+    <value>Direct</value>
+  </data>
+  <data name="Management" xml:space="preserve">
+    <value>La gestion</value>
+  </data>
+  <data name="Subcontracting" xml:space="preserve">
+    <value>Sous-traitant</value>
+  </data>
+  <data name="CentralLineSEO" xml:space="preserve">
+    <value>Centrale de ref SEO</value>
+  </data>
+  <data name="BeingCalledByProductResp" xml:space="preserve">
+    <value>Being Called By Product Resp.</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="Field" xml:space="preserve">
+    <value>Champ</value>
+  </data>
+  <data name="InvoiceEntry" xml:space="preserve">
+    <value>Saisie des factures</value>
+  </data>
+  <data name="AddSite" xml:space="preserve">
+    <value>Ajouter Golf</value>
+  </data>
+  <data name="RestaurantProductCategories" xml:space="preserve">
+    <value>Catégories Restaurant Produit</value>
+  </data>
+  <data name="RestaurantProductCategory" xml:space="preserve">
+    <value>Catégorie Restaurant Produit</value>
+  </data>
+  <data name="RestaurantSupplier" xml:space="preserve">
+    <value>Restaurants Fournisseur</value>
+  </data>
+  <data name="RestaurantSuppliers" xml:space="preserve">
+    <value>Restaurants Fournisseurs</value>
+  </data>
+  <data name="SupplierName" xml:space="preserve">
+    <value>nom du fournisseur</value>
+  </data>
+  <data name="UserIsDuplicateSoSkipped" xml:space="preserve">
+    <value>{0} {1} est un doublon dans ce golf, il sera ignoré.</value>
+  </data>
+  <data name="Advanced" xml:space="preserve">
+    <value>Avancée</value>
+  </data>
+  <data name="ConversionTracking" xml:space="preserve">
+    <value>Suivi des conversions</value>
+  </data>
+  <data name="Purchase" xml:space="preserve">
+    <value>Achat</value>
+  </data>
+  <data name="Tester" xml:space="preserve">
+    <value>Tester</value>
+  </data>
+  <data name="ViewContent" xml:space="preserve">
+    <value>Voir le contenu</value>
+  </data>
+  <data name="InitialCheckout" xml:space="preserve">
+    <value>Commander initial</value>
+  </data>
+  <data name="Filters" xml:space="preserve">
+    <value>Filtres</value>
+  </data>
+  <data name="Contain" xml:space="preserve">
+    <value>Contient</value>
+  </data>
+  <data name="EndWith" xml:space="preserve">
+    <value>Terminer par</value>
+  </data>
+  <data name="Equal" xml:space="preserve">
+    <value>Équivaut à</value>
+  </data>
+  <data name="LeftItBlankToSkip" xml:space="preserve">
+    <value>Gauche le champ vide pour sauter</value>
+  </data>
+  <data name="NotEqual" xml:space="preserve">
+    <value>Inégal</value>
+  </data>
+  <data name="StartWith" xml:space="preserve">
+    <value>Commencer avec</value>
+  </data>
+  <data name="PleaseSelectAtLeastOneCustomerGroup" xml:space="preserve">
+    <value>S'il vous plaît sélectionner au moins un groupe de clients</value>
+  </data>
+  <data name="BouncedReturnEmail" xml:space="preserve">
+    <value>Bounced Retour Email</value>
+  </data>
+  <data name="SendToAllCustomers" xml:space="preserve">
+    <value>Envoyer à tous les clients</value>
+  </data>
+  <data name="BackgroundJob" xml:space="preserve">
+    <value>Contexte d'emploi</value>
+  </data>
+  <data name="SelectFilteredItems" xml:space="preserve">
+    <value>Sélectionnez Articles Filtré</value>
+  </data>
+  <data name="Age" xml:space="preserve">
+    <value>Âge</value>
+  </data>
+  <data name="CannotAddProductFromAnotherInYourGolfCart" xml:space="preserve">
+    <value>Vous ne pouvez ajouter un produit d'un autre Golf dans votre panier.</value>
+  </data>
+  <data name="UseVERP" xml:space="preserve">
+    <value>Utilisation de VERP</value>
+  </data>
+  <data name="Bounce" xml:space="preserve">
+    <value>Bounce</value>
+  </data>
+  <data name="Bounces" xml:space="preserve">
+    <value>Bounces</value>
+  </data>
+  <data name="UnsubscribeEmail" xml:space="preserve">
+    <value>Se désabonner Email</value>
+  </data>
+  <data name="Unsubscription" xml:space="preserve">
+    <value>Désinscription</value>
+  </data>
+  <data name="DiscountCard" xml:space="preserve">
+    <value>Carte de réduction</value>
+  </data>
+  <data name="Using" xml:space="preserve">
+    <value>En utilisant</value>
+  </data>
+  <data name="AccountName" xml:space="preserve">
+    <value>Nom du compte</value>
+  </data>
+  <data name="ClickHereToUnsubscribe" xml:space="preserve">
+    <value>Cliquez ici pour vous désabonner</value>
+  </data>
+  <data name="EnterTextForMirrorPageLink" xml:space="preserve">
+    <value>S'il vous plaît entrer un texte pour la page miroir lien</value>
+  </data>
+  <data name="EnterTextForUnsubscribeLink" xml:space="preserve">
+    <value>S'il vous plaît entrer un texte pour le lien de désabonnement</value>
+  </data>
+  <data name="PleaseAddMirrorPageLink" xml:space="preserve">
+    <value>S'il vous plaît ajouter un miroir lien de la page</value>
+  </data>
+  <data name="PleaseAddUnsubscribeLink" xml:space="preserve">
+    <value>S'il vous plaît ajouter un lien de désabonnement</value>
+  </data>
+  <data name="SeeTheOnlineVersion" xml:space="preserve">
+    <value>Voir la version en ligne</value>
+  </data>
+  <data name="YourCampaignHasBeenCancelled" xml:space="preserve">
+    <value>Votre campagne a été annulée.</value>
+  </data>
+  <data name="AvailableTemplates" xml:space="preserve">
+    <value>Modèles disponibles</value>
+  </data>
+  <data name="SelectBrand" xml:space="preserve">
+    <value>Sélectionnez une marque</value>
+  </data>
+  <data name="EmailTemplateCreationTips" xml:space="preserve">
+    <value>Un modèle doit contenir la variable {!web} et {!unsubscribe}. Alors assurez-vous de les mettre avant d'enregistrer. Ou utilisez des blocs de page miroir et de lien de désabonnement intégrés.</value>
+  </data>
+  <data name="SyncConfirmText" xml:space="preserve">
+    <value>La synchronisation sera traitée en arrière-plan. \ NVoulez-vous continuer? \ A \ nNOTE: Vous devrez définir l'identifiant de Chronogolf Club dans la page de votre gestionnaire de golf.</value>
+  </data>
+  <data name="ScheduleDateTime" xml:space="preserve">
+    <value>Horaire Date Heure</value>
+  </data>
+  <data name="Schedule" xml:space="preserve">
+    <value>Programme</value>
+  </data>
+</root>

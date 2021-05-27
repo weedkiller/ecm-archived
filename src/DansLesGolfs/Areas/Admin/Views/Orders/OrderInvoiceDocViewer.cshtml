@@ -1,0 +1,23 @@
+﻿@using DevExpress.Web.Mvc.UI;
+@model DansLesGolfs.Reports.rpOrderInvoice
+
+@Html.DevExpress().DocumentViewer(settings =>
+{
+    settings.Name = "OrderInvoice";
+    settings.Report = Model;
+    
+    settings.CallbackRouteValues = new
+    {
+        Namespaces = "DansLesGolfs.Areas.Admin.Controllers",
+        Controller = "Orders",
+        Action = "OrderInvoiceDocViewPartial",
+        id = ViewBag.OrderId
+    };
+    settings.ExportRouteValues = new
+    {
+        Namespaces = "DansLesGolfs.Areas.Admin.Controllers",
+        Controller = "Orders",
+        Action = "OrderInvoiceExportDocumentViewer",
+        id = ViewBag.OrderId
+    };
+}).GetHtml()

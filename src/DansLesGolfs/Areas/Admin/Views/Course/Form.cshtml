@@ -1,0 +1,122 @@
+﻿@using DansLesGolfs.Base
+@{
+    Layout = "~/Views/_Shared/MP/_Admin.cshtml";
+}
+@section head
+{
+}
+@section foot
+{
+    <script>
+        $('.info-form').validate();
+    </script>
+}
+<form method="post" id="form-@ViewBag.ClassName" class="info-form">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        @Html.T("Course Information")
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                <label for="CourseTypeId">@Resources.CourseType</label>
+                            </div>
+                            <div class="col-md-8">
+                                @Html.DropDownList("CourseTypeId", (IEnumerable<SelectListItem>)ViewBag.CourseTypes, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                <label for="CourseName">@Resources.CourseName</label>
+                            </div>
+                            <div class="col-md-8">
+                                @Html.TextBox("CourseName", (string)ViewBag.CourseName, new { Required = "Required", maxlength = 200, @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                <label for="CourseDesc">@Resources.CourseDescription</label>
+                            </div>
+                            <div class="col-md-8">
+                                @Html.TextArea("CourseDesc", (string)ViewBag.CourseDesc, new { Rows = 5, maxlength = 4000, @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                <label for="Hole">@Resources.Hole</label>
+                            </div>
+                            <div class="col-md-8">
+                                @Html.TextBox("Hole", DataManager.ToInt((object)ViewBag.Hole).ToString(), new { @class = "form-control", type = "number", min = 1, max = 99 })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                <label for="DefaultPrice">@Resources.DefaultPrice</label>
+                            </div>
+                            <div class="col-md-8">
+                                @Html.TextBox("DefaultPrice", DataManager.ToDecimal((object)ViewBag.DefaultPrice).ToString("#,##0.00"), new { @class = "form-control", type = "number", min = 1, max = 99 })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                <label for="StartTime">@Resources.StartTime</label>
+                            </div>
+                            <div class="col-md-8">
+                                @Html.TextBox("StartTime", ((object)ViewBag.StartTime).ToString(), new { @class = "form-control", placeholder = "HH:MM", type = "time" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                <label for="EndTime">@Resources.EndTime</label>
+                            </div>
+                            <div class="col-md-8">
+                                @Html.TextBox("EndTime", ((object)ViewBag.EndTime).ToString(), new { @class = "form-control", placeholder = "HH:MM", type = "time" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                <label for="Hole">@Resources.Duration</label>
+                            </div>
+                            <div class="col-md-8">
+                                @Html.TextBox("Duration", DataManager.ToShort((object)ViewBag.Duration).ToString(), new { @class = "form-control", type = "number", min = 1, max = 99 })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                <label for="SiteId">@Resources.Site</label>
+                            </div>
+                            <div class="col-md-8">
+                                @Html.DropDownList("SiteId", (IEnumerable<SelectListItem>)ViewBag.Sites, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" name="id" value="@ViewBag.id" />
+    <input type="submit" id="submit" name="submit" value="@Resources.Save" class="btn btn-primary" />
+    <input type="reset" id="reset" name="reset" value="@Resources.Reset" class="btn" />
+    <a href="@Url.Content("~/Admin/Course")" class="btn btn-default">@Resources.Back</a>
+</form>

@@ -1,0 +1,37 @@
+﻿@model DansLesGolfs.BLL.Item
+@{
+    ViewBag.Title = Resources.PageNotFound;
+    Layout = "~/Views/_Shared/MP/Front/_FullWidth.cshtml";
+}
+@section head
+{
+    <link href="@Url.Content("~/Assets/Front/css/pages/page404.css")" rel="stylesheet" />
+}
+@section foot
+{
+}
+<div id="page-not-found">
+    <div class="row">
+        <div class="col-md-12 page-404">
+            <div class="number">
+                404
+            </div>
+            <div class="details">
+                <h3>Oops!  You're lost.</h3>
+                <p>
+                    @Resources.PageNotFoundDescription<br>
+                    <a href="@Url.Content("~/")">Return home</a> or try the search bar below.
+                </p>
+                <form action="#">
+                    <div class="input-group input-medium">
+                        <input type="text" placeholder="keyword..." class="form-control">
+                        <span class="input-group-btn">
+                            <button class="btn blue" type="submit"><i class="fa fa-search"></i></button>
+                        </span>
+                    </div>
+                    <!-- /input-group -->
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

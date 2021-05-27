@@ -1,0 +1,41 @@
+.number-editor {
+	display: inline-block;
+	position: relative;
+	padding-right: 16px;
+}
+
+.number-editor input {
+	text-align: right;
+}
+
+.number-editor .step-up, .number-editor .step-down {
+	color: #fff;
+	display: inline-block;
+	position: absolute;
+	text-align: center;
+	vertical-align: middle;
+	height: 50%;
+	width: 16px;
+	font-size: 0.75em;
+	line-height: 1em;
+	cursor: pointer;
+
+	-webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.number-editor .step-up {
+	background: #f7407e;
+	right: 0;
+	top: 0;
+}
+
+.number-editor .step-down {
+	background: #d1cfd0;
+	right: 0;
+	bottom: 0;
+}

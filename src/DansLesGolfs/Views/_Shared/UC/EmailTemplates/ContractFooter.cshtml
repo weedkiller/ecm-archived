@@ -1,0 +1,32 @@
+﻿@model DansLesGolfs.BLL.ContractFooter
+@{
+    Layout = "~/Views/_Shared/MP/_EmailTemplate.cshtml";
+}
+@section head
+{
+}
+@section foot
+{
+}
+<div>
+    <table style="width: 100%">
+    <tbody>
+        <tr>
+            <th style="width: 120px; font-weight: bold; text-align: right; padding: 5px;">@Resources.Name</th>
+            <td style="text-align: left; padding: 5px;">@Model.Name</td>
+        </tr>
+        <tr>
+            <th style="width: 120px; font-weight: bold; text-align: right; padding: 5px;">@Resources.Email</th>
+            <td style="text-align: left; padding: 5px;">@Model.EmailAddress</td>
+        </tr>
+        <tr>
+            <th style="width: 120px; font-weight: bold; text-align: right; padding: 5px;">@Resources.Subject</th>
+            <td style="text-align: left; padding: 5px;">@Model.Subject</td>
+        </tr>
+        <tr>
+            <th style="width: 120px; font-weight: bold; text-align: right; padding: 5px;">@Resources.Message</th>
+            <td style="text-align: left; padding: 5px;">@Model.Message</td>
+        </tr>
+    </tbody>
+    </table>
+</div>

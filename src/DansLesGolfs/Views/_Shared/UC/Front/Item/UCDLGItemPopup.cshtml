@@ -1,0 +1,45 @@
+﻿@model DansLesGolfs.BLL.Item
+@{
+    string itemName = string.Empty;
+    string itemDesc = string.Empty;
+    if (Model.ItemLangs != null && Model.ItemLangs.Any())
+    {
+        itemName = Model.ItemLangs[0].ItemName;
+        itemDesc = Model.ItemLangs[0].ItemDesc;
+    }
+    Layout = null;
+}
+<div id="dlgitem-popup-wrapper">
+    <div class="item-image">
+        @if (Model.ItemImages != null && Model.ItemImages.Any())
+        {
+            <a href="@Html.ItemUrl(Model)" style="background-image: url(@Html.GetItemImageUrl(Model.ItemId, Model.ItemImages[0], "large"))">@Model.ItemName</a>
+        }
+        else
+        {
+            <a href="@Html.ItemUrl(Model)" style="background-image: url(@Url.Content("~/Assets/Front/img/no-image-300x400.png"))">@Model.ItemName</a>
+        }
+    </div>
+    <div class="item-info">
+        <h4 class="item-name">
+            <a href="@Html.ItemUrl(Model)">@Model.ItemName</a>
+        </h4>
+        <div class="item-price">
+            <div class="item-price-text"><span>@Resources.Price : </span><span class="item-price-number">@Model.Price.ToString("#,##0.00") &euro;</span></div>
+            <div><a class="view-offer btn btn-primary" href="@Html.ItemUrl(Model)">&gt; @Resources.ViewOffer</a></div>
+            <div class="item-search"><form action="@Url.Content("~/DLGShop")" method="post"><input type="text" name="s" placeholder="@Resources.FindTheItems" /><input type="submit" name="submit" value="OK" class="btn btn-primary" /></form></div>
+        </div>
+        <div class="item-detail">
+            @if (Model.ItemLangs != null && Model.ItemLangs.Any())
+            {
+                <p class="description">@MvcHtmlString.Create(Model.ItemLangs[0].ItemShortDesc.TruncateHtml(150, "..."))</p>
+            }
+            <div class="item-rating">
+                @Resources.Rating : <span class="starrr review-stars" data-rating="@Model.AverageRating"></span>
+            </div>
+            <div class="item-comment">
+                <a href="@Html.ItemUrl(Model)#reviews">@Resources.ViewComments</a>
+            </div>
+        </div>
+    </div>
+</div>

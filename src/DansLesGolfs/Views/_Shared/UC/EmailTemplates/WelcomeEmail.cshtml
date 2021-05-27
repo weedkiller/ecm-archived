@@ -1,0 +1,6 @@
+﻿@using DansLesGolfs.BLL
+@model EmailTemplate
+@{
+    Layout = "~/Views/_Shared/MP/_EmailTemplate.cshtml";
+}
+@MvcHtmlString.Create(Model.HtmlDetail)

@@ -1,0 +1,42 @@
+﻿@model DansLesGolfs.BLL.WebContent
+@{
+    ViewBag.Title = Resources.PaymentByCheck;
+    Layout = "~/Views/_Shared/MP/Front/_FullWidth.cshtml";
+}
+@section head
+{
+    <link rel="stylesheet" type="text/css" href="@Href("~/Assets/Front/css/cart.css")">
+}
+@section foot
+{
+    <script src="@Url.Content("~/Assets/Front/scripts/pages/order-payment-check.js")"></script>
+}
+<div id="page-order-payment-check" class="margin-bottom-40">
+    <div class="row">
+        <div class="col-centered col-md-12">
+            <h1 class="page-title">@Resources.MyCart</h1>
+            @Html.Partial("~/Views/_Shared/UC/Front/Order/UCPaymentProcess.cshtml", 5)
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="page-subtitle">@Resources.PaymentByCheck</h2>
+            <div class="well">@MvcHtmlString.Create(Model.ContentText)</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="pull-right col-md-5 text-right">
+            <a href="@Url.Content("~/Order/Payment")" id="back-to-payment-button" class="btn btn-default">&gt; @Resources.BackToPreviousStep</a>
+            <a id="confirm-button" class="btn btn-primary">&gt; @Resources.Confirm</a>
+        </div>
+    </div>
+</div>
+
+<a href="#error-popup" id="error-link"></a>
+<div id="error-popup" style="display: none">
+    <h4>Error</h4>
+    <p class="popup-content"></p>
+    <div class="action-buttons margin-top-20">
+        <a class="ok-button btn btn-primary pull-right">OK</a>
+    </div>
+</div>

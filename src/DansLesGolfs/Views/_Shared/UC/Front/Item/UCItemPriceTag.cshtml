@@ -1,0 +1,107 @@
+@model DansLesGolfs.BLL.Item
+           @{
+               int greenFeeItemType = (int)ItemType.Type.GreenFee;
+           }
+<div class="product-price">
+    <div class="product-price-wrapper">
+        @if (Model.ItemTypeId == greenFeeItemType)
+        {
+            if (Model.TeeSheetCheapestPrice.HasValue && Model.TeeSheetCheapestPrice.Value > 0)
+            {
+                <span class="starting-at">@Resources.BeginAt</span>
+                <span class="price-number">@Model.TeeSheetCheapestPrice.Value.ToString("###0.00") &euro;</span>
+            }
+            else if (Model.AlbatrosCourseId > 0)
+            {
+                <span class="starting-at">@Resources.BeginAt</span>
+                <span class="price-number">@Model.Price.ToString("###0.00") &euro;</span>
+            }
+            else
+            {
+                <span class="price-number">@Model.Price.ToString("###0.00") &euro;</span>
+            }
+        }
+        else
+        {
+
+            if (Model.HasSpecialPrice)
+            {
+                <span class="special-pricing">
+                    @if (Model.HasCheapestPeriodPrice)
+                    {
+                        if (Model.SpecialPrice < Model.CheapestPeriodPrice)
+                        {
+                            <span class="starting-at">@Resources.BeginAt</span>
+                            <span class="regular-price-number">@Model.CheapestPeriodPrice.ToString("###0.00")&euro;</span>
+                            <span class="price-number">@Model.SpecialPrice.ToString("###0.00")&euro;</span>
+                        }
+                        else
+                        {
+                            <span class="starting-at">@Resources.BeginAt</span>
+                            <span class="regular-price-number">@Model.SpecialPrice.ToString("###0.00")&euro;</span>
+                            <span class="price-number">@Model.CheapestPeriodPrice.ToString("###0.00")&euro;</span>
+                        }
+                    }
+                    else
+                    {
+                        if (Model.HasTeeSheet)
+                        {
+                            <span class="starting-at">@Resources.BeginAt</span>
+                        }
+                        if (Model.Price > Model.SpecialPrice)
+                        {
+                            <span class="regular-price-number">@Model.Price.ToString("###0.00")&euro;</span>
+                            <span class="price-number">@Model.SpecialPrice.ToString("###0.00")&euro;</span>
+                        }
+                        else
+                        {
+                            <span class="regular-price-number">@Model.SpecialPrice.ToString("###0.00")&euro;</span>
+                            <span class="price-number">@Model.Price.ToString("###0.00")&euro;</span>
+                        }
+                    }
+                </span>
+            }
+            else if (Model.HasPeriodPrice)
+            {
+                if (Model.Price <= 0)
+                {
+                    <span class="starting-at">@Resources.BeginAt</span>
+                    <span class="price-number">@Model.CheapestPeriodPrice.ToString("###0.00") &euro;</span>
+                }
+                else
+                {
+                    <span class="special-pricing">
+                        <span class="starting-at">@Resources.BeginAt</span>
+                        @if (Model.Price > Model.PeriodPrice)
+                        {
+                            <span class="regular-price-number">@Model.Price.ToString("###0.00")&euro;</span>
+                            <span class="price-number">@Model.CheapestPeriodPrice.ToString("###0.00")&euro;</span>
+                        }
+                        else
+                        {
+                            <span class="regular-price-number">@Model.CheapestPeriodPrice.ToString("###0.00")&euro;</span>
+                            <span class="price-number">@Model.Price.ToString("###0.00")&euro;</span>
+                        }
+                    </span>
+                }
+            }
+            else
+            {
+                if (Model.HasTeeSheet)
+                {
+                    <span class="starting-at">@Resources.BeginAt</span>
+                    <span class="price-number">@Model.Price.ToString("###0.00") &euro;</span>
+                }
+                else if (Model.HasCheapestPeriodPrice)
+                {
+                    <span class="starting-at">@Resources.BeginAt</span>
+                    <span class="price-number">@Model.CheapestPeriodPrice.ToString("###0.00") &euro;</span>
+                }
+                else
+                {
+                    <span class="price-number">@Model.Price.ToString("###0.00") &euro;</span>
+                }
+            }
+        }
+    </div>
+</div>

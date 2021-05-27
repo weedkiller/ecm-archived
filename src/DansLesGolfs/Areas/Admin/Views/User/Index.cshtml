@@ -1,0 +1,43 @@
+﻿@{
+    Layout = "~/Views/_Shared/MP/_Admin.cshtml";
+}
+@section head
+{
+}
+@section foot
+{
+    <script type="text/javascript">
+        window.controllerName = "@ViewBag.ObjectName";
+        window.primaryKey = "@ViewBag.PrimaryKey";
+        window.columnLength = 4;
+    </script>
+    <script type="text/javascript" src="@Url.Content("~/Assets/Admin/scripts/list-page.js")"></script>
+}
+<div class="panel">
+    <div class="panel-body">
+        <a class="btn btn-primary" href="@Url.Content("~/Admin/UserType/Form")">Add New</a>
+    </div>
+</div>
+<div class="panel">
+    <div class="panel-body">
+        <table id="datatable" class="dataTable table table-bordered table-striped table-scrollable table-hover">
+            <thead>
+                <tr>
+                    <th class="checkboxes">
+                        <input type="checkbox" />
+                    </th>
+                    <th>
+                        User Type Name
+                    </th>
+                    <th>
+                        Edit
+                    </th>
+                    <th>
+                        Delete
+                    </th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>

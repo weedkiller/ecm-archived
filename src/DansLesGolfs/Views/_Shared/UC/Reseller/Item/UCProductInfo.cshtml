@@ -1,0 +1,397 @@
+﻿@using DansLesGolfs.Base
+@using DansLesGolfs.BLL
+@using System.Globalization;
+@model Item
+@{
+    long itemId = DataManager.ToLong((object)ViewBag.id);
+    
+    DateTime publishStart = DataManager.ToDateTime(ViewBag.PublishStartDate, DateTime.Now);
+    DateTime publishEnd = DataManager.ToDateTime(ViewBag.PublishEndDate, DateTime.Now.AddYears(1));
+
+    if (publishStart == DateTime.MinValue)
+    {
+        publishStart = DateTime.Now;
+    }
+    if (publishEnd == DateTime.MinValue)
+    {
+        publishEnd = DateTime.Now.AddYears(1);
+    }
+    List<ItemPrice> pricePeriods = ViewBag.ItemPrices != null ? ((List<ItemPrice>)ViewBag.ItemPrices).Where(it => it.PriceType == 0).ToList() : new List<ItemPrice>();
+    List<ItemPrice> discountPrices = ViewBag.ItemPrices != null ? ((List<ItemPrice>)ViewBag.ItemPrices).Where(it => it.PriceType == 1).ToList() : new List<ItemPrice>();
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    @Resources.ProductInformation
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <label for="CategoryId">@Resources.Category</label>
+                        </div>
+                        <div class="col-md-4">
+                            @Html.DropDownList("CategoryId", (IEnumerable<SelectListItem>)ViewBag.ItemCategories, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                @*<div class="row">
+                        <div class="form-group">
+                            <div class="col-md-2 control-label">
+                                <label for="CategoryId">@Resources.SubCategory</label>
+                            </div>
+                            <div class="col-md-4">
+                                @Html.DropDownList("SubCategoryId", (IEnumerable<SelectListItem>)ViewBag.ItemSubCategories, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>*@
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <label for="ItemCode">@Resources.ProductCode</label>
+                        </div>
+                        @if (itemId <= 0)
+                        {
+                            <div class="col-md-10">
+                                @Html.TextBox("ItemCode", (string)ViewBag.ItemCode, new { required = "required", maxlength = 100, @class = "form-control" })
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="col-md-8">
+                                @Html.TextBox("ItemCode", (string)ViewBag.ItemCode, new { required = "required", maxlength = 100, @class = "form-control" })
+                            </div>
+                            <div class="col-md-2">
+                                <a href="../Clone/@itemId" target="_blank" class="btn btn-primary">@Resources.Duplicate</a>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <label for="ItemName">@Resources.ProductName</label>
+                        </div>
+                        <div class="col-md-10">
+                            @Html.TextBoxLang("ItemName", (List<ItemLang>)ViewBag.ItemLangs, "ItemName", new { required = "required", maxlength = 500, @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <label for="ItemSlug">@Resources.Slug</label>
+                        </div>
+                        <div class="col-md-10">
+                            @Html.TextBox("ItemSlug", (string)ViewBag.ItemSlug, new { required = "required", maxlength = 100, @class = "form-control" })
+                            <p class="description">@Resources.ItemSlugDescription</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <label for="ItemShortDesc">@Resources.ShortDescription</label>
+                        </div>
+                        <div class="col-md-10">
+                            @Html.TextAreaLang("ItemShortDesc", (List<ItemLang>)ViewBag.ItemLangs, "ItemShortDesc", new { maxlength = 1000, rows = 10, @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <label for="ItemDesc">@Resources.FullDescription</label>
+                        </div>
+                        <div class="col-md-10">
+                            @Html.TextAreaLang("ItemDesc", (List<ItemLang>)ViewBag.ItemLangs, "ItemDesc", new { rows = 20, @class = "form-control editor" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <label for="UnitInStock">@Resources.InStock</label>
+                        </div>
+                        <div class="col-md-4">
+                            @Html.TextBox("UnitInStock", DataManager.ToInt((object)ViewBag.UnitInStock).ToString(), new { type = "number", min = 0, @class = "form-control text-right" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3>
+                    @Resources.InvoiceInformation
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <label for="InvoiceName">@Resources.InvoiceItemTitle</label>
+                        </div>
+                        <div class="col-md-10">
+                            @Html.TextAreaLang("InvoiceName", (List<ItemLang>)ViewBag.ItemLangs, "InvoiceName", new { required = "required", rows = 2, @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    @Resources.Modifiers
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <label for="BrandId">@Resources.Brand</label>
+                        </div>
+                        <div class="col-md-4">
+                            @Html.DropDownList("BrandId", (IEnumerable<SelectListItem>)ViewBag.Brands, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <label for="BrandId">Promotion Status</label>
+                        </div>
+                        <div class="col-md-4">
+                            @Html.DropDownList("PromotionStatusId",
+                            new SelectList(
+                                new[]
+                                {
+                                    new SelectListItem { Value = "1", Text = "True" },
+                                    new SelectListItem { Value = "0", Text = "False" },
+                                },
+                                "Value",
+                                "Text"
+                                ),
+                                new { @class = "form-control" }
+                            )
+                        </div>
+                    </div>
+                </div>
+                @Html.ModifierEditors((List<Modifier>)ViewBag.Modifiers, 2, 4)
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <label for="Size">@Resources.Size</label>
+                        </div>
+                        <div class="col-md-4">
+                            @Html.TextBox("Size", (string)ViewBag.Size, new { @class = "form-control text-right", maxlength = 20 })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    @Resources.Pricing
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <label for="Price">@Resources.Price</label>
+                        </div>
+                        <div class="col-md-4">
+                            @Html.TextBox("Price", DataManager.ToDecimal((object)ViewBag.Price).ToString("#,##0.00"), new { min = 0, @class = "form-control text-right" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <label for="ProductCost">@Resources.ProductCost</label>
+                        </div>
+                        <div class="col-md-3">
+                            @Html.TextBox("ProductCost", DataManager.ToDecimal((object)ViewBag.ProductCost).ToString("#,##0.00"), new { min = 0, @class = "form-control text-right" })
+                        </div>
+                    </div>
+                </div>
+                @Html.Partial("~/Views/_Shared/UC/Admin/Item/UCPricingBoxes.cshtml")
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <label for="TaxId">@Resources.TaxCalculation</label>
+                        </div>
+                        <div class="col-md-4">
+                            @Html.DropDownList("TaxId", (IEnumerable<SelectListItem>)ViewBag.Taxes, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    @Resources.Shipping
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <label for="ShippingTypeId">@Resources.ShippingType</label>
+                        </div>
+                        <div class="col-md-4">
+                            @Html.DropDownList("ShippingTypeId", (IEnumerable<SelectListItem>)ViewBag.ShippingTypes, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <label for="ShippingCost">@Resources.ShippingCost</label>
+                        </div>
+                        <div class="col-md-4">
+                            @Html.TextBox("ShippingCost", DataManager.ToDecimal((object)ViewBag.ShippingCost).ToString("#,##0.00"), new { min = 0, @class = "form-control text-right" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <label for="ShippingTimeMin">@Resources.DeliveryTime</label>
+                        </div>
+                        <div class="col-md-4">
+                            @Html.TextBox("ShippingTimeMin", DataManager.ToInt((object)ViewBag.ShippingTimeMin).ToString(), new { type = "number", min = 0, @class = "form-control input-xsmall text-right" })
+                            @Html.TextBox("ShippingTimeMax", DataManager.ToInt((object)ViewBag.ShippingTimeMax).ToString(), new { type = "number", min = 0, @class = "form-control input-xsmall text-right" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <label for="IsPublish">@Resources.CanReturn</label>
+                        </div>
+                        <div class="col-md-10">
+                            <label for="CanReturn">
+                                <input type="checkbox" id="CanReturn" name="CanReturn" value="true" @(DataManager.ToBoolean((object)ViewBag.CanReturn) ? " checked=\"checked\"" : "") />
+                                @Resources.Yes</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <label for="RefundWithIn">@Resources.RefundWithIn</label>
+                        </div>
+                        <div class="col-md-4">
+                            @Html.TextBox("RefundWithIn", DataManager.ToInt((object)ViewBag.RefundWithIn).ToString(), new { type = "number", min = 0, @class = "form-control text-right" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    @Resources.AdditionalInformation
+                </h3>
+            </div>
+            <div class="panel-body">
+                @*<div class="row">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <label for="SiteId">@Resources.Site</label>
+                        </div>
+                        <div class="col-md-4">
+                            @Html.DropDownList("SiteId", (IEnumerable<SelectListItem>)ViewBag.Sites, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>*@
+                @*<div class="row">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <label for="CourseId">@Resources.Course</label>
+                        </div>
+                        <div class="col-md-4">
+                            @Html.DropDownList("CourseId", (IEnumerable<SelectListItem>)ViewBag.Courses, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>*@
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <label for="SupplierId">@Resources.Supplier</label>
+                        </div>
+                        <div class="col-md-4">
+                            @Html.DropDownList("SupplierId", (IEnumerable<SelectListItem>)ViewBag.Suppliers, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <label for="IsShowOnHomepage">@Resources.ShowOnHomepage</label>
+                        </div>
+                        <div class="col-md-10">
+                            <label for="IsShowOnHomepage">
+                                <input type="checkbox" id="IsShowOnHomepage" name="IsShowOnHomepage" value="true" @(DataManager.ToBoolean((object)ViewBag.IsShowOnHomepage) ? " checked=\"checked\"" : "") />
+                                @Resources.DisplayThisProductOnHomepage</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <label for="IsAllowReview">@Resources.AllowReview</label>
+                        </div>
+                        <div class="col-md-10">
+                            <label for="IsAllowReview">
+                                <input type="checkbox" id="IsAllowReview" name="IsAllowReview" value="true" @(DataManager.ToBoolean((object)ViewBag.IsAllowReview) ? " checked=\"checked\"" : "") />
+                                @Resources.AllowCustomerReview</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <label for="IsPublish">@Resources.Publish</label>
+                        </div>
+                        <div class="col-md-10">
+                            <label for="IsPublish">
+                                <input type="checkbox" id="IsPublish" name="IsPublish" value="true" @(DataManager.ToBoolean((object)ViewBag.IsPublish) ? " checked=\"checked\"" : "") />
+                                @Resources.PublishThisProduct</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <label for="PublishStartDate">@Resources.Start</label>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" id="PublishStartDate" name="PublishStartDate" class="datepicker  form-control" value="@publishStart.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture)" readonly="readonly" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <label for="PublishEndDate">@Resources.End</label>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" id="PublishEndDate" name="PublishEndDate" class="datepicker form-control" value="@publishEnd.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture)" readonly="readonly" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

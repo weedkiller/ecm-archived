@@ -1,0 +1,70 @@
+﻿@using DansLesGolfs
+@{
+    ViewBag.Title = "Add Credit Card";
+    Layout = "~/Views/_Shared/MP/Front/_Default.cshtml";
+}
+@section head
+{
+    <link rel="stylesheet" type="text/css" href="@Href("~/Assets/Front/css/user-menu.css")">
+}
+@section foot
+{
+}
+
+<div id="page-account-dashboard">
+    <div class="row margin-bottom-40">
+        <div class="col-md-12">
+            <div class="account-box">
+                <div class="account-box-header"> Add Credit Card</div>
+                <div class="account-box-form">
+                    <div class="account-box-form-title">
+
+                    </div>
+
+                    @using (Ajax.BeginForm("FormCreditCard", "Account", new AjaxOptions { HttpMethod = "Post" }, new { @class = "form-horizontal", @id = "MyCreditCardForm" }))
+                    {
+                        <div id="card-number" class="form-group">
+                            <div class="col-md-4 control-label">Card Number <span class="require-pink">*</span></div>
+                            <div class="col-md-5">
+                                @Html.TextBox("cardnumber", (string)ViewBag.CardNumberX, new { maxlength = 18, @class = "form-control",@required = "required" })
+                            </div>
+                        </div>
+                        
+                        <div id="card-name" class="form-group">
+                            <div class="col-md-4 control-label">Card Name <span class="require-pink">*</span></div>
+                            <div class="col-md-5">
+                                @Html.TextBox("cardname", (string)ViewBag.CardName, new { maxlength = 100, @class = "form-control",@required = "required" })
+                            </div>
+                        </div>
+                         <div id="card-type" class="form-group">
+                            <div class="col-md-4 control-label">CardType <span class="require-pink">*</span></div>
+                            <div class="col-md-5">
+                                @Html.DropDownList("CardTypeId", (IEnumerable<SelectListItem>)(ViewBag.CardassociationsTypeList), new { @class="form-control"})
+                            </div>
+                        </div>
+                        <div id="exdate" class="form-group">
+                            <div class="col-md-4 control-label">Card Expire <span class="require-pink">*</span></div>
+                            <div class="col-md-5">
+                                <label>Month</label> <label> @Html.TextBox("month", (string)ViewBag.CardExpireMonth, new { maxlength = 2, @class = "form-control",@required = "required" }) </label>
+                                <label>Year</label> <label> @Html.TextBox("year", (string)ViewBag.CardExpireYear, new { maxlength = 2, @class = "form-control",@required = "required" }) </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="col-md-offset-4 col-md-5">
+                                <button type="submit" class="btn btn-primary">Save</button>
+                            </div>
+                        </div>
+                        
+                        @Html.Hidden("creditCardId", (int)ViewBag.CreditCardId)
+                    }
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+

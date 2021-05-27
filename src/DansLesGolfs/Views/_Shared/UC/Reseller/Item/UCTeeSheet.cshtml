@@ -1,0 +1,38 @@
+﻿@using DansLesGolfs.BLL
+@using System.Globalization
+@model TeeSheet
+@{
+    DateTime today = DateTime.Today;
+    //DateTime dateFrom = ViewBag.AvailableStartDate != null && ViewBag.AvailableStartDate != DateTime.MinValue ? DataManager.ToDateTime(ViewBag.AvailableStartDate) : new DateTime(today.Year, 1, 1);
+    //DateTime dateTo = ViewBag.AvailableEndDate != null && ViewBag.AvailableEndDate != DateTime.MinValue ? DataManager.ToDateTime(ViewBag.AvailableEndDate) : new DateTime(today.Year, 12, 31);
+    DateTime dateFrom = DateTime.Today; 
+    DateTime dateTo = DateTime.Today;
+    int dateOffset = dateFrom.DayOfWeek == 0 ?  6 : dateFrom.DayOfWeek - DayOfWeek.Monday;
+    dateFrom = dateFrom.AddDays(dateOffset * -1);
+    dateTo = dateFrom.AddDays(6);
+}
+<div class="row margin-bottom-10">
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                @Resources.TeeSheet
+            </h3>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="description"><span class="label label-info">@Resources.Tip</span> @Resources.UseCtrlKeyGreenFee</p>
+                    <p class="description"><span class="label label-info">@Resources.Tip</span> @Resources.RightClickGreenFee</p>
+                    <label for="date-from">@Resources.From</label> <input type="text" id="date-from" name="TeeSheetDateFrom" class="datepicker" value="@dateFrom.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture)" />
+                    <label for="date-to">@Resources.End</label> <input type="text" id="date-to" name="TeeSheetDateTo" class="datepicker" value="@dateTo.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture)" />
+                    <a href="javascript:void(0);" id="select-all-button" class="btn btn-primary">@Resources.SelectAll</a>
+                    <a href="javascript:void(0);" id="deselect-all-button" class="btn btn-primary">@Resources.DeselectAll</a>
+                </div>
+            </div>
+            <div id="teesheet-editor">
+            </div>
+            <p class="description">@Resources.TeeSheetAdminNote</p>
+        </div>
+    </div>
+</div>

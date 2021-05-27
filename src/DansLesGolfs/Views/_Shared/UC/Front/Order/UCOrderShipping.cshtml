@@ -1,0 +1,39 @@
+﻿@using DansLesGolfs.BLL
+@model List<DansLesGolfs.BLL.Address>
+@if (ViewBag.LogonUserId > 0)
+{
+    <form id="form-order-shipping" method="post" class="form-horizontal">
+        <h4>@Resources.Delivery</h4>
+        <div id="shipping-address">
+            <div id="shipping-address-header">
+                <h5>@Resources.DeliveryToTheFollowingAddress</h5>
+                <a href="javascript:void(0)" id="add-address-button" class="btn btn-primary">@Resources.AddAddress</a>
+            </div>
+            <table id="addresses-list">
+                <tbody>
+                    @foreach (Address it in Model)
+                    {
+                        <tr data-id="@it.AddressId">
+                            <td class="column-address-name">
+                                <input type="radio" name="AddressId" value="@it.AddressId" /> @it.AddressName
+                            </td>
+                            <td class="column-receipt-name">
+                                @it.ReceiptName
+                            </td>
+                            <td class="column-address">
+                                @it.Addresss @it.City @it.CountryName @it.PostalCode
+                            </td>
+                            <td class="column-phone">
+                                @it.Phone @(!String.IsNullOrEmpty(it.MobilePhone) ? it.MobilePhone : "")
+                            </td>
+                            <td class="column-tools">
+                                <a href="javascript:void(0)" class="edit-link">@Resources.Edit</a>
+                                <a href="javascript:void(0)" class="delete-link">@Resources.Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </form>
+}

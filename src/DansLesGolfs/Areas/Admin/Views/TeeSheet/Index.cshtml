@@ -1,0 +1,90 @@
+﻿@using DansLesGolfs.Base
+@{
+    Layout = "~/Views/_Shared/MP/_Admin.cshtml";
+    string teaSheetDate = DateTime.Now.ToString("dd/MM/yyyy");
+}
+@section head
+{
+    <link href="@Url.Content("~/Assets/Admin/css/pages/teesheet.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Assets/Libraries/bootstrap-datepicker/css/datepicker.css")" rel="stylesheet" />
+}
+@section foot
+{
+    <script src="@Url.Content("~/Assets/Libraries/bootstrap-datepicker/js/bootstrap-datepicker.js")"></script>
+    <script src="@Url.Content("~/Assets/Admin/scripts/page/teesheet.js")"></script>
+}
+<div id="page-teesheet" class="row">
+    <div class="col-md-8">
+        <div class="row">
+            <div class="col-md-6">
+                @Html.DropDownList("CourseId", (IEnumerable<SelectListItem>)ViewBag.Courses, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="input-group datepicker-control">
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary">&lt;</button>
+                    </span>
+                    @Html.TextBox("TeeSheetDate", teaSheetDate, new { @class = "form-control datepicker text-center", placeholder = "dd/mm/yyyy" })
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary">&gt;</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <table id="teesheet-table" class="table table-advance">
+            <tbody>
+                @for (int i = 8; i <= 16; i++ )
+                {
+                    <tr>
+                        <th>@i.ToString("00")</th>
+                        @for(int j = 0; j < 7; j++)
+                        {
+                            <td>&nbsp;</td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-4">
+        <div class="row">
+            <div class="form-group">
+                <div class="col-md-4 control-label">
+                    <label for="Password">@Resources.Start</label>
+                </div>
+                <div class="col-md-8">
+                    <div class="input-group datepicker-control">
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary">&lt;</button>
+                        </span>
+                        @Html.TextBox("StartDate", teaSheetDate, new { @class = "form-control datepicker text-center", placeholder = "dd/mm/yyyy" })
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary">&gt;</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <div class="col-md-4 control-label">
+                    <label for="Password">@Resources.End</label>
+                </div>
+                <div class="col-md-8">
+                    <div class="input-group datepicker-control">
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary">&lt;</button>
+                        </span>
+                        @Html.TextBox("EndDate", teaSheetDate, new { @class = "form-control datepicker text-center", placeholder = "dd/mm/yyyy" })
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary">&gt;</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

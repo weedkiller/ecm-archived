@@ -1,0 +1,37 @@
+﻿@{
+    Layout = "~/Views/_Shared/MP/Front/_TwoSections.cshtml";
+    ViewBag.Title = Resources.SearchResultFor +" : " + @ViewBag.SearchTerm;
+}
+@section head
+{
+    <script>
+        window.itemType = '@ViewBag.ItemType';
+    </script>
+}
+@section foot
+{
+}
+<div class="margin-bottom-40">
+    @Html.Partial("~/Views/_Shared/UC/Front/Item/UCProductList.cshtml")
+
+    <a id="open-rating-popup-button" href="#rating-popup"></a>
+    <div id="rating-popup">
+        <div class="form-group">
+            <label class="control-label visible-ie8 visible-ie9">@Resources.Rating</label>
+            <div class="input-icon">
+                <div class="starrr review-stars" data-rating="0"></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label visible-ie8 visible-ie9">@Resources.YourReview</label>
+            <div class="input-icon">
+                <textarea id="review-message-input" class="form-control" placeholder="@Resources.YourReviewGoHere"></textarea>
+            </div>
+        </div>
+        <div class="form-actions">
+            <button type="submit" id="submit-review-button" class="btn btn-primary pull-right">
+                <i class="glyphicon glyphicon-play"></i> @Resources.SubmitReview
+            </button>
+        </div>
+    </div>
+</div>

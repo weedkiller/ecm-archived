@@ -1,0 +1,110 @@
+﻿@model DansLesGolfs.Models.OrderShippingModel
+@{
+    ViewBag.Title = Resources.PaymentByCheck;
+    Layout = "~/Views/_Shared/MP/Front/_FullWidth.cshtml";
+}
+@section head
+{
+    <link rel="stylesheet" type="text/css" href="@Href("~/Assets/Front/css/cart.css")">
+}
+@section foot
+{
+}
+<div id="page-order-payment-check" class="margin-bottom-40">
+    <form action="@Url.Content("~/Order/PaymentProcessCreditCard")" method="post" class="form-inline">
+        <div class="row">
+            <div class="col-centered col-md-12">
+                <h1 class="page-title">@Resources.MyCart</h1>
+                @Html.Partial("~/Views/_Shared/UC/Front/Order/UCPaymentProcess.cshtml", 5)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="page-subtitle">@Resources.SecurePayment</h2>
+                <div class="well no-margin">
+                    <div class="row margin-bottom-10">
+                        <div class="col-md-3"><strong>@Resources.MerchantID</strong></div>
+                        <div class="col-md-9"><strong>@ViewBag.MerchantId</strong></div>
+                    </div>
+                    <div class="row margin-bottom-10">
+                        <div class="col-md-3"><strong>@Resources.TransactionReference</strong></div>
+                        <div class="col-md-9"><strong>@Model.TransactionId</strong></div>
+                    </div>
+                    <div class="row margin-bottom-10">
+                        <div class="col-md-3"><strong>@Resources.AmountOfTransaction</strong></div>
+                        <div class="col-md-9"><strong>@Model.Cart.GetSubTotal() &euro;</strong></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="well well-bottom pink no-margin">
+                    <h2>@Resources.EnterYourCreditCard</h2>
+                    <div class="row margin-bottom-10">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="cardNo">@Resources.CardNo</label>
+                                <input type="text" id="cardNo" name="cardNo" size="16" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label for="expiredMonth">@Resources.ExpiredAt</label>
+                                <input type="text" id="expiredMonth" name="expiredMonth" maxlength="2" size="2" placeholder="MM" class="form-control" />
+                                <input type="text" id="expiredYear" name="expiredYear" maxlength="4" size="4" placeholder="YYYY" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                @Resources.EnterYourCardDescription
+                                <input type="text" id="ccv" name="ccv" size="3" class="form-control" />
+                            </div>
+                            <br />
+                            <a href="javascript:void()">@Resources.LearnMoreAboutVisualCryptogram</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="well well-bottom no-margin">
+                    <div class="row margin-bottom-10">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                @Resources.IWishTo <a href="javascript:void()">@Resources.RegisterMyBankDetail</a> @Resources.ForAFuturePurchase
+                                <label for="IsSaveCreditCardDetail"><input type="radio" id="IsSaveCreditCardDetail" name="IsSaveCreditCard" value="true" /> @Resources.Yes</label>
+                                <label for="IsNotSaveCreditCardDetail"><input type="radio" id="IsNotSaveCreditCardDetail" name="IsSaveCreditCard" value="false" /> @Resources.No</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                @Resources.EnterANameForThisCard
+                                <input type="text" id="cardName" name="cardName" class="input-medium form-control" />(@Resources.Optional)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="pull-right col-md-5 text-right margin-top-10">
+                @Html.Hidden("CardType")
+                <a href="@Url.Content("~/Order/Payment")" id="back-to-payment-button" class="btn btn-default">&gt; @Resources.Cancel</a>
+                <input type="submit" id="confirm-button" class="btn btn-primary" value="&gt; @Resources.Confirm" />
+            </div>
+        </div>
+        <div class="row margin-top-10">
+            <div class="col-md-12">
+                <div class="well" id="creditcard-secure-list">
+                    <img src="@Url.Content("~/Assets/Front/img/vault.jpg")" id="vault-image" />
+                    @MvcHtmlString.Create(ViewBag.CreditCardFeatures)
+                </div>
+                <div id="creditcard-agreement">@MvcHtmlString.Create(ViewBag.CreditCardAgreement)</div>
+            </div>
+        </div>
+    </form>
+</div>

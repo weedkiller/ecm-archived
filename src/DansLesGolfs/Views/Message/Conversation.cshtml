@@ -1,0 +1,103 @@
+﻿@using DansLesGolfs
+@{
+    ViewBag.Title = Resources.MyMessages;
+    Layout = "~/Views/_Shared/MP/Front/_Default.cshtml";
+}
+@section head
+{
+    <link rel="stylesheet" type="text/css" href="@Href("~/Assets/Libraries/font-awesome/css/font-awesome.min.css")" >
+    <link rel="stylesheet" type="text/css" href="@Href("~/Assets/Front/css/account.css")" >
+}
+@section foot
+{
+    <script type="text/javascript">
+        function checkAll(obj) {
+            $('.cbxItem').prop('checked', obj.prop('checked'));
+            $.uniform.update();
+        }
+    </script>
+}
+<div id="page-account-dashboard">
+    @*<div class="row margin-bottom-40">
+        <div class="col-md-12">
+            <h1 class="page-title">@Resources.MyMessages</h1>
+        </div>
+    </div>*@
+    <div class="row margin-bottom-40">
+        <div class="col-md-12">
+            <div class="account-box">
+                <div class="account-box-header">@Resources.MyMessages</div>
+                <div class="account-box-table">
+                    <div class="account-box-table-tools">
+                        <div class="account-box-table-tool-cbx">
+                            <input type="checkbox" name="cbxAll" id="cbxAll" onclick="checkAll($(this));" />
+                        </div>
+                        <div class="account-box-table-tool-btn">
+                            <button type="button" class="account-box-table-tool-btn-delete">Supprimer</button>
+                            <button type="button" class="account-box-table-tool-btn-archiver">Archiver</button>
+                            <button type="button" class="account-box-table-tool-btn-transfer">Transférer</button>
+                            <select class="account-box-table-tool-btn-move">
+                                <option>Déplacer ver</option>
+                            </select>
+                            <select class="account-box-table-tool-btn-mark">
+                                <option>Marquer comme</option>
+                            </select>
+                        </div>
+                        <div class="account-box-table-tool-search">
+                            <input type="text" placeholder="Recherchez..." />
+                            <button type="submit">OK</button>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th class="cbx"></th>
+                                    <th class="status">
+                                        <i class="fa fa-flag"></i>
+                                        <i class="fa fa-paperclip"></i>
+                                    </th>
+                                    <th class="from">De</th>
+                                    <th class="to">Fin de la vente</th>
+                                    <th class="subject">Sujet</th>
+                                    <th class="date">
+                                        <select>
+                                            <option>Reçu</option>
+                                        </select>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (int i = 0; i < 10; i++)
+                                {
+                                    <tr>
+                                        <td class="cbx">
+                                            <input type="checkbox" name="cbxitem" class="cbxItem" value="@i" />
+                                        </td>
+                                        <td class="status">
+                                            <i class="fa fa-flag"></i>
+                                            <i class="fa fa-paperclip"></i>
+                                        </td>
+                                        <td class="from">Danslesgolfs</td>
+                                        <td class="to">Terminé</td>
+                                        <td class="subject">Newsletter</td>
+                                        <td class="date">@DateTime.Today.ToString("dd/MM/yy")</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <ul class="pagination pagination-sm">
+                <li><a href="#">&laquo;</a></li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">&raquo;</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

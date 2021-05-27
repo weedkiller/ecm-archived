@@ -1,0 +1,17 @@
+2016-03-05 05:34:07.3268   8 Error                          DansLesGolfs.Controllers.BaseController System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond 37.187.87.248:80
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at DansLesGolfs.Data.PrimaDataAccess.SendRequest(String method, String path, Dictionary`2 parameters) in E:\websites\DLG\DansLesGolfs.Data\PrimaDataAccess.cs:line 62
+   at DansLesGolfs.Data.PrimaDataAccess.Lock(String courseId, DateTime date, Int32 numberOfPlayers, String& msg) in E:\websites\DLG\DansLesGolfs.Data\PrimaDataAccess.cs:line 193
+   at DansLesGolfs.Controllers.CartController.AddItemPrimaTeeSheet(Nullable`1 itemId, String courseId, String teeDate, String teeTime, String teeTime9In, String teeTime9Out, Int32 numberOfPlayers, Decimal price, String gameType) in E:\websites\DLG\DansLesGolfs\Controllers\CartController.cs:line 330 System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond 37.187.87.248:80
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at DansLesGolfs.Data.PrimaDataAccess.SendRequest(String method, String path, Dictionary`2 parameters) in E:\websites\DLG\DansLesGolfs.Data\PrimaDataAccess.cs:line 62
+   at DansLesGolfs.Data.PrimaDataAccess.Lock(String courseId, DateTime date, Int32 numberOfPlayers, String& msg) in E:\websites\DLG\DansLesGolfs.Data\PrimaDataAccess.cs:line 193
+   at DansLesGolfs.Controllers.CartController.AddItemPrimaTeeSheet(Nullable`1 itemId, String courseId, String teeDate, String teeTime, String teeTime9In, String teeTime9Out, Int32 numberOfPlayers, Decimal price, String gameType) in E:\websites\DLG\DansLesGolfs\Controllers\CartController.cs:line 330

@@ -1,0 +1,150 @@
+﻿@using DansLesGolfs.BLL
+@using DansLesGolfs.Models
+@using System.Globalization
+@model DansLesGolfs.BLL.Site
+@{
+    ViewBag.Title = Model.SiteName;
+    Layout = "~/Views/_Shared/MP/Front/_Default.cshtml";
+    ProductsListModel relatedItemModel = ViewBag.RelatedItems as ProductsListModel;
+    bool hasPracticalInfo = !String.IsNullOrEmpty(Model.PracticalInfo.StripHtml().Trim());
+    bool hasAccommodationInfo = !String.IsNullOrEmpty(Model.Accommodation.StripHtml().Trim());
+    bool hasRestaurantInfo = !String.IsNullOrEmpty(Model.Restaurant.StripHtml().Trim());
+}
+@section head
+{
+    <link href="@Url.Content("~/Assets/Front/plugins/royalslider/royalslider.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Assets/Front/plugins/royalslider/skins/default/rs-default.css")" rel="stylesheet" />
+}
+@section foot
+{
+    <script>
+        window.siteId = '@Model.SiteId';
+        window.latitude = eval('@Model.Latitude.ToString("0.000000", CultureInfo.InvariantCulture)');
+        window.longitude = eval('@Model.Longitude.ToString("0.000000", CultureInfo.InvariantCulture)');
+    </script>
+    <script src="@Url.Content("~/Assets/Libraries/bootstrap-starrr/bootstrap.starrr.js")"></script>
+    <script src="@Url.Content("~/Assets/Front/plugins/royalslider/jquery.royalslider.min.js")"></script>
+    <script src="@Url.Content("~/Assets/Libraries/mCustomScrollbar/jquery.mCustomScrollbar.js")"></script>
+    <script src="@Url.Content("~/Assets/Front/scripts/pages/site.js")"></script>
+}
+<div id="page-site-detail">
+    <div id="site-info" data-id="@Model.SiteId" class="margin-bottom-20">
+        @if (Model.SiteImages != null && Model.SiteImages.Any())
+        {
+            <div class="row">
+                <section id="item-images-section" class="col-md-12">
+                    <div id="item-images-slider" class="royalSlider rsDefault">
+                        @if (Model.SiteImages != null && Model.SiteImages.Any())
+                        {
+                            foreach (SiteImage img in Model.SiteImages)
+                            {
+                                <div class="slide-image" style="background: url(@Html.GetSiteImageUrl(Model.SiteId, img, "large", 620, 464)) no-repeat center center;background-size: cover;" data-rstmb="@Html.GetSiteImageUrl(Model.SiteId, img, "thumbnail")"></div>
+                            }
+                        }
+                        else
+                        {
+                            <div class="slide-image" style="background: url(@Url.Content("~/Assets/Front/img/no-item-slide-image.png")) no-repeat center center;background-size: cover;" data-rstmb="@Url.Content("~/Assets/Front/img/no-item-slide-image.png")"></div>
+                        }
+                    </div>
+                </section>
+            </div>
+        }
+        <div class="row">
+            <section id="site-info-section" class="col-md-12">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#tab-descriptive" data-toggle="tab">@Resources.Descriptive</a></li>
+                    @if (hasPracticalInfo)
+                    {
+                        <li><a href="#tab-practical-info" data-toggle="tab">@Resources.PracticalInfo</a></li>
+                    }
+                    @if (hasAccommodationInfo)
+                    {
+                        <li><a href="#tab-accommodation" data-toggle="tab">@Resources.Accommodation</a></li>
+                    }
+                    <li><a href="#tab-location" data-toggle="tab">@Resources.Location</a></li>
+                    @if (hasRestaurantInfo)
+                    {
+                        <li><a href="#tab-restaurant" data-toggle="tab">@Resources.Restoration</a></li>
+                    }
+                    <li><a href="#tab-rating" data-toggle="tab">@Resources.Rating</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="tab-descriptive" class="tab-pane active">
+                        <h3 id="Site-name">@Model.SiteName</h3>
+                        <p>
+                            @MvcHtmlString.Create(Model.Description)
+                        </p>
+                        <div class="review-panel">
+                            <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+                                Avis: <div class="starrr review-stars fixed" data-rating="@Model.AverageRating" title="@(Model.AverageRating > 0 ? Resources.WriteYourReview : Resources.BeTheFirstToReview)"></div>
+                                <meta itemprop="ratingValue" content="@Model.AverageRating" />
+                                <meta itemprop="worstRating" content="1" />
+                                <meta itemprop="bestRating" content="5" />
+                            </div>
+                        </div>
+                    </div>
+                    <div id="tab-practical-info" class="tab-pane">
+                        @MvcHtmlString.Create(Model.PracticalInfo)
+                    </div>
+                    <div id="tab-accommodation" class="tab-pane">
+                        @MvcHtmlString.Create(Model.Accommodation)
+                    </div>
+                    <div id="tab-location" class="tab-pane">
+                        <div id="site-map-canvas"></div>
+                    </div>
+                    <div id="tab-restaurant" class="tab-pane">
+                        @MvcHtmlString.Create(Model.Restaurant)
+                    </div>
+                    <div id="tab-rating" class="tab-pane">
+                        <div id="item-reviews">
+                            <div class="review-panel">
+                                @Resources.GlobalNote : <div class="starrr review-stars fixed" data-rating="@ViewBag.YourRating" title="@(ViewBag.AverageRating > 0 ? Resources.WriteYourReview : Resources.BeTheFirstToReview)"></div> — <span class="review-number">@Model.ReviewNumber</span>
+                            </div>
+                            <div class="social-panel">
+                                <div class="fb-like" data-href="@Request.Url.AbsoluteUri" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+                            </div>
+                            <div id="reviews-list">
+                                @Html.Partial("~/Views/_Shared/UC/Front/Site/UCSiteReviews.cshtml", Model.SiteReviews)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    @if (relatedItemModel != null)
+    {
+        @Html.Partial("~/Views/_Shared/UC/Front/Item/UCProductList.cshtml", relatedItemModel)
+    }
+</div>
+
+<a id="open-rating-popup-button" href="#rating-popup"></a>
+<div id="rating-popup">
+    <div class="form-group">
+        <label class="control-label">@Resources.YourRating</label>
+        <div class="input-icon">
+            <div class="starrr review-stars" data-rating="@Model.AverageRating" title="@(Model.AverageRating > 0 ? Resources.WriteYourReview : Resources.BeTheFirstToReview)"></div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label">@Resources.Subject</label>
+        <div class="input-icon">
+            <input id="review-subject-input" class="form-control" placeholder="@Resources.Subject" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label">@Resources.YourReview</label>
+        <div class="input-icon">
+            <textarea id="review-message-input" class="form-control" placeholder="@Resources.WriteYourReview"></textarea>
+        </div>
+    </div>
+    <div class="form-actions">
+        <button type="submit" id="submit-review-button" class="btn btn-primary pull-right">
+            &gt; @Resources.SubmitReview
+        </button>
+    </div>
+</div>
+<a id="open-rating-finish-button" href="#rating-finish-popup"></a>
+<div id="rating-finish-popup" style="display: none;">
+    @Resources.ReviewThankYou
+</div>

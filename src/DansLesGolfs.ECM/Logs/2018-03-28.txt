@@ -1,0 +1,35 @@
+2018-03-28 16:09:49.4456   9 Error                          DansLesGolfs.ECM.Controllers.BaseController System.Data.SqlClient.SqlException (0x80131904): The DELETE statement conflicted with the REFERENCE constraint "FK_CustomerGroupCustomerType_CustomerGroup". The conflict occurred in database "ECM", table "dbo.CustomerGroupCustomerType", column 'CustomerGroupId'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteNonQuery(SqlConnection connection, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteNonQuery(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at DansLesGolfs.Data.SqlDataAccess.DeleteCustomerGroup(Int64 nCustomerGroupId) in D:\Coding\ECM\DansLesGolfs.Data\SqlDataAccess_DLGEmail.cs:line 855
+   at DansLesGolfs.ECM.Controllers.CustomerGroupController.DoDelete(Int64 id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\CustomerGroupController.cs:line 205
+   at DansLesGolfs.ECM.Controllers.BaseECMCRUDController`1.Delete(Int64[] ids) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\BaseClass\BaseECMCRUDController.cs:line 527
+ClientConnectionId:9f7f51d5-ba2e-4a12-acb6-465c7606ca4d
+Error Number:547,State:0,Class:16 System.Data.SqlClient.SqlException (0x80131904): The DELETE statement conflicted with the REFERENCE constraint "FK_CustomerGroupCustomerType_CustomerGroup". The conflict occurred in database "ECM", table "dbo.CustomerGroupCustomerType", column 'CustomerGroupId'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteNonQuery(SqlConnection connection, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteNonQuery(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at DansLesGolfs.Data.SqlDataAccess.DeleteCustomerGroup(Int64 nCustomerGroupId) in D:\Coding\ECM\DansLesGolfs.Data\SqlDataAccess_DLGEmail.cs:line 855
+   at DansLesGolfs.ECM.Controllers.CustomerGroupController.DoDelete(Int64 id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\CustomerGroupController.cs:line 205
+   at DansLesGolfs.ECM.Controllers.BaseECMCRUDController`1.Delete(Int64[] ids) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\BaseClass\BaseECMCRUDController.cs:line 527
+ClientConnectionId:9f7f51d5-ba2e-4a12-acb6-465c7606ca4d
+Error Number:547,State:0,Class:16

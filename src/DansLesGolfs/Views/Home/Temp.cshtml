@@ -1,0 +1,39 @@
+﻿@using DansLesGolfs.Models
+@using DansLesGolfs.BLL
+@model ProductsListModel
+@{
+    Layout = "~/Views/_Shared/MP/Front/_Default.cshtml";
+    ViewBag.Title = "Découvrez prochainement la DLG Shop !";
+}
+@section head
+{
+    <link href="@Url.Content("~/Assets/Front/css/pages/nopermission.css")" rel="stylesheet" />
+}
+@section foot
+{
+    <script>
+        jQuery('#subscription-link').click(function (e) {
+            e.preventDefault();
+            jQuery('html, body').animate({
+                scrollTop: jQuery('#email-subscribe').offset().top - jQuery('#topnav').height() - 50
+            }, 1000);
+            jQuery('#email-subscribe').val('').focus();
+        });
+    </script>
+}
+<div id="page-temp-unavailable">
+    <div class="card-box">
+
+        <div class="card-box-form">
+
+            <div class="card-box-form-title">
+                <h3>Découvrez prochainement la DLG Shop !</h3>
+            </div>
+
+            <p>Vous êtes golfeur, vous recherchez du matériel de golf à un prix imbattable ?<br />Bientôt, vous trouverez votre bonheur dans la DLG Shop !</p>
+            <p><a id="subscription-link" href="#email-subscribe">Inscrivez-vous dès à present a notre newsletter pour etre informé de son ouverture</a></p>
+            <p>Vous êtes directeur de golf, vous disposez d'invendus et vous souhaitez déstocker votre proshop?<br />Avec la DLG Shop, <span class="card-box-text-hightlight card-box-text-bold">DansLesGolfs.com</span> vous en offre la possibilité!</p>
+            <p><a href="@Url.Content("~/DLGShop/Register")">Faites des maintenant votre demande d'inscription pour ouvrir votre pro-shop virtuel</a></p>
+        </div>
+    </div>
+</div>

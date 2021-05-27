@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<License>
+  <Id>8cbe1140-a673-49f7-add1-66e90478f573</Id>
+  <ProductName>Mail.dll</ProductName>
+  <SubscriptionUntil>2017-04-20</SubscriptionUntil>
+  <RegisteredTo>Weerayut Teja</RegisteredTo>
+  <LicenseType>single developer</LicenseType>
+  <BuyerName>Weerayut Teja</BuyerName>
+  <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+    <SignedInfo>
+      <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+      <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+      <Reference URI="">
+        <Transforms>
+          <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+        </Transforms>
+        <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <DigestValue>ERU1jGtnJC0pA9SMPcciHfycLoE=</DigestValue>
+      </Reference>
+    </SignedInfo>
+    <SignatureValue>S6IFAmNikizrEzEDYspVA9WTr/Zwww4PxmJ8ehzyyBZ4uIbSHQSkN7k1zwCQk+jS5LaqWCR6vYT+YblWVBfu5kVyTN0Niw5epiV2tXNs7HTDU6xve4IbdzxL6a1y9GqqKONS2Z/2z4tWKkgJMxx1HW+eHdxrVQQcPIAwSe0jRfU=</SignatureValue>
+  </Signature>
+</License>

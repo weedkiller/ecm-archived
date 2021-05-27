@@ -1,0 +1,47 @@
+﻿@using DansLesGolfs
+@{
+    ViewBag.Title = Resources.MyCouponsAndDiscount;
+    Layout = "~/Views/_Shared/MP/Front/_Default.cshtml";
+}
+@section head
+{
+    <link rel="stylesheet" type="text/css" href="@Href("~/Assets/Front/css/user-menu.css")">
+}
+@section foot
+{
+}
+
+<div id="page-account-dashboard">
+
+    <div class="row margin-bottom-40">
+        <div class="col-md-12">
+            <div class="account-box">
+                <div class="account-box-header">@Resources.MyCouponsAndDiscount</div>
+                <div class="account-box-table">
+                    <div class="table-responsive">
+                        <table id="coupon-discount" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>@Resources.coupons_title</th>
+                                    <th style="text-align:center;">@Resources.Amount</th>
+                                    <th style="text-align:center;">@Resources.coupons_select</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (int i = 0; i < 10; i++)
+                                {
+                                    var amount = "2" + @i + " €";
+                                    <tr>
+                                        <td class="from">Coupon droit de jeu @i</td>
+                                        <td class="to" style="text-align:center;">@amount</td>
+                                        <td class="" style="text-align:center;"><input type="checkbox" /></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

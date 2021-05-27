@@ -1,0 +1,30 @@
+﻿@using DansLesGolfs.Data
+@model List<PrimaTeeTime>
+@{
+    DateTime now = DateTime.Now;
+}
+@if (Model.Any())
+{
+    foreach (PrimaTeeTime it in Model)
+    {
+        if (it.ReservationDateTime > now)
+        {
+            <tr data-id="@it.ID" data-date="@it.ReservationDateTime.ToString("yyyyMMdd")" data-time="@it.ReservationDateTime.ToString(@"HHmm")" data-time9in="@(it.ReservationDateTime9In.HasValue ? it.ReservationDateTime9In.Value.ToString(@"HHmm") : string.Empty)" data-time9out="@(it.ReservationDateTime9Out.HasValue ? it.ReservationDateTime9Out.Value.ToString(@"HHmm") : string.Empty)" data-price="@it.Price" data-gametype="@(it.GameType == PrimaGameType.Holes9 ? 9 : 18)">
+                <td class="col-departure-time">@(it.ReservationDateTime.ToString("HH") + "H" + it.ReservationDateTime.ToString("mm"))</td>
+                <td class="col-availability">@it.Availability / 4</td>
+                <td class="col-coursename">@it.Name</td>
+                <td class="col-holes">@(it.GameType == PrimaGameType.Holes9 ? "9" : "18")</td>
+                <td class="col-rate">@it.Price.ToString("#,##0.00")</td>
+                <td class="col-discount">@(it.Discount + "%")</td>
+                <td class="col-number-players"><input class="number-editor form-control" name="number_of_players" value="1" min="1" max="@(it.Availability)" /></td>
+                <td class="col-reservation"><button class="btn btn-primary reserve-button" @(!it.IsAvailable ? " disabled=\"disabled\"" : "")>@Resources.Reserve</button></td>
+            </tr>
+        }
+    }
+}
+else
+{
+    <tr>
+        <td colspan="8">@Resources.ThereisNoAvailableSlot</td>
+    </tr>
+}

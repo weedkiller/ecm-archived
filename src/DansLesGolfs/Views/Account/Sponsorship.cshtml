@@ -1,0 +1,212 @@
+﻿@using DansLesGolfs
+@using DansLesGolfs.BLL
+@model AccountSponsorship
+@{
+    ViewBag.Title = Resources.MySponsorship;
+    Layout = "~/Views/_Shared/MP/Front/_Default.cshtml";
+
+    var TotalSize = ViewBag.TotalSize;
+    var TotalPage = Convert.ToInt32((TotalSize + 10.00 - 1) / 10.00);
+}
+@section head
+{
+    <link rel="stylesheet" type="text/css" href="@Href("~/Assets/Libraries/font-awesome/css/font-awesome.min.css")">
+    <link rel="stylesheet" type="text/css" href="@Href("~/Assets/Front/css/user-menu.css")">
+}
+@section foot
+{
+    <script>
+        function submitFormSponsor() {
+            if (!isValidEmailAddressSponsor($("#EmailTo").val())) {
+                $("#EmailTo").addClass("input-validation-error")
+            } else {
+                $("#MySponsorshipForm").submit()
+            }
+        }
+        function LoadPage(t) {
+            var pindex = $(t).data("pindex");
+            var PageSize = $("#PageSize").val();
+            $(".pagination li").removeClass("active");
+            $(t).closest("li").addClass("active");
+
+            //if ($(t).closest("li").next().hasClass("GoToLast")) {
+            //    $(".GoToLast").addClass("disabled");
+            //    $(".GoToFirst").removeClass("disabled");
+            //}
+
+            //if ($(t).closest("li").prev().hasClass("GoToFirst")) {
+            //    $(".GoToFirst").addClass("disabled");
+            //    $(".GoToLast").removeClass("disabled");
+            //}
+            var test = {
+                PageIndex: pindex,
+                PageSize: parseInt(PageSize)
+            }
+            $.ajax({
+                url: getUrl("Account/GetGodChildren"),
+                data: {
+                    PageIndex: pindex,
+                    PageSize: PageSize
+                },
+                type: "POST",
+                success: function (data) {
+                    if (data.IsResult) {
+                        var _html = "";
+                        if (data.ListData != null && data.ListData.length > 0) {
+                            var list = data.ListData;
+                            for (var i = 0; i < list.length; i++) {
+                                _html += "<div class='godchlidren-detail'>";
+                                _html += "<div class='sponsor-email'>";
+                                _html += list[i].SponsorEmail;
+                                _html += "</div>";
+                                _html += "<div class='sponsor-date'>";
+                                _html += list[i].SponsorDate;
+                                _html += "</div></div>";
+                            }
+                        }
+
+                        $('html, body').animate({
+                            scrollTop: $("#wrap-sponsorship-godchildren").offset().top
+                        }, 500, function () {
+                            $(".godchlidren-detail-wrapper").html(_html);
+                        });
+                    }
+                },
+                error: function () {
+
+                }
+            })
+        }
+        function GoToFirst(t) {
+            if (!$(t).hasClass("disabled")) {
+                $(".pagination li").eq(1).find("a").click();
+            }
+        }
+        function GoToLast(t) {
+            if (!$(t).hasClass("disabled")) {
+                $(".pagination li").eq($(".pagination li").length - 2).find("a").click();
+            }
+        }
+    </script>
+}
+
+<div id="page-account-dashboard">
+    <div class="account-box-header">@Resources.MySponsorship</div>
+    <div class="row margin-bottom-40">
+        <div class="col-md-12">
+            <div id="page-sponsorship" class="account-box">
+                <div class="account-box-table">
+
+                    @using (Ajax.BeginForm("Sponsorship", "Account", null, new AjaxOptions { HttpMethod = "Post" }, new { @class = "form-horizontal", @id = "MySponsorshipForm" }))
+                    {
+                        <div id="wrap-sponsorship" class="table-responsive">
+
+                            <div id="dashboard">
+
+                                <div id="form-sponsorship">
+
+                                    @if (TempData["Error"] == "success")
+                                    {
+                                        <div class="alert alert-success alert-dismissible fade in" role="alert">
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                            <strong>Success</strong>
+                                        </div>
+                                    }
+                                    else if (TempData["Error"] == "error")
+                                    {
+                                        <div class="alert alert-dangers alert-dismissible fade in" role="alert">
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                            <strong>Error</strong>
+                                        </div>
+                                    }
+                                    <div class="form-group">
+                                        <label class="title" style="width:50px;">@Resources.FromAlt : </label>
+                                        <label class="input" style="padding-left: 8px;">@Html.TextBoxFor(m => m.SponsorEmailFrom, new { @class = "form-control", @value = Model.SponsorEmailFrom, @readonly = "readonly", @width = "120px" }) @*<input type="email"  name="emailfrom" class="form-control" placeholder="@Model.SponsorEmailFrom" value="@Model.SponsorEmailFrom" readonly="readonly" />*@ </label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="title" style="width:50px;">@Resources.Subject : </label>
+                                        <span class="require-pink">*</span>
+                                        @{
+                        var Subject = Model.SubjectEmail;
+                                        }
+                                        <label class="input">@Html.TextBoxFor(m => m.SubjectEmail, new { @class = "form-control", @required = "required", Value = Subject, @width = "120px", @maxlength = "100" }) @*<input type="email"  name="emailfrom" class="form-control" placeholder="@Model.SponsorEmailFrom" value="@Model.SponsorEmailFrom" readonly="readonly" />*@ </label>
+                                    </div>
+
+
+
+                                    <div class="form-group">
+                                        <label class="title" style="width:50px;">@Resources.To : </label>
+                                        <span class="require-pink">*</span>
+                                        <label class="input">
+                                            @Html.TextBoxFor(m => m.EmailTo, new { @class = "form-control", @required = "required ", @type = "text" })@*<input type="email"  name="emailto" class="form-control" />*@
+                                        </label>
+
+                                    </div>
+                                    <div id="detail">
+                                        <label class="title" style="width:50px;">@Resources.Message </label>
+                                        @Html.TextAreaFor(m => m.SponsorContent, new { @class = "form-control EmailContent", @required = "required", @rows = "10", @value = Resources.MsgDetailSponsor })
+                                    </div>
+
+                                    <div style="float: right;">
+                                        <div class="form-group">
+                                            <label class="input">
+                                                <input type="text" name="fullname" class="form-control" placeholder="@Model.SponsorFullName" readonly="readonly" />
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="require-box">
+                                        <span class="require-pink">*</span> @Resources.MyDetails_Require
+                                    </div>
+                                    <div class="clear"></div>
+
+                                </div>
+                                <div style="clear:both"></div>
+                                <div id="command">
+                                    <div class="form-group">
+                                        <button type="button" class="btn btn-primary" onclick="submitFormSponsor()">> @Resources.Sponsor</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    @if (Model.GodChildren != null)
+                    {
+                        <div class="wrap-sponsorship-godchildren" id="wrap-sponsorship-godchildren">
+                            <div class="account-box-header">@Resources.MyApprentices</div>
+                            <div class="godchlidren-header">
+                                <div class="sponsor-email">@Resources.EmailAddress</div>
+                                <div class="sponsor-date">@Resources.SponsorDate</div>
+                            </div>
+                            <div class="godchlidren-detail-wrapper">
+                                @foreach (var data in Model.GodChildren)
+                                {
+                                    <div class="godchlidren-detail">
+                                        <div class="sponsor-email">
+                                            @data.SponsorEmail
+                                        </div>
+                                        <div class="sponsor-date">
+                                            @data.SponsorDate
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        <input type="hidden" id="PageSize" name="PageSize" value="@ViewBag.PageSize" />
+                        <input type="hidden" id="PageIndex" name="PageIndex" value="@ViewBag.PageIndex" />
+                        <input type="hidden" id="TotalSize" name="TotalSize" value="@ViewBag.TotalSize" />
+                        <input type="hidden" id="TotalPage" name="TotalPage" value="@TotalPage" />
+                        <ul class="pagination">
+                            <li class="GoToFirst"><a href="javascript:void(0)" onclick="GoToFirst(this); return false;">&laquo;</a></li>
+                            <li class="active"><a href="javascript:void(0)" onclick="LoadPage(this); return false;" data-pindex="1">1</a></li>
+                            @for (int i = 2; i <= TotalPage; i++)
+                            {
+                                <li><a href="javascript:void(0)" onclick="LoadPage(this); return false;" data-pindex="@i">@i</a></li>
+                            }
+                            <li class="GoToLast"><a href="javascript:void(0)" onclick="GoToLast(this);">&raquo;</a></li>
+                        </ul>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

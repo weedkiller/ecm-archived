@@ -1,0 +1,188 @@
+﻿@using DansLesGolfs.Base
+@using DansLesGolfs.BLL
+@using System.Globalization
+@{
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    @Resources.SiteInformation
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <label for="SiteName">@Resources.SiteName</label>
+                        </div>
+                        <div class="col-md-10">
+                            @Html.TextBox("SiteName", DataManager.ToString((object)ViewBag.SiteName), new { Required = "Required", maxlength = 200, @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <label for="Description">@Resources.Description</label>
+                        </div>
+                        <div class="col-md-10">
+                            @Html.TextArea("Description", DataManager.ToString((object)ViewBag.Description), new { rows = 20, @class = "form-control editor" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <label for="GolfBrandId">@Resources.Brand</label>
+                        </div>
+                        <div class="col-md-6">
+                            @Html.DropDownList("GolfBrandId", (IEnumerable<SelectListItem>)ViewBag.Brands, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                @*<div class="row">
+                        <div class="form-group">
+                            <div class="col-md-2 control-label">
+                                <label for="Address">@Resources.Address</label>
+                            </div>
+                            <div class="col-md-10">
+                                @Html.TextArea("Address", (string)ViewBag.Address, new { rows = 3, maxlength = 500, @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-2 control-label">
+                                <label for="Street">@Resources.Street</label>
+                            </div>
+                            <div class="col-md-10">
+                                @Html.TextBox("Street", (string)ViewBag.Street, new { maxlength = 500, @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>*@
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <label for="CourseName">@Resources.City</label>
+                        </div>
+                        <div class="col-md-10">
+                            @Html.TextBox("City", (string)ViewBag.City, new { maxlength = 200, @class = "form-control", required = "required" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <label for="CountryId">@Resources.Country</label>
+                        </div>
+                        <div class="col-md-6">
+                            @Html.DropDownList("CountryId", (IEnumerable<SelectListItem>)ViewBag.Countries, new { @class = "form-control", required = "required" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <label for="RegionId">@Resources.Region</label>
+                        </div>
+                        <div class="col-md-6">
+                            @Html.DropDownList("RegionId", (IEnumerable<SelectListItem>)ViewBag.Regions, new { @class = "form-control", required = "required" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <label for="StateId">@Resources.State</label>
+                        </div>
+                        <div class="col-md-6">
+                            @Html.DropDownList("StateId", (IEnumerable<SelectListItem>)ViewBag.States, new { @class = "form-control", required = "required" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <label for="PostalCode">@Resources.PostalCode</label>
+                        </div>
+                        <div class="col-md-6">
+                            @Html.TextBox("PostalCode", (string)ViewBag.PostalCode, new { maxlength = 50, @class = "form-control", required = "required" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <label for="Latitude">@Resources.Latitude</label>
+                        </div>
+                        <div class="col-md-10">
+                            @Html.TextBox("Latitude", DataManager.ToDecimal((object)ViewBag.Latitude).ToString("0.000000"), new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <label for="Longitude">@Resources.Longitude</label>
+                        </div>
+                        <div class="col-md-10">
+                            @Html.TextBox("Longitude", DataManager.ToDecimal((object)ViewBag.Longitude).ToString("0.000000"), new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <label for="Phone">@Resources.Phone</label>
+                        </div>
+                        <div class="col-md-10">
+                            @Html.TextBox("Phone", (string)ViewBag.Phone, new { maxlength = 100, @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <label for="Fax">@Resources.Fax</label>
+                        </div>
+                        <div class="col-md-10">
+                            @Html.TextBox("Fax", (string)ViewBag.Fax, new { maxlength = 100, @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <label for="Website">@Resources.Website</label>
+                        </div>
+                        <div class="col-md-10">
+                            @Html.TextBox("Website", (string)ViewBag.Website, new { maxlength = 200, type = "url", @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <label for="PostalCode">@Resources.Email</label>
+                        </div>
+                        <div class="col-md-10">
+                            @Html.TextBox("Email", (string)ViewBag.Email, new { maxlength = 200, type = "email", @class = "form-control", required = "required" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <label for="FB">Facebook URL</label>
+                        </div>
+                        <div class="col-md-10">
+                            @Html.TextBox("FB", (string)ViewBag.FB, new { maxlength = 200, type = "url", @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

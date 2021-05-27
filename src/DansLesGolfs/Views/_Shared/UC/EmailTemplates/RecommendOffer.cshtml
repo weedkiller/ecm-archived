@@ -1,0 +1,10 @@
+﻿@model DansLesGolfs.BLL.Item
+@{
+    ViewBag.Title = Resources.RecommendedProduct;
+    Layout = "~/Views/_Shared/MP/_EmailTemplate.cshtml";
+}
+<div id="recommend-product">
+    <p>@Resources.Hello @ViewBag.Name</p>
+    <p>Your friend recommend this product.</p>
+    <p><a href="@Url.ServerUrl("~/Item/" + Model.ItemSlug)">@Model.ItemName</a></p>
+</div>

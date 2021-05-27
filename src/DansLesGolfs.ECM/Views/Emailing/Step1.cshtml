@@ -1,0 +1,123 @@
+﻿@model Emailing
+@{
+    Layout = "~/Views/_Shared/MP/_Layout.cshtml";
+    string scheduleDateStr = String.Empty;
+    string scheduleTimeStr = "00:00";
+    if (Model.ScheduleDateTime.HasValue)
+    {
+        scheduleDateStr = Model.ScheduleDateTime.Value.ToString("dd/MM/yyyy");
+        scheduleTimeStr = Model.ScheduleDateTime.Value.ToString("HH:mm");
+    }
+}
+@section head
+{
+}
+@section foot
+{
+    <script src="@Url.Content("~/Assets/Admin/scripts/page/email-sending.js")"></script>
+    <script>
+        $('.info-form').validate();
+
+        let now = new Date();
+        let today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+        $('.datepicker').datepicker({
+            dateFormat: 'dd/mm/yy',
+            autoSize: true,
+            firstDay: 1,
+            minDate: today
+        });
+    </script>
+}
+<form method="post" action="@Url.Content("~/Emailing/SaveStep1")" id="form-send-email" class="info-form">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        @Resources.EmailCampaignInformation
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    @if (ViewBag.LogonUserType == UserType.Type.SuperAdmin || ViewBag.LogonUserType == UserType.Type.Admin)
+                    {
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-4 control-label">
+                                    <label for="SiteId">@Resources.Site</label>
+                                </div>
+                                <div class="col-md-6">
+                                    @Html.DropDownList("SiteId", (IEnumerable<SelectListItem>)ViewBag.Sites, new { @class = "form-control", required = "required" })
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                <label for="EmailName">@Resources.CampaignName</label>
+                            </div>
+                            <div class="col-md-8">
+                                @Html.TextBox("EmailName", (string)ViewBag.EmailName, new { required = "required", @class = "form-control", maxlength = 200 })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                <label for="Subject">@Resources.Subject</label>
+                            </div>
+                            <div class="col-md-8">
+                                @Html.TextBox("Subject", (string)ViewBag.Subject, new { required = "required", @class = "form-control", maxlength = 200 })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                <label for="FromName">@Resources.FromName</label>
+                            </div>
+                            <div class="col-md-8">
+                                @Html.TextBox("FromName", (string)ViewBag.FromName, new { required = "required", @class = "form-control", maxlength = 200 })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                <label for="FromEmail">@Resources.FromEmail</label>
+                            </div>
+                            <div class="col-md-8">
+                                @Html.TextBox("FromEmail", (string)ViewBag.FromEmail, new { required = "required", @class = "form-control", maxlength = 200, @type = "email" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                <label for="FromEmail">@Resources.ScheduleDateTime</label>
+                            </div>
+                            <div class="col-md-2">
+                                @Html.TextBox("ScheduleDate", scheduleDateStr, new { @class = "form-control datepicker", placeholder = "dd/mm/yyyy" })
+                            </div>
+                            <div class="col-md-2">
+                                @Html.TextBox("ScheduleTime", scheduleTimeStr, new { @class="form-control timepicker", placeholder = "hh:mm:ss", type = "time" })
+                            </div>
+                        </div>
+                    </div>
+                    @*<div class="row">
+                            <div class="form-group">
+                                <div class="col-md-4 control-label">
+                                    <label for="EmailFormatId">@Resources.PrivacyPolicy</label>
+                                </div>
+                                <div class="col-md-6">
+                                    @Html.DropDownList("EmailFormatId", (IEnumerable<SelectListItem>)ViewBag.Impressums, new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>*@
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="@Url.Content("~/Emailing")" class="btn btn-default">@Resources.Back</a>
+    <input type="submit" id="Next" name="Next" value="@Resources.Next" class="btn btn-primary" />
+</form>

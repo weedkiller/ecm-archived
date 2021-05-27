@@ -1,0 +1,31 @@
+﻿@using DansLesGolfs.BLL
+@model Item
+@{
+    string imageUrl = string.Empty;
+    if (Model.ItemImages != null && Model.ItemImages.Any())
+    {
+        imageUrl = Html.GetItemImageUrl(Model.ItemId, Model.ItemImages.First(), "thumbnail");
+    }
+}
+<a id="product-popup-link" href="#product-popup"></a>
+<div id="product-popup">
+    <h3 class="product-popup-title">@Resources.YouJustAddFollowingItemToYourCart :</h3>
+    <div class="popup-body">
+        <div class="popup-heading">
+            <div class="item-image"><img /></div>
+            <div class="item-name"></div>
+            <div class="item-qty">@Resources.Quantity</div>
+            @*<div class="item-price col-md-4"></div>*@
+        </div>
+        <div class="popup-content">
+            <div class="item-image"@MvcHtmlString.Create(String.IsNullOrEmpty(imageUrl.Trim()) ? "" : "style=\"background-image: url(" + imageUrl + ")\"")><img src="@imageUrl" /></div>
+            <div class="item-name">@MvcHtmlString.Create(Model.ItemName)</div>
+            <div class="item-qty">1</div>
+            @*<div class="item-price col-md-4"></div>*@
+        </div>
+    </div>
+    <div class="action-buttons">
+        <a class="continue-to-shopping btn btn-default pull-left">&gt; @Resources.ContinueToShopping</a>
+        <a class="checkout-button btn btn-primary pull-right" href="@Url.Content("~/Cart")">&gt; @Resources.Checkout</a>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+﻿@model EmailTemplate
+@{
+    //Layout = "~/Views/_Shared/MP/_EmailTemplate.cshtml";
+    ViewBag.Title = Model.Subject;
+}
+@section head
+{
+}
+@section foot
+{
+}
+@MvcHtmlString.Create((string)ViewBag.HTMLBody)

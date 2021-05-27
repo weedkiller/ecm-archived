@@ -1,0 +1,19 @@
+﻿@using DansLesGolfs.Base
+@{
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    @Resources.Map
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div id="site-map-canvas"></div>
+                @Html.Hidden("Latitude")
+                @Html.Hidden("Longitude")
+            </div>
+        </div>
+    </div>
+</div>

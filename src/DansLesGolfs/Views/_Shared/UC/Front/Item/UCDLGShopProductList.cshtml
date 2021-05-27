@@ -1,0 +1,38 @@
+﻿@using DansLesGolfs.BLL
+@model DansLesGolfs.Models.ProductsListModel
+
+@if (Model.Items != null && Model.Items.Any())
+{
+    <div id="reseller-products-list">
+        @foreach (Item it in Model.Items)
+        {
+            <div class="@Html.ItemClasses(it)" data-id="@it.ItemId">
+                @if (it.ItemImages != null && it.ItemImages.Any())
+                {
+                    <div class="product-thumbnail">
+                        <a href="@Html.ItemUrl(it)" style="background-image: url(@Html.GetItemImageUrl(it.ItemId, it.ItemImages[0], "medium"))">@Html.ItemName(it)</a>
+                    </div>
+                }
+                else
+                {
+                    <div class="product-thumbnail">
+                        <a href="@Html.ItemUrl(it)" style="background-image: url(@Url.Content("~/Assets/Front/img/no-image-198x270.png"))">@Html.ItemName(it)</a>
+                    </div>
+                }
+                <div class="product-info">
+                    <div class="product-price"><span class="price-number">@Html.ItemPrice(it)</span></div>
+                    <h4 class="product-name"><a href="@Html.ItemUrl(it)">@Html.ItemName(it)</a></h4>
+                    <div class="site-name"><a href="@Url.Content("~/Product/Site/" + it.SiteSlug)">@it.SiteName</a></div>
+                    <a class="view-offer btn btn-primary" href="@Html.ItemUrl(it)">&gt; @Resources.ViewOffer</a>
+                </div>
+            </div>
+        }
+    </div>
+    @Html.Pagination(Model.Page, Model.TotalPages)
+    @*<a id="dlg-item-detail-popup-link" href="#dlg-item-detail-popup"></a>
+    <div id="dlg-item-detail-popup" class="hide"></div>*@
+}
+else
+{
+    <p>@Resources.ThereIsNoProduct</p>
+}

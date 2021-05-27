@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = Resources.Dashboard;
+    Layout = "~/Views/_Shared/MP/_Layout.cshtml";
+}
+@section head
+{
+}
+@section foot
+{
+}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">@Resources.Newsletter</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="dashboard-list">
+            <li class="menu-email-campaign">
+                <a href="@Url.Content("~/Emailing")">
+                @Resources.EmailCampaigns
+                </a>
+            </li>
+            <li class="menu-mailings-list">
+                <a href="@Url.Content("~/MailingList")">@Resources.MailingList</a>
+            </li>
+            <li class="menu-email-template">
+                <a href="@Url.Content("~/EmailTemplate")">@Resources.EmailTemplates</a>
+            </li>
+            <li class="menu-global-settings">
+                <a href="@Url.Content("~/GlobalSettings")">@Resources.GlobalSettings</a>
+            </li>
+        </ul>
+    </div>
+</div>

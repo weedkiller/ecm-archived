@@ -1,0 +1,166 @@
+﻿@using DansLesGolfs
+@using DansLesGolfs.BLL
+
+@{
+    ViewBag.Title = "DisplayDlgList";
+    Layout = "~/Views/_Shared/MP/_Admin.cshtml";
+    bool hideAddButton = ViewBag.HideAddButton == null ? false : (bool)ViewBag.HideAddButton;
+}
+
+@*@model ItemDlgCardCore*@
+
+@section head
+{
+}
+@section foot
+{
+    <script type="text/javascript">
+        window.areaName = "Admin";
+        window.controllerName = "DlgCard";
+        window.primaryKey = "ItemId";
+        window.columnLength = 4;
+    </script>
+    @*<script type="text/javascript" src="@Url.Content("~/Assets/Admin/scripts/list-page.js")"></script>*@
+    <script type="text/javascript">
+        window.confirmDeleteText = "Are you sure for deleting this item?";
+        window.confirmDeleteSelectedText = "Are you sure for deleting these item?";
+
+        jQuery(document).ready(function ($) {
+            initDataTable();
+
+            $('#datatable thead .checkboxes input[type=checkbox]').click(function (e) {
+                $('#datatable tbody tr td:first-child input[type=checkbox]').attr('checked', this.checked);
+            });
+
+            $('.action-button').click(function () {
+                var selectedOption = $('.actions-dropdown').val();
+                var ids = new Array();
+                $('#datatable tbody tr td input[type=checkbox]:checked').each(function (i) {
+                    ids.push(eval(this.value));
+                });
+                if (selectedOption == "delete-selected") {
+                    if (confirm(window.confirmDeleteSelectedText)) {
+                        deleteItems(ids);
+                    }
+                }
+            });
+        });
+
+        function initDataTable() {
+
+            window.dataTable = $('.dataTable').dataTable({
+                //"aLengthMenu": [[1, 25, 50, -1], [1, 25, 50, "All"]],
+                "aaSorting": [[0, "asc"]],
+                "bProcessing": false,
+                "bServerSide": true,
+                "iTotalRecords": 57,
+                "sAjaxSource": getUrl(window.areaName + '/' + window.controllerName + "/LoadDataDlgCardJSON"),
+                "aoColumnDefs": [
+                    {
+                        'iWidth': 20,
+                        'bSortable': false,
+                        'aTargets': [0, window.columnLength - 2, window.columnLength - 1]
+                    }
+                ],
+                "fnDrawCallback": onDataTableDrawn
+            });
+        }
+
+        function reloadDataTable() {
+            window.dataTable.fnClearTable(0);
+            window.dataTable.fnDraw();
+        }
+
+        function getRowsHTML(rows) {
+
+            var html = '';
+            for (var i in rows) {
+                html += '<tr id="row-' + rows[i][window.primaryKey] + '">';
+                html += '<td class="column-checkbox"><input type="checkbox" value="' + rows[i][window.primaryKey] + '" /></td>';
+                for (var key in rows[i]) {
+                    if (key == window.primaryKey)
+                        continue;
+
+                    html += getColumnHTML(key, rows[i][key]);
+                }
+                html += '<td class="column-edit"><a class="edit-link" href="' + getUrl('Admin/' + window.controllerName + '/EditDlgCardAdmin/?itemId=' + rows[i][window.primaryKey]) + '">Edit</a>';
+                html += '<td class="column-edit"><a href="javascript:void(0);" class="delete-link" data-id="' + rows[i][window.primaryKey] + '">Delete</a>';
+                html += '</tr>';
+            }
+            return html;
+        }
+
+        function getColumnHTML(key, value) {
+            return '<td class="column-' + key + '">' + value + '</td>';
+        }
+
+        function deleteItems(ids) {
+            $.ajax({
+                url: getUrl(window.areaName + '/' + "DlgCard" + '/Delete'),
+                data: { 'ids': ids },
+                traditional: true,
+                dataType: 'json',
+                type: 'post',
+                success: function (result) {
+                    if (result.success) {
+                        reloadDataTable();
+                    }
+                }
+            });
+        }
+
+        function onDataTableDrawn() {
+            $('#datatable tbody .delete-link').on('click', function (e) {
+                if (confirm(window.confirmDeleteText)) {
+                    var id = $(this).data('id');
+                    deleteItems([id]);
+                }
+            });
+        }
+
+
+    </script>
+}
+
+
+@if (!hideAddButton)
+ {
+    <div class="panel">
+        <div class="panel-body">
+            <a class="btn btn-primary" href="@Url.Action("AddDlgCard","DlgCard")">Add New</a>
+        </div>
+    </div>
+ }
+<div class="panel">
+    <div class="panel-body">
+        <table id="datatable" class="dataTable table table-bordered table-striped table-scrollable table-hover">
+            <thead>
+                <tr>
+                    <th class="checkboxes column-checkbox">
+                        <input type="checkbox" />
+                    </th>
+                    @foreach (var col in (Dictionary<string, string>)ViewBag.ColumnNames)
+                    {
+                        <th>
+                            @col.Value
+                        </th>
+                    }
+
+                    <th class="column-edit">
+                        @Html.T("Edit")
+                    </th>
+                    <th class="column-delete">
+                        @Html.T("Delete")
+                    </th>
+                    </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+        <select class="actions-dropdown">
+            <option value="delete-selected">Delete Selected Items</option>
+        </select>
+        <button class="action-button btn-default">Action</button>
+    </div>
+</div>

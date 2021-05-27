@@ -1,0 +1,67 @@
+﻿@using DansLesGolfs.BLL
+@model DansLesGolfs.BLL.Item
+           @{
+               string bodyClass = (string)ViewBag.BodyClasses;
+           }
+@helper QtyDropDownList(int limit = 1)
+{
+    if (limit < 1)
+    {
+        limit = 1;
+    }
+
+    string html = "<select id=\"item-qty\" class=\"normal\" />";
+    for (int i = 1; i <= limit; i++)
+    {
+        html += "<option value=\"" + i + "\"" + (i == 1 ? " selected" : "") + ">" + i + "</option>";
+    }
+    html += "</select>";
+    @MvcHtmlString.Create(html)
+}
+<div id="item-price" class="col-md-12">
+    @if (!bodyClass.Contains("green-fee") || (bodyClass.Contains("green-fee") && ViewBag.IsAlbatrosTeeSheet != true && !Model.HasTeeSheet))
+    {
+        <div id="item-modifiers">
+            @if (Model.IsUserCanSelectDate)
+            {
+                <input type="text" id="reserve-date" name="reserve_date" readonly="readonly" value="@Resources.SelectDate" />
+            }
+            else
+            {
+                @MvcHtmlString.Create("&nbsp;")
+            }
+        </div>
+        <div id="item-quantity">
+            <span class="qty">@Resources.Qty : @QtyDropDownList(10)</span>
+        </div>
+    <div id="item-pricing" @MvcHtmlString.Create(!Model.IsUserCanSelectDate ? (Model.CheapestPrice > 0 ? "" : "style=\"display: none;\"") : "style=\"display: none;\"")>
+        @Resources.Price : <span id="item-price-number">@Html.ItemPrice(Model, Resources.NotAvailable)</span>
+        <meta itemprop="price" content="@Model.CheapestPrice.ToString("###0.00", System.Globalization.CultureInfo.InvariantCulture)"><meta itemprop="priceCurrency" content="EUR" />
+    </div>
+        <a id="add-to-cart" class="btn btn-primary @(!Model.IsUserCanSelectDate ? (Model.CheapestPrice > 0 ? "" : "disabled") : "disabled")">&gt; @Resources.AddToCart</a>
+    }
+    else if(Model.SiteId <= 0)
+    {
+        <div id="item-modifiers">@MvcHtmlString.Create("&nbsp;")</div>
+        <div id="item-quantity">
+            <span class="qty">@Resources.Qty : @QtyDropDownList(10)</span>
+        </div>
+        <div id="item-pricing">
+            @Resources.Price : <span id="item-price-number" itemprop="price">@Html.ItemPrice(Model, Resources.NotAvailable)</span>
+            <meta itemprop="priceCurrency" content="EUR" />
+        </div>
+        <a id="add-to-cart" class="btn btn-primary">&gt; @Resources.AddToCart</a>
+    }
+</div>
+
+<div id="item-reviews">
+    <div class="review-panel">
+        @Resources.GlobalNote : <div class="starrr review-stars fixed" data-rating="@Model.AverageRating" title="@(Model.AverageRating > 0 ? Resources.WriteYourReview : Resources.BeTheFirstToReview)"></div> — <span class="review-number">@Model.ReviewNumber</span>
+    </div>
+    <div class="social-panel">
+        <div class="fb-like" data-href="@Request.Url.AbsoluteUri" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+    </div>
+    <div id="reviews-list">
+        @Html.Partial("~/Views/_Shared/UC/Front/Item/UCItemReviews.cshtml", Model.ItemReviews)
+    </div>
+</div>

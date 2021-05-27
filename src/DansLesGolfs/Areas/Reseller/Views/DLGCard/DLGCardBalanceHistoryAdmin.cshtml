@@ -1,0 +1,60 @@
+﻿@{
+    ViewBag.Title = "AddDlgCardAdmin";
+    Layout = "~/Views/_Shared/MP/_Admin.cshtml";
+}
+
+@using DansLesGolfs.Base
+@using DansLesGolfs.BLL
+@model Int32
+
+@{
+    
+}
+@section foot
+{
+     <link href="~/Content/css/jquery.dataTables.css" rel="stylesheet" media="screen">
+     <link href="~/Content/css/jquery.dataTables.min.css" rel="stylesheet" media="screen">
+     <link href="~/Content/css/jquery.dataTables_themeroller.css" rel="stylesheet" media="screen">
+
+    <script type="text/javascript" src="~/Scripts/jquery.dataTables.min.js" charset="UTF-8"></script>
+
+     <script type="text/javascript">
+         $(function () {
+             $('#myDataTable').dataTable({
+                "bServerSide": false,
+                "scrollX": true,
+                "sAjaxSource": '@Url.Action("AjaxHandlerDLGCardBalance", "DlgCard", new {DlgCardId= @Model })',
+                "bProcessing": false,
+                "bFilter": false
+
+            });
+        });
+
+
+    </script>
+}
+
+
+
+   
+
+ <div style="width:670px;height:600px;overflow:auto;">
+        <table id="myDataTable" class="display" width="100%">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>DLGCardId</th>
+                    <th>UserId</th>
+                    <th>ActionType</th>
+                    <th>Description</th>
+                     <th>Debit</th>
+                    <th>Credit</th>
+                    <th>Balance</th>
+                    <th>InsertDate</th>
+                     <th>SaleId</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>

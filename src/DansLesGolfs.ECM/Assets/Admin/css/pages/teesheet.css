@@ -1,0 +1,9 @@
+#teesheet-table {
+    margin-top: 20px;
+}
+#teesheet-table tbody th {
+    font-size: 24px;
+    background: #3276b1;
+    color: #FFF;
+    text-align: center;
+}

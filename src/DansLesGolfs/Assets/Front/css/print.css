@@ -1,0 +1,174 @@
+@page {
+    size: A4;
+    margin: 10% 5%;
+}
+
+html, body {
+    font: 12pt Arial, Helvetica, 'Sans-serif';
+    line-height: 1em;
+    min-width: 180mm;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+    margin-bottom: 0.75em;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+h2 {
+    font-size: 1.8em;
+}
+
+h3 {
+    font-size: 1.6em;
+}
+
+h4 {
+    font-size: 1.4em;
+}
+
+h5 {
+    font-size: 1.2em;
+}
+
+h6 {
+    font-size: 12em;
+}
+
+p {
+    font-size: 1em;
+    line-height: 1.5em;
+    margin-bottom: 1em;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+    margin-bottom: 1em;
+}
+
+/*= Typography
+==================================================*/
+.align-left {
+    text-align: left;
+}
+.align-right {
+    text-align: right;
+}
+.align-center {
+    text-align: center;
+}
+.align-justify {
+    text-align: justify;
+}
+img.align-center {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+.page-break {
+    display: block;
+    page-break-before: always;
+}
+
+/*= Layout
+==================================================*/
+.one_second {
+    float: left;
+    margin-right: 2%;
+    width: 49%;
+}
+
+    .one_second.last {
+        float: right;
+        margin-right: 0;
+        width: 49%;
+    }
+
+
+/*= Attribute Section
+==================================================*/
+.attribute-section {
+    clear: both;
+    overflow: hidden;
+    margin-bottom: 1em;
+}
+
+.attribute-section .section-left {
+    width: 49.7%;
+    float: left;
+}
+
+.attribute-section .section-right {
+    width: 49.7%;
+    float: right;
+}
+
+#item-attributes {
+    border-top: 1px solid #fff;
+    padding: 8px 0;
+}
+
+#item-attributes a {
+    color: #6bb723;
+    text-decoration: underline;
+}
+
+.item-attribute {
+    overflow: hidden;
+    clear: both;
+    line-height: 29px;
+}
+
+.item-attribute .attribute-caption {
+    width: 35%;
+    float: left;
+}
+
+.near .item-attribute .attribute-caption {
+    width: 23%;
+}
+
+.item-attribute .attribute-value {
+    width: 62%;
+    float: right;
+    display: block;
+}
+
+.near .item-attribute .attribute-value {
+    width: 73%;
+}
+
+#item-attributes .attribute-links {
+    width: 60%;
+    margin-left: 28%;
+    margin-top: 10px;
+}
+
+#item-attributes .attribute-links img {
+    vertical-align: middle;
+    margin-right: 5px;
+    width: 26px;
+}
+
+.item-attribute input[type=number] {
+    width: 50px;
+    padding: 0 5px;
+}
+
+.attribute-caption {
+    text-align: right;
+}
+
+-tabs .attribute-caption {
+    text-align: right;
+}
+
+#item-attributes .accept-return-status {
+    text-transform: uppercase;
+    margin-right: 5px;
+}

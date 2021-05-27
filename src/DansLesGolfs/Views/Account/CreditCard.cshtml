@@ -1,0 +1,153 @@
+﻿@using DansLesGolfs
+@{
+    ViewBag.Title = Resources.MyCreditCard;
+    Layout = "~/Views/_Shared/MP/Front/_Default.cshtml";
+}
+@section head
+{
+    <link rel="stylesheet" type="text/css" href="@Href("~/Assets/Front/css/user-menu.css")">
+}
+@section foot
+{
+}
+
+<div id="page-creditcard-dashboard">
+
+    <div class="row margin-bottom-40">
+        <div class="col-md-12">
+
+            <div id="ct-1" class="account-box">
+                <div class="account-box-header">
+                    <label> @Resources.MyCreditCard </label>
+                    <label style="float:right;"> <button style="padding: 3px 12px;" type="submit" class="btn btn-primary" onclick="location.href='@Url.Action("FormCreditCard", "Account")'"> > ajouter une carte</button> </label>
+                </div>
+               
+                    <div class="account-box-table">
+                        <div class="table-responsive">
+                            <table id="creditcard" class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Vos cartes de paiements</th>
+                                        <th>Nom du titulaire de la carte</th>
+                                        <th>Date d’expiration</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach (var item in ViewBag.CustomerCreditCard)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <label>
+                                                    <input name="chk-creditcard" id="@item.CreditCardId" type="radio" />
+                                                </label>
+                                                <label>
+                                                    <img src="@Url.Content("~/Assets/Front/img/users_menu/card_type_visa_pink.png")" />
+                                                </label>
+                                                <label>
+                                                    VISA / Electron	@item.CardNumberX
+                                                </label>
+
+                                            </td>
+                                            <td>@item.CardHolderName</td>
+                                            <td>@item.CardExpireX</td>
+                                          @*  <td>@Html.DropDownList("CardTypeId", (IEnumerable<SelectListItem>)(ViewBag.CardassociationsTypeList), new { @class="form-control"})</td>*@
+                                            <td>
+                                                <label> <a href="@Url.Action("FormCreditCard", "Account", new { creditCardId = @item.CreditCardId })"> <img src="@Url.Content("~/Assets/Front/img/ico-edit-pink.png")" /> </a> </label>
+                                                <label> <a href="@Url.Action("DeleteCreditCard", "Account", new { creditCardId = @item.CreditCardId })"> <img src="@Url.Content("~/Assets/Front/img/ico-delete-pink.png")" /> </a> </label>
+                                            </td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                
+            </div>
+
+            @Html.Raw(ViewBag.CreditCardContent)
+
+@*            <div id="ct-2" class="account-box form-horizontal" style="margin-top : 30px;">
+                <div class="account-box-table">
+                    <div class="table-responsive">
+                        <table id="creditcard" class="table">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <img src="@Url.Content("~/Assets/Front/img/users_menu/safety.png")" />
+                                    </td>
+                                    <td>
+                                        <p class="ct-2-title">
+                                            Sécurité et gestion des données
+                                        </p>
+
+                                        <p class="ct-2-detail">
+                                            <span>•</span>
+                                            <span>Notre partenaire bancaire conserve et garantit la confidentialité de vos données.</span>
+                                        </p>
+                                        <p class="ct-2-detail">
+                                            <span>•</span>
+                                            <span>DansLesGolfs.com n’a pas accès à vos coordonnées bancaires.</span>
+                                        </p>
+                                        <p class="ct-2-detail">
+                                            <span>•</span>
+                                            <span>Pour encore plus de sécurité votre numéro de contrôle vous sera toujours demandé afin de valider vos futurs paiements.</span>
+                                        </p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="ct-3" style="margin-top : 30px;">
+                <p class="ct-3-text-1">
+                    Sécurité et intégrité de vos données bancaires
+                </p>
+
+                <p class="ct-3-text">
+                    <span class="site"> DansLesGolfs.com </span> ne collecte pas vos données
+                    bancaires et a choisi des établissements bancaire* notoirement reconnus
+                    et assurant un niveau de sécurité suffisant afin que, si vous le
+                    souhaitez, les données de vos cartes bancaires puissent être conscervées de
+                    manière sécurisée et utilisées lors de prochains paiements sur le site internet et
+                    application mobile de <span class="site"> DansLesGolfs.com </span>. En effet, les dits établissements
+                    bancaires collectent les données relatives à votre carte bancaire (numéro de la carte et date d’expiration)
+                    afin de faciliter vos prochains paiements sur le site internetet application mobile de <span class="site"> DansLesGolfs.com </span>.
+                </p>
+
+                <p class="ct-3-text">
+                    Ces données ne sont pas destinées à être utilisées à des fins de prospection commerciale. Elles pourront être
+                    communiquées, en tant que de besoin, au regard de la finalité mentionnée ci-dessus au sous-traitant des
+                    établissements bancaires établis dans l’Union Européenne. Les transferts de données rendus nécessaires
+                    interviennent dans des conditions et sous des garanties propres à assurer la protection de vos données personnelles.
+                </p>
+
+                <p class="ct-3-text">
+                    Conformément à la Loi n°78-17 du 6 janvier 1978 modifiée relative à l’informatique, aux fichiers et aux libertés,
+                    vous disposez d’un droits d’accès, de rectification, de suppression relatif à vos données bancaires. Vous pouvez
+                    également vous opposer, sous réserve de justifier d’un motif légitime à ce que vos données bancaires
+                    fassent l’objet d’un traitement. Ces droits peuvent être exercés, par courrier, auprès de <span class="site"> DansLesGolfs.com </span> ,
+                    qui répercutera votre demande auprès des établissements bancaires concerné, à l’adresse suivante : <span class="site"> DansLesGolfs.com </span>  7/9
+                    rue Nationale 92100 Boulogne Billancourt France.
+                </p>
+
+                <p class="ct-3-text">
+                    Vous pouvez également exercer votre droit de suppression en remplissant le formulaire
+                    mis à votre disposition sur le site <span class="site"> DansLesGolfs.com </span>
+                </p>
+
+                <p class="ct-3-text">
+                    *Société Générale, SA au capital de 970 099 988,75 EUR. 552120 222 RCS Paris : Siège social : 29 Boulevard Haussemann, 75009 Paris
+                </p>
+            </div>*@
+
+        </div>
+
+    </div>
+</div>
+

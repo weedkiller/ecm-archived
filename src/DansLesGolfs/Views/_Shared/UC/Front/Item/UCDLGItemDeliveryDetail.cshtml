@@ -1,0 +1,50 @@
+@using DansLesGolfs.BLL
+@model DansLesGolfs.BLL.Item
+<div class="attribute-section">
+    <div class="section-left">
+        <div class="item-attribute">
+            <div class="attribute-caption">@Resources.StateOfTheObject :</div>
+            <div class="attribute-value">@Model.ShapeName</div>
+        </div>
+        <div class="item-attribute">
+            <div class="attribute-caption">@Resources.DeliveryDate :</div>
+            <div class="attribute-value">@Resources.EstimatedBetween @Model.ShippingMinDate @Model.ShippingMaxDate</div>
+        </div>
+        <div class="item-attribute">
+            <div class="attribute-caption"></div>
+            <div class="attribute-value"></div>
+        </div>
+    </div>
+    <div class="section-right near">
+        <div class="item-attribute">
+            <div class="attribute-caption">@Resources.Return :</div>
+            <div class="attribute-value">@MvcHtmlString.Create(Model.CanReturn ? "<span class=\"accept-return-status\">" + Resources.Yes + "</span> " + Resources.RefundWithIn + " " + (Model.RefundWithIn > 1 ? Model.RefundWithIn + " " + Resources.Days : Model.RefundWithIn + " " + Resources.Day) : "<span class=\"accept-return-status\">" + Resources.No + "</span> ")</div>
+        </div>
+        <div class="item-attribute">
+            <div class="attribute-caption">@Resources.Shipping :</div>
+            <div class="attribute-value">
+                <strong>@MvcHtmlString.Create(Model.ShippingCost <= 0 ? Resources.FreeShipping : Model.ShippingCost.ToString("#,##0.00") + " &euro;")</strong> @Model.ShippingTypeName<br />
+                <a href="@Url.Content("~/page/shipping-costs")" target="_blank">@Resources.DeliveryChargeAccordingToShipping</a>
+            </div>
+        </div>
+        <div class="item-attribute">
+            <div class="attribute-caption"></div>
+            <div class="attribute-value">
+                <a id="show-site-products-button" href="@Url.Content("~/Product/Site/" + Model.SiteSlug)">
+                    @Resources.SeeThisGolfShop
+                    <span>OK</span>
+                </a>
+                @*<form class="form-inline" role="form" action="@Url.Content("~/Product/Site/" + Model.SiteSlug)">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="text" id="see-golf-shop" name="s" class="form-control small_text" placeholder="@Resources.SeeThisGolfShop" />
+                            <span class="input-group-btn">
+                                <input type="submit" id="search-golf-shop" name="submit" value="OK" class="btn btn-primary" />
+                            </span>
+                        </div>
+                    </div>
+                </form>*@
+            </div>
+        </div>
+    </div>
+</div>

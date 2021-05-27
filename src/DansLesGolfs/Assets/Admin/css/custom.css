@@ -1,0 +1,468 @@
+/* here you can put your own css to customize and override the theme */
+label {
+    font-weight: normal;
+    font-size: 12px;
+}
+.breadcrumb li:last-child i {
+    display: none;
+}
+label.error {
+    color: red;
+    font-size: small;
+    margin-left: 10px;
+}
+.form-control, .form-group .mce-panel {
+    margin-bottom: 5px;
+}
+.form-control {
+    font-size: 12px;
+}
+#content-body {
+    color: #858585;
+}
+
+.delete-button {
+    background: url(../img/icons/icon-delete.png) no-repeat center center;
+    text-indent: -99999px;
+    display: block;
+    width: 16px;
+    height: 16px;
+}
+
+.edit-button {
+    background: url(../img/icons/icon-edit.png) no-repeat center center;
+    text-indent: -99999px;
+    display: block;
+    width: 16px;
+    height: 16px;
+}
+/*= CRUD Table
+================================================================*/
+.dataTable tr .hover-link {
+    display: none;
+    transition: all ease 0.5ms;
+}
+.dataTable tr:hover .hover-link {
+    display: inline-block;
+}
+/*= Review DataTable
+================================================================*/
+.dataTable tr .review-status.approved {
+    color: #65c509;
+}
+.dataTable tr .review-status.unapproved {
+    color: #f00;
+}
+/*= Sidebar
+================================================================*/
+#sidebar {
+    width: 240px;
+}
+/*= Content
+================================================================*/
+#content-body {
+    width: 680px;
+}
+body.fullwidth #content-body {
+    width: 100%;
+}
+/*= Footer
+================================================================*/
+#footer-link {
+    margin-top: 40px;
+}
+/*= Sortable Item Modifiers
+================================================================*/
+#item-modifiers-list .item-modifier .panel-heading {
+    cursor: move;
+}
+.page-sidebar-menu {
+    background: #F5F5F5;
+    font-size: 12px;
+    color: #858585;
+}
+ul.page-sidebar-menu > li > a {
+    color: #858585 !important;
+    font-size: 12px;
+    border-top: 1px solid #858585 !important;
+    text-transform: capitalize;
+}
+ul.page-sidebar-menu > li.open > a, ul.page-sidebar-menu > li > a:hover, ul.page-sidebar-menu > li:hover > a {
+    color: #FFF !important;
+    background: #858585;
+}
+ul.page-sidebar-menu li > ul.sub-menu > li > a {
+    font-size: 12px;
+}
+ul.page-sidebar-menu > li.active > a {
+    background: #d80927 !important;
+    color: #FFF !important;
+}
+ul.page-sidebar-menu > li.active > a > i, ul.page-sidebar-menu > li:hover > a > i {
+    color: #fff;
+}
+ul.page-sidebar-menu li > ul.sub-menu > li > a {
+    color: #858585;
+}
+ul.page-sidebar-menu > li > ul.sub-menu > li.active > a, ul.page-sidebar-menu > li > ul.sub-menu > li > a:hover {
+    background: #898989 !important;
+    color: #FFF;
+}
+ul.page-sidebar-menu > li.active li.active i, ul.page-sidebar-menu > li li:hover i {
+    color: #fff;
+}
+/*= Sortable Images
+================================================================*/
+.sortable-images {
+    overflow: hidden;
+    list-style: none;
+    padding-left: 0;
+    margin-top: 20px;
+}
+.sortable-images .image-item {
+    background: #FFF;
+    border: 1px solid #666666;
+    cursor: move;
+    float: left;
+    display: block;
+    padding: 10px;
+    margin: 0 20px 10px 0;
+    width: 140px;
+    min-height: 163px;
+}
+.sortable-images .image-item.ui-sortable-placeholder {
+    border: 1px dotted #CCCCCC;
+
+}
+.sortable-images .image-item .thumbnail {
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: top center;
+    border: none;
+    width: 120px;
+    height: 120px;
+    overflow: hidden;
+    margin-bottom: 0;
+}
+.sortable-images .image-item img {
+    width: 120px;
+    height: auto;
+}
+.sortable-images .image-item .tools-panel {
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+.sortable-images .image-item .tools-panel .delete {
+    float: right;
+    text-indent: -9999px;
+    background: url(../img/icons/icon-delete.png) no-repeat;
+    display: block;
+    width: 16px;
+    height: 16px;
+}
+/*= Sortable Item Modifiers
+================================================================*/
+#item-map-canvas, #site-map-canvas {
+    width: 100%;
+    height: 450px;
+}
+/*= Data Table
+================================================================*/
+.dataTable thead tr th.column-checkbox, .dataTable tbody tr td:first-child {
+    width: 30px;
+    text-align: center;
+}
+.dataTable thead tr th.column-edit, .dataTable thead tr th.column-delete {
+    width: 80px;
+}
+.dataTable thead tr th, .dataTable thead tr td, .dataTable tbody tr th, .dataTable tbody tr td {
+    font-size: 11px;
+}
+/*= uploadifive
+================================================================*/
+.uploadifive-button {
+    vertical-align: middle;
+}
+.uploadifive-queue-item.complete {
+    display: none;
+}
+.uploadifive-queue-item.error {
+    color: red;
+}
+/*= Mailing List Page 
+================================================================*/
+#customers-list-popup {
+    width: 800px;
+}
+a.icon-add, a.icon-add:active {
+    background: url(../img/icons/icon-add-16.png) no-repeat left center;
+    padding-left: 21px;
+}
+a.icon-delete, a.icon-delete:active {
+    background: url(../img/icons/icon-delete-16.png) no-repeat left center;
+    padding-left: 21px;
+}
+.mailings-list {
+    padding-left: 0;
+    list-style: none;
+}
+/*= Bootstrap Tagsinput
+===============================================================*/
+.bootstrap-tagsinput {
+    display: block;
+}
+.bootstrap-tagsinput input {
+    padding: 6px 12px;
+    font-size: 14px;
+}
+.bootstrap-tagsinput .tag {
+    display: inline-block;
+}
+/*= Slideshow
+================================================================*/
+#page-slideshow #images-list {
+    min-height: 400px;
+    margin: 20px 0;
+}
+#page-slideshow #images-list .slide-image {
+    min-height: 175px;
+    margin-bottom: 10px;
+    background: #fff;
+    border: 1px solid #666;
+    padding: 5px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
+}
+#page-slideshow #images-list .slide-image:last-child {
+    margin-bottom: 0;
+}
+#page-slideshow #images-list .slide-image.ui-sortable-placeholder {
+    background: #F5F5F5;
+    display: block;
+    box-shadow: none;
+    border: 1px dashed #aaa;
+}
+#page-slideshow #images-list .slide-image img {
+    width: 100%;
+}
+#page-slideshow #images-list .slide-image textarea {
+    width: 100%;
+    height: 120px;
+}
+
+#page-slideshow #images-list .slide-image .delete {
+    float: right;
+    text-indent: -9999px;
+    background: url(../img/icons/icon-delete.png) no-repeat;
+    display: block;
+    width: 16px;
+    height: 16px;
+}
+/*= Uploadifive
+================================================================*/
+.uploadifive-button {
+    line-height: 10px !important;
+}
+/*= TeeSheet
+================================================================*/
+.teesheet-table tbody td {
+    color: #fff;
+}
+.teesheet-table tbody td.expired {
+    background-color: #bcbcbc;
+}
+.teesheet-table tbody td.discount-1 {
+    background-color: #ee697e;
+}
+.teesheet-table tbody td.discount-2 {
+    background-color: #df2942;
+}
+.teesheet-table tbody td.discount-3 {
+    background-color: #d80927;
+}
+.price-datatable {
+    width: 100%;
+}
+.price-datatable .column-start, .price-datatable .column-end {
+    width: 100px;
+}
+.NoYearDatePicker {
+    text-align: center;
+}
+.NoYearDatePicker .ui-datepicker-year {
+    display: none;
+}
+/*= Advertisement
+================================================================*/
+#ads-list {
+    overflow: hidden;
+    margin: 0 auto 20px;
+}
+#ads-list .ads {
+    width: 32%;
+    margin-right: 1%;
+    margin-bottom: 20px;
+    display: inline-block;
+    position: relative;
+}
+#ads-list .ads:nth-child(3n) {
+    margin-right: 0;
+}
+#ads-list .ads .ads_image {
+    max-width: 100%;
+    margin-bottom: 5px;
+    height: auto;
+}
+#ads-list .ads.ui-sortable-placeholder {
+    border: 2px solid dashed inset #666666;
+    background: #CCCCCC;
+    height: 300px;
+}
+#ads-list .ads input {
+    width: 100%;
+}
+
+#ads-list .ads .delete-button {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    z-index: 2;
+}
+/*= Top Nav Links
+================================================================*/
+#top-nav-links-list {
+    overflow: hidden;
+    margin: 40px auto 20px;
+    border: 1px dotted #CCCCCC;
+    min-height: 300px;
+    padding: 5px;
+}
+#top-nav-links-list .topnavlink {
+    width: 32%;
+    margin-right: 1%;
+    margin-bottom: 20px;
+    display: inline-block;
+    position: relative;
+    border: 1px solid #858585;
+    box-shadow: 0 0 2px rgba(0,0,0,0.5);
+    padding: 5px;
+    vertical-align: top;
+}
+#top-nav-links-list .topnavlink
+#top-nav-links-list .topnavlink:nth-child(3n) {
+    margin-right: 0;
+}
+#top-nav-links-list .topnavlink .ads_image {
+    max-width: 100%;
+    margin-bottom: 5px;
+    height: auto;
+}
+#top-nav-links-list .topnavlink.ui-sortable-placeholder {
+    border: 2px solid dashed inset #666666;
+    background: #CCCCCC;
+    height: 300px;
+}
+#top-nav-links-list .topnavlink input {
+    width: 100%;
+}
+
+#top-nav-links-list .topnavlink .delete-button {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    z-index: 2;
+}
+/*= Coupon
+================================================================*/
+.coupon-form  #categories-checkbox-list {
+    max-height: 300px;
+    overflow: scroll;
+}
+.coupon-form  #categories-checkbox-list li {
+    margin-bottom: 5px;
+}
+.coupon-form  #categories-checkbox-list li:last-child {
+    margin-bottom: 0;
+}
+#confirm-import-coupon-content {
+    max-width: 600px;
+}
+#coupons-table tbody {
+    height: 300px;
+    overflow: scroll;
+}
+/*= Menu Manager
+===============================================================*/
+#page-menu-manager #menu-list {
+    border: 1px solid #CCCCCC;
+    padding: 5px;
+    min-height: 300px;
+}
+
+#page-menu-manager #menu-list .menu-item {
+    padding: 5px 0px 5px 2px;
+    overflow: hidden;
+    position: relative;
+}
+
+#page-menu-manager #menu-list .menu-item .delete-button {
+    position: absolute;
+    right: 5px;
+    top: 16px;
+}
+
+#page-menu-manager #menu-list .menu-item .edit-button {
+    position: absolute;
+    right: 26px;
+    top: 16px;
+}
+
+#page-menu-manager #menu-list > ul ul {
+    margin-left: 10px;
+}
+/*= Orders Page
+================================================================*/
+#order-items-table .column-amount {
+    text-align: right;
+}
+#order-items-table .column-quantity {
+    text-align: center;
+    width: 40px;
+}
+#order-items-table .column-unit-price,
+#order-items-table .column-total-price {
+    width: 80px;
+}
+#order-items-table .column-quantity input {
+    width: 40px;
+    text-align: center;
+}
+#order-items-table .column-unit-price input {
+    width: 80px;
+    margin: 0 auto;
+    text-align: right;
+}
+#order-items-table .column-item-name .item-name {
+    width: 100%;
+    border: 1px solid #aaa;
+    background: #fff;
+    padding: 1px 5px;
+}
+
+@media screen and (min-width: 980px) {
+    #container, .container {
+        width: 100%;
+    }
+
+    #sidebar {
+        width: 19%;
+    }
+
+    #content-body {
+        width: 80%;
+    }
+
+    .dataTable thead tr th:first-child,
+    .dataTable tbody tr td:first-child {
+        text-align: center;
+    }
+}

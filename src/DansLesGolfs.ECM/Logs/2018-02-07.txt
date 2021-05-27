@@ -1,0 +1,585 @@
+2018-02-07 21:51:00.7243   5 Error                          DansLesGolfs.ECM.Controllers.BaseController System.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_EmailTemplateLang_EmailQue_EmailQueId". The conflict occurred in database "ECM", table "dbo.EmailQue", column 'EmailQueId'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteScalar()
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(SqlConnection connection, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at DansLesGolfs.Data.SqlDataAccess.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value, String ip, String browser, String platform) in D:\Coding\ECM\DansLesGolfs.Data\SqlDataAccess_DLGEmail.cs:line 1727
+   at DansLesGolfs.ECM.Controllers.TrackController.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\TrackController.cs:line 516
+   at DansLesGolfs.ECM.Controllers.TrackController.Open(String id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\TrackController.cs:line 40
+ClientConnectionId:3fe02853-9c01-4ebf-849b-a87552607b81
+Error Number:547,State:0,Class:16 System.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_EmailTemplateLang_EmailQue_EmailQueId". The conflict occurred in database "ECM", table "dbo.EmailQue", column 'EmailQueId'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteScalar()
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(SqlConnection connection, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at DansLesGolfs.Data.SqlDataAccess.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value, String ip, String browser, String platform) in D:\Coding\ECM\DansLesGolfs.Data\SqlDataAccess_DLGEmail.cs:line 1727
+   at DansLesGolfs.ECM.Controllers.TrackController.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\TrackController.cs:line 516
+   at DansLesGolfs.ECM.Controllers.TrackController.Open(String id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\TrackController.cs:line 40
+ClientConnectionId:3fe02853-9c01-4ebf-849b-a87552607b81
+Error Number:547,State:0,Class:16
+2018-02-07 21:51:20.2234  10 Error                          DansLesGolfs.ECM.Controllers.BaseController System.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_EmailTemplateLang_EmailQue_EmailQueId". The conflict occurred in database "ECM", table "dbo.EmailQue", column 'EmailQueId'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteScalar()
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(SqlConnection connection, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at DansLesGolfs.Data.SqlDataAccess.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value, String ip, String browser, String platform) in D:\Coding\ECM\DansLesGolfs.Data\SqlDataAccess_DLGEmail.cs:line 1727
+   at DansLesGolfs.ECM.Controllers.TrackController.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\TrackController.cs:line 516
+   at DansLesGolfs.ECM.Controllers.TrackController.Open(String id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\TrackController.cs:line 40
+ClientConnectionId:3fe02853-9c01-4ebf-849b-a87552607b81
+Error Number:547,State:0,Class:16 System.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_EmailTemplateLang_EmailQue_EmailQueId". The conflict occurred in database "ECM", table "dbo.EmailQue", column 'EmailQueId'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteScalar()
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(SqlConnection connection, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at DansLesGolfs.Data.SqlDataAccess.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value, String ip, String browser, String platform) in D:\Coding\ECM\DansLesGolfs.Data\SqlDataAccess_DLGEmail.cs:line 1727
+   at DansLesGolfs.ECM.Controllers.TrackController.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\TrackController.cs:line 516
+   at DansLesGolfs.ECM.Controllers.TrackController.Open(String id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\TrackController.cs:line 40
+ClientConnectionId:3fe02853-9c01-4ebf-849b-a87552607b81
+Error Number:547,State:0,Class:16
+2018-02-07 21:52:02.9862   8 Error                          DansLesGolfs.ECM.Controllers.BaseController System.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_EmailTemplateLang_EmailQue_EmailQueId". The conflict occurred in database "ECM", table "dbo.EmailQue", column 'EmailQueId'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteScalar()
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(SqlConnection connection, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at DansLesGolfs.Data.SqlDataAccess.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value, String ip, String browser, String platform) in D:\Coding\ECM\DansLesGolfs.Data\SqlDataAccess_DLGEmail.cs:line 1727
+   at DansLesGolfs.ECM.Controllers.TrackController.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\TrackController.cs:line 516
+   at DansLesGolfs.ECM.Controllers.TrackController.Open(String id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\TrackController.cs:line 40
+ClientConnectionId:3fe02853-9c01-4ebf-849b-a87552607b81
+Error Number:547,State:0,Class:16 System.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_EmailTemplateLang_EmailQue_EmailQueId". The conflict occurred in database "ECM", table "dbo.EmailQue", column 'EmailQueId'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteScalar()
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(SqlConnection connection, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at DansLesGolfs.Data.SqlDataAccess.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value, String ip, String browser, String platform) in D:\Coding\ECM\DansLesGolfs.Data\SqlDataAccess_DLGEmail.cs:line 1727
+   at DansLesGolfs.ECM.Controllers.TrackController.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\TrackController.cs:line 516
+   at DansLesGolfs.ECM.Controllers.TrackController.Open(String id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\TrackController.cs:line 40
+ClientConnectionId:3fe02853-9c01-4ebf-849b-a87552607b81
+Error Number:547,State:0,Class:16
+2018-02-07 21:52:40.7076   5 Error                          DansLesGolfs.ECM.Controllers.BaseController System.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_EmailTemplateLang_EmailQue_EmailQueId". The conflict occurred in database "ECM", table "dbo.EmailQue", column 'EmailQueId'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteScalar()
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(SqlConnection connection, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at DansLesGolfs.Data.SqlDataAccess.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value, String ip, String browser, String platform) in D:\Coding\ECM\DansLesGolfs.Data\SqlDataAccess_DLGEmail.cs:line 1727
+   at DansLesGolfs.ECM.Controllers.TrackController.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\TrackController.cs:line 516
+   at DansLesGolfs.ECM.Controllers.TrackController.Open(String id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\TrackController.cs:line 40
+ClientConnectionId:3fe02853-9c01-4ebf-849b-a87552607b81
+Error Number:547,State:0,Class:16 System.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_EmailTemplateLang_EmailQue_EmailQueId". The conflict occurred in database "ECM", table "dbo.EmailQue", column 'EmailQueId'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteScalar()
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(SqlConnection connection, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at DansLesGolfs.Data.SqlDataAccess.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value, String ip, String browser, String platform) in D:\Coding\ECM\DansLesGolfs.Data\SqlDataAccess_DLGEmail.cs:line 1727
+   at DansLesGolfs.ECM.Controllers.TrackController.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\TrackController.cs:line 516
+   at DansLesGolfs.ECM.Controllers.TrackController.Open(String id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\TrackController.cs:line 40
+ClientConnectionId:3fe02853-9c01-4ebf-849b-a87552607b81
+Error Number:547,State:0,Class:16
+2018-02-07 22:28:41.2259  10 Error                          DansLesGolfs.ECM.Controllers.BaseController System.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_EmailTemplateLang_EmailQue_EmailQueId". The conflict occurred in database "ECM", table "dbo.EmailQue", column 'EmailQueId'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteScalar()
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(SqlConnection connection, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at DansLesGolfs.Data.SqlDataAccess.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value, String ip, String browser, String platform) in D:\Coding\ECM\DansLesGolfs.Data\SqlDataAccess_DLGEmail.cs:line 1727
+   at DansLesGolfs.ECM.Controllers.TrackController.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value)
+   at DansLesGolfs.ECM.Controllers.TrackController.Open(String id)
+ClientConnectionId:d2b80771-517d-46fe-9f17-a87d8e346165
+Error Number:547,State:0,Class:16 System.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_EmailTemplateLang_EmailQue_EmailQueId". The conflict occurred in database "ECM", table "dbo.EmailQue", column 'EmailQueId'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteScalar()
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(SqlConnection connection, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at DansLesGolfs.Data.SqlDataAccess.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value, String ip, String browser, String platform) in D:\Coding\ECM\DansLesGolfs.Data\SqlDataAccess_DLGEmail.cs:line 1727
+   at DansLesGolfs.ECM.Controllers.TrackController.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value)
+   at DansLesGolfs.ECM.Controllers.TrackController.Open(String id)
+ClientConnectionId:d2b80771-517d-46fe-9f17-a87d8e346165
+Error Number:547,State:0,Class:16
+2018-02-07 22:28:52.4528   5 Error                          DansLesGolfs.ECM.Controllers.BaseController System.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_EmailTemplateLang_EmailQue_EmailQueId". The conflict occurred in database "ECM", table "dbo.EmailQue", column 'EmailQueId'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteScalar()
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(SqlConnection connection, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at DansLesGolfs.Data.SqlDataAccess.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value, String ip, String browser, String platform) in D:\Coding\ECM\DansLesGolfs.Data\SqlDataAccess_DLGEmail.cs:line 1727
+   at DansLesGolfs.ECM.Controllers.TrackController.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value)
+   at DansLesGolfs.ECM.Controllers.TrackController.Open(String id)
+ClientConnectionId:d2b80771-517d-46fe-9f17-a87d8e346165
+Error Number:547,State:0,Class:16 System.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_EmailTemplateLang_EmailQue_EmailQueId". The conflict occurred in database "ECM", table "dbo.EmailQue", column 'EmailQueId'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteScalar()
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(SqlConnection connection, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at DansLesGolfs.Data.SqlDataAccess.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value, String ip, String browser, String platform) in D:\Coding\ECM\DansLesGolfs.Data\SqlDataAccess_DLGEmail.cs:line 1727
+   at DansLesGolfs.ECM.Controllers.TrackController.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value)
+   at DansLesGolfs.ECM.Controllers.TrackController.Open(String id)
+ClientConnectionId:d2b80771-517d-46fe-9f17-a87d8e346165
+Error Number:547,State:0,Class:16
+2018-02-07 22:29:02.6504   5 Error                          DansLesGolfs.ECM.Controllers.BaseController System.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_EmailTemplateLang_EmailQue_EmailQueId". The conflict occurred in database "ECM", table "dbo.EmailQue", column 'EmailQueId'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteScalar()
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(SqlConnection connection, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at DansLesGolfs.Data.SqlDataAccess.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value, String ip, String browser, String platform) in D:\Coding\ECM\DansLesGolfs.Data\SqlDataAccess_DLGEmail.cs:line 1727
+   at DansLesGolfs.ECM.Controllers.TrackController.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value)
+   at DansLesGolfs.ECM.Controllers.TrackController.Open(String id)
+ClientConnectionId:d2b80771-517d-46fe-9f17-a87d8e346165
+Error Number:547,State:0,Class:16 System.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_EmailTemplateLang_EmailQue_EmailQueId". The conflict occurred in database "ECM", table "dbo.EmailQue", column 'EmailQueId'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteScalar()
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(SqlConnection connection, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at DansLesGolfs.Data.SqlDataAccess.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value, String ip, String browser, String platform) in D:\Coding\ECM\DansLesGolfs.Data\SqlDataAccess_DLGEmail.cs:line 1727
+   at DansLesGolfs.ECM.Controllers.TrackController.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value)
+   at DansLesGolfs.ECM.Controllers.TrackController.Open(String id)
+ClientConnectionId:d2b80771-517d-46fe-9f17-a87d8e346165
+Error Number:547,State:0,Class:16
+2018-02-07 22:29:22.5560   5 Error                          DansLesGolfs.ECM.Controllers.BaseController System.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_EmailTemplateLang_EmailQue_EmailQueId". The conflict occurred in database "ECM", table "dbo.EmailQue", column 'EmailQueId'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteScalar()
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(SqlConnection connection, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at DansLesGolfs.Data.SqlDataAccess.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value, String ip, String browser, String platform) in D:\Coding\ECM\DansLesGolfs.Data\SqlDataAccess_DLGEmail.cs:line 1727
+   at DansLesGolfs.ECM.Controllers.TrackController.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value)
+   at DansLesGolfs.ECM.Controllers.TrackController.Click(String id, String link)
+ClientConnectionId:d2b80771-517d-46fe-9f17-a87d8e346165
+Error Number:547,State:0,Class:16 System.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_EmailTemplateLang_EmailQue_EmailQueId". The conflict occurred in database "ECM", table "dbo.EmailQue", column 'EmailQueId'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteScalar()
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(SqlConnection connection, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at DansLesGolfs.Data.SqlDataAccess.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value, String ip, String browser, String platform) in D:\Coding\ECM\DansLesGolfs.Data\SqlDataAccess_DLGEmail.cs:line 1727
+   at DansLesGolfs.ECM.Controllers.TrackController.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value)
+   at DansLesGolfs.ECM.Controllers.TrackController.Click(String id, String link)
+ClientConnectionId:d2b80771-517d-46fe-9f17-a87d8e346165
+Error Number:547,State:0,Class:16
+2018-02-07 22:29:34.2715  26 Error                          DansLesGolfs.ECM.Controllers.BaseController System.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_EmailTemplateLang_EmailQue_EmailQueId". The conflict occurred in database "ECM", table "dbo.EmailQue", column 'EmailQueId'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteScalar()
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(SqlConnection connection, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at DansLesGolfs.Data.SqlDataAccess.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value, String ip, String browser, String platform) in D:\Coding\ECM\DansLesGolfs.Data\SqlDataAccess_DLGEmail.cs:line 1727
+   at DansLesGolfs.ECM.Controllers.TrackController.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value)
+   at DansLesGolfs.ECM.Controllers.TrackController.Open(String id)
+ClientConnectionId:d2b80771-517d-46fe-9f17-a87d8e346165
+Error Number:547,State:0,Class:16 System.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_EmailTemplateLang_EmailQue_EmailQueId". The conflict occurred in database "ECM", table "dbo.EmailQue", column 'EmailQueId'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteScalar()
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(SqlConnection connection, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at DansLesGolfs.Data.SqlDataAccess.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value, String ip, String browser, String platform) in D:\Coding\ECM\DansLesGolfs.Data\SqlDataAccess_DLGEmail.cs:line 1727
+   at DansLesGolfs.ECM.Controllers.TrackController.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value)
+   at DansLesGolfs.ECM.Controllers.TrackController.Open(String id)
+ClientConnectionId:d2b80771-517d-46fe-9f17-a87d8e346165
+Error Number:547,State:0,Class:16
+2018-02-07 22:29:35.3172  25 Error                          DansLesGolfs.ECM.Controllers.BaseController System.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_EmailTemplateLang_EmailQue_EmailQueId". The conflict occurred in database "ECM", table "dbo.EmailQue", column 'EmailQueId'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteScalar()
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(SqlConnection connection, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at DansLesGolfs.Data.SqlDataAccess.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value, String ip, String browser, String platform) in D:\Coding\ECM\DansLesGolfs.Data\SqlDataAccess_DLGEmail.cs:line 1727
+   at DansLesGolfs.ECM.Controllers.TrackController.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value)
+   at DansLesGolfs.ECM.Controllers.TrackController.Open(String id)
+ClientConnectionId:76da8982-5a87-4a20-9805-5b65a503a0df
+Error Number:547,State:0,Class:16 System.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_EmailTemplateLang_EmailQue_EmailQueId". The conflict occurred in database "ECM", table "dbo.EmailQue", column 'EmailQueId'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteScalar()
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(SqlConnection connection, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at DansLesGolfs.Data.SqlDataAccess.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value, String ip, String browser, String platform) in D:\Coding\ECM\DansLesGolfs.Data\SqlDataAccess_DLGEmail.cs:line 1727
+   at DansLesGolfs.ECM.Controllers.TrackController.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value)
+   at DansLesGolfs.ECM.Controllers.TrackController.Open(String id)
+ClientConnectionId:76da8982-5a87-4a20-9805-5b65a503a0df
+Error Number:547,State:0,Class:16
+2018-02-07 23:22:47.1918   5 Error                          DansLesGolfs.ECM.Controllers.BaseController System.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_EmailTemplateLang_EmailQue_EmailQueId". The conflict occurred in database "ECM", table "dbo.EmailQue", column 'EmailQueId'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteScalar()
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(SqlConnection connection, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at DansLesGolfs.Data.SqlDataAccess.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value, String ip, String browser, String platform) in D:\Coding\ECM\DansLesGolfs.Data\SqlDataAccess_DLGEmail.cs:line 1727
+   at DansLesGolfs.ECM.Controllers.TrackController.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\TrackController.cs:line 516
+   at DansLesGolfs.ECM.Controllers.TrackController.Open(String id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\TrackController.cs:line 40
+ClientConnectionId:2ff779c4-d853-4efb-9304-c014901c1217
+Error Number:547,State:0,Class:16 System.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_EmailTemplateLang_EmailQue_EmailQueId". The conflict occurred in database "ECM", table "dbo.EmailQue", column 'EmailQueId'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteScalar()
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(SqlConnection connection, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at DansLesGolfs.Data.SqlDataAccess.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value, String ip, String browser, String platform) in D:\Coding\ECM\DansLesGolfs.Data\SqlDataAccess_DLGEmail.cs:line 1727
+   at DansLesGolfs.ECM.Controllers.TrackController.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\TrackController.cs:line 516
+   at DansLesGolfs.ECM.Controllers.TrackController.Open(String id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\TrackController.cs:line 40
+ClientConnectionId:2ff779c4-d853-4efb-9304-c014901c1217
+Error Number:547,State:0,Class:16
+2018-02-07 23:23:04.4807   5 Error                          DansLesGolfs.ECM.Controllers.BaseController System.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_EmailTemplateLang_EmailQue_EmailQueId". The conflict occurred in database "ECM", table "dbo.EmailQue", column 'EmailQueId'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteScalar()
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(SqlConnection connection, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at DansLesGolfs.Data.SqlDataAccess.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value, String ip, String browser, String platform) in D:\Coding\ECM\DansLesGolfs.Data\SqlDataAccess_DLGEmail.cs:line 1727
+   at DansLesGolfs.ECM.Controllers.TrackController.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\TrackController.cs:line 516
+   at DansLesGolfs.ECM.Controllers.TrackController.Open(String id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\TrackController.cs:line 40
+ClientConnectionId:2ff779c4-d853-4efb-9304-c014901c1217
+Error Number:547,State:0,Class:16 System.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_EmailTemplateLang_EmailQue_EmailQueId". The conflict occurred in database "ECM", table "dbo.EmailQue", column 'EmailQueId'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteScalar()
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(SqlConnection connection, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at DansLesGolfs.Data.SqlDataAccess.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value, String ip, String browser, String platform) in D:\Coding\ECM\DansLesGolfs.Data\SqlDataAccess_DLGEmail.cs:line 1727
+   at DansLesGolfs.ECM.Controllers.TrackController.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\TrackController.cs:line 516
+   at DansLesGolfs.ECM.Controllers.TrackController.Open(String id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\TrackController.cs:line 40
+ClientConnectionId:2ff779c4-d853-4efb-9304-c014901c1217
+Error Number:547,State:0,Class:16
+2018-02-07 23:23:13.5216  10 Error                          DansLesGolfs.ECM.Controllers.BaseController System.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_EmailTemplateLang_EmailQue_EmailQueId". The conflict occurred in database "ECM", table "dbo.EmailQue", column 'EmailQueId'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteScalar()
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(SqlConnection connection, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at DansLesGolfs.Data.SqlDataAccess.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value, String ip, String browser, String platform) in D:\Coding\ECM\DansLesGolfs.Data\SqlDataAccess_DLGEmail.cs:line 1727
+   at DansLesGolfs.ECM.Controllers.TrackController.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\TrackController.cs:line 516
+   at DansLesGolfs.ECM.Controllers.TrackController.Open(String id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\TrackController.cs:line 40
+ClientConnectionId:2ff779c4-d853-4efb-9304-c014901c1217
+Error Number:547,State:0,Class:16 System.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_EmailTemplateLang_EmailQue_EmailQueId". The conflict occurred in database "ECM", table "dbo.EmailQue", column 'EmailQueId'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteScalar()
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(SqlConnection connection, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at DansLesGolfs.Data.SqlDataAccess.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value, String ip, String browser, String platform) in D:\Coding\ECM\DansLesGolfs.Data\SqlDataAccess_DLGEmail.cs:line 1727
+   at DansLesGolfs.ECM.Controllers.TrackController.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\TrackController.cs:line 516
+   at DansLesGolfs.ECM.Controllers.TrackController.Open(String id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\TrackController.cs:line 40
+ClientConnectionId:2ff779c4-d853-4efb-9304-c014901c1217
+Error Number:547,State:0,Class:16
+2018-02-07 23:38:18.2154  27 Error                          DansLesGolfs.ECM.Controllers.BaseController System.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_EmailTemplateLang_EmailQue_EmailQueId". The conflict occurred in database "ECM", table "dbo.EmailQue", column 'EmailQueId'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteScalar()
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(SqlConnection connection, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at DansLesGolfs.Data.SqlDataAccess.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value, String ip, String browser, String platform) in D:\Coding\ECM\DansLesGolfs.Data\SqlDataAccess_DLGEmail.cs:line 1727
+   at DansLesGolfs.ECM.Controllers.TrackController.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\TrackController.cs:line 516
+   at DansLesGolfs.ECM.Controllers.TrackController.Open(String id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\TrackController.cs:line 40
+ClientConnectionId:d0741ec7-4c5a-44ae-877e-767d8680be19
+Error Number:547,State:0,Class:16 System.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_EmailTemplateLang_EmailQue_EmailQueId". The conflict occurred in database "ECM", table "dbo.EmailQue", column 'EmailQueId'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteScalar()
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(SqlConnection connection, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at DansLesGolfs.Data.SqlDataAccess.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value, String ip, String browser, String platform) in D:\Coding\ECM\DansLesGolfs.Data\SqlDataAccess_DLGEmail.cs:line 1727
+   at DansLesGolfs.ECM.Controllers.TrackController.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\TrackController.cs:line 516
+   at DansLesGolfs.ECM.Controllers.TrackController.Open(String id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\TrackController.cs:line 40
+ClientConnectionId:d0741ec7-4c5a-44ae-877e-767d8680be19
+Error Number:547,State:0,Class:16
+2018-02-07 23:52:55.0463   5 Error                          DansLesGolfs.ECM.Controllers.BaseController System.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_EmailTemplateLang_EmailQue_EmailQueId". The conflict occurred in database "ECM", table "dbo.EmailQue", column 'EmailQueId'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteScalar()
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(SqlConnection connection, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at DansLesGolfs.Data.SqlDataAccess.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value, String ip, String browser, String platform) in D:\Coding\ECM\DansLesGolfs.Data\SqlDataAccess_DLGEmail.cs:line 1727
+   at DansLesGolfs.ECM.Controllers.TrackController.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\TrackController.cs:line 516
+   at DansLesGolfs.ECM.Controllers.TrackController.Open(String id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\TrackController.cs:line 40
+ClientConnectionId:cc4ff811-12de-46fe-b48f-6c6ce80e0c79
+Error Number:547,State:0,Class:16 System.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_EmailTemplateLang_EmailQue_EmailQueId". The conflict occurred in database "ECM", table "dbo.EmailQue", column 'EmailQueId'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteScalar()
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(SqlConnection connection, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at DansLesGolfs.Data.SqlDataAccess.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value, String ip, String browser, String platform) in D:\Coding\ECM\DansLesGolfs.Data\SqlDataAccess_DLGEmail.cs:line 1727
+   at DansLesGolfs.ECM.Controllers.TrackController.AddEmailTracking(Int64 campaignId, Int64 emailQueId, String action, String value) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\TrackController.cs:line 516
+   at DansLesGolfs.ECM.Controllers.TrackController.Open(String id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\TrackController.cs:line 40
+ClientConnectionId:cc4ff811-12de-46fe-b48f-6c6ce80e0c79
+Error Number:547,State:0,Class:16

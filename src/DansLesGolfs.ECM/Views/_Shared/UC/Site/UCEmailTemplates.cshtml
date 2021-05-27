@@ -1,0 +1,33 @@
+﻿@using DansLesGolfs.Base
+@using DansLesGolfs.BLL
+@using System.Globalization
+@{
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    @Resources.EmailTemplates
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            @Resources.AvailableTemplates
+                        </div>
+                        <div class="col-md-10">
+                            <ul>
+                            @foreach(EmailTemplateViewModel t in (List<EmailTemplateViewModel>)ViewBag.EmailTemplates)
+                            {
+                                <li><label for="EmailTemplate-@t.TemplateId"><input type="checkbox" id="EmailTemplate-@t.TemplateId" name="SiteEmailTemplateIds" value="@t.TemplateId" @(t.IsAvailable ? "checked=\"checked\"" : "") data-name="@t.TemplateName" /> @MvcHtmlString.Create(t.TemplateName)</label></li>
+                            }
+                            <ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

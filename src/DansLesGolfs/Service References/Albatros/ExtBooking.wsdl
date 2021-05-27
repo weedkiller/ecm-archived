@@ -1,0 +1,1163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns2="http://data.ebp.service.aws.com/xsd" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:ns0="http://param.ebp.service.aws.com/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:ns1="http://albatros.services/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:ns3="http://sys.client.common.albatros.com/xsd" targetNamespace="http://albatros.services/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation>ExtBooking</wsdl:documentation>
+  <wsdl:types>
+    <xs:schema xmlns:ax2199="http://data.ebp.service.aws.com/xsd" xmlns:ax2196="http://param.ebp.service.aws.com/xsd" attributeFormDefault="qualified" elementFormDefault="unqualified" targetNamespace="http://param.ebp.service.aws.com/xsd">
+      <xs:import namespace="http://data.ebp.service.aws.com/xsd" />
+      <xs:complexType name="EbpBaseRequest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns3:BaseRequest">
+            <xs:sequence />
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="EbpAddReservationRequest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ax2196:EbpBaseRequest">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="info" nillable="true" type="ax2199:EbpResAddInfo" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="EbpBaseResponse">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns3:CommonResponse">
+            <xs:sequence />
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="EbpAddReservationResponse">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ax2196:EbpBaseResponse">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="bookNr" type="xs:int" />
+              <xs:element minOccurs="0" name="details" nillable="true" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="EbpCancelReservationsRequest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ax2196:EbpBaseRequest">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="bookNrs" nillable="true" type="ax2199:EbpBookNrList" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="EbpCancelReservationsResponse">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ax2196:EbpBaseResponse">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="cancelResults" nillable="true" type="ax2199:EbpResCancelResultList" />
+              <xs:element minOccurs="0" name="details" nillable="true" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="EbpConfirmReservationsRequest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ax2196:EbpBaseRequest">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="confirmations" nillable="true" type="ax2199:EbpResConfirmInfoList" />
+              <xs:element minOccurs="0" name="prePayment" nillable="true" type="ax2199:EbpPrePaymentInfo" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="EbpConfirmReservationsResponse">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ax2196:EbpBaseResponse">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="confirmResults" nillable="true" type="ax2199:EbpResConfirmResultList" />
+              <xs:element minOccurs="0" name="details" nillable="true" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="EbpDelReservationRequest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ax2196:EbpBaseRequest">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="bookNr" type="xs:int" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="EbpDelReservationResponse">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ax2196:EbpBaseResponse">
+            <xs:sequence />
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="EbpDoLoginRequest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ax2196:EbpBaseRequest">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="anonymous" type="xs:boolean" />
+              <xs:element minOccurs="0" name="clubNr" type="xs:int" />
+              <xs:element minOccurs="0" name="login" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="EbpDoLoginResponse">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ax2196:EbpBaseResponse">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="clubNr" type="xs:int" />
+              <xs:element minOccurs="0" name="databaseVer" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="serverDate" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="sessionInfo" nillable="true" type="ax2199:EbpSessionInfo" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="EbpDoLogoutRequest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ax2196:EbpBaseRequest">
+            <xs:sequence />
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="EbpDoLogoutResponse">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ax2196:EbpBaseResponse">
+            <xs:sequence />
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="EbpGetClubCoursesRequest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ax2196:EbpBaseRequest">
+            <xs:sequence />
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="EbpGetClubCoursesResponse">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ax2196:EbpBaseResponse">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="courses" nillable="true" type="ax2199:EbpCourseList" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="EbpGetClubInfoRequest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ax2196:EbpBaseRequest">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="date" nillable="true" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="EbpGetClubInfoResponse">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ax2196:EbpBaseResponse">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="localInfo" nillable="true" type="ax2199:EbpClubInfo" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="EbpGetReservationCoursesRequest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ax2196:EbpBaseRequest">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="date" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="types" nillable="true" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="EbpGetReservationCoursesResponse">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ax2196:EbpBaseResponse">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="groups" nillable="true" type="ax2199:EbpResCourseGroupList" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="EbpGetTeeTimeDetailsRequest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ax2196:EbpBaseRequest">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="dateTime" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="roId" type="xs:int" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="EbpGetTeeTimeDetailsResponse">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ax2196:EbpBaseResponse">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="allowed" type="xs:boolean" />
+              <xs:element minOccurs="0" name="articles" nillable="true" type="ax2199:EbpResArticleList" />
+              <xs:element minOccurs="0" name="booked" type="xs:int" />
+              <xs:element minOccurs="0" name="constr" type="xs:int" />
+              <xs:element minOccurs="0" name="dateTime" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="feeN" type="xs:int" />
+              <xs:element minOccurs="0" name="feeR" type="xs:int" />
+              <xs:element minOccurs="0" name="free" type="xs:int" />
+              <xs:element minOccurs="0" name="holes18" type="xs:boolean" />
+              <xs:element minOccurs="0" name="holes9" type="xs:boolean" />
+              <xs:element minOccurs="0" name="max" type="xs:int" />
+              <xs:element minOccurs="0" name="msg" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="reservations" nillable="true" type="ax2199:EbpResDetailList" />
+              <xs:element minOccurs="0" name="type" type="xs:int" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="EbpGetTeeTimesRequest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ax2196:EbpBaseRequest">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="dateTimeFrom" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="dateTimeTo" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="roId" type="xs:int" />
+              <xs:element minOccurs="0" name="sortAscending" type="xs:boolean" />
+              <xs:element minOccurs="0" name="sortBy" type="xs:int" />
+              <xs:element minOccurs="0" name="type" type="xs:int" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="EbpGetTeeTimesResponse">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ax2196:EbpBaseResponse">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="teetimes" nillable="true" type="ax2199:EbpTeeTimeList" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema xmlns:ns="http://albatros.services/" attributeFormDefault="qualified" elementFormDefault="unqualified" targetNamespace="http://albatros.services/">
+      <xs:element name="addReservation">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="request" nillable="true" type="ns0:EbpAddReservationRequest" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="addReservationResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ns0:EbpAddReservationResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="cancelReservations">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="request" nillable="true" type="ns0:EbpCancelReservationsRequest" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="cancelReservationsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ns0:EbpCancelReservationsResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="confirmReservations">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="request" nillable="true" type="ns0:EbpConfirmReservationsRequest" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="confirmReservationsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ns0:EbpConfirmReservationsResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="deleteReservation">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="request" nillable="true" type="ns0:EbpDelReservationRequest" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="deleteReservationResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ns0:EbpDelReservationResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="doLogin">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="request" nillable="true" type="ns0:EbpDoLoginRequest" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="doLoginResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ns0:EbpDoLoginResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="doLogout">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="request" nillable="true" type="ns0:EbpDoLogoutRequest" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="doLogoutResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ns0:EbpDoLogoutResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getClubCourses">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="request" nillable="true" type="ns0:EbpGetClubCoursesRequest" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getClubCoursesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ns0:EbpGetClubCoursesResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getClubInfo">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="request" nillable="true" type="ns0:EbpGetClubInfoRequest" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getClubInfoResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ns0:EbpGetClubInfoResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getReservationCourses">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="request" nillable="true" type="ns0:EbpGetReservationCoursesRequest" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getReservationCoursesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ns0:EbpGetReservationCoursesResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getTeeTimeDetails">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="request" nillable="true" type="ns0:EbpGetTeeTimeDetailsRequest" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getTeeTimeDetailsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ns0:EbpGetTeeTimeDetailsResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getTeeTimes">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="request" nillable="true" type="ns0:EbpGetTeeTimesRequest" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getTeeTimesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ns0:EbpGetTeeTimesResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns:ax2198="http://data.ebp.service.aws.com/xsd" attributeFormDefault="qualified" elementFormDefault="unqualified" targetNamespace="http://data.ebp.service.aws.com/xsd">
+      <xs:complexType name="EbpResAddInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="gameType" type="xs:int" />
+          <xs:element minOccurs="0" name="players" nillable="true" type="ax2198:EbpResAddPlayerList" />
+          <xs:element minOccurs="0" name="remark" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="reservationId" type="xs:int" />
+          <xs:element minOccurs="0" name="roId" type="xs:int" />
+          <xs:element minOccurs="0" name="startTime" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="EbpResAddPlayerList">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="player" nillable="true" type="ax2198:EbpResAddPlayer" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="EbpResAddPlayer">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="articles" nillable="true" type="ax2198:EbpResAddArticleList" />
+          <xs:element minOccurs="0" name="details" nillable="true" type="ax2198:EbpResAddPlayerDetails" />
+          <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="playerType" type="xs:int" />
+          <xs:element minOccurs="0" name="remark" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="EbpResAddArticleList">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="article" nillable="true" type="ax2198:EbpResAddArticle" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="EbpResAddArticle">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="count" type="xs:int" />
+          <xs:element minOccurs="0" name="id" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="EbpResAddPlayerDetails">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="birthday" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="club" nillable="true" type="ax2198:EbpResAddPlayerClub" />
+          <xs:element minOccurs="0" name="ehcp" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="externalId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="firstName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="lastName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="mobileNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="notify" type="xs:int" />
+          <xs:element minOccurs="0" name="sex" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="EbpResAddPlayerClub">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="countryIsoCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="number" type="xs:int" />
+          <xs:element minOccurs="0" name="shortName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="EbpBookNrList">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="bookNr" nillable="true" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="EbpResCancelResultList">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="cancelResult" nillable="true" type="ax2198:EbpResCancelResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="EbpResCancelResult">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns3:CommonResponse">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="bookNr" type="xs:int" />
+              <xs:element minOccurs="0" name="details" nillable="true" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="EbpResConfirmInfoList">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="confirmation" nillable="true" type="ax2198:EbpResConfirmInfo" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="EbpResConfirmInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="bookNr" type="xs:int" />
+          <xs:element minOccurs="0" name="players" nillable="true" type="ax2198:EbpResConfirmPlayerInfoList" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="EbpResConfirmPlayerInfoList">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="player" nillable="true" type="ax2198:EbpResConfirmPlayerInfo" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="EbpResConfirmPlayerInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="amount" type="xs:int" />
+          <xs:element minOccurs="0" name="externalId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="quantity" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="EbpPrePaymentInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="amount" type="xs:int" />
+          <xs:element minOccurs="0" name="paymentPlace" type="xs:int" />
+          <xs:element minOccurs="0" name="paymentRequestDate" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="reciever" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="sender" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="senderTransactionId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="transactionId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="EbpResConfirmResultList">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="confirmResult" nillable="true" type="ax2198:EbpResConfirmResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="EbpResConfirmResult">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns3:CommonResponse">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="bookNr" type="xs:int" />
+              <xs:element minOccurs="0" name="details" nillable="true" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="EbpSessionInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="role" type="xs:int" />
+          <xs:element minOccurs="0" name="sessionID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="EbpCourseList">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="course" nillable="true" type="ax2198:EbpCourse" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="EbpCourse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="colors" nillable="true" type="ax2198:EbpCourseColorList" />
+          <xs:element minOccurs="0" name="id" type="xs:int" />
+          <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="number" type="xs:int" />
+          <xs:element minOccurs="0" name="rated" type="xs:boolean" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="EbpCourseColorList">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="color" nillable="true" type="ax2198:EbpCourseColor" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="EbpCourseColor">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="cr" type="xs:int" />
+          <xs:element minOccurs="0" name="holes" nillable="true" type="ax2198:EbpCourseHoleList" />
+          <xs:element minOccurs="0" name="htmlColor" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="id" type="xs:int" />
+          <xs:element minOccurs="0" name="index" type="xs:int" />
+          <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="number" type="xs:int" />
+          <xs:element minOccurs="0" name="par" type="xs:int" />
+          <xs:element minOccurs="0" name="sex" type="xs:int" />
+          <xs:element minOccurs="0" name="slope" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="EbpCourseHoleList">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="hole" nillable="true" type="ax2198:EbpCourseHole" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="EbpCourseHole">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="id" type="xs:int" />
+          <xs:element minOccurs="0" name="length" type="xs:int" />
+          <xs:element minOccurs="0" name="number" type="xs:int" />
+          <xs:element minOccurs="0" name="par" type="xs:int" />
+          <xs:element minOccurs="0" name="si" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="EbpClubInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="firstMonth" type="xs:int" />
+          <xs:element minOccurs="0" name="firstWeekDay" type="xs:int" />
+          <xs:element minOccurs="0" name="latitudeD" type="xs:int" />
+          <xs:element minOccurs="0" name="latitudeM" type="xs:int" />
+          <xs:element minOccurs="0" name="latitudeS" type="xs:int" />
+          <xs:element minOccurs="0" name="longitudeD" type="xs:int" />
+          <xs:element minOccurs="0" name="longitudeM" type="xs:int" />
+          <xs:element minOccurs="0" name="longitudeS" type="xs:int" />
+          <xs:element minOccurs="0" name="sundown" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="sunrise" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="timezone" type="xs:int" />
+          <xs:element minOccurs="0" name="useDaylightSavingTime" type="xs:boolean" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="EbpResCourseGroupList">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="group" nillable="true" type="ax2198:EbpResCourseGroup" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="EbpResCourseGroup">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="courses" nillable="true" type="ax2198:EbpResCourseList" />
+          <xs:element minOccurs="0" name="id" type="xs:int" />
+          <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="EbpResCourseList">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="course" nillable="true" type="ax2198:EbpResCourse" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="EbpResCourse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="id" type="xs:int" />
+          <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="tees" nillable="true" type="ax2198:EbpResTeeList" />
+          <xs:element minOccurs="0" name="type" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="EbpResTeeList">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="tee" nillable="true" type="ax2198:EbpResTee" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="EbpResTee">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="id" type="xs:int" />
+          <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="EbpResArticleList">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="article" nillable="true" type="ax2198:EbpResArticle" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="EbpResArticle">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="free" type="xs:int" />
+          <xs:element minOccurs="0" name="id" type="xs:int" />
+          <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="shortName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="EbpResDetailList">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="reservation" nillable="true" type="ax2198:EbpResDetail" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="EbpResDetail">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="bookNr" type="xs:int" />
+          <xs:element minOccurs="0" name="gameType" type="xs:int" />
+          <xs:element minOccurs="0" name="players" nillable="true" type="ax2198:EbpResDetailPlayerList" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="EbpResDetailPlayerList">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="player" nillable="true" type="ax2198:EbpResDetailPlayer" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="EbpResDetailPlayer">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="checkIn" type="xs:boolean" />
+          <xs:element minOccurs="0" name="ehcp" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="externalId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="id" type="xs:int" />
+          <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="type" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="EbpTeeTimeList">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="teetime" nillable="true" type="ax2198:EbpTeeTime" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="EbpTeeTime">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="booked" type="xs:int" />
+          <xs:element minOccurs="0" name="constr" type="xs:int" />
+          <xs:element minOccurs="0" name="dateTime" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="feeN" type="xs:int" />
+          <xs:element minOccurs="0" name="feeR" type="xs:int" />
+          <xs:element minOccurs="0" name="free" type="xs:int" />
+          <xs:element minOccurs="0" name="max" type="xs:int" />
+          <xs:element minOccurs="0" name="msg" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="players" nillable="true" type="ax2198:EbpResPlayerList" />
+          <xs:element minOccurs="0" name="roId" type="xs:int" />
+          <xs:element minOccurs="0" name="type" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="EbpResPlayerList">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="player" nillable="true" type="ax2198:EbpResPlayer" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="EbpResPlayer">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="bookNr" type="xs:int" />
+          <xs:element minOccurs="0" name="checkIn" type="xs:boolean" />
+          <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="type" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema xmlns:ax2197="http://sys.client.common.albatros.com/xsd" attributeFormDefault="qualified" elementFormDefault="unqualified" targetNamespace="http://sys.client.common.albatros.com/xsd">
+      <xs:complexType name="BaseRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sessionInfo" nillable="true" type="ax2197:SessionClientInfoData" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="SessionClientInfoData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="locale" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="sessionID" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CommonResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="code" type="xs:int" />
+          <xs:element minOccurs="0" name="message" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="addReservationRequest">
+    <wsdl:part name="parameters" element="ns1:addReservation" />
+  </wsdl:message>
+  <wsdl:message name="addReservationResponse">
+    <wsdl:part name="parameters" element="ns1:addReservationResponse" />
+  </wsdl:message>
+  <wsdl:message name="getReservationCoursesRequest">
+    <wsdl:part name="parameters" element="ns1:getReservationCourses" />
+  </wsdl:message>
+  <wsdl:message name="getReservationCoursesResponse">
+    <wsdl:part name="parameters" element="ns1:getReservationCoursesResponse" />
+  </wsdl:message>
+  <wsdl:message name="doLogoutRequest">
+    <wsdl:part name="parameters" element="ns1:doLogout" />
+  </wsdl:message>
+  <wsdl:message name="doLogoutResponse">
+    <wsdl:part name="parameters" element="ns1:doLogoutResponse" />
+  </wsdl:message>
+  <wsdl:message name="doLoginRequest">
+    <wsdl:part name="parameters" element="ns1:doLogin" />
+  </wsdl:message>
+  <wsdl:message name="doLoginResponse">
+    <wsdl:part name="parameters" element="ns1:doLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="cancelReservationsRequest">
+    <wsdl:part name="parameters" element="ns1:cancelReservations" />
+  </wsdl:message>
+  <wsdl:message name="cancelReservationsResponse">
+    <wsdl:part name="parameters" element="ns1:cancelReservationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="getTeeTimeDetailsRequest">
+    <wsdl:part name="parameters" element="ns1:getTeeTimeDetails" />
+  </wsdl:message>
+  <wsdl:message name="getTeeTimeDetailsResponse">
+    <wsdl:part name="parameters" element="ns1:getTeeTimeDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="getClubInfoRequest">
+    <wsdl:part name="parameters" element="ns1:getClubInfo" />
+  </wsdl:message>
+  <wsdl:message name="getClubInfoResponse">
+    <wsdl:part name="parameters" element="ns1:getClubInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="getTeeTimesRequest">
+    <wsdl:part name="parameters" element="ns1:getTeeTimes" />
+  </wsdl:message>
+  <wsdl:message name="getTeeTimesResponse">
+    <wsdl:part name="parameters" element="ns1:getTeeTimesResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteReservationRequest">
+    <wsdl:part name="parameters" element="ns1:deleteReservation" />
+  </wsdl:message>
+  <wsdl:message name="deleteReservationResponse">
+    <wsdl:part name="parameters" element="ns1:deleteReservationResponse" />
+  </wsdl:message>
+  <wsdl:message name="getClubCoursesRequest">
+    <wsdl:part name="parameters" element="ns1:getClubCourses" />
+  </wsdl:message>
+  <wsdl:message name="getClubCoursesResponse">
+    <wsdl:part name="parameters" element="ns1:getClubCoursesResponse" />
+  </wsdl:message>
+  <wsdl:message name="confirmReservationsRequest">
+    <wsdl:part name="parameters" element="ns1:confirmReservations" />
+  </wsdl:message>
+  <wsdl:message name="confirmReservationsResponse">
+    <wsdl:part name="parameters" element="ns1:confirmReservationsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ExtBookingPortType">
+    <wsdl:operation name="addReservation">
+      <wsdl:input wsaw:Action="urn:addReservation" message="ns1:addReservationRequest" />
+      <wsdl:output wsaw:Action="urn:addReservationResponse" message="ns1:addReservationResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getReservationCourses">
+      <wsdl:input wsaw:Action="urn:getReservationCourses" message="ns1:getReservationCoursesRequest" />
+      <wsdl:output wsaw:Action="urn:getReservationCoursesResponse" message="ns1:getReservationCoursesResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="doLogout">
+      <wsdl:input wsaw:Action="urn:doLogout" message="ns1:doLogoutRequest" />
+      <wsdl:output wsaw:Action="urn:doLogoutResponse" message="ns1:doLogoutResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="doLogin">
+      <wsdl:input wsaw:Action="urn:doLogin" message="ns1:doLoginRequest" />
+      <wsdl:output wsaw:Action="urn:doLoginResponse" message="ns1:doLoginResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cancelReservations">
+      <wsdl:input wsaw:Action="urn:cancelReservations" message="ns1:cancelReservationsRequest" />
+      <wsdl:output wsaw:Action="urn:cancelReservationsResponse" message="ns1:cancelReservationsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getTeeTimeDetails">
+      <wsdl:input wsaw:Action="urn:getTeeTimeDetails" message="ns1:getTeeTimeDetailsRequest" />
+      <wsdl:output wsaw:Action="urn:getTeeTimeDetailsResponse" message="ns1:getTeeTimeDetailsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getClubInfo">
+      <wsdl:input wsaw:Action="urn:getClubInfo" message="ns1:getClubInfoRequest" />
+      <wsdl:output wsaw:Action="urn:getClubInfoResponse" message="ns1:getClubInfoResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getTeeTimes">
+      <wsdl:input wsaw:Action="urn:getTeeTimes" message="ns1:getTeeTimesRequest" />
+      <wsdl:output wsaw:Action="urn:getTeeTimesResponse" message="ns1:getTeeTimesResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteReservation">
+      <wsdl:input wsaw:Action="urn:deleteReservation" message="ns1:deleteReservationRequest" />
+      <wsdl:output wsaw:Action="urn:deleteReservationResponse" message="ns1:deleteReservationResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getClubCourses">
+      <wsdl:input wsaw:Action="urn:getClubCourses" message="ns1:getClubCoursesRequest" />
+      <wsdl:output wsaw:Action="urn:getClubCoursesResponse" message="ns1:getClubCoursesResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="confirmReservations">
+      <wsdl:input wsaw:Action="urn:confirmReservations" message="ns1:confirmReservationsRequest" />
+      <wsdl:output wsaw:Action="urn:confirmReservationsResponse" message="ns1:confirmReservationsResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ExtBookingSOAP11Binding" type="ns1:ExtBookingPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="addReservation">
+      <soap:operation soapAction="urn:addReservation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getReservationCourses">
+      <soap:operation soapAction="urn:getReservationCourses" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="doLogout">
+      <soap:operation soapAction="urn:doLogout" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="doLogin">
+      <soap:operation soapAction="urn:doLogin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cancelReservations">
+      <soap:operation soapAction="urn:cancelReservations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTeeTimeDetails">
+      <soap:operation soapAction="urn:getTeeTimeDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getClubInfo">
+      <soap:operation soapAction="urn:getClubInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTeeTimes">
+      <soap:operation soapAction="urn:getTeeTimes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteReservation">
+      <soap:operation soapAction="urn:deleteReservation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getClubCourses">
+      <soap:operation soapAction="urn:getClubCourses" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="confirmReservations">
+      <soap:operation soapAction="urn:confirmReservations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ExtBookingSOAP12Binding" type="ns1:ExtBookingPortType">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="addReservation">
+      <soap12:operation soapAction="urn:addReservation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getReservationCourses">
+      <soap12:operation soapAction="urn:getReservationCourses" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="doLogout">
+      <soap12:operation soapAction="urn:doLogout" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="doLogin">
+      <soap12:operation soapAction="urn:doLogin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cancelReservations">
+      <soap12:operation soapAction="urn:cancelReservations" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTeeTimeDetails">
+      <soap12:operation soapAction="urn:getTeeTimeDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getClubInfo">
+      <soap12:operation soapAction="urn:getClubInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTeeTimes">
+      <soap12:operation soapAction="urn:getTeeTimes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteReservation">
+      <soap12:operation soapAction="urn:deleteReservation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getClubCourses">
+      <soap12:operation soapAction="urn:getClubCourses" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="confirmReservations">
+      <soap12:operation soapAction="urn:confirmReservations" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ExtBookingHttpBinding" type="ns1:ExtBookingPortType">
+    <http:binding verb="POST" />
+    <wsdl:operation name="addReservation">
+      <http:operation location="ExtBooking/addReservation" />
+      <wsdl:input>
+        <mime:content part="addReservation" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="addReservation" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getReservationCourses">
+      <http:operation location="ExtBooking/getReservationCourses" />
+      <wsdl:input>
+        <mime:content part="getReservationCourses" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="getReservationCourses" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="doLogout">
+      <http:operation location="ExtBooking/doLogout" />
+      <wsdl:input>
+        <mime:content part="doLogout" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="doLogout" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="doLogin">
+      <http:operation location="ExtBooking/doLogin" />
+      <wsdl:input>
+        <mime:content part="doLogin" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="doLogin" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cancelReservations">
+      <http:operation location="ExtBooking/cancelReservations" />
+      <wsdl:input>
+        <mime:content part="cancelReservations" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="cancelReservations" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTeeTimeDetails">
+      <http:operation location="ExtBooking/getTeeTimeDetails" />
+      <wsdl:input>
+        <mime:content part="getTeeTimeDetails" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="getTeeTimeDetails" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getClubInfo">
+      <http:operation location="ExtBooking/getClubInfo" />
+      <wsdl:input>
+        <mime:content part="getClubInfo" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="getClubInfo" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTeeTimes">
+      <http:operation location="ExtBooking/getTeeTimes" />
+      <wsdl:input>
+        <mime:content part="getTeeTimes" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="getTeeTimes" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteReservation">
+      <http:operation location="ExtBooking/deleteReservation" />
+      <wsdl:input>
+        <mime:content part="deleteReservation" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="deleteReservation" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getClubCourses">
+      <http:operation location="ExtBooking/getClubCourses" />
+      <wsdl:input>
+        <mime:content part="getClubCourses" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="getClubCourses" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="confirmReservations">
+      <http:operation location="ExtBooking/confirmReservations" />
+      <wsdl:input>
+        <mime:content part="confirmReservations" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="confirmReservations" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ExtBooking">
+    <wsdl:port name="ExtBookingSOAP11port_https" binding="ns1:ExtBookingSOAP11Binding">
+      <soap:address location="https://test-aws01.albatros.net/albport/services/ExtBooking" />
+    </wsdl:port>
+    <wsdl:port name="ExtBookingSOAP11port_http1" binding="ns1:ExtBookingSOAP11Binding">
+      <soap:address location="http://test-aws01.albatros.net:8080/albport/services/ExtBooking" />
+    </wsdl:port>
+    <wsdl:port name="ExtBookingSOAP12port_https" binding="ns1:ExtBookingSOAP12Binding">
+      <soap12:address location="https://test-aws01.albatros.net/albport/services/ExtBooking" />
+    </wsdl:port>
+    <wsdl:port name="ExtBookingSOAP12port_http1" binding="ns1:ExtBookingSOAP12Binding">
+      <soap12:address location="http://test-aws01.albatros.net:8080/albport/services/ExtBooking" />
+    </wsdl:port>
+    <wsdl:port name="ExtBookingHttpport" binding="ns1:ExtBookingHttpBinding">
+      <http:address location="https://test-aws01.albatros.net/albport/services/ExtBooking" />
+    </wsdl:port>
+    <wsdl:port name="ExtBookingHttpport1" binding="ns1:ExtBookingHttpBinding">
+      <http:address location="http://test-aws01.albatros.net:8080/albport/services/ExtBooking" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,198 @@
+@using DansLesGolfs.Models
+@using DansLesGolfs.BLL
+@model DansLesGolfs.BLL.Item
+@{
+    ViewBag.Title = Model.ItemLangs != null && Model.ItemLangs.Any() ? Model.ItemLangs[0].ItemName.StripHtml() : Model.ItemCode;
+    if (!String.IsNullOrEmpty(Model.ItemLangs[0].ItemShortDesc))
+    {
+        ViewBag.ItemShortDescription = Model.ItemLangs[0].ItemShortDesc.StripHtml().Truncate(155, "...");
+        ViewBag.ItemFullShortDescription = Model.ItemLangs[0].ItemShortDesc.StripHtml();
+    }
+    Layout = "~/Views/_Shared/MP/Front/_Default.cshtml";
+    ProductsListModel relatedItemModel = ViewBag.RelatedItems as ProductsListModel;
+}
+@section head
+{
+    <link href="@Url.Content("~/Assets/Libraries/fancybox/source/jquery.fancybox.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Assets/Libraries/jquery-jcarousel/jquery.jcarousel.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Assets/Libraries/mCustomScrollbar/jquery.mCustomScrollbar.css")" rel="stylesheet" />
+
+    <meta name="title" content="@ViewBag.Title" />
+    <meta property="og:url" content="@System.Web.HttpContext.Current.Request.Url.ToString()" />
+    <meta property="og:title" content="@ViewBag.Title" />
+    <meta property="og:url" content="@System.Web.HttpContext.Current.Request.Url.ToString()" />
+    <meta property="og:description" content="@ViewBag.ItemFullShortDescription" />
+    @if (Model.ItemImages != null && Model.ItemImages.Any())
+{
+    <meta property="og:image" content="@Html.GetFullItemImageUrl(Model.ItemId, Model.ItemImages[0], "medium")" />
+}
+}
+@section foot
+{
+    <script>
+        window.itemType = '@ViewBag.ItemType';
+        window.printUrl = '@Url.Content("~/Item/Print/" + Model.ItemSlug)';
+    </script>
+    <script src="@Url.Content("~/Assets/Libraries/fancybox/source/jquery.fancybox.js")"></script>
+    <script src="@Url.Content("~/Assets/Libraries/bootstrap-starrr/bootstrap.starrr.js")"></script>
+    <script src="@Url.Content("~/Assets/Libraries/jquery-jcarousel/jquery.jcarousel-core.min.js")"></script>
+    <script src="@Url.Content("~/Assets/Libraries/jquery-jcarousel/jquery.jcarousel-control.min.js")"></script>
+    <script src="@Url.Content("~/Assets/Libraries/jquery-jcarousel/jquery.jcarousel-scrollintoview.min.js")"></script>
+    <script src="@Url.Content("~/Assets/Libraries/jquery-jcarousel/jquery.jcarousel-autoscroll.min.js")"></script>
+    <script src="@Url.Content("~/Assets/Libraries/jquery-jcarousel/jcarousel.connected-carousels.js")"></script>
+    <script src="@Url.Content("~/Assets/Libraries/mCustomScrollbar/jquery.mCustomScrollbar.js")"></script>
+    <script src="@Url.Content("~/Assets/Front/scripts/pages/dlg-product.js")"></script>
+}
+<div id="page-dlgitem-detail" class="@Html.ItemClasses(Model)">
+    <div id="item-info" class="margin-bottom-20" data-id="@Model.ItemId" data-price="@Model.Price" data-special-price="@Model.SpecialPrice" data-has-special-price="@(Model.HasSpecialPrice ? 1 : 0)">
+        <section id="item-images-section">
+            <div class="connected-carousels">
+                <div class="stage">
+                    <div class="carousel carousel-stage">
+                        <ul>
+                            @if (Model.ItemImages != null && Model.ItemImages.Any())
+                            {
+                                foreach (ItemImage img in Model.ItemImages)
+                                {
+                                    @*<li><img src="@Html.GetItemImageUrl(Model.ItemId, img, "large")" class="img-responsive" onerror="this.src='@Url.Content("~/Assets/Front/img/no-dlgitem-slide-image.png")'" /></li>*@
+                                    <li><div style="background: url(@Html.GetItemImageUrl(Model.ItemId, img, "large")) no-repeat center center; background-size: auto 100%"></div></li>
+                                }
+                            }
+                            else
+                            {
+                                <li><img src="@Url.Content("~/Assets/Front/img/no-dlgitem-slide-image.png")" /></li>
+                            }
+                        </ul>
+                    </div>
+                    <a href="javascript:void(0)" class="prev prev-stage"><span>&lsaquo;</span></a>
+                    <a href="javascript:void(0)" class="next next-stage"><span>&rsaquo;</span></a>
+                </div>
+
+                <div class="navigation">
+                    @if (Model.ItemImages != null && Model.ItemImages.Count > 4)
+                            {
+                        <a href="javascript:void(0)" class="prev prev-navigation">&lsaquo;</a>
+                        <a href="javascript:void(0)" class="next next-navigation">&rsaquo;</a>
+                    }
+                    <div class="carousel carousel-navigation">
+                        <ul>
+                            @if (Model.ItemImages != null && Model.ItemImages.Any())
+                            {
+                                foreach (ItemImage img in Model.ItemImages)
+                                {
+                                    <li><img src="@Html.GetItemImageUrl(Model.ItemId, img, "thumbnail")" class="img-responsive" onerror="this.src='@Url.Content("~/Assets/Front/img/no-dlgitem-slide-image.png")'" /></li>
+                                }
+                            }
+                            else
+                            {
+                                <li><img src="@Url.Content("~/Assets/Front/img/no-dlgitem-slide-image.png")" /></li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="social-panel">
+                <div class="fb-like" data-href="@Request.Url.AbsoluteUri" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+            </div>
+        </section>
+        <section id="item-info-section">
+            @if (Model.ItemLangs != null && Model.ItemLangs.Any())
+            {
+                if (!String.IsNullOrEmpty(Model.ItemLangs[0].ItemName))
+                { <h3 id="item-name">@Model.ItemLangs[0].ItemName</h3> }
+                <div id="item-price">
+                    <span>@Resources.Price</span> :  <span id="item-price-number">@Html.ItemPrice(Model)</span>
+                    <div>
+                        <button class="btn btn-primary" id="buy-button">&gt; @Resources.Buy</button>
+                    </div>
+                    <div class="site-name"><a href="@Url.Content("~/Product/Site/" + Model.SiteSlug)">@Resources.SeeTheProshopAt @Model.SiteName</a></div>
+                </div>
+                <div id="item-attributes">
+                    <div class="item-attribute">
+                        <div class="attribute-caption">@Resources.Condition :</div>
+                        <div class="attribute-value">@Model.ShapeName</div>
+                    </div>
+                    <div class="item-attribute">
+                        <div class="attribute-caption">@Resources.Shipping :</div>
+                        <div class="attribute-value">@MvcHtmlString.Create(Model.ShippingCost <= 0 ? Resources.FreeShipping : Model.ShippingCost.ToString("#,##0.00") + " &euro;")</div>
+                    </div>
+                    <div class="item-attribute">
+                        <div class="attribute-caption">@Resources.DeliveryTime :</div>
+                        <div class="attribute-value">@Resources.Within @Model.ShippingTimeMin @(@Model.ShippingTimeMin > 1 ? Resources.Days : Resources.Day)</div>
+                    </div>
+                    <div class="item-attribute">
+                        <div class="attribute-caption">@Resources.Quantity :</div>
+                        <div class="attribute-value">
+                            @Html.DropDownList("quantity", (IEnumerable<SelectListItem>)ViewBag.DropDownQuantity, new { @class = "form-control" })
+                            @Model.UnitInStock @(Resources.Available + "(s)")
+                        </div>
+                    </div>
+                    <div class="item-attribute">
+                        <div class="attribute-caption">@Resources.Return :</div>
+                        <div class="attribute-value">@Resources.Accept</div>
+                    </div>
+                    <div class="row">
+                        <div class="attribute-links">
+                            <p><a id="send-offer-popup-link" href="#send-offer-popup"><img src="@Url.Content("~/Assets/Front/img/icon-user-comment.png")" />@Resources.SendOfferToAFriend</a></p>
+                            <p><a href="javascript:void(0)" id="print-button"><img src="@Url.Content("~/Assets/Front/img/icon-computer.png")" />@Resources.PrintFile</a></p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </section>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="item-info-tabs">
+                    <ul class="nav nav-tabs"><li class="active"><a href="#item-specifications" data-toggle="tab">@Resources.Specifications</a></li><li><a href="#delivery-detail" data-toggle="tab">@Resources.DeliveryDetail</a></li><li><a href="#reviews" data-toggle="tab">@Resources.Review</a></li></ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="item-specifications">@Html.Partial("~/Views/_Shared/UC/Front/Item/UCDLGItemSpecifications.cshtml")</div>
+                        <div class="tab-pane" id="delivery-detail">@Html.Partial("~/Views/_Shared/UC/Front/Item/UCDLGItemDeliveryDetail.cshtml")</div>
+                        <div class="tab-pane" id="reviews">@Html.Partial("~/Views/_Shared/UC/Front/Item/UCDLGItemReviews.cshtml", Model.ItemReviews)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @if (relatedItemModel != null)
+    {
+        @Html.Partial("~/Views/_Shared/UC/Front/Item/UCDLGShopProductList.cshtml", relatedItemModel)
+    }
+
+    <a id="open-rating-popup-button" href="#rating-popup"></a>
+    <div id="rating-popup">
+        <div class="form-group">
+            <label class="control-label visible-ie8 visible-ie9">@Resources.YourReview</label>
+            <div class="input-icon">
+                <textarea id="review-message-input" class="form-control" placeholder="@Resources.YourReviewGoHere"></textarea>
+            </div>
+        </div>
+        <div class="form-actions">
+            <button type="submit" id="submit-review-button" class="btn btn-primary pull-right">
+                &gt; @Resources.SubmitReview
+            </button>
+        </div>
+    </div>
+
+    <div id="send-offer-popup" style="display: none;">
+        <h3 class="popup-title">@Resources.SendOfferToAFriend</h3>
+        <div class="form-group">
+            <label class="control-label">@Resources.RecipientName :</label>
+            <div><input type="text" class="form-control" id="txtRecipientName" /></div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">@Resources.RecipientEmail :</label>
+            <div><input type="text" class="form-control" id="txtRecipientEmail" /></div>
+        </div>
+        <div class="form-actions">
+            <button id="close-message-popup-button" class="btn btn-danger pull-left">
+                @Resources.Close <i class="glyphicon glyphicon-remove-circle"></i>
+            </button>
+            <button type="submit" id="send-email-button" class="btn btn-primary pull-right">
+                @Resources.Send <i class="glyphicon glyphicon-envelope"></i>
+            </button>
+        </div>
+    </div>
+
+    @Html.Partial("~/Views/_Shared/UC/Front/Item/UCAddedProductPopup.cshtml")
+</div>

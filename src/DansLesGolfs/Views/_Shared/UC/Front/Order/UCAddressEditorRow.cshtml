@@ -1,0 +1,138 @@
+﻿<form method="post" action="@Url.Content("~/Order/SaveAddress")">
+    <input type="hidden" id="AddressId" name="AddressId" value="0" />
+    <div class="row">
+        <!-- Left Section -->
+        <div class="col-md-6">
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-4 control-label">
+                        <label for="TitleId">@Resources.NameTitle <span class="require-pink">*</span></label>
+                    </div>
+                    <div class="col-md-7">
+                        @Html.DropDownList("TitleId", (List<SelectListItem>)ViewBag.DropDownTitles, new { Required = "Required", @class = "form-control normal", tabindex = 1, width = "100%" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-4 control-label">
+                        <label for="Firstname">@Resources.FirstName <span class="require-pink">*</span></label>
+                    </div>
+                    <div class="col-md-7">
+                        @Html.TextBox("Firstname", "", new { Required = "Required", maxlength = 200, @class = "form-control", tabindex = 2 })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-4 control-label">
+                        <label for="Lastname">@Resources.LastName <span class="require-pink">*</span></label>
+                    </div>
+                    <div class="col-md-7">
+                        @Html.TextBox("Lastname", "", new { Required = "Required", maxlength = 200, @class = "form-control", tabindex = 3 })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-4 control-label">
+                        <label for="Address">@Resources.Address <span class="require-pink">*</span></label>
+                    </div>
+                    <div class="col-md-7">
+                        @Html.TextBox("Address", "", new { Required = "Required", maxlength = 200, @class = "form-control", tabindex = 4 })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-4 control-label">
+                        <label for="Complement">Complément</label>
+                    </div>
+                    <div class="col-md-7">
+                        @Html.TextBox("Complement", "", new { maxlength = 200, @class = "form-control", tabindex = 5 })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-4 control-label">
+                        <label for="PostalCode">@Resources.PostalCode <span class="require-pink">*</span></label>
+                    </div>
+                    <div class="col-md-7">
+                        @Html.TextBox("PostalCode", "", new { Required = "Required", maxlength = 200, @class = "form-control number", tabindex = 6 })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Left Section -->
+        <!-- Right Section -->
+        <div class="col-md-6">
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-4 control-label">
+                        <label for="CityId">@Resources.City <span class="require-pink">*</span></label>
+                    </div>
+                    <div class="col-md-7">
+                        <select id="CityId" name="CityId">
+                            <option value="0">@Resources.PleaseEnterPostalCode</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-4 control-label">
+                        <label for="Country">@Resources.Country <span class="require-pink">*</span></label>
+                    </div>
+                    <div class="col-md-7">
+                        @Html.TextBox("Country", "", new { Required = "Required", maxlength = 200, @class = "form-control", tabindex = 8 })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-4 control-label">
+                        <label for="MobilePhone">@Resources.MobilePhone <span class="require-pink">*</span></label>
+                    </div>
+                    <div class="col-md-2">
+                        @Html.TextBox("MobilePhoneCountryCode", "", new { maxlength = 3, @class = "form-control", tabindex = 9 })
+                    </div>
+                    <div class="col-md-5">
+                        @Html.TextBox("MobilePhone", "", new { Required = "Required", maxlength = 200, @class = "form-control", tabindex = 10 })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-4 control-label">
+                        <label for="Digicode">Digicode</label>
+                    </div>
+                    <div class="col-md-7">
+                        @Html.TextBox("Digicode", "", new { maxlength = 200, @class = "form-control", tabindex = 11 })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-4 control-label">
+                        <label for="Floor">@Resources.Floor</label>
+                    </div>
+                    <div class="col-md-7">
+                        @Html.TextBox("Floor", "", new { maxlength = 200, @class = "form-control", tabindex = 12 })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-4 control-label">
+                        <label for="AddressName">@Resources.AddressName <span class="require-pink">*</span></label>
+                    </div>
+                    <div class="col-md-7">
+                        @Html.TextBox("AddressName", "", new { Required = "Required", maxlength = 200, tabindex = 13, @class = "form-control", placeholder = Resources.Home + ", " + Resources.Office + " ... " })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Right Section -->
+    </div>
+</form>

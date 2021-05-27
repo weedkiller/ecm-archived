@@ -1,0 +1,270 @@
+2018-02-20 10:00:34.5090  10 Error                          DansLesGolfs.ECM.Controllers.BaseController System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at DansLesGolfs.ECM.ECMHelper.GetImgTags(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 294
+   at DansLesGolfs.ECM.ECMHelper.FixingImageMaxWidth(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 226
+   at DansLesGolfs.ECM.ECMHelper.GetFixedHTML(String html) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 23
+   at DansLesGolfs.ECM.Controllers.EmailTemplateController.DoSaveSuccess(Int32 id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\EmailTemplateController.cs:line 124
+   at DansLesGolfs.ECM.Controllers.BaseECMCRUDController`1.Form() in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\BaseClass\BaseECMCRUDController.cs:line 457 System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at DansLesGolfs.ECM.ECMHelper.GetImgTags(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 294
+   at DansLesGolfs.ECM.ECMHelper.FixingImageMaxWidth(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 226
+   at DansLesGolfs.ECM.ECMHelper.GetFixedHTML(String html) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 23
+   at DansLesGolfs.ECM.Controllers.EmailTemplateController.DoSaveSuccess(Int32 id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\EmailTemplateController.cs:line 124
+   at DansLesGolfs.ECM.Controllers.BaseECMCRUDController`1.Form() in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\BaseClass\BaseECMCRUDController.cs:line 457
+2018-02-20 10:01:03.4680  26 Error                          DansLesGolfs.ECM.Controllers.BaseController System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at DansLesGolfs.ECM.ECMHelper.GetImgTags(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 294
+   at DansLesGolfs.ECM.ECMHelper.FixingImageMaxWidth(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 226
+   at DansLesGolfs.ECM.ECMHelper.GetFixedHTML(String html) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 23
+   at DansLesGolfs.ECM.Controllers.EmailTemplateController.DoSaveSuccess(Int32 id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\EmailTemplateController.cs:line 124
+   at DansLesGolfs.ECM.Controllers.BaseECMCRUDController`1.Form() in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\BaseClass\BaseECMCRUDController.cs:line 457 System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at DansLesGolfs.ECM.ECMHelper.GetImgTags(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 294
+   at DansLesGolfs.ECM.ECMHelper.FixingImageMaxWidth(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 226
+   at DansLesGolfs.ECM.ECMHelper.GetFixedHTML(String html) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 23
+   at DansLesGolfs.ECM.Controllers.EmailTemplateController.DoSaveSuccess(Int32 id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\EmailTemplateController.cs:line 124
+   at DansLesGolfs.ECM.Controllers.BaseECMCRUDController`1.Form() in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\BaseClass\BaseECMCRUDController.cs:line 457
+2018-02-20 10:01:27.1575  30 Error                          DansLesGolfs.ECM.Controllers.BaseController System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at DansLesGolfs.ECM.ECMHelper.GetImgTags(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 294
+   at DansLesGolfs.ECM.ECMHelper.FixingImageMaxWidth(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 226
+   at DansLesGolfs.ECM.ECMHelper.GetFixedHTML(String html) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 23
+   at DansLesGolfs.ECM.Controllers.EmailTemplateController.DoSaveSuccess(Int32 id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\EmailTemplateController.cs:line 124
+   at DansLesGolfs.ECM.Controllers.BaseECMCRUDController`1.Form() in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\BaseClass\BaseECMCRUDController.cs:line 457 System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at DansLesGolfs.ECM.ECMHelper.GetImgTags(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 294
+   at DansLesGolfs.ECM.ECMHelper.FixingImageMaxWidth(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 226
+   at DansLesGolfs.ECM.ECMHelper.GetFixedHTML(String html) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 23
+   at DansLesGolfs.ECM.Controllers.EmailTemplateController.DoSaveSuccess(Int32 id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\EmailTemplateController.cs:line 124
+   at DansLesGolfs.ECM.Controllers.BaseECMCRUDController`1.Form() in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\BaseClass\BaseECMCRUDController.cs:line 457
+2018-02-20 10:03:22.8692  30 Error                          DansLesGolfs.ECM.Controllers.BaseController System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at DansLesGolfs.ECM.ECMHelper.GetImgTags(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 294
+   at DansLesGolfs.ECM.ECMHelper.FixingImageMaxWidth(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 226
+   at DansLesGolfs.ECM.ECMHelper.GetFixedHTML(String html) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 23
+   at DansLesGolfs.ECM.Controllers.EmailTemplateController.DoSaveSuccess(Int32 id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\EmailTemplateController.cs:line 124
+   at DansLesGolfs.ECM.Controllers.BaseECMCRUDController`1.Form() in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\BaseClass\BaseECMCRUDController.cs:line 457 System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at DansLesGolfs.ECM.ECMHelper.GetImgTags(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 294
+   at DansLesGolfs.ECM.ECMHelper.FixingImageMaxWidth(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 226
+   at DansLesGolfs.ECM.ECMHelper.GetFixedHTML(String html) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 23
+   at DansLesGolfs.ECM.Controllers.EmailTemplateController.DoSaveSuccess(Int32 id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\EmailTemplateController.cs:line 124
+   at DansLesGolfs.ECM.Controllers.BaseECMCRUDController`1.Form() in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\BaseClass\BaseECMCRUDController.cs:line 457
+2018-02-20 10:05:20.5861   5 Error                          DansLesGolfs.ECM.Controllers.BaseController System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at DansLesGolfs.ECM.ECMHelper.GetImgTags(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 294
+   at DansLesGolfs.ECM.ECMHelper.FixingImageMaxWidth(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 226
+   at DansLesGolfs.ECM.ECMHelper.GetFixedHTML(String html) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 23
+   at DansLesGolfs.ECM.Controllers.EmailTemplateController.DoSaveSuccess(Int32 id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\EmailTemplateController.cs:line 124
+   at DansLesGolfs.ECM.Controllers.BaseECMCRUDController`1.Form() in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\BaseClass\BaseECMCRUDController.cs:line 457 System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at DansLesGolfs.ECM.ECMHelper.GetImgTags(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 294
+   at DansLesGolfs.ECM.ECMHelper.FixingImageMaxWidth(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 226
+   at DansLesGolfs.ECM.ECMHelper.GetFixedHTML(String html) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 23
+   at DansLesGolfs.ECM.Controllers.EmailTemplateController.DoSaveSuccess(Int32 id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\EmailTemplateController.cs:line 124
+   at DansLesGolfs.ECM.Controllers.BaseECMCRUDController`1.Form() in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\BaseClass\BaseECMCRUDController.cs:line 457
+2018-02-20 10:05:57.4748   8 Error                          DansLesGolfs.ECM.Controllers.BaseController System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at DansLesGolfs.ECM.ECMHelper.GetImgTags(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 294
+   at DansLesGolfs.ECM.ECMHelper.FixingImageMaxWidth(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 226
+   at DansLesGolfs.ECM.ECMHelper.GetFixedHTML(String html) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 23
+   at DansLesGolfs.ECM.Controllers.EmailTemplateController.DoSaveSuccess(Int32 id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\EmailTemplateController.cs:line 124
+   at DansLesGolfs.ECM.Controllers.BaseECMCRUDController`1.Form() in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\BaseClass\BaseECMCRUDController.cs:line 457 System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at DansLesGolfs.ECM.ECMHelper.GetImgTags(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 294
+   at DansLesGolfs.ECM.ECMHelper.FixingImageMaxWidth(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 226
+   at DansLesGolfs.ECM.ECMHelper.GetFixedHTML(String html) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 23
+   at DansLesGolfs.ECM.Controllers.EmailTemplateController.DoSaveSuccess(Int32 id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\EmailTemplateController.cs:line 124
+   at DansLesGolfs.ECM.Controllers.BaseECMCRUDController`1.Form() in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\BaseClass\BaseECMCRUDController.cs:line 457
+2018-02-20 10:06:47.3803  15 Error                          DansLesGolfs.ECM.Controllers.BaseController System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at DansLesGolfs.ECM.ECMHelper.GetImgTags(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 294
+   at DansLesGolfs.ECM.ECMHelper.FixingImageMaxWidth(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 226
+   at DansLesGolfs.ECM.ECMHelper.GetFixedHTML(String html) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 23
+   at DansLesGolfs.ECM.Controllers.EmailTemplateController.DoSaveSuccess(Int32 id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\EmailTemplateController.cs:line 124
+   at DansLesGolfs.ECM.Controllers.BaseECMCRUDController`1.Form() in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\BaseClass\BaseECMCRUDController.cs:line 457 System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at DansLesGolfs.ECM.ECMHelper.GetImgTags(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 294
+   at DansLesGolfs.ECM.ECMHelper.FixingImageMaxWidth(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 226
+   at DansLesGolfs.ECM.ECMHelper.GetFixedHTML(String html) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 23
+   at DansLesGolfs.ECM.Controllers.EmailTemplateController.DoSaveSuccess(Int32 id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\EmailTemplateController.cs:line 124
+   at DansLesGolfs.ECM.Controllers.BaseECMCRUDController`1.Form() in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\BaseClass\BaseECMCRUDController.cs:line 457
+2018-02-20 10:07:53.6286   5 Error                          DansLesGolfs.ECM.Controllers.BaseController System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at DansLesGolfs.ECM.ECMHelper.GetImgTags(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 294
+   at DansLesGolfs.ECM.ECMHelper.FixingImageMaxWidth(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 226
+   at DansLesGolfs.ECM.ECMHelper.GetFixedHTML(String html) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 23
+   at DansLesGolfs.ECM.Controllers.EmailTemplateController.DoSaveSuccess(Int32 id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\EmailTemplateController.cs:line 124
+   at DansLesGolfs.ECM.Controllers.BaseECMCRUDController`1.Form() in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\BaseClass\BaseECMCRUDController.cs:line 457 System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at DansLesGolfs.ECM.ECMHelper.GetImgTags(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 294
+   at DansLesGolfs.ECM.ECMHelper.FixingImageMaxWidth(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 226
+   at DansLesGolfs.ECM.ECMHelper.GetFixedHTML(String html) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 23
+   at DansLesGolfs.ECM.Controllers.EmailTemplateController.DoSaveSuccess(Int32 id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\EmailTemplateController.cs:line 124
+   at DansLesGolfs.ECM.Controllers.BaseECMCRUDController`1.Form() in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\BaseClass\BaseECMCRUDController.cs:line 457
+2018-02-20 10:12:24.9984   8 Error                          DansLesGolfs.ECM.Controllers.BaseController System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at DansLesGolfs.ECM.ECMHelper.GetImgTags(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 294
+   at DansLesGolfs.ECM.ECMHelper.FixingImageMaxWidth(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 226
+   at DansLesGolfs.ECM.ECMHelper.GetFixedHTML(String html) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 23
+   at DansLesGolfs.ECM.Controllers.EmailTemplateController.DoSaveSuccess(Int32 id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\EmailTemplateController.cs:line 124
+   at DansLesGolfs.ECM.Controllers.BaseECMCRUDController`1.Form() in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\BaseClass\BaseECMCRUDController.cs:line 457 System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at DansLesGolfs.ECM.ECMHelper.GetImgTags(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 294
+   at DansLesGolfs.ECM.ECMHelper.FixingImageMaxWidth(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 226
+   at DansLesGolfs.ECM.ECMHelper.GetFixedHTML(String html) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 23
+   at DansLesGolfs.ECM.Controllers.EmailTemplateController.DoSaveSuccess(Int32 id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\EmailTemplateController.cs:line 124
+   at DansLesGolfs.ECM.Controllers.BaseECMCRUDController`1.Form() in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\BaseClass\BaseECMCRUDController.cs:line 457
+2018-02-20 10:12:31.9156  10 Error                          DansLesGolfs.ECM.Controllers.BaseController System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at DansLesGolfs.ECM.ECMHelper.GetImgTags(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 294
+   at DansLesGolfs.ECM.ECMHelper.FixingImageMaxWidth(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 226
+   at DansLesGolfs.ECM.ECMHelper.GetFixedHTML(String html) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 23
+   at DansLesGolfs.ECM.Controllers.EmailTemplateController.DoSaveSuccess(Int32 id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\EmailTemplateController.cs:line 124
+   at DansLesGolfs.ECM.Controllers.BaseECMCRUDController`1.Form() in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\BaseClass\BaseECMCRUDController.cs:line 457 System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at DansLesGolfs.ECM.ECMHelper.GetImgTags(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 294
+   at DansLesGolfs.ECM.ECMHelper.FixingImageMaxWidth(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 226
+   at DansLesGolfs.ECM.ECMHelper.GetFixedHTML(String html) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 23
+   at DansLesGolfs.ECM.Controllers.EmailTemplateController.DoSaveSuccess(Int32 id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\EmailTemplateController.cs:line 124
+   at DansLesGolfs.ECM.Controllers.BaseECMCRUDController`1.Form() in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\BaseClass\BaseECMCRUDController.cs:line 457
+2018-02-20 10:13:12.9451  12 Error                          DansLesGolfs.ECM.Controllers.BaseController System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at DansLesGolfs.ECM.ECMHelper.GetImgTags(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 294
+   at DansLesGolfs.ECM.ECMHelper.FixingImageMaxWidth(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 226
+   at DansLesGolfs.ECM.ECMHelper.GetFixedHTML(String html) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 23
+   at DansLesGolfs.ECM.Controllers.EmailTemplateController.DoSaveSuccess(Int32 id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\EmailTemplateController.cs:line 124
+   at DansLesGolfs.ECM.Controllers.BaseECMCRUDController`1.Form() in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\BaseClass\BaseECMCRUDController.cs:line 457 System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at DansLesGolfs.ECM.ECMHelper.GetImgTags(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 294
+   at DansLesGolfs.ECM.ECMHelper.FixingImageMaxWidth(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 226
+   at DansLesGolfs.ECM.ECMHelper.GetFixedHTML(String html) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 23
+   at DansLesGolfs.ECM.Controllers.EmailTemplateController.DoSaveSuccess(Int32 id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\EmailTemplateController.cs:line 124
+   at DansLesGolfs.ECM.Controllers.BaseECMCRUDController`1.Form() in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\BaseClass\BaseECMCRUDController.cs:line 457
+2018-02-20 10:14:13.3028   8 Error                          DansLesGolfs.ECM.Controllers.BaseController System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at DansLesGolfs.ECM.ECMHelper.GetImgTags(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 294
+   at DansLesGolfs.ECM.ECMHelper.FixingImageMaxWidth(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 226
+   at DansLesGolfs.ECM.ECMHelper.GetFixedHTML(String html) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 23
+   at DansLesGolfs.ECM.Controllers.EmailTemplateController.DoSaveSuccess(Int32 id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\EmailTemplateController.cs:line 124
+   at DansLesGolfs.ECM.Controllers.BaseECMCRUDController`1.Form() in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\BaseClass\BaseECMCRUDController.cs:line 457 System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at DansLesGolfs.ECM.ECMHelper.GetImgTags(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 294
+   at DansLesGolfs.ECM.ECMHelper.FixingImageMaxWidth(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 226
+   at DansLesGolfs.ECM.ECMHelper.GetFixedHTML(String html) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 23
+   at DansLesGolfs.ECM.Controllers.EmailTemplateController.DoSaveSuccess(Int32 id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\EmailTemplateController.cs:line 124
+   at DansLesGolfs.ECM.Controllers.BaseECMCRUDController`1.Form() in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\BaseClass\BaseECMCRUDController.cs:line 457
+2018-02-20 10:14:52.0193   7 Error                          DansLesGolfs.ECM.Controllers.BaseController System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at DansLesGolfs.ECM.ECMHelper.GetImgTags(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 294
+   at DansLesGolfs.ECM.ECMHelper.FixingImageMaxWidth(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 226
+   at DansLesGolfs.ECM.ECMHelper.GetFixedHTML(String html) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 23
+   at DansLesGolfs.ECM.Controllers.EmailTemplateController.DoSaveSuccess(Int32 id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\EmailTemplateController.cs:line 124
+   at DansLesGolfs.ECM.Controllers.BaseECMCRUDController`1.Form() in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\BaseClass\BaseECMCRUDController.cs:line 457 System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at DansLesGolfs.ECM.ECMHelper.GetImgTags(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 294
+   at DansLesGolfs.ECM.ECMHelper.FixingImageMaxWidth(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 226
+   at DansLesGolfs.ECM.ECMHelper.GetFixedHTML(String html) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 23
+   at DansLesGolfs.ECM.Controllers.EmailTemplateController.DoSaveSuccess(Int32 id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\EmailTemplateController.cs:line 124
+   at DansLesGolfs.ECM.Controllers.BaseECMCRUDController`1.Form() in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\BaseClass\BaseECMCRUDController.cs:line 457
+2018-02-20 10:27:08.3361   5 Error                          DansLesGolfs.ECM.Controllers.BaseController System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at DansLesGolfs.ECM.ECMHelper.GetImgTags(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 294
+   at DansLesGolfs.ECM.ECMHelper.FixingImageMaxWidth(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 226
+   at DansLesGolfs.ECM.ECMHelper.GetFixedHTML(String html) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 23
+   at DansLesGolfs.ECM.Controllers.EmailTemplateController.DoSaveSuccess(Int32 id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\EmailTemplateController.cs:line 124
+   at DansLesGolfs.ECM.Controllers.BaseECMCRUDController`1.Form() in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\BaseClass\BaseECMCRUDController.cs:line 457 System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at DansLesGolfs.ECM.ECMHelper.GetImgTags(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 294
+   at DansLesGolfs.ECM.ECMHelper.FixingImageMaxWidth(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 226
+   at DansLesGolfs.ECM.ECMHelper.GetFixedHTML(String html) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 23
+   at DansLesGolfs.ECM.Controllers.EmailTemplateController.DoSaveSuccess(Int32 id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\EmailTemplateController.cs:line 124
+   at DansLesGolfs.ECM.Controllers.BaseECMCRUDController`1.Form() in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\BaseClass\BaseECMCRUDController.cs:line 457
+2018-02-20 10:27:41.4789  15 Error                          DansLesGolfs.ECM.Controllers.BaseController System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at DansLesGolfs.ECM.ECMHelper.GetImgTags(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 294
+   at DansLesGolfs.ECM.ECMHelper.FixingImageMaxWidth(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 226
+   at DansLesGolfs.ECM.ECMHelper.GetFixedHTML(String html) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 23
+   at DansLesGolfs.ECM.Controllers.EmailTemplateController.DoSaveSuccess(Int32 id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\EmailTemplateController.cs:line 124
+   at DansLesGolfs.ECM.Controllers.BaseECMCRUDController`1.Form() in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\BaseClass\BaseECMCRUDController.cs:line 457 System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at DansLesGolfs.ECM.ECMHelper.GetImgTags(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 294
+   at DansLesGolfs.ECM.ECMHelper.FixingImageMaxWidth(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 226
+   at DansLesGolfs.ECM.ECMHelper.GetFixedHTML(String html) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 23
+   at DansLesGolfs.ECM.Controllers.EmailTemplateController.DoSaveSuccess(Int32 id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\EmailTemplateController.cs:line 124
+   at DansLesGolfs.ECM.Controllers.BaseECMCRUDController`1.Form() in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\BaseClass\BaseECMCRUDController.cs:line 457
+2018-02-20 10:28:05.2485  15 Error                          DansLesGolfs.ECM.Controllers.BaseController System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at DansLesGolfs.ECM.ECMHelper.GetImgTags(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 294
+   at DansLesGolfs.ECM.ECMHelper.FixingImageMaxWidth(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 226
+   at DansLesGolfs.ECM.ECMHelper.GetFixedHTML(String html) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 23
+   at DansLesGolfs.ECM.Controllers.EmailTemplateController.DoSaveSuccess(Int32 id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\EmailTemplateController.cs:line 124
+   at DansLesGolfs.ECM.Controllers.BaseECMCRUDController`1.Form() in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\BaseClass\BaseECMCRUDController.cs:line 457 System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at DansLesGolfs.ECM.ECMHelper.GetImgTags(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 294
+   at DansLesGolfs.ECM.ECMHelper.FixingImageMaxWidth(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 226
+   at DansLesGolfs.ECM.ECMHelper.GetFixedHTML(String html) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 23
+   at DansLesGolfs.ECM.Controllers.EmailTemplateController.DoSaveSuccess(Int32 id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\EmailTemplateController.cs:line 124
+   at DansLesGolfs.ECM.Controllers.BaseECMCRUDController`1.Form() in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\BaseClass\BaseECMCRUDController.cs:line 457
+2018-02-20 10:40:23.8049   9 Error                          DansLesGolfs.ECM.Controllers.BaseController System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at DansLesGolfs.ECM.ECMHelper.GetImgTags(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 294
+   at DansLesGolfs.ECM.ECMHelper.FixingImageMaxWidth(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 226
+   at DansLesGolfs.ECM.ECMHelper.GetFixedHTML(String html) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 23
+   at DansLesGolfs.ECM.Controllers.EmailTemplateController.DoSaveSuccess(Int32 id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\EmailTemplateController.cs:line 124
+   at DansLesGolfs.ECM.Controllers.BaseECMCRUDController`1.Form() in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\BaseClass\BaseECMCRUDController.cs:line 457 System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at DansLesGolfs.ECM.ECMHelper.GetImgTags(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 294
+   at DansLesGolfs.ECM.ECMHelper.FixingImageMaxWidth(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 226
+   at DansLesGolfs.ECM.ECMHelper.GetFixedHTML(String html) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 23
+   at DansLesGolfs.ECM.Controllers.EmailTemplateController.DoSaveSuccess(Int32 id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\EmailTemplateController.cs:line 124
+   at DansLesGolfs.ECM.Controllers.BaseECMCRUDController`1.Form() in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\BaseClass\BaseECMCRUDController.cs:line 457
+2018-02-20 10:42:17.3396   6 Error                          DansLesGolfs.ECM.Controllers.BaseController System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at DansLesGolfs.ECM.ECMHelper.GetImgTags(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 294
+   at DansLesGolfs.ECM.ECMHelper.FixingImageMaxWidth(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 226
+   at DansLesGolfs.ECM.ECMHelper.GetFixedHTML(String html) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 23
+   at DansLesGolfs.ECM.Controllers.EmailTemplateController.DoSaveSuccess(Int32 id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\EmailTemplateController.cs:line 124
+   at DansLesGolfs.ECM.Controllers.BaseECMCRUDController`1.Form() in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\BaseClass\BaseECMCRUDController.cs:line 457 System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at DansLesGolfs.ECM.ECMHelper.GetImgTags(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 294
+   at DansLesGolfs.ECM.ECMHelper.FixingImageMaxWidth(HtmlDocument htmlDoc) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 226
+   at DansLesGolfs.ECM.ECMHelper.GetFixedHTML(String html) in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\CommonHelper\ECMHelper.cs:line 23
+   at DansLesGolfs.ECM.Controllers.EmailTemplateController.DoSaveSuccess(Int32 id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\EmailTemplateController.cs:line 124
+   at DansLesGolfs.ECM.Controllers.BaseECMCRUDController`1.Form() in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\BaseClass\BaseECMCRUDController.cs:line 457

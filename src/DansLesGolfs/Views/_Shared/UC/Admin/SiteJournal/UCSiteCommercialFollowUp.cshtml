@@ -1,0 +1,127 @@
+﻿@using DansLesGolfs.BLL
+@model SiteCommercialFollowUp
+@{
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    @Resources.CommercialFollowUp
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            <label for="ContractualTerms">Contractual Terms</label>
+                        </div>
+                        <div class="col-md-8">
+                            @Html.TextBox("ContractualTerms", Model.ContractualTerms, new { maxlength = 100, @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            <label for="NeedsInCommunicationTools">Needs in Communication Tools</label>
+                        </div>
+                        <div class="col-md-8">
+                            @Html.TextBox("NeedsInCommunicationTools", Model.NeedsInCommunicationTools, new { maxlength = 100, @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            <label for="CardSeller">Card Seller</label>
+                        </div>
+                        <div class="col-md-8">
+                            @Html.TextBox("CardSeller", Model.CardSeller, new { maxlength = 100, @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            <label for="HotelPartnerSeeking">Hotel Partner Seeking</label>
+                        </div>
+                        <div class="col-md-8">
+                            @Html.TextBox("HotelPartnerSeeking", Model.HotelPartnerSeeking, new { maxlength = 100, @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            <label for="AdsSpotSelling">Ads Spot Selling</label>
+                        </div>
+                        <div class="col-md-8">
+                            @Html.TextBox("AdsSpotSelling", Model.AdsSpotSelling, new { maxlength = 100, @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            <label for="SellGFOnline">Sell GF Online</label>
+                        </div>
+                        <div class="col-md-8">
+                            @Html.TextBox("SellGFOnline", Model.SellGFOnline, new { maxlength = 100, @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            <label for="CentralPurchasingPoint">Central Purchasing Point</label>
+                        </div>
+                        <div class="col-md-8">
+                            @Html.TextBox("CentralPurchasingPoint", Model.CentralPurchasingPoint, new { maxlength = 100, @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            <label for="FormationNeeds">Formation Needs</label>
+                        </div>
+                        <div class="col-md-8">
+                            @Html.TextBox("FormationNeeds", Model.FormationNeeds, new { maxlength = 100, @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            <label for="ConsultingNeeds">Consulting Needs</label>
+                        </div>
+                        <div class="col-md-8">
+                            @Html.TextBox("ConsultingNeeds", Model.ConsultingNeeds, new { maxlength = 100, @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            <label for="FidelityShop">Fidelity Shop</label>
+                        </div>
+                        <div class="col-md-8">
+                            @Html.TextBox("FidelityShop", Model.FidelityShop, new { maxlength = 100, @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            <label for="RegionalProspectingPoint">Regional Prospecting Point</label>
+                        </div>
+                        <div class="col-md-8">
+                            @Html.TextBox("RegionalProspectingPoint", Model.RegionalProspectingPoint, new { maxlength = 100, @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

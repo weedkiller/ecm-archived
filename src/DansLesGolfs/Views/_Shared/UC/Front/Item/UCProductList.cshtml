@@ -1,0 +1,42 @@
+﻿@using DansLesGolfs.BLL
+@using System.Globalization
+@model DansLesGolfs.Models.ProductsListModel
+@{
+    string itemShortDesc = string.Empty;
+    string itemName = string.Empty;
+    //List<int> allowedTeeSheetCategories = ViewBag.AllowTeeSheetCategories != null ? (List<int>)ViewBag.AllowTeeSheetCategories : new List<int>();
+    int greenFeeType = (int)ItemType.Type.GreenFee;
+}
+
+@if (Model.Items != null && Model.Items.Any())
+{
+    @MvcHtmlString.Create(Model.IsShowWrapper ? "<div id=\"products-list\">" : "")
+    foreach (Item it in Model.Items)
+    {
+        itemName = !String.IsNullOrEmpty(it.SiteName) && !String.IsNullOrWhiteSpace(it.SiteName) ? it.SiteName : it.ItemName;
+        itemShortDesc = it.ItemLangs != null && it.ItemLangs.Any() ? it.ItemLangs[0].ItemShortDesc : it.ItemName;
+        <div class="@Html.ItemClasses(it)" data-id="@it.ItemId" data-item-type="@Html.ItemClasses(it)" data-name="@it.ItemName" data-url="@Html.ItemUrl(it)" data-price="@it.CheapestPrice" data-image="@Html.GetItemImageUrl(it.ItemId, it.ItemImages[0], "medium", "", 300, 190)">
+            @if (it.ItemImages != null && it.ItemImages.Any())
+            {
+                <div class="product-thumbnail">
+                    <a href="@Html.ItemUrl(it)" title="@itemName"><img src="@Html.GetItemImageUrl(it.ItemId, it.ItemImages[0], "medium", "", 300, 190)" class="img-responsive" onerror="this.src='@Url.Content("~/Assets/Front/img/no-image-300x193.png")'" alt="@it.ItemName" /></a>
+                </div>
+            }
+            <div class="product-info">
+                <h4 class="product-name">
+                    <span class="starrr fixed" data-rating="@it.AverageRating" title="@(it.AverageRating > 0 ? Resources.WriteYourReview : Resources.BeTheFirstToReview)"></span>
+                    <a href="@Html.ItemUrl(it)" title="@itemName">@itemName</a>
+                </h4>
+                <p class="product-short-description"><a href="@Html.ItemUrl(it)">@itemShortDesc.Truncate(126, "...")</a></p>
+                <a class="view-offer" href="@Html.ItemUrl(it)" title="@itemName">&gt; @Resources.ViewOffer</a>
+            </div>
+            @Html.Partial("~/Views/_Shared/UC/Front/Item/UCItemPriceTag.cshtml", it)
+        </div>
+    }
+    @MvcHtmlString.Create(Model.IsShowWrapper ? "</div>" : "")
+    @Html.Pagination(Model.Page, Model.TotalPages)
+}
+else if (Model.IsShowNoItemText)
+{
+    <p>@Resources.ThereIsNoProduct</p>
+}

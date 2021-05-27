@@ -1,0 +1,73 @@
+﻿@{
+    ViewBag.Title = "AddDlgCardAdmin";
+    Layout = "~/Views/_Shared/MP/_Admin.cshtml";
+}
+
+@using DansLesGolfs.Base
+@using DansLesGolfs.BLL
+
+@{
+    
+}
+@section foot
+{
+     <link href="~/Content/css/jquery.dataTables.css" rel="stylesheet" media="screen">
+     <link href="~/Content/css/jquery.dataTables.min.css" rel="stylesheet" media="screen">
+     <link href="~/Content/css/jquery.dataTables_themeroller.css" rel="stylesheet" media="screen">
+
+    <script type="text/javascript" src="~/Scripts/jquery.dataTables.min.js" charset="UTF-8"></script>
+
+     <script type="text/javascript">
+         $(function () {
+             $('#myDataTable').dataTable({
+                "bServerSide": false,
+                "scrollX": true,
+                "sAjaxSource": '@Url.Action("AjaxHandler","DlgCard")',
+                "bProcessing": false,
+                "bFilter": false,
+                "aoColumnDefs": [
+                   {
+                       "aTargets": [0],    //Edit column
+                       "mData": "DlgCardId",  //Get value from RoleId column, I assumed you used "RoleId" as the name for RoleId in your JSON, in my case, I didn't assigned any name in code behind so i used "mData": "0"
+                       "mRender": function (data, type, full) {
+
+                           return '<a href=' +
+                                '@Url.Action("DLGCardBalanceHistory", "DlgCard")?DlgCardId=' + full[0] +
+                            '>' + full[0] + '</a>';
+                       }
+                   }]
+
+            });
+        });
+
+
+    </script>
+}
+
+
+
+   
+
+ <div style="width:670px;height:600px;overflow:auto;">
+        <table id="myDataTable" class="display" width="100%">
+            <thead>
+                <tr>
+                    <th>DlgCardId</th>
+                    <th>ItemId</th>
+                    <th>SaleId</th>
+                    <th>FirstName</th>
+                    <th>LastName</th>
+                     <th>Email</th>
+                    <th>CardNumber</th>
+                    <th>Message</th>
+                    <th>BeginBalance</th>
+                     <th>InsertDate</th>
+                    <th>UpdateDate</th>
+                    <th>UserId</th>
+                    <th>SelectedCardStyleId</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>

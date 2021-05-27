@@ -1,0 +1,30 @@
+﻿@using DansLesGolfs.BLL
+@model List<Brand>
+@{
+    Layout = "~/Views/_Shared/MP/Front/_FullWidth.cshtml";
+}
+@section head
+{
+}
+@section foot
+{
+}
+<div id="page-sale-event" class="margin-bottom-40">
+    @if (Model != null && Model.Any())
+    {
+        <div class="brands-list">
+            @foreach (Brand brand in Model)
+            {
+                <div class="brand">
+                    <img src="@Html.GetBrandImageUrl(brand)" class="brand-logo" />
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div id="no-sale-event">
+            <p></p>
+        </div>
+    }
+</div>

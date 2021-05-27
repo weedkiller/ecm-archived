@@ -1,0 +1,119 @@
+﻿@using DansLesGolfs
+@using DansLesGolfs.BLL
+
+@model PromotionViewModel
+@{
+    Layout = "~/Views/_Shared/MP/Front/_Default.cshtml";
+    var User = (DansLesGolfs.BLL.User)ViewBag.User;
+}
+
+@section head
+{
+    <style type="text/css">
+        .promotion-header {
+        margin-top: 10px;
+        margin-bottom: 30px;
+        color: #d80927;
+        font-weight: 700;
+        font-size: 26px;
+        padding-bottom: 10px;
+        }
+
+        .promotion-box {
+            width: 100%;
+            border: 1px solid #d0d0d0;
+            margin-bottom: 10px;     
+        }
+
+        .promotion-box-mainimage {
+            width:186px;
+            height:156px;
+            border-right: 1px solid #d0d0d0;
+        }
+
+        .promotion-float-left {
+            float:left;
+        }
+
+        .promotion-box-content {
+            padding:5px;
+            height:156px;
+            width: 432px;
+            
+        }
+
+        .promotion-box-content-brand {
+            padding-bottom: 10px;
+
+        }
+
+        .promotion-box-content-text {
+            padding-bottom: 10px;
+            line-height: 24px;
+        }
+
+        .text-aling-center {
+            text-align: center;
+        }
+
+
+
+        .clear {
+            clear:both;
+        }
+    </style>
+}
+
+@section foot
+{
+ 
+}
+
+<div class="promotion-header">Ventes évènementiels</div>
+
+@foreach (var data in Model.PromotionList)
+{
+<div class="promotion-box">
+    <div class="promotion-box-mainimage promotion-float-left">
+        <img src="/Uploads/Promotion/@data.PromotionId/@data.PromotionImage" width="185" height="156" />
+    </div>
+    <div class="promotion-box-content promotion-float-left">
+        <div class="promotion-box-content-brand text-aling-center">
+            <img src="/Uploads/Promotion/@data.PromotionId/@data.PromotionBrandImage"  height="30"  />
+        </div>
+        <div class="promotion-box-content-text text-aling-center">
+            @data.PromotionContent <br />
+            @data.PromotionTimecontent
+        </div>
+        <div class="promotion-box-content-button ">
+            <div class="action-buttons text-aling-center">
+                <a href="@Url.Action("DlGShopFillter", "Promotion", new {@brandId = data.BrandNameId })"><input class="btn btn-primary" value="> @Resources.accessthessale_promotion" /></a>
+            </div>
+            
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+}
+
+@*<div class="promotion-box">
+    <div class="promotion-box-mainimage promotion-float-left">
+        <img src="~/Content/image/golficon.jpg" width="185" height="156" />
+    </div>
+    <div class="promotion-box-content promotion-float-left">
+        <div class="promotion-box-content-brand text-aling-center">
+            <img src="~/Content/image/wilsonicon.jpg"  />
+        </div>
+        <div class="promotion-box-content-text text-aling-center">
+            Matériel de golf professionnel / Equipement et vêtement <br />
+            Vente  jusqu’à 15h à 18h lundi 19 mai
+        </div>
+        <div class="promotion-box-content-button ">
+            <div class="action-buttons text-aling-center">
+                <input class="btn btn-primary" value="> @Resources.accessthessale_promotion" />
+            </div>
+            
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>*@

@@ -1,0 +1,26 @@
+﻿@{
+}
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="@CultureHelper.GetCurrentNeutralCulture()" dir="@(CultureHelper.IsRightToLeft() ? "rtl" : "ltr")">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+    <title>@Html.MetaTitle(ViewBag.Title != null ? (string)ViewBag.Title : "")</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <meta http-equiv="Content-type" content="text/html; chartset=utf-8" />
+    @Html.Partial("~/Views/_Shared/UC/Admin/AdminStyles.cshtml")
+    @RenderSection("head", false)
+
+</head>
+<body class="home"> 
+    @RenderBody()  
+
+    @Html.Partial("~/Views/_Shared/UC/Admin/AdminScripts.cshtml")
+    @RenderSection("foot")
+</body>
+</html>

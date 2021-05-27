@@ -1,0 +1,13 @@
+﻿@using DansLesGolfs.BLL
+@model User
+@{
+    Layout = "~/Views/_Shared/MP/_EmailTemplate.cshtml";
+}
+<div>
+    <h2>@MvcHtmlString.Create(Resources.RegisterMailTitleText) @ViewBag.WebsiteName !</h2>
+    <p>@Resources.Hello @Model.Firstname,</p>
+    <p>@MvcHtmlString.Create(Resources.RegisterMailBodyText)</p>
+    <p>@Resources.Email : @Model.Email</p>
+    <p>@Resources.Password : @Model.Password</p>
+    <p>@MvcHtmlString.Create(Resources.RegisterMailBodyTextBottom)</p>
+</div>

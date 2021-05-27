@@ -1,0 +1,71 @@
+﻿@{
+    Layout = "~/Views/_Shared/MP/Front/_TwoSections.cshtml";
+    DateTime? fromDate = (DateTime?)ViewBag.FromDate;
+    DateTime? toDate = (DateTime?)ViewBag.ToDate;
+    bool? includePractice = (bool?)ViewBag.IncludePractice;
+    bool? includeAccommodation = (bool?)ViewBag.IncludeAccommodation;
+}
+@section head
+{
+}
+@section foot
+{
+    <script>
+        window.itemType = '@ViewBag.ItemType';
+        window.pageSize = 9;
+        window.searchTerm = '@(((string)ViewBag.SearchTerm).StripHtml())';
+        window.itemTypeId = eval('@ViewBag.ItemTypeId');
+        window.countryId = eval('@ViewBag.CountryId');
+        window.regionId = eval('@ViewBag.RegionId');
+        window.stateId = eval('@ViewBag.StateId');
+        window.siteId = eval('@ViewBag.SiteId');
+        window.itemCategoryId = eval('@ViewBag.ItemCategoryId');
+        window.itemSubCategoryId = eval('@ViewBag.ItemSubCategoryId');
+        window.golfLessonCategoryId = eval('@ViewBag.GolfLessonCategoryId');
+        window.timeSlot = eval('@ViewBag.TimeSlot');
+        window.includePractice = eval('@(includePractice.HasValue ? includePractice.Value.ToString().ToLower() : "null")');
+        window.includeAccommodation = eval('@(includeAccommodation.HasValue ? includeAccommodation.Value.ToString().ToLower() : "null")');
+        window.departureMonth = eval('@ViewBag.DepartureMonth');
+        window.fromDate = '@(fromDate.HasValue ? fromDate.Value.ToString("dd/MM/yyyy") : "")';
+        window.toDate = '@(toDate.HasValue ? toDate.Value.ToString("dd/MM/yyyy") : "")';
+    </script>
+}
+<div class="margin-bottom-40">
+
+    <div id="products-list" class="dynamic-products-list"></div>
+    <div class="text-center">
+        <a href="javascript:void(0);" id="load-more-button" class="hide btn btn-primary align-center">@Resources.LoadMore</a>
+    </div>
+</div>
+
+
+<a id="open-rating-popup-button" href="#rating-popup"></a>
+<div id="rating-popup">
+    <div class="form-group">
+        <label class="control-label">@Resources.YourRating</label>
+        <div class="input-icon">
+            <div class="starrr review-stars" data-rating="0" title=""></div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label">@Resources.Subject</label>
+        <div class="input-icon">
+            <input id="review-subject-input" class="form-control" placeholder="@Resources.Subject" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label">@Resources.YourReview</label>
+        <div class="input-icon">
+            <textarea id="review-message-input" class="form-control" placeholder="@Resources.WriteYourReview"></textarea>
+        </div>
+    </div>
+    <div class="form-actions">
+        <button type="submit" id="submit-review-button" class="btn btn-primary pull-right">
+            &gt; @Resources.SubmitReview
+        </button>
+    </div>
+</div>
+<a id="open-rating-finish-button" href="#rating-finish-popup" style="display: none;"></a>
+<div id="rating-finish-popup" style="display: none;">
+    @Resources.ReviewThankYou
+</div>

@@ -1,0 +1,10 @@
+﻿---------------------------------------------------------------------------------------------------<br/><br/>
+Sie erhalten diesen Newsletter auf eigenen Wunsch. Wenn Sie zukünftig keine weiteren Newsletter von uns mehr erhalten möchten, klicken Sie bitte hier:
+<a href=http://localhost:53885/IG.Engine.EmailService/Home.aspx?link=contents/Unsubscribe.aspx?id={0}&user={1}>Link</a><br/><br/>
+---------------------------------------------------------------------------------------------------<br/><br/>
+Wenn Sie Ihr Profil ändern möchten, klicken Sie bitte hier:<a href=http://localhost:53885/IG.Engine.EmailService/Home.aspx?link=Customer/CustomerProfile.aspx?id={0}&user={1}>Link</a><br/><br/>
+---------------------------------------------------------------------------------------------------
+<br/><br/>
+Text bitte mit aufnehmen <br/>
+Für den Fall, dass Ihr Mail Programm dies blockiert, kopieren Sie bitte den Link und geben Sie diesen direkt in Ihren Internet-Web-Browser ein.
+

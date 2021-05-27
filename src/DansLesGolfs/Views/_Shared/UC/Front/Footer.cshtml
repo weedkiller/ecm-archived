@@ -1,0 +1,431 @@
+﻿@{
+    var culturecookie = ViewBag.CurrentCulture != null ? (string)ViewBag.CurrentCulture : "en-US";
+
+
+
+}
+<div id="footer1">
+
+    <div id="ft-header">
+        <!-- Nav tabs -->
+        <ul id="footerTab" class="nav nav-tabs" role="tablist">
+            @{
+                if (culturecookie == "fr-FR")
+                {
+                    <li class="active" style="padding-right:40px;"><a href="#nos" role="tab" data-toggle="tab">@Resources.OurServiceAndSocialNetworks</a></li>
+                    <li class="" style="padding-right:40px;"><a href="#info" role="tab" data-toggle="tab">@Resources.InformationAndHelp</a></li>
+                    <li class="" style="padding-right:40px;"><a href="#contact" role="tab" data-toggle="tab">@Resources.Contact</a></li>
+                    <li class="" style="padding-right:40px;"><a href="#mention" role="tab" data-toggle="tab">@Resources.Imprint</a></li>
+                    <li class="" style="padding-right:0px;"><a href="#category" role="tab" data-toggle="tab">@Resources.Categories</a></li>
+                }
+                else
+                {
+                    <li class="active" style="padding-right:60px;"><a href="#nos" role="tab" data-toggle="tab">@Resources.OurServiceAndSocialNetworks</a></li>
+                    <li class="" style="padding-right:60px;"><a href="#info" role="tab" data-toggle="tab">@Resources.InformationAndHelp</a></li>
+                    <li class="" style="padding-right:60px;"><a href="#contact" role="tab" data-toggle="tab">@Resources.Contact</a></li>
+                    <li class="" style="padding-right:60px;"><a href="#mention" role="tab" data-toggle="tab">@Resources.Imprint</a></li>
+                    <li class="" style="padding-right:0px;"><a href="#category" role="tab" data-toggle="tab">@Resources.Categories</a></li>
+                }
+
+            }
+
+
+        </ul>
+    </div>
+    <div style="clear:both"></div>
+    <!-- Tab panes -->
+    <div id="footerTabContent" class="tab-content">
+
+        <!-- Tab NOS -->
+        <div class="tab-pane active in fade" id="nos">
+
+            <div class="text-body-nos">
+
+                <nav class="co1">
+
+                    <span style="float:left;">
+                        <img src="@Url.Content("~/Assets/Front/img/header_footer/img-title-tabcontent.png")" alt="Golfs" />
+                    </span>
+                    <h4 style="padding-top: 5px;">@Resources.Footer_title_contenttab</h4>
+
+                    <form>
+                        <div>
+                            <h4>@Resources.Newsletter</h4>
+                            <div>
+                                <div class="form-group" style="float:left;">
+                                    <div class="input-group" style="float:left;width:200px;">
+
+                                        <input id="email-subscribe" type="text" class="sos-data form-control" value="&#64;" />
+                                    </div>
+                                    <div style="float:left;"><input id="ft-subscribe" type="button" class="btn sos-btn" value="&gt; @Resources.JoinNow" /></div>
+                                </div>
+
+                                @* <div style="float:left;">
+                                        <input id="email-subscribe" type="text" class="sos-data" />
+                                    </div>
+                                    <div><input id="ft-subscribe" type="button" class="btn sos-btn" value="&gt; @Resources.JoinNow" /></div>*@
+                            </div>
+                            <div style="clear:both"></div>
+                            <p style="margin-top: 0px; margin-bottom: 20px;" id="validate-newletter">
+                                @Resources.SubscribeToOurNewsletter
+                            </p>
+                        </div>
+
+                        <div>
+                            <h4>Parrainage</h4>
+                            @*                            <div>
+                                    <div style="float:left;"><input type="text" class="sos-data" value="" /></div>
+                                    <div><input type="button" class="btn sos-btn" value="&gt; @Resources.JoinNow" /></div>
+                                </div>*@
+                            <div class="form-group" style="float: left;">
+                                <div class="input-group" style="float: left; width: 200px;">
+                                    @*<div class="sos-data input-group-addon addicon-footer">&#64;</div>*@
+                                    <input id="email-ft-sponsor" type="text" class="sos-data form-control" value="&#64;" />
+                                </div>
+                                <div style="float: left;">
+                                    <input id="btn-ft-sponsor" type="button" class="btn sos-btn" value="&gt; @Resources.JoinNow" />
+                                </div>
+                            </div>
+                            <div style="clear:both"></div>
+                            <p style="margin-top: 0px; margin-bottom: 20px;">
+                                @Resources.ReferYourFriends
+                            </p>
+                        </div>
+                    </form>
+                </nav>
+
+                <nav class="co2">
+                    <h4>@Resources.Footer_findus_contenttab</h4>
+                    <div>
+                        <span><a href="https://www.facebook.com/danslesgolfs" target="_blank" rel="nofollow"><img src="@Url.Content("~/Assets/Front/img/header_footer/fb.png")" alt="Golfs" /></a></span>
+                        <span><a href="https://www.twitter.com/danslesgolfs" target="_blank" rel="nofollow"><img src="@Url.Content("~/Assets/Front/img/header_footer/tw.png")" alt="Golfs" /></a></span>
+                        @*<span><a href="http://www.youtube.com/user/danslesgolfs/" target="_blank" rel="nofollow"><img src="@Url.Content("~/Assets/Front/img/header_footer/yt.png")" alt="Golfs" /></a></span>*@
+                    </div>
+                </nav>
+
+                <nav class="co3">
+                    <iframe src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fdanslesgolfs&amp;width=292&amp;colorscheme=light&amp;show_faces=true&amp;border_color&amp;stream=false&amp;header=true&amp;height=240" scrolling="no" frameborder="0" style="border:none; overflow:hidden;width:292px; height:240px;" allowtransparency="true"></iframe>
+                    <!--<div class="fb-page" data-href="https://www.facebook.com/danslesgolfs" data-height="258" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/danslesgolfs"><a href="https://www.facebook.com/danslesgolfs">Danslesgolfs</a></blockquote></div></div>-->
+                </nav>
+
+            </div>
+
+        </div>
+
+        <!-- Tab Info -->
+        <div class="tab-pane fade" id="info">
+
+            <div class="text-title">
+                <span class="img-title">
+                    <img src="@Url.Content("~/Assets/Front/img/header_footer/img-title-tabcontent.png")" alt="Golfs" />
+                </span>
+                <span class="topic-title">
+                    @Resources.Footer_title_tabinfo
+                </span>
+            </div>
+
+            <div id="ft_info_tab" class="text-body-info">
+            </div>
+
+        </div>
+        <div style="clear:both"></div>
+        <!-- Tab Contact -->
+        <div class="tab-pane fade" id="contact">
+
+            <div class="text-title">
+                <span class="img-title">
+                    <img src="@Url.Content("~/Assets/Front/img/header_footer/img-title-tabcontent.png")" alt="Golfs" />
+                </span>
+                <span class="topic-title">
+                    @Resources.ContactUsVerySimple
+                </span>
+            </div>
+
+            <div class="text-body-contact">
+
+                <!-- Left -->
+                <div id="ct-left">
+
+                    <div class="wrap-data">
+
+                        <div class="ct-data-img">
+                            <img src="@Url.Content("~/Assets/Front/img/header_footer/contact-home.png")" alt="Golfs" />
+                        </div>
+
+                        <div class="ct-data-text">
+                            @Resources.Address
+                        </div>
+
+                        <div class="ct-data-detail">
+                            <div>7/9 rue Nationale</div>
+                            <div>92100 Boulogne Billancourt</div>
+                            <div>France</div>
+                        </div>
+
+                    </div>
+
+                    <div class="wrap-data">
+
+                        <div class="ct-data-img">
+                            <img src="@Url.Content("~/Assets/Front/img/header_footer/contact-mail.png")" alt="Golfs" />
+                        </div>
+
+                        <div class="ct-data-text">@Resources.Email</div>
+
+                        <div class="ct-data-detail">
+                            <p>
+                                contact@danslesgolfs.com
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="wrap-data">
+
+                        <div class="ct-data-img">
+                            <img src="@Url.Content("~/Assets/Front/img/header_footer/contact-phone.png")" alt="Golfs" />
+                        </div>
+
+                        <div class="ct-data-text">@Resources.Telephone</div>
+
+                        <div class="ct-data-detail">
+                            <p>
+                                01 41 31 92 20
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Right -->
+                <div id="ct-right">
+                    <div id="contract-validate"></div>
+                    <div id="loading-contract" style="display: none; text-align: center;">
+                        <img src="~/Assets/Front/img/loader.gif" width="32" height="32" />
+                    </div>
+                    <div id="ct-right-content">
+                        <form id="contact-form-footer">
+                            <div class="contact-wrap-label">
+                                <div class="contact-label"><span>@Resources.Name</span> </div>
+                                <div>
+                                    <input type="text" name="name" id="contract-name" class="contact-data" value="" maxlength="100" />
+                                </div>
+                            </div>
+                            <div class="contact-wrap-label">
+                                <div class="contact-label"><span>@Resources.Email</span> </div>
+                                <div>
+                                    <input type="email" name="email" id="contract-email" class="contact-data" value="" maxlength="100" />
+                                </div>
+                            </div>
+                            <div class="contact-wrap-label">
+                                <div class="contact-label"><span>@Resources.Subject</span> </div>
+                                <div>
+                                    <input type="text" name="subject" id="contract-subject" class="contact-data" value="" maxlength="255" />
+                                </div>
+                            </div>
+                            <div class="contact-wrap-label">
+                                <div class="contact-label"><span>@Resources.Message</span> </div>
+                                <div>
+                                    <textarea rows="4" name="message" id="contract-message" class="contact-data"></textarea>
+                                    <input type="submit" id="contract-submit" class="btn contact-btn" value="&gt; @Resources.Footer_sendbutton_tabcontract" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        <div style="clear:both"></div>
+        <!-- Tab Mention -->
+        <div class="tab-pane fade" id="mention">
+
+            <div class="text-title-big">
+                <span class="img-title">
+                    <img src="@Url.Content("~/Assets/Front/img/header_footer/img-title-tabcontent.png")" alt="Golfs" />
+                </span>
+                <span class="topic-title">
+                    Article 1 - @Resources.Imprint
+                </span>
+            </div>
+
+            <div class="text-body-mention" id="text-body-mention">
+                xx
+                @*<div class="text-normal">
+                        Editeur : le site <span class="m-site-name">DanslesGolfs.com</span> est pradult et edte par <span class="m-web-name">NGFGOLFSAS</span>, au capital de 200000 euros,
+                        dont le siege social est situe a BOULOGNE-BILLANCOURT CEDEX (92660), 7/9 Rue Nationale
+                    </div>
+
+                    <div class="text-normal">
+                        Enregistree au Registre du Commerce et des Socleles de Nonteme sous le numero <span class="m_bold"> 399 835 8599 </span>
+                    </div>
+
+                    <div class="text-normal">
+                        TVA Intracommunautaire : <span class="m_bold"> FR 60 399 853 859 </span>
+                    </div>
+
+                    <div class="text-normal">
+                        Representee par <span class="m_bold"> pierre-andre uhlen. </span>
+                    </div>
+
+                    <div class="text-normal">
+                        Le slte web est heberge par
+                    </div>*@
+
+            </div>
+
+        </div>
+
+        <!-- Tab Category -->
+        <div class="tab-pane fade" id="category">
+
+
+            <div id="ft_category_tab">
+                <div style="float:left;">
+                    <span style="float:left;">
+                        <img src="@Url.Content("~/Assets/Front/img/header_footer/img-title-tabcontent.png")" alt="Golfs" />
+                    </span>
+                </div>
+                <div id="cat_right">
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div style="clear:both"></div>
+</div>
+
+<div id="btn-ft" style="background-color: #d80927; width: 200px; height: 30px; color: #FFF; text-align: center; padding-top: 10px;">
+    v &nbsp; @Resources.SeeAllOurGolfs
+</div>
+
+<br />
+<br />
+
+
+<footer id="footer" style="border: none;">
+
+    <div id="footer-body" style="padding: 0px;">
+
+    </div>
+
+</footer>
+
+<br />
+<br />
+
+<div id="footer-link">
+    @ViewBag.DLGFooterMenu
+</div>
+
+<a id="fblogin-popup-link" href="#fblogin-popup"></a>
+<div id="fblogin-popup">
+    <form class="fbregister-form" method="post">
+        <h3 class="product-popup-title">@Resources.ConnectWithFacebook</h3>
+        <div class="popup-body">
+            <p class="fbregister-description">@Resources.ConnectWithFacebookDescription</p>
+            <div>
+                <div class="form-group">
+                    <div class="col-md-3 control-label">
+                        <label for="Password">@Resources.Email</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input type="email" id="email" name="email" class="form-control" required="required" maxlength="200" />
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="form-group">
+                    <div class="col-md-3 control-label">
+                        <label for="Password">@Resources.Password</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input type="password" id="password" name="password" class="form-control" required="required" maxlength="200" />
+                    </div>
+                </div>
+            </div>
+            <p class="fbregister-agreement">@Resources.ConnectWithFacebookAgreement</p>
+        </div>
+        <div>
+            <div class="col-md-12 text-right">
+                @Html.Hidden("id")
+                @Html.Hidden("username")
+                @Html.Hidden("first_name")
+                @Html.Hidden("last_name")
+                @Html.Hidden("gender")
+                @Html.Hidden("birthday")
+                <a class="btn btn-default close">@Resources.Cancel</a>
+                <input type="submit" id="submit" name="submit" class="btn btn-primary" value="@Resources.Register" />
+            </div>
+        </div>
+    </form>
+</div>
+<div id="footer-payment-accepted">
+    <img src="@Url.Content("~/Assets/Front/img/footer-payment-accepted.png")" />
+</div>
+
+
+<script>
+    function LoadFooterTabCategory() {
+
+        var $this = jQuery(this);
+        var $footerwrap = $("#ft_category_tab div#cat_right");
+        jQuery.ajax({
+            url: getUrl('Common/AjaxGetFooterTabCategory'),
+            type: 'get',
+            dataType: 'json',
+            success: function (result) {
+                if (result.isSuccess) {
+
+                    var nCount = 0;
+                    var content = "<table id='category_tab'>"
+
+
+                    var countviewmore = 0;
+
+                    for (var i in result.list) {
+
+                        if (nCount == 0)
+                            content += '<tr>';
+
+                        //content += '<td><a class="last-ft" href="' + getUrl('Site/' + result.list[i].ContentKey) + '">' + result.list[i].ContentKey + '</a></td>';
+                        content += '<td><h4>' + i + '</h4>';
+                        content += '<ul>';
+                        for (var x in result.list[i]) {
+
+                            content += '<li><a href="' + getUrl('Item/' + result.list[i][x].ItemSlug) + '" >' + result.list[i][x].ItemName + '</a></li>';
+                        }
+                        content += '</ul>';
+
+                        if (countviewmore == 0) {
+                            content += '<a href="' + getUrl('GreenFee') + '" class="read-more">' + '@Resources.Seemore_greenfees_footer' + '</a></td>';
+                        } else if (countviewmore == 1) {
+                            content += '<a href="' + getUrl('StayPackage') + '" class="read-more">' + '@Resources.Seemore_golfcourses_footer' + '</a></td>';
+                        } else if (countviewmore == 2) {
+                            content += '<a href="' + getUrl('GolfLesson') + '" class="read-more">' + '@Resources.Seemore_golftrips_footer' + '</a></td>';
+                        } else if (countviewmore == 3) {
+                            content += '<a href="' + getUrl('DrivingRange') + '" class="read-more">' + '@Resources.Seemore_ourpractices_footer' + '</a></td>';
+                        }
+
+
+                        countviewmore++;
+                        nCount = nCount + 1;
+
+                        if (nCount == 2) {
+                            content += '</tr>';
+                            nCount = 0;
+                        }
+                    }
+
+                    content += "</table>";
+
+                    $footerwrap.append(content);
+                }
+            }
+        });
+    };
+</script>

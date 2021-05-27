@@ -1,0 +1,131 @@
+﻿@using DansLesGolfs
+@using DansLesGolfs.BLL
+@model Order
+
+@{
+    ViewBag.Title = Resources.MyOrders;
+    Layout = "~/Views/_Shared/MP/Front/_Default.cshtml";
+    decimal basetotal = Model.GetBaseTotal();
+    decimal discount = Model.GetDiscount();
+    decimal shippingCost = Model.GetTotalShippingCost();
+    decimal total = Model.GetTotalPrice();
+}
+@section head
+{
+}
+@section foot
+{
+}
+<style>
+    #order-table {
+        border: 1px solid #d0d0d0;
+    }
+
+    .order-box-header h1 {
+        height: 35px;
+        background-color: #e7e7e7;
+        color: #d80927;
+        font-weight: 700;
+        font-size: 17px;
+        padding: 10px;
+        margin-bottom: 0;
+    }
+
+    thead th, tfoot th {
+        padding: 10px;
+        height: 40px;
+        line-height: 20px;
+        font-weight: 700;
+        font-size: 14px;
+        background-color: #fafafa;
+        border-bottom: 1px solid #d0d0d0;
+        text-align: center;
+    }
+
+    thead .order-box-header th {
+        padding: 0;
+        height: 35px;
+        text-align: left;
+    }
+
+    tfoot th {
+        text-align: right;
+    }
+
+    #order-table tbody td {
+        padding: 20px 10px;
+    }
+
+    .clear {
+        clear: both;
+    }
+
+    .order-box-content {
+        min-height: 60px;
+        padding: 10px 17px;
+        border-bottom: 1px solid #d0d0d0;
+        background-color: #f5f5f5;
+        text-align: center;
+        overflow: hidden;
+    }
+
+    .order-box-title-Unitpricetitle, .order-box-title-Totalprice {
+        text-align: right;
+        width: 120px;
+    }
+</style>
+
+<div id="page-account-orders">
+    <div class="row margin-bottom-40">
+        <div class="col-md-12">
+            <table id="order-table">
+                <thead>
+                    <tr class="order-box-header"><th colspan="5"><h1>@Resources.Myorderdetail</h1></th></tr>
+                    <tr class="order-box-title">
+                        <th class="order-box-title-Salestitle">@Resources.CategoryNametitle</th>
+                        <th class="order-box-title-Ordertitle">@Resources.ItemNametitle</th>
+                        <th class="order-box-title-Unitpricetitle">@Resources.UnitPricetitle</th>
+                        <th class="order-box-title-Amounttitle">@Resources.Quantitytitle</th>
+                        <th class="order-box-title-Totalprice">@Resources.TotalPricetitle</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var data in Model.OrderItems)
+                    {
+                        <tr class="order-box-content">
+                            <td class="order-box-title-Salescontent">@data.CategoryName</td>
+                            <td class="order-box-title-Ordercontent">@data.ItemName</td>
+                            <td class="order-box-title-Unitpricetitle">@data.UnitPrice.ToString("#,##0.00") &euro;</td>
+                            <td class="order-box-title-Amountcontent">@data.Quantity</td>
+                            <td class="order-box-title-Totalprice">@data.TotalBasePrice.ToString("#,##0.00") &euro;</td>
+                        </tr>
+                    }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan="3">@Resources.SubTotal</th>
+                        <th colspan="2">@basetotal.ToString("#,##0.00") &euro;</th>
+                    </tr>
+                    @if (discount > 0)
+                    {
+                        <tr>
+                            <th colspan="3">@Resources.Discount</th>
+                            <th colspan="2">- @discount.ToString("#,##0.00") &euro;</th>
+                        </tr>
+                    }
+                    @if(shippingCost > 0)
+                    {
+                    <tr>
+                        <th colspan="3">@Resources.ShippingCost</th>
+                        <th colspan="2">+ @shippingCost.ToString("#,##0.00") &euro;</th>
+                    </tr>
+                    }
+                    <tr>
+                        <th colspan="3">@Resources.TotalTTC</th>
+                        <th colspan="2">@total.ToString("#,##0.00") &euro;</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,86 @@
+﻿@using DansLesGolfs.Base
+@{
+    Layout = "~/Views/_Shared/MP/_Admin.cshtml";
+}
+@section head
+{
+}
+@section foot
+{
+    <script>
+        $('.info-form').validate();
+    </script>
+
+    <script>
+        window.itemId = '@ViewBag.id';
+    </script>
+    <script src="@Url.Content("~/Assets/Libraries/tinymce/tinymce.min.js")"></script>
+    <script src="@Url.Content("~/Assets/Admin/scripts/page/site.js")"></script>
+
+}
+<form method="post" id="form-@ViewBag.ClassName" class="info-form">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        @Resources.WebContentInformation
+                    </h3>
+                </div>
+                <div class="panel-body">
+
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-2 control-label">
+                                <label for="ContentCategory">@Resources.ContentCategory</label>
+                            </div>
+                            <div class="col-md-10">
+                                @Html.TextBox("ContentCategory", (string)ViewBag.ContentCategory, new { required = "required", maxlength = 200, @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-2 control-label">
+                                <label for="ContentKey">@Resources.ContentKey</label>
+                            </div>
+                            <div class="col-md-10">
+                                @Html.TextBox("ContentKey", (string)ViewBag.ContentKey, new { required = "required", maxlength = 200, @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-2 control-label">
+                                <label for="TopicName">@Resources.TopicName</label>
+                            </div>
+                            <div class="col-md-10">
+                                @Html.TextBoxLang("TopicName", (List<WebContentLang>)ViewBag.WebContentLangs, "TopicName", new { maxlength = 500, @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-2 control-label">
+                                <label for="ContentText">@Resources.ContentText</label>
+                            </div>
+                            <div class="col-md-10">
+                                @Html.TextAreaLang("ContentText", (List<WebContentLang>)ViewBag.WebContentLangs, "ContentText", new { rows = 20, @class = "form-control editor" })
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <input type="hidden" name="id" value="@ViewBag.id" />
+    <input type="submit" id="submit" name="submit" value="@Resources.Save" class="btn btn-primary" />
+    <input type="reset" id="reset" name="reset" value="@Resources.Reset" class="btn" />
+    <a href="@Url.Content("~/Admin/WebContent")" class="btn btn-default">@Resources.Back</a>
+</form>

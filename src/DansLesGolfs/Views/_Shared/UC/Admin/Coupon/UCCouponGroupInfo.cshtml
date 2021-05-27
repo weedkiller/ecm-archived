@@ -1,0 +1,204 @@
+﻿@using DansLesGolfs.Base
+@using DansLesGolfs.BLL
+@using System.Globalization;
+@{
+    DateTime startDate = DataManager.ToDateTime((object)ViewBag.StartDate);
+    DateTime endDate = DataManager.ToDateTime((object)ViewBag.EndDate);
+    List<int> itemCategoryIds = (List<int>)ViewBag.ItemCategoryIds;
+    List<int> itemTypeIds = (List<int>)ViewBag.ItemTypeIds;
+}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            @Resources.CouponInformation
+        </h3>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="form-group">
+                <div class="col-md-2 control-label">
+                    <label for="CouponGroupName">@Resources.CouponGroupName</label>
+                </div>
+                <div class="col-md-10">
+                    @Html.TextBox("CouponGroupName", (string)ViewBag.CouponGroupName, new { Required = "Required", maxlength = 50, @class = "form-control" })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <div class="col-md-2 control-label">
+                    <label for="CouponGroupDesc">@Resources.CouponGroupDescription</label>
+                </div>
+                <div class="col-md-10">
+                    @Html.TextArea("CouponGroupDesc", (string)ViewBag.CouponGroupDesc, new { rows = 5, @class = "form-control" })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <div class="col-md-2 control-label">
+                    <label for="StartDate">@Resources.StartDate</label>
+                </div>
+                <div class="col-md-3">
+                    @Html.TextBox("StartDate", startDate.ToString("dd/MM/yyyy"), new { @class = "form-control datepicker text-center" })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <div class="col-md-2 control-label">
+                    <label for="EndDate">@Resources.EndDate</label>
+                </div>
+                <div class="col-md-3">
+                    @Html.TextBox("EndDate", endDate.ToString("dd/MM/yyyy"), new { @class = "form-control datepicker text-center" })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <div class="col-md-2 control-label">
+                    <label for="Reduction">@Resources.Reduction</label>
+                </div>
+                <div class="col-md-3">
+                    @Html.TextBox("Reduction", DataManager.ToDecimal((object)ViewBag.Reduction).ToString("#,##0.00", CultureHelper.GetCurrentCultureInfo()), new { @class = "form-control text-right", min = 0 })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <div class="col-md-2 control-label">
+                    <label for="Reduction">@Resources.MinimumAmount</label>
+                </div>
+                <div class="col-md-3">
+                    @Html.TextBox("MinimumAmount", DataManager.ToDecimal((object)ViewBag.MinimumAmount).ToString("#,##0.00", CultureHelper.GetCurrentCultureInfo()), new { @class = "form-control text-right", min = 0 })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <div class="col-md-2 control-label">
+                    <label for="CouponType">@Resources.CouponType</label>
+                </div>
+                <div class="col-md-4">
+                    @Html.DropDownList("CouponType", (IEnumerable<SelectListItem>)ViewBag.CouponTypes, new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <div class="col-md-2 control-label">
+                    <label for="UsagePeriodType">@Resources.UsagePeriod</label>
+                </div>
+                <div class="col-md-4">
+                    @Html.DropDownList("UsagePeriodType", (IEnumerable<SelectListItem>)ViewBag.UsagePeriodTypes, new { @class = "form-control" })
+                </div>
+                <div class="timestouse-controls">
+                    <div class="col-md-2 control-label">
+                        <label for="TimesToUse">@Resources.TimesToUse</label>
+                    </div>
+                    <div class="col-md-4">
+                        @Html.TextBox("TimesToUse", (int)ViewBag.TimesToUse, new { @class = "form-control number", type = "number", min = "1" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <div class="col-md-2 control-label">
+                    <label for="DiscountType">@Resources.DiscountType</label>
+                </div>
+                <div class="col-md-4">
+                    @Html.DropDownList("CouponUsageType", (IEnumerable<SelectListItem>)ViewBag.CouponUsageTypes, new { @class = "form-control" })
+                </div>
+                <div class="col-md-2">
+                    <a id="select-item-link" class="fancybox fancybox.iframe btn btn-primary" href="@Url.Content("~/Admin/Coupon/ItemsPicker")?iframe">@Resources.ChooseItems</a>
+                </div>
+            </div>
+        </div>
+        <div id="item-picker" class="row">
+            <div class="col-md-12">
+                <div class="margin-bottom-10">
+                    <a href="javascript:void(0);" class="btn btn-primary delete-selected-link">@Resources.DeleteSelectedItems</a>
+                    <a href="javascript:void(0);" class="btn btn-primary delete-all-link">@Resources.DeleteAll</a>
+                </div>
+                <table id="items-table" class="dataTable table table-bordered table-striped table-scrollable table-hover">
+                    <thead>
+                        <tr>
+                            <th class="column-checkbox checboxes">
+                                <input type="checkbox" class="checkboxes" />
+                            </th>
+                            <th class="column-item-name">
+                                @Resources.ItemName
+                            </th>
+                            <th class="column-item-type-name">
+                                @Resources.ItemType
+                            </th>
+                            <th class="column-site-name">
+                                @Resources.SiteName
+                            </th>
+                            <th class="column-coupon-code">
+                                @Resources.Delete
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @Html.Partial("~/Views/_Shared/UC/Admin/Coupon/UCItemRows.cshtml", (List<Item>)ViewBag.Items)
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div id="categories-list" style="display: none;">
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-2 control-label">
+                        <label for="ItemTypeId">@Resources.Category</label>
+                    </div>
+                    <div class="col-md-4">
+                        <select id="ItemTypeId" class="form-control">
+                            @foreach (var it in (Dictionary<int, string>)ViewBag.ItemType)
+                            {
+                                <option value="@it.Key">@it.Value</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row" id="checkboxes-list">
+                <div class="form-group">
+                    <div class="col-md-2 control-label">
+                        <label for="ItemTypeId">@Resources.Products</label>
+                    </div>
+                    <div class="col-md-6">
+                        <ul>
+                            @foreach (ItemCategory it in (List<ItemCategory>)ViewBag.ItemCategories)
+                            {
+                                <li class="item-type-@it.ItemTypeId category-@it.CategoryId">
+                                    <input type="checkbox" name="ItemCategories" value="@it.CategoryId" class="item-type-@it.ItemTypeId category-@it.CategoryId" @(itemCategoryIds.Contains(it.CategoryId) ? "checked=\"checked\"" : "") /> @it.CategoryName
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="itemtypes-list" style="display: none;">
+            <div class="row" id="checkboxes-list">
+                <div class="form-group">
+                    <div class="col-md-2 control-label">
+                        <label for="ItemTypeId">@Resources.ItemType</label>
+                    </div>
+                    <div class="col-md-6">
+                        <ul>
+                            @foreach (var it in (Dictionary<int, string>)ViewBag.ItemType)
+                            {
+                                <li class="item-type-@it.Key category-@it.Key">
+                                    <input type="checkbox" name="ItemType" value="@it.Key" class="item-type-@it.Key" @(itemTypeIds.Contains(it.Key) ? "checked=\"checked\"" : "") /> @it.Value
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

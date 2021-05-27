@@ -1,0 +1,120 @@
+﻿@using DansLesGolfs.Base
+@using DansLesGolfs.BLL
+@using System.Globalization;
+@{
+    List<ItemPrice> pricePeriods = ViewBag.ItemPrices != null ? ((List<ItemPrice>)ViewBag.ItemPrices).Where(it => it.PriceType == 0).ToList() : new List<ItemPrice>();
+    List<ItemPrice> discountPrices = ViewBag.ItemPrices != null ? ((List<ItemPrice>)ViewBag.ItemPrices).Where(it => it.PriceType == 1).ToList() : new List<ItemPrice>();
+}
+<!-- Begin Price Per Period -->
+<div data-price-type="0" class="row pricing-box">
+    <div class="form-group">
+        <div class="col-md-2 control-label">
+            <label for="SpecialPrice">@Resources.PricePerPeriod</label>
+        </div>
+        <div class="col-md-10">
+            <table id="price-period-datatable" class="price-datatable dataTable table table-bordered table-striped table-scrollable table-hover">
+                <thead>
+                    <tr>
+                        <th class="checkboxes column-checkbox">
+                            <input type="checkbox" />
+                        </th>
+                        <th class="column-price">@Resources.Price</th>
+                        <th class="column-start">@Resources.Start</th>
+                        <th class="column-end">@Resources.End</th>
+                        <th class="column-delete">
+                            @Resources.Delete
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (pricePeriods.Any())
+                    {
+                        foreach (ItemPrice price in pricePeriods)
+                        {
+                            <tr data-id="@price.ItemPriceId">
+                                <td class="checkboxes column-checkbox">
+                                    <input type="checkbox" />
+                                </td>
+                                <td class="column-price">
+                                    <input type="text" min="0" name="SpecialPrices" class="text-right" value="@price.Price.ToString("###0.00")" />
+                                    <input type="hidden" name="PriceTypes" value="0" />
+                                </td>
+                                <td class="column-start"><input type="text" name="PriceStartDates" value="@price.StartDate.ToString("dd/MM/yyyy")" placeholder="dd/mm/yyyy" class="datepicker input-small" /></td>
+                                <td class="column-end"><input type="text" name="PriceEndDates" value="@price.EndDate.ToString("dd/MM/yyyy")" placeholder="dd/mm/yyyy" class="datepicker input-small" /></td>
+                                <td class="column-delete">
+                                    <a href="javascript:void(0)" class="delete-link">@Resources.Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr class="column-empty"><td colspan="6">@Resources.ThereIsNoPrice</td></tr>
+                    }
+                </tbody>
+            </table>
+            <div class="margin-bottom-10">
+                <a href="javascript:void()" class="add-price-button btn btn-primary">@Resources.AddPrice</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Price Per Period -->
+@*@if (ViewBag.ItemTypeId == (int)ItemType.Type.Product)
+{*@
+    <!-- Begin Special Prices -->
+    <div data-price-type="1" class="row pricing-box">
+        <div class="form-group">
+            <div class="col-md-2 control-label">
+                <label for="SpecialPrice">@Resources.SpecialPrice</label>
+            </div>
+            <div class="col-md-10">
+                <table id="special-price-datatable" class="price-datatable dataTable table table-bordered table-striped table-scrollable table-hover">
+                    <thead>
+                        <tr>
+                            <th class="checkboxes column-checkbox">
+                                <input type="checkbox" />
+                            </th>
+                            <th class="column-price">@Resources.Price</th>
+                            <th class="column-start">@Resources.Start</th>
+                            <th class="column-end">@Resources.End</th>
+                            <th class="column-delete">
+                                @Resources.Delete
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (discountPrices.Any())
+                        {
+                            foreach (ItemPrice price in discountPrices)
+                            {
+                                <tr data-id="@price.ItemPriceId">
+                                    <td class="checkboxes column-checkbox">
+                                        <input type="checkbox" />
+                                    </td>
+                                    <td class="column-price">
+                                        <input type="text" min="0" name="SpecialPrices" class="text-right" value="@price.Price.ToString("###0.00")" />
+                                        <input type="hidden" name="PriceTypes" value="1" />
+                                    </td>
+                                    <td class="column-start"><input type="text" name="PriceStartDates" value="@price.StartDate.ToString("dd/MM/yyyy")" placeholder="dd/mm/yyyy" class="datepicker input-small" /></td>
+                                    <td class="column-end"><input type="text" name="PriceEndDates" value="@price.EndDate.ToString("dd/MM/yyyy")" placeholder="dd/mm/yyyy" class="datepicker input-small" /></td>
+                                    <td class="column-delete">
+                                        <a href="javascript:void(0)" class="delete-link">@Resources.Delete</a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr class="column-empty"><td colspan="6">@Resources.ThereIsNoPrice</td></tr>
+                        }
+                    </tbody>
+                </table>
+                <div class="margin-bottom-10">
+                    <a href="javascript:void()" class="add-price-button btn btn-primary">@Resources.AddPrice</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Special Prices -->
+@*}*@

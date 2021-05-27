@@ -1,0 +1,23 @@
+﻿@{
+    string displayString = "<a href ='" + Url.Action("", "Account") + "'>" + Resources.Hello;
+
+    if (ViewBag.LogonUserID != null && ViewBag.LogonUserID > 0)
+    {
+        if (ViewBag.LogonUserFirstName != null && ViewBag.LogonUserFirstName != "")
+        {
+            displayString += " " + ViewBag.LogonUserFirstName;
+        }
+
+         displayString += " <a href=\"" + Url.Content("~/Logout") + "\" class=\"logout-link\">" + Resources.SignOut + "</a>";
+                
+        <div class="userlogon">
+            @MvcHtmlString.Create(displayString)
+        </div>
+    }
+    else
+    {
+        //displayString = "<a href=\"" + Url.Content("~/Login") + "\">" + Resources.Login + "</a>";
+        @*<a id="topnav-fblogin-button" class="fblogin-button" href="javascript:void(0)">Facebook Login</a>*@
+        <a href="#" id="loginform">@Resources.SignIn</a>
+    }
+}

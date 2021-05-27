@@ -1,0 +1,38 @@
+﻿@using DansLesGolfs
+@using DansLesGolfs.BLL
+
+@model ItemDlgCardCore
+@{
+    int i = 0;
+}
+<div class="wrap-gift-card">
+    <div class="form-group">
+        @{ var itemid = @Model.ItemId.ToString();}
+        @foreach (var data in Model.DLGCardStyleList)
+        {
+            <text>
+                <label>
+                    <img src="@Url.Content("~/Uploads/Cards/" + @itemid + "/" + @data.ImageName)" alt='' width="130" height="90" />
+                    <br />
+                    <input type="radio" name="card-type" class="DlgCardStyleId" value="@data.CardStyleId" data-value="@data.ImageName" @(i++ == 0 ? "checked=\"checked\"" : "") />
+                </label>
+            </text>
+        }
+
+        @*        <label>
+                <img src="@Url.Content("~/Assets/Front/img/dlg_card/c2.png")" alt='' />
+                <br />
+                <input type="radio" name="card-type" />
+            </label>
+            <label>
+                <img src="@Url.Content("~/Assets/Front/img/dlg_card/c3.png")" alt='' />
+                <br />
+                <input type="radio" name="card-type" />
+            </label>
+            <label>
+                <img src="@Url.Content("~/Assets/Front/img/dlg_card/c4.png")" alt='' />
+                <br />
+                <input type="radio" name="card-type" />
+            </label>*@
+    </div>
+</div>

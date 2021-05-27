@@ -1,0 +1,74 @@
+﻿@using DansLesGolfs.Base
+@using DansLesGolfs.BLL
+@using System.Globalization;
+@model List<Coupon>
+@{
+}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            @Resources.Coupons
+        </h3>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="form-group">
+                <div class="col-md-1 control-label">
+                    <label for="Prefix">@Resources.Prefix</label>
+                </div>
+                <div class="col-md-4">
+                    @Html.TextBox("Prefix", (string)ViewBag.Prefix, new { maxlength = 20, @class = "form-control" })
+                </div>
+                <div class="col-md-1 control-label">
+                    <label for="Qty">@Resources.Qty</label>
+                </div>
+                <div class="col-md-3">
+                    @Html.TextBox("Qty", 1, new { type = "number", min = 1, max = 100000, @class = "form-control text-center" })
+                </div>
+                <div class="col-md-3">
+                    <a id="generate-coupons-button" class="btn btn-primary" href="javascript:void(0);">@Resources.GenerateCoupons</a>
+                </div>
+            </div>
+        </div>
+        <div class="row" id="coupon-picker">
+            <div class="col-md-12">
+                <div class="margin-bottom-10">
+                    <a href="javascript:void(0);" class="btn btn-primary delete-selected-link">@Resources.DeleteSelectedItems</a>
+                    <a href="javascript:void(0);" class="btn btn-primary delete-all-link">@Resources.DeleteAll</a>
+                </div>
+                <div class="margin-bottom-10">
+                    <a id="import-coupons-button" class="btn btn-primary" href="javascript:void(0);">@Resources.Import</a>
+                    <a id="export-coupons-button" class="btn btn-primary" href="@Url.Action("Export", new { id = ViewBag.CouponGroupId })" target="_blank" title="@Resources.PleaseSaveBeforeExport">@Resources.Export</a>
+                </div>
+                <nav>
+                    <ul class="pagination"></ul>
+                </nav>
+                <table id="coupons-table" class="dataTable table table-bordered table-striped table-scrollable table-hover">
+                    <thead>
+                        <tr>
+                            <th class="column-checkbox checboxes">
+                                <input type="checkbox" class="checkboxes" />
+                            </th>
+                            <th class="column-coupon-code text-capitalize">
+                                @Resources.CouponCode
+                            </th>
+                            <th class="column-coupon-code text-capitalize" ">
+                                @Resources.Available
+                            </th>
+                            <th class="column-coupon-code text-capitalize" ">
+                                @Resources.Delete
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @Html.Partial("~/Views/_Shared/UC/Admin/Coupon/UCCouponRows.cshtml", Model)
+                    </tbody>
+                </table>
+                <nav>
+                    <ul class="pagination">
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>

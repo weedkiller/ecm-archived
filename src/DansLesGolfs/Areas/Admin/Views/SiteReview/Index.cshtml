@@ -1,0 +1,37 @@
+﻿@{
+    Layout = "~/Views/_Shared/MP/_Admin.cshtml";
+    bool hideAddButton = ViewBag.HideAddButton == null ? false : (bool)ViewBag.HideAddButton;
+}
+@section head
+{
+    <script>
+        window.confirmDeleteText = '@MvcHtmlString.Create(Resources.ConfirmDeleteSelectedItems)';
+    </script>
+}
+@section foot
+{
+    <script type="text/javascript" src="@Url.Content("~/Assets/Admin/scripts/page/site-review.js")"></script>
+}
+<div class="panel">
+    <div class="panel-body">
+        <table id="datatable" class="dataTable table table-bordered table-striped table-scrollable table-hover">
+            <thead>
+                <tr>
+                    <th class="checkboxes column-checkbox unorderable">
+                        <input type="checkbox" />
+                    </th>
+                    <th class="column-review-site unorderable">
+                        @Resources.Review
+                    </th>
+                    <th class="column-approve unorderable">
+                        @Resources.Approved / @Resources.Unapproved
+                    </th>
+                    <th class="column-delete unorderable">
+                        @Resources.Delete
+                    </th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>

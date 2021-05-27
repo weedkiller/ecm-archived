@@ -1,0 +1,44 @@
+@using DansLesGolfs.BLL
+@model List<Item>
+<?xml version="1.0" encoding="UTF-8" ?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemalocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    @if (Model != null && Model.Any())
+    {
+        foreach (Item item in Model)
+        {
+            <url>
+                <loc>@Url.RouteUrl("ItemDetail", new { slug = item.ItemSlug }, Request.Url.Scheme)</loc>
+                <lastmod>@item.UpdateDate.ToString("yyyy-MM-ddTHH:mm:ss")-05:00</lastmod>
+                <changefreq>weekly</changefreq>
+                <priority>0.6</priority>
+                @if (item.ItemImages != null && item.ItemImages.Any())
+                {
+                    string itemName = HttpUtility.HtmlEncode(!string.IsNullOrWhiteSpace(item.InvoiceName) ? item.InvoiceName : item.ItemName);
+                    foreach (ItemImage img in item.ItemImages)
+                    {
+                        <image:image>
+                            <image:loc>@Html.GetFullItemImageUrl(item.ItemId, img, "original")</image:loc>
+                            <image:caption><![CDATA[@itemName]]></image:caption>
+                        </image:image>
+                        <image:image>
+                            <image:loc>@Html.GetFullItemImageUrl(item.ItemId, img, "large")</image:loc>
+                            <image:caption><![CDATA[@itemName]]></image:caption>
+                        </image:image>
+                        <image:image>
+                            <image:loc>@Html.GetFullItemImageUrl(item.ItemId, img, "medium")</image:loc>
+                            <image:caption><![CDATA[@itemName]]></image:caption>
+                        </image:image>
+                        <image:image>
+                            <image:loc>@Html.GetFullItemImageUrl(item.ItemId, img, "small")</image:loc>
+                            <image:caption><![CDATA[@itemName]]></image:caption>
+                        </image:image>
+                        <image:image>
+                            <image:loc>@Html.GetFullItemImageUrl(item.ItemId, img, "thumbnail")</image:loc>
+                            <image:caption><![CDATA[@itemName]]></image:caption>
+                        </image:image>
+                    }
+                }
+            </url>
+        }
+    }
+</urlset>

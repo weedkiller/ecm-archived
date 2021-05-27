@@ -1,0 +1,38 @@
+﻿@using DansLesGolfs.Base
+@using DansLesGolfs.BLL
+@{
+    Layout = "~/Views/_Shared/MP/_Admin.cshtml";
+    long couponGroupId = ViewBag.CouponGroupId != null ? DataManager.ToLong(ViewBag.CouponGroupId) : 0;
+}
+@section head
+{
+}
+@section foot
+{
+    <script src="@Url.Content("~/Assets/Admin/scripts/page/coupon.js")"></script>
+    <script>
+        window.couponGroupId = '@couponGroupId';
+        $('.info-form').validate();
+        $('.datepicker').datepicker({
+            format: 'dd/mm/yyyy',
+            todayHighlight: true
+        });
+    </script>
+}
+<form method="post" id="form-@ViewBag.ClassName" class="info-form coupon-form">
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#coupon-group-info" data-toggle="tab">@Resources.CouponGroupInformation</a></li>
+        @if (couponGroupId > 0)
+        {
+            <li><a href="#coupons" data-toggle="tab">@Resources.Coupons</a></li>
+        }
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="coupon-group-info">@Html.Partial("~/Views/_Shared/UC/Admin/Coupon/UCCouponGroupInfo.cshtml")</div>
+        <div class="tab-pane" id="coupons">@Html.Partial("~/Views/_Shared/UC/Admin/Coupon/UCCoupons.cshtml", (List<Coupon>)ViewBag.Coupons)</div>
+    </div>
+    <input type="hidden" name="id" value="@ViewBag.id" />
+    <input type="submit" id="submit" name="submit" value="@Resources.Save" class="btn btn-primary" />
+    <input type="reset" id="reset" name="reset" value="@Resources.Reset" class="btn" />
+    <a href="@Url.Content("~/Admin/Coupon")" class="btn btn-default">@Resources.Back</a>
+</form>

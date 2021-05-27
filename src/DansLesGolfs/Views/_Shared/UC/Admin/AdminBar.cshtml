@@ -1,0 +1,24 @@
+﻿@*@using DansLesGolfs.BLL
+@{
+    int userType = Html.GetLoggedOnUserType();
+}
+@if (userType == UserTypes.Type.SuperAdmin || userType == UserTypes.Type.Admin)
+{
+    <div id="dlgadminbar" role="navigation">
+        <div class="quicklinks" id="dlg-toolbar" role="navigation" aria-label="Top Navigation" tabindex="0">
+            <ul id="dlg-admin-bar-root-default" class="ab-top-menu">
+                <li id="dlg-admin-bar-site-name" class="menupop">
+                    <a class="ab-item" aria-haspopup="true" href="@Url.Content("~/")">Dans les Golf</a><div class="ab-sub-wrapper">
+                        <ul id="dlg-admin-bar-site-name-default" class="ab-submenu">
+                            <li id="dlg-admin-bar-dashboard"><a class="ab-item" href="@Url.Content("~/Admin")">Dashboard</a>		</li>
+                        </ul>
+                        <ul id="dlg-admin-bar-main" class="ab-submenu">
+                            <li id="dlg-admin-bar-customize" class="hide-if-no-customize"><a class="ab-item" href="@Url.Content("~/Order")">My Orders</a></li>
+                            <li id="dlg-admin-bar-themes"><a class="ab-item" href="@Url.Content("~/Admin/Settings")">Settings</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+}*@

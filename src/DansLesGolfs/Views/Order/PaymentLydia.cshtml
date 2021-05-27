@@ -1,0 +1,97 @@
+﻿@using DansLesGolfs
+@model DansLesGolfs.Models.OrderShippingModel
+@{
+    ViewBag.Title = Resources.Payment;
+    decimal subtotal = Model.Cart.GetSubTotal();
+}
+<div id="lydia-payment-button" style="display: none;"></div>
+<div id="lydia-error-message"></div>
+<div class="waiting-message" style="width: 100%; position: absolute; top: 47%; text-align: center; font-size: 28px;">
+    @MvcHtmlString.Create(ViewBag.WaitingMessage)
+</div>
+<script src="@Url.Content("~/Assets/Libraries/jquery-1.10.2.min.js")"></script>
+<script src="@Url.Content("~/Assets/Libraries/lydiasdk/lydiasdk.js")"></script>
+<script>
+    $(document).ready(function () {
+        var baseUrl = "@ViewBag.LydiaBaseUrl";
+        var parameters = {
+            amount: eval('@subtotal.ToString("###0.##", System.Globalization.CultureInfo.InvariantCulture)'),
+            currency: "EUR",
+            vendor_token: '@ViewBag.LydiaVendorToken',
+            @if(ViewBag.PaymentMethod == "mobile" && Model.MobilePhoneComplete.StartsWith("+33"))
+            {
+            <text>
+            type: 'phone',
+            recipient: '@Model.MobilePhoneComplete',
+            </text>
+            }
+            else
+            {
+            <text>
+            type: 'email',
+            recipient: '@Model.Email',
+            </text>
+            }
+            order_ref: '@Model.OrderNumber',
+            notify: 'no',
+            notify_payer: 'no',
+            notify_collector: 'no',
+            display_conf: 'no',
+            display_confirmation: 'no',
+            transactionFeeType: 'transaction',
+            browser_success_url: '@Url.Action("PaymentLydiaConfirm", "Order", null, Request.Url.Scheme)',
+            browser_cancel_url: '@Url.Action("PaymentLydiaCancel", "Order", null, Request.Url.Scheme)',
+            browser_expire_url: '@Url.Action("PaymentLydiaExpire", "Order", null, Request.Url.Scheme)',
+            signature: '@ViewBag.LydiaSignature',
+            @*@MvcHtmlString.Create(ViewBag.IsLydiaTest ? "env: 'test'" : "")*@
+        };
+        // Doit être la référence de la commande chez le marchand.
+
+        $.post(baseUrl + "api/request/do.json", parameters, function (data) {
+            if (data.error == "0") {
+                setRequestID(data.request_id);
+                document.location = data.mobile_url;
+            } else {
+                setPaymentError(data.message);
+            }
+        }, 'json');
+
+        @*var orderRef = new Date();
+        $('#lydia-payment-button').payWithLYDIA({
+            //amount: eval('@subtotal.ToString("###0.00", System.Globalization.CultureInfo.InvariantCulture)'),
+            amount: 0.5,  // for testing purpose.
+            vendor_token: '@ViewBag.LydiaVendorToken',
+            type: 'email',
+            recipient: 'antoine.porte@lydia-app.com', // for testing purpose.
+            order_ref: '@Model.OrderNumber',
+            notify: 'no',
+            notify_payer: 'no',
+            notify_collector: 'no',
+            display_conf: 'no',
+            display_confirmation: 'no',
+            transactionFeeType: 'transaction',
+            browser_success_url: '@Url.Action("PaymentLydiaConfirm", "Order", null, Request.Url.Scheme)',
+            onReady: function () {
+                $('#lydia-payment-button').trigger('click');
+            },
+            onGoingToLydia: function() {
+
+            },
+            onError: function (data) {
+                $('#lydia-error-message').html(data.message);
+            },
+            env: 'test'
+        });*@
+    });
+
+    function setRequestID(requestId) {
+        $.post('PaymentLydiaSetRequestID', { requestId: requestId });
+    }
+
+    function setPaymentError(message) {
+        $.post('PaymentLydiaShowError', { message: message }, function (result) {
+            if (result.isSuccess)
+                window.location = result.url;
+        });
+    }
+</script>

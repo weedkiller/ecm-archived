@@ -1,0 +1,505 @@
+﻿#panier{
+    float: right;
+    margin-left: 15px;
+    border: solid 1px #e6e6e6;
+    height: 40px;
+    width: 100px;
+}
+#panier-img-left{
+    padding-left: 5px;
+}
+#panier-text-middle{
+    color: #8d9092;
+    font-size: 16px;
+    font-weight: bold;
+    padding-left: 3px;
+}
+#panier-noti-right{
+    float:right;
+    margin-right: -10px;
+    width: 20px;
+    height: 20px;
+    display:block;
+    background: url(../img/header_footer/panier-notic-right.png) no-repeat;
+}
+#topnav #gift-card-voucher{
+    margin: 0 0 0 10px;
+    border-left: solid 2px #e5e5e5; 
+    height: 40px;
+}
+#topnav #gift-card-voucher > a > img{
+    margin-top: 3px;
+}
+#topnav #gift-card-voucher a:first-child{
+    padding-left: 7px;
+}
+#topnav #user-logon{
+    margin: 8px 10px 0 0;
+    position: relative;
+}
+.userlogon{    
+    border: solid 1px #e5e5e5;
+    padding: 0px 10px;
+}
+#topnav #user-logon a img{
+    padding-left: 10px;
+}
+
+
+/* Drop down login form */
+#regbar {
+    /*
+  height: 67px;
+  margin-left: 450px;
+  z-index: 0;
+        */
+    position: absolute;
+    top: 33px;
+    left: 5px;
+}
+
+.login {
+  position: relative;
+  clear:both;
+  display: none;
+}
+
+.arrow-up {
+ width: 0;
+height: 0;
+border-left: 12px solid transparent;
+border-right: 12px solid transparent;
+border-bottom: 11px solid #78be37;
+left: 30%;
+position: absolute;
+top: -11px;
+}
+.arrow-up-2 {
+width: 0;
+height: 0;
+border-left: 12px solid transparent;
+border-right: 12px solid transparent;
+border-bottom: 12px solid #fff;
+left: 30%;
+position: absolute;
+top: -9px;
+}
+
+.formholder {
+  font-family: Futura Std Light;
+  background: #fff;
+  width: 260px;
+  border: solid 1px #78be37;
+  padding: 10px 5px 5px 5px;
+}
+
+.formholder h4{
+    font-family: Futura Std Light;
+    font-weight:bold;
+    margin-left: 10px;
+}
+.formholder input{
+    padding-left: 5px;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.formholder input#us {
+border: solid 1px #e5e5e5;
+width: 200px;
+height: 30px;
+outline: none;
+}
+
+.formholder input#pass {
+border: solid 1px #e5e5e5;
+width: 150px;
+height: 30px;
+outline: none;
+}
+
+.formholder input.login-ok {
+background-color: #6cb71f;
+border: solid 1px #e5e5e5;
+color: #FFF;
+width: 50px;
+height: 30px;
+outline: none;
+padding: 0px;
+}
+
+.randompad {
+  padding: 10px;
+}
+
+.green {
+  color: #1abc9c;
+}
+
+#forgot-passwrod-wrap{
+    clear: both; text-align: right; padding-right: 5px; padding-top: 10px;
+}
+.forgot-password-link{
+    text-decoration: underline!important; font-style: italic; color: #7d7d7b!important;
+}
+
+#header #logo{
+    position: relative;
+}
+#topnav #search-box{
+    width: 186px;
+}
+#topnav #search-box #search-form #q{
+    width: 150px;
+    height: 25px;
+}
+
+/* Drop down user menu */
+#regbar_user {
+  /*
+  height: 67px;
+  margin-left: 430px;
+  z-index: 0;
+  */
+    position: absolute;
+    top: 65px;
+    left: 600px;
+}
+
+.user-menu {
+  position: relative;
+  top: -25px;
+  clear:both;
+  display: none;
+}
+
+.arrow-up-user {
+ width: 0;
+height: 0;
+border-left: 12px solid transparent;
+border-right: 12px solid transparent;
+border-bottom: 11px solid #78be37;
+left: 52%;
+position: absolute;
+top: -10px;
+}
+.arrow-up-2-user {
+width: 0;
+height: 0;
+border-left: 12px solid transparent;
+border-right: 12px solid transparent;
+border-bottom: 12px solid #f5f5f5;
+left: 52%;
+position: absolute;
+top: -9px;
+}
+
+.formholder_user {
+  background: #FFF;
+  width: 250px;
+  border: solid 1px #78be37;
+}
+.formholder_user nav ul li{
+    padding-left: 5px;
+    border-bottom: solid 1px #cbcbcb;
+    margin-bottom: 1px;
+    background-color: #f5f5f5;
+}
+.formholder_user nav ul li:last-child{
+    border-bottom: none;
+    margin-bottom: 0px;
+}
+.formholder_user nav ul li a {
+    background: url(../img/header_footer/right-arrow-menu.png) no-repeat left center;
+    display: block;
+    padding: 7px 10px 7px 15px;
+    color: #8d9194;
+    font-size: 13px;
+}
+.formholder_user nav ul li:hover{
+    /*background-color: #5d5d5d;*/
+}
+.formholder_user nav ul li.focus:hover{
+    background-color: #5d5d5d;
+}
+.randompad_user {
+  padding: 10px;
+}
+.us-menu-notic{
+    float: right;
+    width: 20px;
+    height: 20px;
+    background: url(../img/header_footer/us-menu-notic.png) no-repeat;
+    margin-right: 5px;
+    margin-top: 5px;
+}
+#user_menu_notic{
+    float: right;
+    width: 20px;
+    height: 20px;
+    background: url(../img/header_footer/us-menu-notic.png) no-repeat;
+    margin-top: -10px;
+    margin-right: -20px;
+}
+
+/* ========================== Footer site slug ============================*/
+#footer-site-slug{
+    width: 100%;
+    font: 12px 'Futura Std Light', Arial, Helvetica, 'MS Sans Serif';
+}
+table#footer-site-slug tbody tr td{
+    padding: 5px; width:33%
+}
+table#footer-site-slug tbody tr td a{
+color: #8c8c8c;
+text-decoration: none;
+
+}
+table#footer-site-slug tbody tr td a.last-ft{
+    background: url(../img/icon-footer-bullet-green.png) no-repeat left center;
+    display: block;
+    padding-left: 15px;
+}
+
+/* ========================== Footer Tab Informations ============================*/
+#info_tab{
+    width: 100%;
+    font: 12px 'Futura Std Light', Arial, Helvetica, 'MS Sans Serif';
+}
+table#info_tab tbody tr td{
+    padding: 2px 5px; width:33%
+}
+table#info_tab tbody tr td a{
+color: #8c8c8c;
+text-decoration: none;
+
+}
+table#info_tab tbody tr td a.last-ft{
+    background: url(../img/icon_footer_tab_circle_gray.png) no-repeat left center;
+    display: block;
+    padding-left: 15px;
+}
+
+/* ========================== Footer Tab Category ============================*/
+#category_tab{
+    width: 100%;
+    font: 12px 'Futura Std Light', Arial, Helvetica, 'MS Sans Serif';
+    vertical-align: top;
+}
+table#category_tab tbody tr td{
+    padding: 5px; width:50%;
+    vertical-align: top;
+}
+table#category_tab tbody tr td a{
+color: #8c8c8c;
+text-decoration: none;
+vertical-align: top;
+
+}
+table#category_tab tbody tr td a.last-ft{
+    background: url(../img/icon-footer-bullet-gray.png) no-repeat left center;
+    display: block;
+    padding-left: 15px;
+}
+
+table#category_tab tbody tr td ul{
+    margin-bottom: 10px;
+}
+table#category_tab ul li a{
+    background: url(../img/icon-footer-bullet.png) no-repeat left center;
+    display: block;
+    padding-left: 9px;
+}
+table#category_tab .read-more {
+    background: url(../img/icon-footer-link-read-more.png) no-repeat left center;
+    padding: 0 0 0 24px;
+    line-height: 17px;
+}
+#cat_right{
+    float: right;
+    width: 97%;
+}
+
+
+
+
+
+
+/* ========================== DLG CARD ==========================*/
+.card-box {
+    border: 1px solid #d0d0d0;
+}
+
+.card-box-form {
+    padding: 15px 20px 15px 20px;
+    background-color: #f5f5f5;
+}
+
+.card-box-form .form-group .form-control
+{
+    height: 25px;
+    line-height : 15px;
+    padding: 5px;
+}
+.card-step-body .form-control{    
+    padding-left: 0px;
+}
+.card-box-form-title {
+    margin-top: 10px;
+    margin-bottom: 30px;
+    color: #f6407d;
+    font-weight: 700;
+    font-size: 17px;
+}
+
+.card-box-form-title-secound{
+    margin-bottom: 30px;
+}
+.card-box-form-title-secound p {
+    color: #8f9092;
+    margin-bottom: 15px;
+    font-size: 13px;
+}
+.card-step{
+    margin-bottom: 20px;
+}
+.c-step-title{
+    margin-bottom: 20px;
+}
+.c-step-title > .big-number{
+    font-size: 30px;
+    color: #f7417e;
+    margin-right: 5px;
+}
+.c-step-title > .desc{
+    font-size: 13px;
+    color: #8c9091;
+}
+.card-step-body{
+    padding-left: 35px;
+}
+.btn-validate-card{
+    margin-top: 50px;
+}
+.btn-validate-card button{
+    padding: 10px 60px;
+    font-size: 14px;
+}
+#card-agree{
+    margin-top: 0px!important;
+}
+.wrap-gift-card label{
+    text-align:center;
+}
+.card-step-body .personal-msg{
+    padding-top: 5px;
+    padding-left: 5px;
+}
+
+#card-type-table{
+    border: solid 1px #e5e5e5; 
+    background-color: #fafafa; height: 100px;
+}
+#card-type-table thead{
+    text-align:center;
+}
+#card-type-table thead td:first-child{
+    width: 300px;
+}
+#card-type-table thead td{
+    width: 200px;
+    color: #8c9091;
+    padding: 5px;
+    border: solid 1px #e5e5e5; 
+    border-right: solid 1px #e5e5e5; 
+}
+
+#card-type-table tbody{
+    padding: 5px;
+}
+#card-type-table tbody td{
+    color: #8c9091;
+    padding: 5px;
+    border-right: solid 1px #e5e5e5; 
+    vertical-align: top;
+    text-align:center;    
+}
+#card-type-table tbody .wrap-ddl{
+    margin : 5px 0px;
+}
+#card-type-table tbody select {
+    width: 160px;
+}
+#card-type-table tbody #select-type select{
+    width: 150px;
+}
+#card-type-table tbody .wrap-ddl label#total-amount{
+    color:#f6407d;
+    font-size: 16px;
+}
+
+/*-------------Start DLGCARD----------------*/
+    .card-box-text {
+        padding-bottom: 20px;
+    }
+
+    .card-box-text-hightlight {
+        color:#f7407e;
+    }
+
+    .card-box-text-bold {
+        font-weight : bold;
+    }
+
+    .card-box-tab {
+        padding-left: 35px;
+    }
+
+    .card-box-text-list {
+        line-height: 16px;
+    }
+
+    .card-box-button-dlgcard {
+        padding: 10px 0px 50px 0px;
+        width: 100%;
+    }
+
+        .card-box-button-dlgcard > a {
+            width: 185px;
+            height: 30px;
+            margin: 0 auto;
+            display: block;
+        }
+
+    .card-box-text-size-header {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .card-box-nontab {
+        line-height: 24px;
+    }
+
+        .card-box-nontab > li {
+            padding-bottom: 27px;
+        }
+
+    .card-box-padding-text {
+        padding-bottom: 30px;
+    }
+
+    .card-box-underline-text {
+        text-decoration: underline;
+    }
+
+.dld-card-order > input {
+    padding: 5px;
+
+}
+
+.input-validation-error {
+    border:1px solid red !important;
+}
+
+
+/*END DLGCARD*/

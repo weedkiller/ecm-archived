@@ -1,0 +1,54 @@
+﻿@using DansLesGolfs.Models
+@using DansLesGolfs.BLL
+@model ProductsListModel
+@{
+    Layout = "~/Views/_Shared/MP/Front/_TwoSections.cshtml";
+    List<SlideImage> slideImages = ViewBag.SlideImages == null ? new List<SlideImage>() : (List<SlideImage>)ViewBag.SlideImages;
+}
+@section head
+{
+}
+@section foot
+{
+    <script>
+        window.pageSize = 9;
+        window.itemTypeId = 0;
+    </script>
+    <script src="@Url.Content("~/Assets/Front/scripts/index.js")"></script>
+}
+<div class="margin-bottom-40">
+    <div id="homepage-slider" class="royalSlider rsDefault">
+    </div>
+    <div id="products-list" class="dynamic-products-list"></div>
+    <div class="text-center">
+        <a href="javascript:void(0);" id="load-more-button" class="hide btn btn-primary align-center">@Resources.LoadMore</a>
+    </div>
+
+
+    <a id="open-rating-popup-button" href="#rating-popup"></a>
+    <div id="rating-popup">
+        <div class="form-group">
+            <label class="control-label">@Resources.YourRating</label>
+            <div class="input-icon">
+                <div class="starrr review-stars" data-rating="0" title=""></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">@Resources.Subject</label>
+            <div class="input-icon">
+                <input id="review-subject-input" class="form-control" placeholder="@Resources.Subject" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">@Resources.YourReview</label>
+            <div class="input-icon">
+                <textarea id="review-message-input" class="form-control" placeholder="@Resources.WriteYourReview"></textarea>
+            </div>
+        </div>
+        <div class="form-actions">
+            <button type="submit" id="submit-review-button" class="btn btn-primary pull-right">
+                &gt; @Resources.SubmitReview
+            </button>
+        </div>
+    </div>
+</div>

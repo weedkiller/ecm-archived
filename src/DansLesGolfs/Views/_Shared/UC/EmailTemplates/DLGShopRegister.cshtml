@@ -1,0 +1,9 @@
+﻿@using DansLesGolfs.BLL
+@model User
+<div>
+    <h2>@Resources.RegisterMailTitleText @ViewBag.WebsiteName !</h2>
+    <p>@Resources.RegisterMailBodyText</p>
+    <p>@Resources.Email : @Model.Email</p>
+    <p>@Resources.Password : @Model.Password</p>
+    <p>@Resources.RegisterMailBodyTextBottom</p>
+</div>

@@ -1,0 +1,119 @@
+﻿@using DansLesGolfs.BLL
+@model List<Address>
+@{
+    Layout = "~/Views/_Shared/MP/Front/_FullWidth.cshtml";
+    ViewBag.Title = Resources.Shipping;
+    string hasNoAddress = ((bool)ViewBag.HasNoAddress).ToString().ToLower();
+}
+@section head
+{
+    <link href="@Url.Content("~/Assets/Libraries/fancybox/source/jquery.fancybox.css")" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="@Href("~/Assets/Front/css/cart.css")">
+}
+@section foot
+{
+    <script>
+        window.localize = {};
+        window.localize.shipping = "@MvcHtmlString.Create(Resources.DeliveryToTheFollowingAddress)";
+        window.localize.shippingEditorRowTitle = "@MvcHtmlString.Create(Resources.DeliveryToADifferenceAddress)";
+        window.localize.addAddress = "@MvcHtmlString.Create(Resources.AddAddress)";
+        window.localize.addShippingAddress = "@MvcHtmlString.Create(Resources.AddShippingAddress)";
+        window.localize.editShippingAddress = "@MvcHtmlString.Create(Resources.EditShippingAddress)";
+        window.localize.confirmDeleteAddress = "@MvcHtmlString.Create(Resources.ConfirmDeleteAddress)";
+        window.localize.shippingAddressModifiedWarning = "@MvcHtmlString.Create(Resources.ShippingAddressModifiedWarning)";
+        window.addressId = 0;
+        window.hasNoAddress = eval('@hasNoAddress');
+    </script>
+    <script src="@Url.Content("~/Assets/Libraries/jquery-numeric/jquery.numeric.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Assets/Front/scripts/pages/order-shipping.js")"></script>
+}
+<div id="page-order-shipping" class="margin-bottom-40">
+    <div class="row">
+        <section id="shipping-info" class="col-md-12">
+            <h1 class="page-title">@Resources.MyCart</h1>
+            @Html.Partial("~/Views/_Shared/UC/Front/Order/UCPaymentProcess.cshtml", 3)
+            @if (ViewBag.LogonUserId > 0)
+            {
+                <h2 class="page-subtitle">@Resources.Shipping</h2>
+                <table id="address-table">
+                    <thead>
+                        <tr>
+                            <th colspan="5">
+                                <h4 class="address-table-title">@Resources.DeliveryToTheFollowingAddress</h4>
+                                <a href="javascript:void(0)" id="add-address-button" class="btn btn-primary">+ @Resources.AddAddress</a>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="editor-row">
+                            <td colspan="5">
+                                @Html.Partial("~/Views/_Shared/UC/Front/Order/UCAddressEditorRow.cshtml")
+                            </td>
+                        </tr>
+                        @Html.Partial("~/Views/_Shared/UC/Front/Order/UCAddressesList.cshtml", Model)
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3">@Resources.Order_ShippingMobilePhoneDescription <br />@Resources.Order_ShippingMobilePhoneDescription2</td>
+                            <td colspan="2">
+                                <img src="@Url.Content("~/Assets/Front/img/icon-iphone.png")" />
+                                <input type="text" id="input-secret-code" />
+                                <button id="submit-secret-code" class="btn btn-primary">OK</button>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            }
+
+            <div id="required-fields-warning" class="margin-top-10" style="display: none">
+                <span class="require-pink">*</span> @Resources.MyDetails_Require
+            </div>
+        </section>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="require-box">
+                <span class="pull-right">
+                    <a href="javascript:void(0);" id="back-to-shopping-button" class="btn btn-default">&gt; @Resources.BackToPreviousStep</a>
+                    <a href="@Url.Content("~/Order/Payment")" id="checkout-button" class="btn btn-primary">&gt; @Resources.Next</a>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <a href="#address-creation-popup" id="address-creation-link"></a>
+    <div id="address-creation-popup" style="display: none">
+        <p>@MvcHtmlString.Create(Resources.CreateAddressSuggestion)</p>
+        <div class="action-buttons margin-top-20">
+            <button type="button" class="btn yes-button btn-primary pull-right" data-dismiss="modal">@Resources.Yes</button>
+            <button type="button" class="btn no-button btn-default pull-right margin-right-10" data-dismiss="modal">@Resources.No</button>
+        </div>
+    </div>
+
+    <a href="#address-required-popup" id="address-required-link"></a>
+    <div id="address-required-popup" style="display: none">
+        <p>@MvcHtmlString.Create(Resources.YouMustEnterRequireField)</p>
+        <div class="action-buttons margin-top-20">
+            <button type="button" class="btn ok-button btn-primary pull-right" data-dismiss="modal">OK</button>
+        </div>
+    </div>
+
+    <a href="#address-modified-popup" id="address-modified-link"></a>
+    <div id="address-modified-popup" style="display: none">
+        <p>@MvcHtmlString.Create(Resources.ShippingAddressModifiedWarning)</p>
+        <div class="action-buttons margin-top-20">
+            <button type="button" class="btn yes-button btn-primary pull-right" data-dismiss="modal">@Resources.Yes</button>
+            <button type="button" class="btn no-button btn-default pull-right margin-right-10" data-dismiss="modal">@Resources.No</button>
+        </div>
+    </div>
+
+    <a href="#address-delete-popup" id="address-delete-link"></a>
+    <div id="address-delete-popup" style="display: none">
+        <p>@MvcHtmlString.Create(Resources.ConfirmDeleteAddress)</p>
+        <div class="action-buttons margin-top-20">
+            <button type="button" class="btn yes-button btn-primary pull-right" data-dismiss="modal">@Resources.Yes</button>
+            <button type="button" class="btn no-button btn-default pull-right margin-right-10" data-dismiss="modal">@Resources.No</button>
+        </div>
+    </div>
+</div>

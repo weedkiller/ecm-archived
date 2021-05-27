@@ -1,0 +1,181 @@
+﻿@{
+    ViewBag.Title = "AddDlgCardAdmin";
+    Layout = "~/Views/_Shared/MP/_Admin.cshtml";
+}
+
+@using DansLesGolfs.Base
+@using DansLesGolfs.BLL
+@model AddDlgCard
+
+@{
+}
+@section foot
+{
+
+}
+<script src="@Url.Content("~/Assets/Libraries/jquery-1.10.2.min.js")"></script>
+<script src="@Url.Content("~/Assets/Front/plugins/jquery.validate.min.js")"></script>
+<script src="@Url.Content("~/Assets/Front/plugins/jquery.validate.unobtrusive.min.js")"></script>
+<script src="@Url.Content("~/Assets/Libraries/uploadifive/jquery.uploadifive.min.js")"></script>
+<script src="@Url.Content("~/Assets/Admin/scripts/page/dlg-card.js")"></script>
+
+<script type="text/javascript">
+    $(function () {
+
+        $("#add-price-button").click(function () {
+
+            if (!$("#DlgPrice").hasClass('input-validation-error')) {
+                var price = $("#DlgPrice").val();
+                @{ var randomguid = Guid.NewGuid();}
+                var texttr = '<tr id="@randomguid"><td>' + price + '</td><td><a href="#" data-trid="@randomguid" data-value="' + price + '" class="delete-price-dlgcard">delete</a></td></tr>';
+                $('#table-price-dlgcard tr:last').after(texttr);
+
+                $("#Amount").val($("#Amount").val() + price + ";");
+
+            }
+        });
+
+        $("body").on('click', '.delete-price-dlgcard', function () {
+            var triddelete = $(this).attr('data-trid');
+            $("#" + triddelete).remove();
+            $("#Amount").val("");
+            var dataprice = "";
+            $(".price-dlgcard-detail").each(function () {
+                dataprice += $(this).attr('data-value');
+                dataprice += ";";
+            });
+
+            $("#Amount").val(dataprice);
+        });
+
+    });
+</script>
+
+
+@using (Html.BeginForm("SaveDlgCardAdmin", "DLGCard", FormMethod.Post,
+                                      new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+{
+    @Html.HiddenFor(m => m.ItemId, new { @Value = Model.ItemId })
+   
+     @Html.HiddenFor(m => m.Amount, new  { @Value = Model.Amount })
+    
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Card Information
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-2 control-label">
+                                <label for="CardName">Card Name</label>
+                            </div>
+                            <div class="col-md-10">
+                                @* @Html.TextBox("CardName", (string)ViewBag.CardName, new { required = "required", maxlength = 100, @class = "form-control" })*@
+                                @Html.TextBoxFor(m => m.CardName, new { @class = "form-control", @maxlength = 100 })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-2 control-label">
+                                <label for="CardName">Price</label>
+                            </div>
+                            <div class="col-md-10">
+                                
+                                @Html.TextBoxFor(m => m.DlgPrice, new { @class = "form-control", @maxlength = 100 })
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="margin-bottom-10">
+                        <a id="add-price-button" href="javascript:void()" class="btn btn-primary">Add Price</a>
+                    </div>
+                    <table class="table table-bordered" id="table-price-dlgcard">
+                        <thead>
+                            <tr>
+                                <th>Price</th>
+                                <th width="30%">Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody id="add-tr-price">
+                            @{
+    string[] arrprice = { };
+    if (!string.IsNullOrEmpty(Model.Amount))
+    {
+        arrprice = Model.Amount.Split(';');
+    }
+                            }
+                            @for (int i = 0; i < arrprice.Length; i++)
+                            {
+                                var trid = Guid.NewGuid();
+                                if (@arrprice[i].Length > 0)
+                                {
+                                <tr id="@trid">
+                                    <td class="price-dlgcard-detail" data-value="@arrprice[i]">@arrprice[i]</td>
+                                    <td><a href="#" data-value="@arrprice[i]" data-trid="@trid" class="delete-price-dlgcard">delete</a></td>
+                                </tr>
+                                }
+                            }
+
+                        </tbody>
+                    </table>
+
+
+
+                    @*                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <label for="CardName"> Qualtity </label>
+                        </div>
+                        <div class="col-md-10">
+                            @Html.TextBox("Qualtity", (string)ViewBag.Qualtity, new { required = "required", maxlength = 100, @class = "form-control" })
+                        </div>
+                    </div>
+                </div>*@
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Card Images
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    @if (Model.ItemId.HasValue)
+                    {
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p>@Resources.ItemImageUploadDescription</p>
+                                <input type="file" accept="image/*" id="card-image-file" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <ul id="card-images-area" class="sortable-images"></ul>
+                            </div>
+                        </div>
+
+                    }
+                    else
+                    {
+                        <p>@Html.T("Please save Card Information first.")</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <input type="submit" id="submit" name="submit" value="@Resources.Save" class="btn btn-primary" />
+    <input type="reset" id="reset" name="reset" value="@Resources.Reset" class="btn" />
+    <a href="@Url.Content("~/Admin/Course")" class="btn btn-default">@Resources.Back</a>
+}

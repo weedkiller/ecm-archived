@@ -1,0 +1,102 @@
+﻿@{
+
+    if (ViewBag.LogonUserID != null && ViewBag.LogonUserID > 0)
+    {
+        string displayString = "<a href ='" + Url.Action("", "Account") + "'>" + Resources.Hello;
+        if (ViewBag.LogonUserFirstName != null && ViewBag.LogonUserFirstName != "")
+        {
+            displayString += " " + ViewBag.LogonUserFirstName;
+        }
+        displayString += "</a>";
+        
+        <div class="userlogon">
+
+            <div id="use_menu_form">
+                @MvcHtmlString.Create(displayString)
+                <img src="@Url.Content("~/Assets/Front/img/header_footer/us-arrow-down.png")" />
+                <!-- User menu box -->
+                <div id="regbar_user">
+                    <div id="navthing_user">
+                        <div class="user-menu">
+                            <div class="arrow-up-user"></div>
+                            <div class="arrow-up-2-user"></div>
+                            <div class="formholder_user">
+                                <nav>
+                                    <ul>
+                                        <li id="first">
+                                            <a href="@Url.Action("Details", "Account")">
+                                                @Resources.MyDetails
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("Orders", "Account")">
+                                                @Resources.MyOrders
+                                            </a>
+                                            @if (Convert.ToInt32(ViewBag.TotalUserOrders) > 0)
+                                            {
+                                                <span class="dlg-count-topnav">@ViewBag.TotalUserOrders</span>
+                                            }
+                                        </li>
+                                        <li style="position:relative;">
+                                            <a href="@Url.Action("Messages", "Account")">
+                                                @Resources.MyMessages
+                                            </a>
+                                            @if (Convert.ToInt32(ViewBag.TotalUserMessage) > 0)
+                                            {
+                                                <span class="dlg-count-topnav">@ViewBag.TotalUserMessage</span>
+                                            }
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("Addresses", "Account")">
+                                                @Resources.MyAddresses
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("ChangePassword", "Account")">
+                                                @Resources.MyPassword
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("Sponsorship", "Account")">
+                                                @Resources.MySponsorship
+                                            </a>
+                                            @if (Convert.ToInt32(ViewBag.TotalSponsorEmails) > 0)
+                                            {
+                                                <span class="dlg-count-topnav">@ViewBag.TotalSponsorEmails</span>
+                                            }
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("CouponsAndDiscounts", "Account")">
+                                                @Resources.MyCouponsAndDiscount
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("CreditCard", "Account")">
+                                                @Resources.MyCreditCard
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("Newsletters", "Account")">
+                                                Mes inscriptions aux newsletters
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a href="@Url.Content("~/Logout")" class="logout-link">@Resources.SignOut</a>
+        </div>
+
+
+    }
+    else
+    {
+        //displayString = "<a href=\"" + Url.Content("~/Login") + "\">" + Resources.Login + "</a>";
+        <a id="topnav-fblogin-button" class="fblogin-button" href="javascript:void(0)">Facebook Login</a>
+        <a id="topnav-register-link" href="@Url.Action("Login", "Logon")">@Resources.Register</a>
+        <a href="#" id="loginform">@Resources.SignIn</a>
+    }
+}

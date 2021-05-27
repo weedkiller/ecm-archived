@@ -1,0 +1,206 @@
+﻿@using DansLesGolfs.Base
+@using DansLesGolfs.BLL
+@using System.Globalization
+@{
+}
+<div class="row">
+    <div class="col-md-12">
+        @*<div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        General Settings
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                <label for="SendMailUsing">@Resources.Using ?</label>
+                            </div>
+                            <div class="col-md-8">
+                                @Html.DropDownList("SendMailUsing", (IEnumerable<SelectListItem>)ViewBag.SendMailUsingOptions, new { @class= "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    @Resources.EmailSettings
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            <label for="IsUseGlobalSMTPSettings">@Resources.UseGlobalSettings</label>
+                        </div>
+                        <div class="col-md-8">
+                            <label for="IsUseGlobalSMTPSettings"><input type="checkbox" id="IsUseGlobalSMTPSettings" name="IsUseGlobalSMTPSettings" value="true" @(DataManager.ToBoolean((object)ViewBag.IsUseGlobalSMTPSettings) ? " checked=\"checked\"" : "") /></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            <label for="SMTPServer">@Resources.SMTPServer</label>
+                        </div>
+                        <div class="col-md-8">
+                            @Html.TextBox("SMTPServer", (string)ViewBag.SMTPServer, new { maxlength = 100, @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            <label for="SMTPUsername">@Resources.SMTPUsername</label>
+                        </div>
+                        <div class="col-md-8">
+                            @Html.TextBox("SMTPUsername", (string)ViewBag.SMTPUsername, new { maxlength = 100, @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            <label for="SMTPPassword">@Resources.SMTPPassword</label>
+                        </div>
+                        <div class="col-md-8">
+                            @Html.Password("SMTPPassword", (string)ViewBag.SMTPPassword, new { maxlength = 100, @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            <label for="SMTPPort">@Resources.SMTPPort</label>
+                        </div>
+                        <div class="col-md-8">
+                            @Html.TextBox("SMTPPort", (int)ViewBag.SMTPPort, new { type = "number", min = 0, maxlength = 10, @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            <label for="DefaultSenderName">@Resources.DefaultSenderName</label>
+                        </div>
+                        <div class="col-md-8">
+                            @Html.TextBox("DefaultSenderName", (string)ViewBag.DefaultSenderName, new { maxlength = 255, @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            <label for="DefaultSenderEmail">@Resources.DefaultSenderEmail</label>
+                        </div>
+                        <div class="col-md-8">
+                            @Html.TextBox("DefaultSenderEmail", (string)ViewBag.DefaultSenderEmail, new { maxlength = 255, @class = "form-control email" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            <label for="SMTPUseSSL">@Resources.UseSSLTLS</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="checkbox" id="SMTPUseSSL" name="SMTPUseSSL" value="true" @(DataManager.ToBoolean((object)ViewBag.SMTPUseSSL) ? " checked=\"checked\"" : "") />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            <label for="SMTPUseVERP">@Resources.UseVERP</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="checkbox" id="SMTPUseVERP" name="SMTPUseVERP" value="true" @(DataManager.ToBoolean((object)ViewBag.SMTPUseVERP) ? " checked=\"checked\"" : "") />
+                        </div>
+                    </div>
+                </div>
+                @*<div class="row">
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                <label for="BouncedReturnEmail">@Resources.BouncedReturnEmail</label>
+                            </div>
+                            <div class="col-md-8">
+                                @Html.TextBox("BouncedReturnEmail", (string)ViewBag.BouncedReturnEmail, new { maxlength = 255, @class = "form-control email" })
+                            </div>
+                        </div>
+                    </div>*@
+                @*<div class="row">
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                <label for="IsTrackingOpenMail">@Resources.TrackingOpenMail</label>
+                            </div>
+                            <div class="col-md-8">
+                                <label for="IsTrackingOpenMail"><input type="checkbox" id="IsTrackingOpenMail" name="IsTrackingOpenMail" value="true" @(DataManager.ToBoolean((object)ViewBag.IsTrackingOpenMail) ? " checked=\"checked\"" : "") /></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                <label for="IsTrackingLinkClick">@Resources.TrackingOpenMail</label>
+                            </div>
+                            <div class="col-md-8">
+                                <label for="IsTrackingLinkClick"><input type="checkbox" id="IsTrackingLinkClick" name="IsTrackingLinkClick" value="true" @(DataManager.ToBoolean((object)ViewBag.IsTrackingLinkClick) ? " checked=\"checked\"" : "") /></label>
+                            </div>
+                        </div>
+                    </div>*@
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    Netmessage Settings
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            <label for="IsUseGlobalNetmessageSettings">@Resources.UseGlobalSettings</label>
+                        </div>
+                        <div class="col-md-8">
+                            <label for="IsUseGlobalNetmessageSettings"><input type="checkbox" id="IsUseGlobalNetmessageSettings" name="IsUseGlobalNetmessageSettings" value="true" @(DataManager.ToBoolean((object)ViewBag.IsUseGlobalNetmessageSettings) ? " checked=\"checked\"" : "") /></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            <label for="NetmessageFTPUsername">FTP Username</label>
+                        </div>
+                        <div class="col-md-8">
+                            @Html.TextBox("NetmessageFTPUsername", (string)ViewBag.NetmessageFTPUsername, new { maxlength = 255, @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            <label for="NetmessageFTPPassword">FTP Password</label>
+                        </div>
+                        <div class="col-md-8">
+                            @Html.Password("NetmessageFTPPassword", (string)ViewBag.NetmessageFTPPassword, new { maxlength = 255, @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            <label for="NetmessageAccountName">@Resources.AccountName</label>
+                        </div>
+                        <div class="col-md-8">
+                            @Html.TextBox("NetmessageAccountName", (string)ViewBag.NetmessageAccountName, new { maxlength = 255, @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,248 @@
+﻿@using DansLesGolfs.Base;
+@{
+    Layout = "~/Views/_Shared/MP/_Layout.cshtml";
+    bool isAdmin = ViewBag.LogonUserType == UserType.Type.SuperAdmin || ViewBag.LogonUserType == UserType.Type.Admin;
+}
+@section head
+{
+}
+@section foot
+{
+    <script>
+        window.localeTexts = {
+            none: '@Resources.None'
+        };
+    </script>
+    <script src="@Url.Content("~/Assets/Libraries/uploadifive/jquery.uploadifive.min.js")"></script>
+    <script src="@Url.Content("~/Assets/Admin/scripts/page/customer-import.js")"></script>
+}
+<h1>@Resources.CustomerImporter</h1>
+<div id="step-1">
+    <h2>@Resources.Step 1 : @Resources.ChooseYourFile</h2>
+    <p>
+        <input type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" id="customer-import-file" />
+        <br /><span class="description">*.csv (Comma Separated Values)<br />or *.xls or *xlsx (Microsoft Excel File)</span>
+    </p>
+</div>
+<div id="step-2" class="margin-top-20" style="display: none;">
+    <h2>@Resources.Step 2 : @Resources.ChooseCorrespondColumns</h2>
+    <p>
+        <table id="column-matching-table" class="dataTable table table-bordered table-striped table-scrollable table-hover">
+            <thead>
+                <tr>
+                    <th width="50%">@Resources.Database</th>
+                    <th width="50%">@Resources.YourFile</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (isAdmin)
+                {
+                    <tr>
+                        <td>@Resources.Site</td>
+                        <td>
+                            @Html.DropDownList("SiteId", (IEnumerable<SelectListItem>)ViewBag.Sites, new { @class = "form-control", required = "required" })
+                        </td>
+                    </tr>
+                }
+                @if (ViewBag.CustomerGroups != null && ((List<CustomerGroup>)ViewBag.CustomerGroups).Any())
+                {
+                    <tr id="row-customer-group"@Html.Raw(isAdmin ? " style=\"display:none;\"" : "")>
+                        <td>@Resources.CustomerGroup</td>
+                        <td>
+                            <ul id="customer-group-list">
+                                @foreach (CustomerGroup it in (List<CustomerGroup>)ViewBag.CustomerGroups)
+                                {
+                                    <li data-id="@it.CustomerGroupId" data-site-id="@it.SiteId">
+                                        <label for="customer-group-@it.CustomerGroupId">
+                                            <input type="checkbox" id="customer-group-@it.CustomerGroupId" name="customerGroupIds" value="@it.CustomerGroupId" /> @it.CustomerGroupName
+                                        </label>
+                                    </li>
+                                }
+                            </ul>
+                        </td>
+                    </tr>
+                }
+                <tr>
+                    <td>@Resources.Email</td>
+                    <td>
+                        <select id="file-email" class="form-control" disabled>
+                            <option value="0">@Resources.None</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>@Resources.FirstName</td>
+                    <td>
+                        <select id="file-firstname" class="form-control" disabled>
+                            <option value="0">@Resources.None</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>@Resources.LastName</td>
+                    <td>
+                        <select id="file-lastname" class="form-control" disabled>
+                            <option value="0">@Resources.None</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>@Resources.BirthDate</td>
+                    <td>
+                        <select id="file-birthdate" class="form-control" disabled>
+                            <option value="0">@Resources.None</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>@Resources.Gender</td>
+                    <td>
+                        <select id="file-gender" class="form-control" disabled>
+                            <option value="0">@Resources.None</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>@Resources.Telephone</td>
+                    <td>
+                        <select id="file-phone" class="form-control" disabled>
+                            <option value="0">@Resources.None</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>@Resources.MobilePhone</td>
+                    <td>
+                        <select id="file-mobile" class="form-control" disabled>
+                            <option value="0">@Resources.None</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>@Resources.Address</td>
+                    <td>
+                        <select id="file-address" class="form-control" disabled>
+                            <option value="0">@Resources.None</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>@Resources.City</td>
+                    <td>
+                        <select id="file-city" class="form-control" disabled>
+                            <option value="0">@Resources.None</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>@Resources.Country</td>
+                    <td>
+                        <select id="file-country" class="form-control" disabled>
+                            <option value="0">@Resources.None</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>@Resources.PostalCode</td>
+                    <td>
+                        <select id="file-postalcode" class="form-control" disabled>
+                            <option value="0">@Resources.None</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>@Resources.Description</td>
+                    <td>
+                        <select id="file-description" class="form-control" disabled>
+                            <option value="0">@Resources.None</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>@Resources.Career</td>
+                    <td>
+                        <select id="file-career" class="form-control" disabled>
+                            <option value="0">@Resources.None</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>@Resources.LicenseNumber</td>
+                    <td>
+                        <select id="file-licensenumber" class="form-control" disabled>
+                            <option value="0">@Resources.None</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>@Resources.Index</td>
+                    <td>
+                        <select id="file-index" class="form-control" disabled>
+                            <option value="0">@Resources.None</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>@Resources.CustomerType</td>
+                    <td>
+                        <select id="file-customertype" class="form-control" disabled>
+                            <option value="0">@Resources.None</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>@Resources.SubCustomerType</td>
+                    <td>
+                        <select id="file-subcustomertype" class="form-control" disabled>
+                            <option value="0">@Resources.None</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Custom Field 1</td>
+                    <td>
+                        <select id="file-customfield1" class="form-control" disabled>
+                            <option value="0">@Resources.None</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Custom Field 2</td>
+                    <td>
+                        <select id="file-customfield2" class="form-control" disabled>
+                            <option value="0">@Resources.None</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Custom Field 3</td>
+                    <td>
+                        <select id="file-customfield3" class="form-control" disabled>
+                            <option value="0">@Resources.None</option>
+                        </select>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </p>
+</div>
+<div id="step-3" class="margin-top-50 margin-bottom-50" style="display: none;">
+    <div class="row">
+        <div class="col-md-6 col-centered">
+            <div id="import-progress" class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="70"
+                     aria-valuemin="0" aria-valuemax="100" style="width:70%">
+                    <span class="sr-only"><span id="progress-percent">0</span>% @Resources.Complete</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-centered">
+            <h4 id="progress-message" class="align-center"><span>0</span>% Complete</h4>
+            <div id="import-progress-message" class="margin-top-20"></div>
+        </div>
+    </div>
+</div>
+<div id="action-buttons" class="action-buttons" style="display: none;">
+    <button id="start-import-button" class="btn btn-primary">@Resources.Start !</button>
+    <button id="reset-button" class="btn btn-default">@Resources.Reset</button>
+</div>

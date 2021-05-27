@@ -1,0 +1,39 @@
+﻿@model List<User>
+@{
+    Layout = null;
+}
+@(Html.Kendo().Grid<UserViewModel>()
+    .Name("gridCustomersInGroup")
+    .Columns(columns =>
+    {
+        columns.Bound(p => p.UserId)
+            .Filterable(false)
+            .Sortable(false)
+            .Width(30)
+            .HeaderTemplate("<input type=\"checkbox\" class=\"checkbox\" />")
+            .ClientTemplate("<input type=\"checkbox\" class=\"checkbox\" />");
+        columns.Bound(p => p.UserId).Filterable(false).Visible(false);
+        columns.Bound(p => p.Email).Title(Resources.Email);
+        columns.Bound(p => p.FirstName).Title(Resources.FirstName);
+        columns.Bound(p => p.LastName).Title(Resources.LastName);
+        columns.Bound(p => p.GenderName).Title(Resources.Gender);
+        columns.Bound(p => p.Age).Title(Resources.Age);
+        columns.Bound(p => p.CustomerTypeName).Title(Resources.CustomerType);
+        columns.Bound(p => p.SubCustomerTypeName).Title(Resources.SubCustomerType);
+    })
+    .Selectable(s => {
+        s.Mode(GridSelectionMode.Multiple);
+        s.Type(GridSelectionType.Row);
+    })
+    .Pageable()
+    .Sortable()
+    .Groupable()
+    .Scrollable()
+    .Filterable()
+    .DataSource(dataSource => dataSource
+        .Ajax()
+        .PageSize(200)
+        .Sort(it => it.Add(c => c.Email))
+        .Read(read => read.Action("AjaxGetCustomersInCustomerGroup", "CustomerGroup", new { id = ViewBag.id }))
+     )
+)

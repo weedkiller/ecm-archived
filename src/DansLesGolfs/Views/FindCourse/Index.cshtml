@@ -1,0 +1,50 @@
+﻿@using DansLesGolfs.Models
+@using DansLesGolfs.BLL
+@model List<PinModel>
+@{
+    Layout = "~/Views/_Shared/MP/Front/_Default.cshtml";
+    List<Item> relatedItems = ViewBag.RelatedItems != null ? ViewBag.RelatedItems as List<Item> : new List<Item>();
+    ViewBag.BodyClasses = "find-course";
+    ViewBag.Title = Resources.FindACourse;
+}
+@section head
+{
+}
+@section foot
+{
+    <script>
+        window.itemType = 'where-to-play';
+        window.pinJson = eval('@Html.Json(Model)');
+    </script>
+    <script src="@Url.Content("~/Assets/Front/scripts/pages/findcourse.js")"></script>
+}
+<div id="page-findcourse" class="margin-bottom-20">
+    <div id="map-canvas"></div>
+    <div id="map-legend"></div>
+</div>
+@if (relatedItems != null && relatedItems.Any())
+{
+    string itemShortDesc = string.Empty;
+    string itemName = string.Empty;
+    <div id="products-list">
+        @foreach (Item it in relatedItems)
+        {
+            itemShortDesc = it.ItemLangs != null && it.ItemLangs.Any() ? it.ItemLangs[0].ItemShortDesc : string.Empty;
+            itemName = it.ItemLangs != null && it.ItemLangs.Any() ? it.ItemLangs[0].ItemName : string.Empty;
+            <div class="@Html.ItemClasses(it)">
+                @if (it.ItemImages != null && it.ItemImages.Any())
+                {
+                    <div class="product-thumbnail">
+                        <a href="@Html.ItemUrl(it)" title="@itemName"><img src="@Html.GetItemImageUrl(it.ItemId, it.ItemImages[0], "medium")" class="img-responsive" onerror="this.src='@Url.Content("~/Assets/Front/img/no-image-300x193.png")'" /></a>
+                    </div>
+                }
+                <div class="product-info">
+                    <h4 class="product-name"><a href="@Html.ItemUrl(it)" title="@itemName">@itemName.Truncate(32, "...")</a></h4>
+                    <p class="product-short-description"><a href="@Html.ItemUrl(it)">@itemShortDesc.Truncate(92, "...")</a></p>
+                    <a class="view-offer" href="@Html.ItemUrl(it)" title="@itemName">&gt; @Resources.ViewOffer</a>
+                </div>
+                <div class="product-price"><span class="starting-at">@Resources.BeginAt</span> <span class="price-number">@Html.ItemFinalPrice(it)</span></div>
+            </div>
+        }
+    </div>
+}

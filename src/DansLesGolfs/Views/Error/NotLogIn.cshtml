@@ -1,0 +1,24 @@
+﻿@model DansLesGolfs.BLL.Item
+@{
+    ViewBag.Title = Resources.PageNotFound;
+    Layout = "~/Views/_Shared/MP/Front/_FullWidth.cshtml";
+}
+@section head
+{
+    <link href="@Url.Content("~/Assets/Front/css/pages/notlogon.css")" rel="stylesheet" />
+}
+@section foot
+{
+}
+<div id="page-not-found">
+    <div class="row">
+        <div class="col-md-12 page-not-logged-in">
+            <h2 class="title">@Resources.NotLogInErrorTitle</h2>
+            <div class="details">
+                <p>
+                <a href="@Url.Content("~/Register")">@Resources.RegisterHere</a>
+            </p>
+        </div>
+    </div>
+</div>
+</div>

@@ -1,0 +1,103 @@
+﻿@using DansLesGolfs.Base
+@using System.Globalization
+@using System.Collections
+@{
+    Layout = "~/Views/_Shared/MP/_Reseller.cshtml";
+    Order order = (Order)ViewBag.Order;
+    bool isEditable = (bool)ViewBag.IsEditable;
+}
+@section head
+{
+}
+@section foot
+{
+    <script src="@Url.Content("~/Assets/Reseller/scripts/page/orders.js")"></script>
+}
+<form method="post" id="form-@ViewBag.ClassName" class="info-form">
+    <!-- Main Order Information -->
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                @Resources.OrderInformation
+            </h3>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>@Resources.OrderNumberInvoice @ViewBag.OrderNumber</h4>
+                    <p>@Resources.InvoiceNumber @ViewBag.TransactionId</p>
+                    <p>@Resources.Status : @Html.DropDownList("PaymentStatus", ((IEnumerable<SelectListItem>)ViewBag.PaymentStatusDropDownList), isEditable)</p>
+                </div>
+                <div class="col-md-6">
+                    @if (ViewBag.Address != null)
+                    {
+                        <h4>@Resources.CustomerInformation</h4>
+                        <p>@MvcHtmlString.Create(((Address)ViewBag.Address).ToString().Replace(Environment.NewLine, "<br />"))</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Main Order Information -->
+    <!-- Begin Order Detail -->
+    <table id="order-items-table" class="table table-bordered table-striped table-scrollable table-hover">
+        <thead>
+            <tr>
+                <th class="column-item-name">@Resources.ItemName</th>
+                <th class="column-unit-price column-amount">@Resources.UnitPrice</th>
+                <th class="column-quantity">@Resources.Qty</th>
+                <th class="column-total-price column-amount">@Resources.TotalPrice</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (order.OrderItems != null && order.OrderItems.Any())
+            {
+                foreach (OrderItem item in order.OrderItems)
+                {
+                    <tr data-unit-price="@item.UnitPrice.ToString("###0.00", CultureInfo.InvariantCulture)" data-shipping-cost="@item.ShippingCost.ToString("###0.00", CultureInfo.InvariantCulture)" data-reduction="@item.ReductionRate.ToString("###0.00", CultureInfo.InvariantCulture)" data-reduction-type="@item.ReductionType">
+                        <td class="column-item-name">
+                            <div class="item-name" contenteditable="@(isEditable ? "true" : "false")">
+                                @item.ItemName
+                            </div>
+                            <input type="hidden" name="OrderItemId" value="@item.OrderItemId" />
+                            <input type="hidden" name="ItemName" value="@item.ItemName" />
+                        </td>
+                        <td class="column-unit-price column-amount"><input type="text" name="UnitPrice" value="@item.UnitPrice.ToString("###0.00")" @(isEditable ? "" : "disabled=\"disabled\"") /></td>
+                        <td class="column-quantity"><input type="number" name="Qty" value="@item.Quantity" min="0" @(isEditable ? "" : "disabled=\"disabled\"") /></td>
+                        <td class="column-total-price column-amount"><span class="pricing-number">@item.TotalBasePrice.ToString("###0.00")</span> &euro;</td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="4">@Resources.ThereIsNoProduct</td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <th class="text-right">@Resources.TotalBasePrice</th>
+                <td colspan="3" class="column-base-total column-amount"><span class="pricing-number">@order.GetBaseTotal().ToString("#,##0.00")</span> &euro;</td>
+            </tr>
+            <tr>
+                <th class="text-right">@Resources.Discount</th>
+                <td colspan="3" class="column-discount column-amount">- <span class="pricing-number">@order.GetDiscount().ToString("#,##0.00")</span> &euro;</td>
+            </tr>
+            <tr>
+                <th class="text-right">@Resources.ShippingCost</th>
+                <td colspan="3" class="column-shipping-cost column-amount">+ <span class="pricing-number">@order.GetTotalShippingCost().ToString("#,##0.00")</span> &euro;</td>
+            </tr>
+            <tr>
+                <th class="text-right">@Resources.TotalTTC</th>
+                <td colspan="3" class="column-total-price column-amount"><span class="pricing-number">@order.GetTotalPrice().ToString("#,##0.00")</span> &euro;</td>
+            </tr>
+        </tfoot>
+    </table>
+    <!-- End Order Detail -->
+
+    <input type="hidden" name="id" value="@ViewBag.id" />
+    <input type="submit" id="submit" name="submit" value="@Resources.Save" class="btn btn-primary" />
+    <input type="reset" id="reset" name="reset" value="@Resources.Reset" class="btn" />
+    <a href="@Url.Content("~/Reseller/Orders")" class="btn btn-default">@Resources.Back</a>
+</form>

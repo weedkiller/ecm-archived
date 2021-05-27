@@ -1,0 +1,28 @@
+﻿@model DansLesGolfs.BLL.Item
+@{
+    ViewBag.Title = Resources.InternalServerError;
+    Layout = "~/Views/_Shared/MP/Front/_FullWidth.cshtml";
+}
+@section head
+{
+    <link href="@Url.Content("~/Assets/Front/css/pages/page500.css")" rel="stylesheet" />
+}
+@section foot
+{
+}
+<div id="page-internal-error">
+    <div class="row">
+        <div class="col-md-12 page-500">
+            <div class="number">
+                500
+            </div>
+            <div class="details">
+                <h3>@Resources.OopsSomethingWentWrong</h3>
+                <p>
+                    @Resources.WeAreFixingIt<br>
+                    @Resources.ThankYouForYourPatience<br><br>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

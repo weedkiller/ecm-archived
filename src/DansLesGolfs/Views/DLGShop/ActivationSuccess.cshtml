@@ -1,0 +1,15 @@
+﻿@using DansLesGolfs.BLL
+@model WebContent
+@{
+    ViewBag.Title = Model.TopicName;
+    Layout = "~/Views/_Shared/MP/Front/_Default.cshtml";
+}
+@section head
+{
+}
+@section foot
+{
+}
+<div id="page-dlgshop-activation-success">
+    @MvcHtmlString.Create(Model.ContentText)
+</div>

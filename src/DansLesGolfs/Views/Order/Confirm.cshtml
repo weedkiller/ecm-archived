@@ -1,0 +1,72 @@
+﻿@using DansLesGolfs
+@model ShoppingCart
+@{
+    ViewBag.Title = Resources.OrderConfirm;
+    Layout = "~/Views/_Shared/MP/Front/_Default.cshtml";
+    decimal subtotal = Model.GetSubTotal();
+}
+@section head
+{
+}
+@section foot
+{
+    <script>
+        window.msg = {};
+        window.msg.confirmDeleteMsg = '@Resources.ConfirmDeleteMessage';
+    </script>
+    <script src="@Url.Content("~/Assets/Front/scripts/pages/cart.js")"></script>
+}
+<div id="page-order-payment" class="margin-bottom-40">
+    <div class="row">
+        <section id="shipping-info" class="col-md-12">
+            <h1 class="page-title">@Resources.MyCart</h1>
+            <table id="cart-summary" class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th class="column-description">@Resources.Description</th>
+                        <th class="column-unit-price">@Resources.UnitPrice</th>
+                        <th class="column-quantity">@Resources.Quantity</th>
+                        <th class="column-total-price">@Resources.TotalPrice</th>
+                        <th class="column-delete">&nbsp;</th>
+                    </tr>
+                </thead>
+                @if (Model.Items != null && Model.Items.Any())
+                {
+                    <tbody>
+                        @foreach (CartItem item in Model.Items)
+                        {
+                            <tr data-id="@item.ItemId" data-unit-price="@item.UnitPrice.ToString("#,##0.00")" data-total-price="@item.TotalPrice.ToString("#,##0.00")">
+                                <td class="column-description"><a href="@Html.ItemUrl(item.Item)">@item.Description</a></td>
+                                <td class="column-unit-price">&euro; <span class="price-number">@item.UnitPrice.ToString("#,##0.00")</span></td>
+                                <td class="column-quantity"><input type="number" min="0" value="@item.Quantity" class="form-control text-right" /></td>
+                                <td class="column-total-price">&euro; <span class="price-number">@item.TotalPrice.ToString("#,##0.00")</span></td>
+                                <td class="column-delete"><a href="javascript:void(0);" class="btn btn-primary delete-button">@Resources.Delete</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3" class="text-center">&nbsp;</td>
+                            <td class="column-total-price column-sub-total" data-subtotal="@subtotal.ToString("#,##0.00")">&euro; <span class="price-number">@subtotal.ToString("#,##0.00")</span></td>
+                            <td class="column-delete">&nbsp;</td>
+                        </tr>
+                    </tfoot>
+                }
+                else
+                {
+                    <tbody>
+                        <tr>
+                            <td colspan="5" class="text-center">@Resources.TheBasketIsEmpty</td>
+                        </tr>
+                    </tbody>
+                }
+            </table>
+            <div class="row">
+                <div class="col-centered col-md-5">
+                    <a href="@Url.Content("~/")" id="back-to-shopping-button" class="btn btn-default">@Resources.BackToShopping</a>
+                    <a href="@Url.Content("~/Order/Shipping")" id="checkout-button" class="btn btn-primary">@Resources.Checkout</a>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

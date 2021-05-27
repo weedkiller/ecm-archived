@@ -1,0 +1,51 @@
+﻿@using DansLesGolfs.Base
+@using DansLesGolfs.BLL
+@using DevExpress.Web.Mvc.UI;
+@using DevExpress.Web.Mvc.UI;
+@model SalesReportModel
+
+@{
+    Layout = "~/Views/_Shared/MP/_Report.cshtml";
+}
+
+@section head
+{
+    @Html.DevExpress().GetStyleSheets(new StyleSheet { ExtensionSuite = ExtensionSuite.Report })
+
+    @Html.DevExpress().GetScripts(new Script { ExtensionSuite = ExtensionSuite.Report })
+
+@*    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="~/Content/css/bootstrap-table.css"> *@
+
+    <script>
+        function GetUrl(url) {
+            url = "@Href("~/")" + url;
+            return url;
+        }
+    </script>
+
+}
+
+@section foot
+{ 
+    <script type="text/javascript" src="~/Assets/Reseller/scripts/page/salesreport.js"></script> 
+
+    <script type="text/javascript" src="~/Scripts/tableExport.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.base64.js"></script>
+    <script type="text/javascript" src="~/Scripts/html2canvas.js"></script>
+    <script type="text/javascript" src="~/Scripts/jspdf/libs/sprintf.js"></script>
+    <script type="text/javascript" src="~/Scripts/jspdf/jspdf.js"></script>
+    <script type="text/javascript" src="~/Scripts/jspdf/libs/base64.js"></script>
+}
+ 
+
+
+<div class="row">    
+        @Html.Partial("DocViewPartial")
+</div>
+ 
+  
+
+
+
+

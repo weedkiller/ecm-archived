@@ -1,0 +1,62 @@
+﻿@using DansLesGolfs.Base
+@{
+    Layout = "~/Views/_Shared/MP/_Admin.cshtml";
+    List<Adset> adsets = (List<Adset>)ViewBag.Adsets;
+}
+@section head
+{
+}
+@section foot
+{
+    <script src="@Url.Content("~/Assets/Libraries/tinymce/plugins/moxiemanager/js/moxman.loader.min.js")"></script>
+    <script src="@Url.Content("~/Assets/Admin/scripts/page/ads.js")"></script>
+}
+<div id="page-ads-manager">
+    <p class="description"><span class="label label-info">@Resources.Tip</span> @Resources.AdsManagerTip1</p>
+    <p class="description"><span class="label label-info">@Resources.Tip</span> @Resources.AdsManagerTip2</p>
+    <div id="tools-panel" class="row margin-bottom-20">
+        <div class="form-group">
+            <div class="control-label col-md-1">
+                <label for="AdsetId">@Resources.Adset</label>
+            </div>
+            <div class="col-md-5">
+                <select id="AdsetId" class="form-control">
+                    @if (adsets != null && adsets.Any())
+                    {
+                        foreach (Adset adset in adsets)
+                        {
+                            <option value="@adset.AdsetId">@adset.AdsetName</option>
+                        }
+                    }
+                    else
+                    {
+                        <option value="0">@Resources.PleaseAddAdset</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-3">
+                <button class="form-control btn create-ads-button margin-bottom-10"><span class="glyphicon glyphicon-plus"></span> @Resources.CreateAds</button>
+            </div>
+            <div class="col-md-3">
+                <button class="form-control btn save-ads-button"><span class="glyphicon glyphicon-floppy-disk"></span> @Resources.Save</button>
+            </div>
+        </div>
+    </div>
+    <div id="ads-list"></div>
+</div>
+<div id="ads-save-success-dialog" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">@Resources.SavedSuccessfully</h4>
+            </div>
+            <div class="modal-body">
+                <p>@Resources.YourAdsSavedSuccessfully</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">@Resources.Close</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

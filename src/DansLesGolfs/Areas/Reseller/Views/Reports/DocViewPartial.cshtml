@@ -1,0 +1,26 @@
+﻿
+@using DevExpress.Web.Mvc.UI;
+
+@{
+    var col = ViewBag.ColumnName;
+     
+}
+
+        @Html.DevExpress().DocumentViewer(settings =>
+{
+    // The following settings are required for a Report Viewer.
+    settings.Name = "SalesReport"; 
+    settings.Report = ViewBag.SalesReport as DansLesGolfs.Areas.Reseller.Views.Reports.SalesReport; 
+    // Callback and export route values specify corresponding controllers and their actions.
+    // These settings are required as well.
+    settings.CallbackRouteValues = new
+    {
+        Controller = "Reports",
+        Action = "DocViewPartial", 
+                                         startdate = ViewBag.StartDate,
+                                         enddate = ViewBag.EndDate
+    };
+    settings.ExportRouteValues = new { Controller = "Reports", Action = "ExportDocumentViewer" ,
+                                         startdate = ViewBag.StartDate,
+                                         enddate = ViewBag.EndDate };
+}).GetHtml()

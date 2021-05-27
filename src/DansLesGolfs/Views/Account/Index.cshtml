@@ -1,0 +1,167 @@
+﻿@using DansLesGolfs
+@{
+    ViewBag.Title = Resources.AccountDashboard;
+    Layout = "~/Views/_Shared/MP/Front/_Default.cshtml";
+}
+@section head
+{
+    <link rel="stylesheet" type="text/css" href="@Href("~/Assets/Front/css/account.css")">
+    <style>
+        .dlg-count {
+            float: right;
+            margin: 0 -8px 0 0;
+            z-index: 999;
+            border-radius: 12px;
+            background: #d80927;
+            color: #FFF;
+            min-width: 15px;
+            min-height: 8px;
+            text-align: center;
+            display: block;
+            position: absolute;
+            right: 16px;
+            top: 24px;
+            font-size: 11px;
+            line-height: 11px;
+        }
+
+        .usermenu-active {
+            background-color: #d0d0d0 !important;
+        }
+    </style>
+}
+@section foot
+{
+}
+<div id="page-account-dashboard">
+    @*<div class="row margin-bottom-40">
+            <div class="col-md-12">
+                <h1 class="page-title">@Resources.AccountDashboard</h1>
+            </div>
+        </div>*@
+    <div class="row margin-bottom-40">
+        <div class="col-md-12">
+            <div class="account-box">
+                <div class="account-box-header">@Resources.MyAccount_Header</div>
+                <div class="account-box-tab">
+                    <ul>
+                        <li>
+                            <a href="@Url.Action("Details")">
+                                <div class="account-box-tab-li-icon"><i class="icon-account-home"></i></div>
+                                <div class="account-box-tab-li-message">
+                                    <div class="account-box-tab-li-message-header">@Resources.MyDetails</div>
+                                    <div class="account-box-tab-li-message-remark">@Resources.MyDetails_Remark</div>
+                                </div>
+                            </a>
+                        </li>
+                        @{
+                            var classusermenuActive = "";
+
+                            if (Convert.ToInt32(ViewBag.TotalUserMessage) > 0)
+                            {
+                                classusermenuActive = "usermenu-active";
+                            }
+
+                        }
+                        <li style="position:relative;" class="@classusermenuActive">
+                            <a href="@Url.Action("Messages")">
+
+                                @if (Convert.ToInt32(ViewBag.TotalUserMessage) > 0)
+                                {
+
+                                    <div class="account-box-tab-li-icon"><i class="icon-account-mail-havemessage"></i></div>
+                                }
+                                else
+                                {
+                                    <div class="account-box-tab-li-icon"><i class="icon-account-mail"></i></div>
+                                }
+
+
+                                <div class="account-box-tab-li-message">
+                                    <div class="account-box-tab-li-message-header">@Resources.MyMessages</div>
+                                    <div class="account-box-tab-li-message-remark">@Resources.MyMessages_Remark</div>
+                                </div>
+                                @if (Convert.ToInt32(ViewBag.TotalUserMessages) > 0)
+                                {
+                                    <span class="dlg-count">@ViewBag.TotalUserMessages</span>
+                                }
+
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Orders")">
+                                <div class="account-box-tab-li-icon"><i class="icon-account-vector"></i></div>
+                                <div class="account-box-tab-li-message">
+                                    <div class="account-box-tab-li-message-header">@Resources.MyOrders</div>
+                                    <div class="account-box-tab-li-message-remark">@Resources.MyOrders_Remark</div>
+                                </div>
+                                @if (Convert.ToInt32(ViewBag.TotalUserOrders) > 0)
+                                {
+                                    <span class="dlg-count">@ViewBag.TotalUserOrders</span>
+                                }
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Addresses")">
+                                <div class="account-box-tab-li-icon"><i class="icon-account-truck"></i></div>
+                                <div class="account-box-tab-li-message">
+                                    <div class="account-box-tab-li-message-header">@Resources.MyAddresses</div>
+                                    <div class="account-box-tab-li-message-remark">@Resources.MyAddresses_Remark</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("ChangePassword")">
+                                <div class="account-box-tab-li-icon"><i class="icon-account-key"></i></div>
+                                <div class="account-box-tab-li-message">
+                                    <div class="account-box-tab-li-message-header">@Resources.MyPassword</div>
+                                    <div class="account-box-tab-li-message-remark">@Resources.MyPassword_Remark <span class="remark-lime">@Resources.MyPassword_RemarkLink</span></div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Sponsorship")">
+                                <div class="account-box-tab-li-icon"><i class="icon-account-user"></i></div>
+                                <div class="account-box-tab-li-message">
+                                    <div class="account-box-tab-li-message-header">@Resources.MySponsorship</div>
+                                    <div class="account-box-tab-li-message-remark">@Resources.MySponsorship_Remark</div>
+                                </div>
+                                @if (Convert.ToInt32(ViewBag.TotalSponsorEmails) > 0)
+                                {
+                                    <span class="dlg-count">@ViewBag.TotalSponsorEmails</span>
+                                }
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("CouponsAndDiscounts")">
+                                <div class="account-box-tab-li-icon"><i class="icon-account-pricetag"></i></div>
+                                <div class="account-box-tab-li-message">
+                                    <div class="account-box-tab-li-message-header">@Resources.MyCouponsAndDiscount</div>
+                                    <div class="account-box-tab-li-message-remark">@Resources.MyCouponsAndDiscount_Remark</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("CreditCard")">
+                                <div class="account-box-tab-li-icon"><i class="icon-account-creditcard"></i></div>
+                                <div class="account-box-tab-li-message">
+                                    <div class="account-box-tab-li-message-header">@Resources.MyCreditCard</div>
+                                    <div class="account-box-tab-li-message-remark">@Resources.MyCreditCard_Remark</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Newsletters")">
+                                <div class="account-box-tab-li-icon"><i class="icon-account-archive"></i></div>
+                                <div class="account-box-tab-li-message">
+                                    <div class="account-box-tab-li-message-header">@Resources.MyListingsForNewsletters</div>
+                                    <div class="account-box-tab-li-message-remark">@Resources.MyListingsForNewsletters_Remark</div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

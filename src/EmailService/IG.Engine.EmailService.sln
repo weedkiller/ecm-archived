@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IG.Engine.EmailService", "IG.Engine.EmailService\IG.Engine.EmailService.csproj", "{E9E67F30-245F-4215-83DD-32C55540BCF0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IG.Engine.EmailService.BLL", "IG.Engine.EmailService.BLL\IG.Engine.EmailService.BLL.csproj", "{3282B8F2-207E-45DC-98B1-8D4A3443E3DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IG.Engine.EmailService.DataAccess", "IG.Engine.EmailService.DataAccess\IG.Engine.EmailService.DataAccess.csproj", "{FE2F448D-9A3D-4B03-91C2-9847D316A073}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E9E67F30-245F-4215-83DD-32C55540BCF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9E67F30-245F-4215-83DD-32C55540BCF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9E67F30-245F-4215-83DD-32C55540BCF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9E67F30-245F-4215-83DD-32C55540BCF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3282B8F2-207E-45DC-98B1-8D4A3443E3DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3282B8F2-207E-45DC-98B1-8D4A3443E3DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3282B8F2-207E-45DC-98B1-8D4A3443E3DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3282B8F2-207E-45DC-98B1-8D4A3443E3DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE2F448D-9A3D-4B03-91C2-9847D316A073}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE2F448D-9A3D-4B03-91C2-9847D316A073}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE2F448D-9A3D-4B03-91C2-9847D316A073}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE2F448D-9A3D-4B03-91C2-9847D316A073}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

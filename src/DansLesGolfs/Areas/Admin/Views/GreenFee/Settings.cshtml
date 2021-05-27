@@ -1,0 +1,65 @@
+﻿@using DansLesGolfs.Base
+@{
+    Layout = "~/Views/_Shared/MP/_Admin.cshtml";
+    List<ItemCategory> greenFeeTypes = ViewBag.GreenFeeTypes as List<ItemCategory>;
+    List<int> DisabledTeeSheetCategories = ViewBag.DisabledTeeSheetCategories as List<int>;
+}
+@section head
+{
+}
+@section foot
+{
+
+}
+<div id="page-greenfee-settings">
+    <form method="post" id="form-greenfee-settings">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    @Resources.ProductInformation
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-3 control-label">
+                            <label for="CategoryId">@Resources.CategoryFor <img src="@Url.Content("~/Assets/Front/img/header_footer/icon-gift-card_1.png")" /></label>
+                        </div>
+                        <div class="col-md-4">
+                            @Html.DropDownList("TopNavIconGreenFeeCatID1", (IEnumerable<SelectListItem>)ViewBag.DropDownGreenFeeTypes, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-3 control-label">
+                            <label for="CategoryId">@Resources.CategoryFor <img src="@Url.Content("~/Assets/Front/img/header_footer/icon-gift-card_2.png")" /></label>
+                        </div>
+                        <div class="col-md-4">
+                            @Html.DropDownList("TopNavIconGreenFeeCatID2", (IEnumerable<SelectListItem>)ViewBag.DropDownGreenFeeTypes, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-3 control-label">
+                            <label for="CategoryId">@Resources.CustomTeeSheetCategories</label>
+                        </div>
+                        <div class="col-md-4">
+                            <ul>
+                                @foreach (ItemCategory it in greenFeeTypes)
+                                {
+                                    <li><label><input type="checkbox" name="DisabledTeeSheetCategories" value="@it.CategoryId" @(DisabledTeeSheetCategories.Contains(it.CategoryId) ? "checked" : "") /> @it.CategoryName</label></li>
+                                }
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <input type="submit" id="submit" name="submit" value="@Resources.Save" class="btn btn-primary" />
+        <input type="reset" id="reset" name="reset" value="@Resources.Reset" class="btn" />
+        <a href="@Url.Content("~/Admin/GreenFee")" class="btn btn-default">@Resources.Back</a>
+    </form>
+</div>

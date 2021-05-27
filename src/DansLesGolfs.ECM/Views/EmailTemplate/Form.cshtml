@@ -1,0 +1,151 @@
+﻿@{
+    Layout = "~/Views/_Shared/MP/_Layout.cshtml";
+    List<EmailTemplateAttachment> attachments = ViewBag.Attachments is List<EmailTemplateAttachment> && ViewBag.Attachments != null ? (List<EmailTemplateAttachment>)ViewBag.Attachments : new List<EmailTemplateAttachment>();
+}
+@section head
+{
+    <script>
+        window.askForMirrorLinkText = "@MvcHtmlString.Create(Resources.EnterTextForMirrorPageLink)";
+        window.sampleMirrorLinkText = "@MvcHtmlString.Create(Resources.SeeTheOnlineVersion)";
+        window.askForUnsubscribeLinkText = "@MvcHtmlString.Create(Resources.EnterTextForUnsubscribeLink)";
+        window.sampleUnsubscribeLinkText = "@MvcHtmlString.Create(Resources.ClickHereToUnsubscribe)";
+        window.warningMirrorLinkText = "@MvcHtmlString.Create(Resources.PleaseAddMirrorPageLink)";
+        window.warningUnsubscribeLink = "@MvcHtmlString.Create(Resources.PleaseAddUnsubscribeLink)";
+    </script>
+}
+@section foot
+{
+    <script>
+        window.assetUrl = '@Url.ServerUrl("~/Common/GetEmailTemplateImages")';
+        window.uploadUrl = '@Url.ServerUrl("~/Common/UploadEmailTemplateImages")';
+        window.deleteUrl = '@Url.ServerUrl("~/Common/DeleteEmailTemplateImage")';
+    </script>
+    @*@if (ViewBag.EditorLimitAccess)
+    {
+        <script>
+            window.editorLimitAccess = true;
+        </script>
+    }*@
+    @Html.IncludeVersionedJs(Url.Content("~/Assets/Admin/scripts/page/email-template.js"))
+    <script>
+        $('.info-form').validate();
+        window.templateId = eval('@ViewBag.id');
+        window.isPreview = eval(@(ViewBag.IsPreview == true ? "true" : "false"));
+    </script>
+}
+@helper VariableSelector()
+{
+    <div class="variable-panel">
+        <div class="row">
+            <div class="col-md-6">
+                <select class="variable-selector form-control">
+                    @foreach (EmailTemplateVariable v in (List<EmailTemplateVariable>)ViewBag.EmailTemplateVariables)
+                    {
+                        <option value="{!@v.VariableName}" title="@v.Description">{!@v.VariableName}</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-6">
+                <a href="javascript:void(0);" class="add-variable-button btn btn-primary">@Resources.Add</a>
+                <a href="javascript:void(0);" class="add-mirrorpage-button btn btn-primary">@Resources.Add Mirror Page</a>
+                <a href="javascript:void(0);" class="add-unsubscribe-button btn btn-primary">@Resources.Unsubscribe</a>
+            </div>
+        </div>
+        <div class="variable-description"></div>
+    </div>
+}
+
+<div id="editor-container" class="margin-bottom-30">
+    <div id="editor-tips" class="margin-bottom-10">
+        <p>
+            <span class="label label-info">Tip</span> @Resources.EmailTemplateCreationTips
+        </p>
+    </div>
+    <div id="gjs" class="grapesjs-container">
+        @if (ViewBag.id != null)
+        {
+            @MvcHtmlString.Create(ViewBag.HtmlDetailString)
+        }
+        else
+        {
+            <mjml>
+                <mj-body>
+                    <mj-container>
+                    </mj-container>
+                </mj-body>
+            </mjml>
+        }
+    </div>
+</div>
+
+<form method="post" id="form-@ViewBag.ClassName" class="info-form">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        @Resources.EmailTemplates
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-2 control-label">
+                                <label for="Name">@Resources.Name</label>
+                            </div>
+                            <div class="col-md-10">
+                                @Html.TextBox("TemplateName", DataManager.ToString((object)ViewBag.TemplateName), new { required = "required", maxlength = 50, @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-2 control-label">
+                                <label for="Description">@Resources.Description</label>
+                            </div>
+                            <div class="col-md-10">
+                                @Html.TextArea("Description", DataManager.ToString((object)ViewBag.Description), new { rows = 2, @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-2 control-label">
+                                <label for="Subject">@Resources.Subject</label>
+                            </div>
+                            <div class="col-md-10">
+                                @Html.TextBox("Subject", DataManager.ToString((object)ViewBag.Subject), new { required = "required", maxlength = 100, @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="form-group">
+                            <div class="col-md-2 control-label">
+                                <label>Attachments</label>
+                            </div>
+                            <div class="col-md-10">
+                                <input type="file" id="attachments" name="attachments" />
+                                <ul id="attachments-list">
+                                    @foreach (var it in attachments)
+                                    {
+                                        <li id="attachment-@it.EmailTemplateAttachmentId" data-id="@it.EmailTemplateAttachmentId" class="attachment-file">
+                                            <span><i class="fa fa-file-text"></i> @it.FileName <a class="delete-link" href="javascript:void(0)"><span class="fa fa-trash-o"></span></a></span>
+                                        </li>
+                                    }
+                                </ul>
+                                <input type="hidden" id="HtmlDetailString" name="HtmlDetailString" value="@ViewBag.HtmlDetailString" />
+                                <input type="hidden" id="deletedAttachmentIds" name="deletedAttachmentIds" value="" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" name="id" value="@ViewBag.id" />
+    <input type="hidden" name="uploadDir" value="" />
+    <input type="submit" id="submit" name="submit" value="@Resources.Save" class="btn btn-primary" />
+    <input type="reset" id="reset" name="reset" value="@Resources.Reset" class="btn" />
+    <a id="preview-button" href="javascript:void(0);" class="btn btn-default">@Resources.Preview</a>
+    <a href="@Url.Content("~/EmailTemplate")" class="btn btn-default">@Resources.Back</a>
+</form>

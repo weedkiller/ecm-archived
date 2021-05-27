@@ -1,0 +1,141 @@
+﻿@using DansLesGolfs.Base
+@using DansLesGolfs.BLL
+@using System.Globalization
+@{
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    Global Settings
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-3 control-label">
+                            <label for="ReservationAPI">Using API</label>
+                        </div>
+                        <div class="col-md-4">
+                            @Html.DropDownList("ReservationAPI", (IEnumerable<SelectListItem>)ViewBag.DropDownGolfAPIs, new { @class = "form-control", required = "required" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    Albatros API Config
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-3 control-label">
+                            <label for="AlbatrosUrl">Albatros Service URL</label>
+                        </div>
+                        <div class="col-md-9">
+                            @Html.TextBox("AlbatrosUrl", (string)ViewBag.AlbatrosUrl, new { maxlength = 255, @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-3 control-label">
+                            <label for="AlbatrosUsername">Albatros Username</label>
+                        </div>
+                        <div class="col-md-9">
+                            @Html.TextBox("AlbatrosUsername", (string)ViewBag.AlbatrosUsername, new { maxlength = 50, @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-3 control-label">
+                            <label for="AlbatrosPassword">Albatros Password</label>
+                        </div>
+                        <div class="col-md-9">
+                            @Html.Password("AlbatrosPassword", (string)ViewBag.AlbatrosPassword, new { maxlength = 50, @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-3 control-label">
+                            <label for="AlbatrosCourseId">@Resources.AlbatrosCourse</label>
+                        </div>
+                        <div class="col-md-4">
+                            <select id="AlbatrosCourseDropDown" class="form-control">
+                                <option value="0">@Resources.PressConnectToChooseCourse</option>
+                            </select>
+                            <input type="hidden" id="AlbatrosCourseId" name="AlbatrosCourseId" value="@ViewBag.AlbatrosCourseId" />
+                        </div>
+                        <div class="col-md-4">
+                            <a href="javascript:void(0);" class="btn btn-primary" id="albatros-connect-button">@Resources.FetchCourses</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    Prima API Config
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-3 control-label">
+                            <label for="PrimaClubKey">Prima API Key</label>
+                        </div>
+                        <div class="col-md-9">
+                            @Html.TextBox("PrimaAPIKey", (string)ViewBag.PrimaAPIKey, new { maxlength = 50, @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-3 control-label">
+                            <label for="PrimaClubKey">Prima Club Key</label>
+                        </div>
+                        <div class="col-md-9">
+                            @Html.TextBox("PrimaClubKey", (string)ViewBag.PrimaClubKey, new { maxlength = 50, @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    Lydia Payment Gateway
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-3 control-label">
+                            <label for="LydiaVendorToken">Vendor Token</label>
+                        </div>
+                        <div class="col-md-9">
+                            @Html.TextBox("LydiaVendorToken", (string)ViewBag.LydiaVendorToken, new { maxlength = 255, @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-3 control-label">
+                            <label for="LydiaVendorId">Vendor ID</label>
+                        </div>
+                        <div class="col-md-9">
+                            @Html.TextBox("LydiaVendorId", (string)ViewBag.LydiaVendorId, new { maxlength = 255, @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

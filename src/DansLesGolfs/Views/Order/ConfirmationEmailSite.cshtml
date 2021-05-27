@@ -1,0 +1,78 @@
+﻿@using DansLesGolfs.BLL
+@using System.Globalization
+@model DansLesGolfs.BLL.Order
+@{
+    Layout = "~/Views/_Shared/MP/_EmailTemplate.cshtml";
+    long siteId = DataManager.ToLong(ViewBag.SiteId);
+    decimal basetotal = Model.GetBaseTotal(siteId);
+    decimal totalDiscount = Model.GetDiscount(siteId);
+    decimal totalShippingCost = Model.GetTotalShippingCost(siteId);
+    decimal totalPrice = Model.GetTotalPrice(siteId);
+    IEnumerable<OrderItem> orderItems = ViewBag.OrderItems as IEnumerable<OrderItem>;
+}
+@section head
+{
+}
+@section foot
+{
+}
+<p><strong>@Model.BuyerName</strong> @Resources.PlaceAnOrder</p>
+<p>@Resources.PaidBy @ViewBag.PaymentType. via @ViewBag.SiteName<br /><br /></p>
+
+<p style="text-decoration: underline;"><strong>@Resources.FollowingAreTheCustomerInformation</strong></p>
+<p><strong>@Resources.CustomerName</strong> : @ViewBag.BuyerName</p>
+<p><strong>@Resources.Email</strong> : @ViewBag.BuyerEmail</p>
+<p><strong>@Resources.Phone</strong> : @ViewBag.BuyerPhone</p><br />
+
+<p><img src="@Url.ServerUrl("~/Assets/Front/img/email/cut_up.png")"></p>
+<p>@Resources.Order N° <strong style="font-weight: bold;">@Model.OrderNumber</strong> <span style="text-transform: lowercase;">@Resources.From</span> @Model.OrderDate.ToString("dd/MM/yyyy")</p>
+<p>@Resources.AmountOfYourOrder <strong style="font-weight: bold;">@totalPrice.ToString("0.00", CultureInfo.InvariantCulture) EURO TTC</strong></p>
+<p>@Resources.HereIsTheSummaryOfYourOrder :</p>
+<p>
+    <table style="width: 100%">
+        <thead>
+            <tr>
+                <td style="padding: 10px 5px; text-transform: capitalize;">@Resources.Description (Ref.)</td>
+                <td style="padding: 10px 5px; text-transform: capitalize;">@Resources.UnitAmount</td>
+                <td style="padding: 10px 5px; text-transform: capitalize;">@Resources.Quantity</td>
+                <td style="padding: 10px 5px; text-transform: capitalize;">@Resources.TotalAmount</td>
+            </tr>
+        </thead>
+        <tbody>
+            @if (orderItems != null)
+            {
+                foreach (var item in orderItems)
+                {
+                    <tr>
+                        <td style="padding: 10px 5px;">@item.ItemName</td>
+                        <td style="padding: 10px 5px; text-align: right;">@item.UnitPrice.ToString("0.00") &euro;</td>
+                        <td style="padding: 10px 5px; text-align: right;">@item.Quantity</td>
+                        <td style="padding: 10px 5px; text-align: right;">@item.TotalBasePrice.ToString("0.00") &euro;</td>
+                    </tr>
+                }
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3" style="font-size:0.9em; text-align: right; font-weight: bold">@Resources.SubTotal</td>
+                <td style="font-size:0.9em; text-align: right;">@basetotal.ToString("0.00") &euro;</td>
+            </tr>
+            @if (totalDiscount > 0)
+            {
+                <tr>
+                    <td colspan="3" style="font-size:0.9em; text-align: right; font-weight: bold">@Resources.Discount</td>
+                    <td style="font-size:0.9em; text-align: right;">- @totalDiscount.ToString("0.00") &euro;</td>
+                </tr>
+            }
+            <tr>
+                <td colspan="3" style="font-size:0.9em; text-align: right; font-weight: bold">@Resources.ShippingCost</td>
+                <td style="font-size:0.9em; text-align: right;">@totalShippingCost.ToString("0.00") &euro;</td>
+            </tr>
+            <tr>
+                <td colspan="3" style="font-size:0.9em; text-align: right; font-weight: bold">Total TTC</td>
+                <td style="font-size:0.9em; text-align: right;">@totalPrice.ToString("0.00") &euro;</td>
+            </tr>
+        </tfoot>
+    </table>
+</p>
+<p><img src="@Url.ServerUrl("~/Assets/Front/img/email/cut_down.png")"></p>

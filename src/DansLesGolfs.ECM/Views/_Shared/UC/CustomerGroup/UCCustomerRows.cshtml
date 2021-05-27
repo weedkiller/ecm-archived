@@ -1,0 +1,23 @@
+﻿@using DansLesGolfs.Base
+@using DansLesGolfs.BLL
+@model List<User>
+@{
+}
+@foreach (User item in Model)
+{
+    <tr class="customer-@item.UserId" data-id="@item.UserId">
+        <td class="column-checkbox">
+            <input class="item-@item.UserId" type="checkbox" value="@item.UserId" />
+            <input type="hidden" name="CustomerIds" value="@item.UserId" />
+        </td>
+        <td class="column-item-firstname">
+            @item.Firstname
+        </td>
+        <td class="column-item-lastname">
+            @item.Lastname
+        </td>
+        <td>
+            <a href="javascript:void(0)" class="delete-link">@Resources.Delete</a>
+        </td>
+    </tr>
+}

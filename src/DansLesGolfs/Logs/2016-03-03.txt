@@ -1,0 +1,18 @@
+2016-03-03 20:04:18.6559  22 Error                          DansLesGolfs.Controllers.BaseController System.Exception: Can't add a reservation at this time.
+   at DansLesGolfs.Controllers.OrderController.CheckPrimaAPI(Order order, ShoppingCart cart) in E:\websites\DLG\DansLesGolfs\Controllers\OrderController.cs:line 1715
+   at DansLesGolfs.Controllers.OrderController.SaveOrder(Order order, Boolean forceNew, Boolean skipSendConfirmationEmail) in E:\websites\DLG\DansLesGolfs\Controllers\OrderController.cs:line 1596 System.Exception: Can't add a reservation at this time.
+   at DansLesGolfs.Controllers.OrderController.CheckPrimaAPI(Order order, ShoppingCart cart) in E:\websites\DLG\DansLesGolfs\Controllers\OrderController.cs:line 1715
+   at DansLesGolfs.Controllers.OrderController.SaveOrder(Order order, Boolean forceNew, Boolean skipSendConfirmationEmail) in E:\websites\DLG\DansLesGolfs\Controllers\OrderController.cs:line 1596
+2016-03-03 20:04:18.9382  22 Error                          DansLesGolfs.Controllers.BaseController Can't add a reservation at this time. 
+2016-03-03 20:05:47.6920  22 Error                          DansLesGolfs.Controllers.BaseController System.Exception: Can't add a reservation at this time.
+   at DansLesGolfs.Controllers.OrderController.CheckPrimaAPI(Order order, ShoppingCart cart) in E:\websites\DLG\DansLesGolfs\Controllers\OrderController.cs:line 1715
+   at DansLesGolfs.Controllers.OrderController.SaveOrder(Order order, Boolean forceNew, Boolean skipSendConfirmationEmail) in E:\websites\DLG\DansLesGolfs\Controllers\OrderController.cs:line 1596 System.Exception: Can't add a reservation at this time.
+   at DansLesGolfs.Controllers.OrderController.CheckPrimaAPI(Order order, ShoppingCart cart) in E:\websites\DLG\DansLesGolfs\Controllers\OrderController.cs:line 1715
+   at DansLesGolfs.Controllers.OrderController.SaveOrder(Order order, Boolean forceNew, Boolean skipSendConfirmationEmail) in E:\websites\DLG\DansLesGolfs\Controllers\OrderController.cs:line 1596
+2016-03-03 20:05:47.7220  22 Error                          DansLesGolfs.Controllers.BaseController Can't add a reservation at this time. 
+2016-03-03 20:06:33.7068   9 Error                          DansLesGolfs.Controllers.BaseController System.Exception: Can't add a reservation at this time.
+   at DansLesGolfs.Controllers.OrderController.CheckPrimaAPI(Order order, ShoppingCart cart) in E:\websites\DLG\DansLesGolfs\Controllers\OrderController.cs:line 1715
+   at DansLesGolfs.Controllers.OrderController.SaveOrder(Order order, Boolean forceNew, Boolean skipSendConfirmationEmail) in E:\websites\DLG\DansLesGolfs\Controllers\OrderController.cs:line 1596 System.Exception: Can't add a reservation at this time.
+   at DansLesGolfs.Controllers.OrderController.CheckPrimaAPI(Order order, ShoppingCart cart) in E:\websites\DLG\DansLesGolfs\Controllers\OrderController.cs:line 1715
+   at DansLesGolfs.Controllers.OrderController.SaveOrder(Order order, Boolean forceNew, Boolean skipSendConfirmationEmail) in E:\websites\DLG\DansLesGolfs\Controllers\OrderController.cs:line 1596
+2016-03-03 20:06:33.7068   9 Error                          DansLesGolfs.Controllers.BaseController Can't add a reservation at this time. 

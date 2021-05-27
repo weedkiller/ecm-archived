@@ -1,0 +1,189 @@
+﻿@using DansLesGolfs.Models
+@using DansLesGolfs.BLL
+@using System.Globalization
+@model DansLesGolfs.BLL.Item
+@{
+    ViewBag.Title = Model.ItemLangs != null && Model.ItemLangs.Any() ? (!String.IsNullOrWhiteSpace(Model.ItemLangs[0].InvoiceName) ? Model.ItemLangs[0].InvoiceName.StripHtml() : Model.ItemLangs[0].ItemName.StripHtml()) : Model.ItemCode;
+    if (!String.IsNullOrEmpty(Model.ItemLangs[0].ItemShortDesc))
+    {
+        ViewBag.ItemShortDescription = Model.ItemLangs[0].ItemShortDesc.StripHtml().Truncate(155, "...");
+        ViewBag.ItemFullShortDescription = Model.ItemLangs[0].ItemShortDesc.StripHtml();
+    }
+    Layout = "~/Views/_Shared/MP/Front/_Default.cshtml";
+    ProductsListModel relatedItemModel = ViewBag.RelatedItems as ProductsListModel;
+    ReservationAPIType reservationAPIType = ViewBag.ReservationAPI == null ? ReservationAPIType.DLG : (ReservationAPIType)ViewBag.ReservationAPI;
+    string itemClass = Html.ItemClasses(Model);
+    ViewBag.BodyClasses = itemClass;
+}
+@section head
+{
+    @if (itemClass == "product green-fee")
+    {
+        if (reservationAPIType == ReservationAPIType.Albatros)
+        {
+            <link rel="stylesheet" type="text/css" href="@Url.Content("~/Assets/Libraries/jquery-number-editor/jquery.number-editor.css")">
+        }
+        if (reservationAPIType == ReservationAPIType.Prima)
+        {
+            <link rel="stylesheet" type="text/css" href="@Url.Content("~/Assets/Libraries/jquery-number-editor/jquery.number-editor.css")">
+        }
+        else if (reservationAPIType == ReservationAPIType.DLG && Model.HasTeeSheet)
+        {
+            <link rel="stylesheet" type="text/css" href="@Url.Content("~/Assets/Libraries/jquery.teesheet/jquery.teesheet.css")" />
+        }
+    }
+    <script>
+        window.itemId = '@Model.ItemId';
+        window.itemType = '@Html.ItemClasses(Model)';
+        window.itemSlug = '@Model.ItemSlug';
+        window.siteId = '@Model.SiteId';
+        window.itemMinDate = eval('@(Model.ItemMinDate.HasValue && Model.ItemMinDate.Value > DateTime.Today ? (Model.ItemMaxDate.Value - DateTime.Today).TotalDays.ToString("0") : "0")');
+        window.itemMaxDate = eval('@(Model.ItemMaxDate.HasValue ? (Model.ItemMaxDate.Value - DateTime.Today).TotalDays.ToString("0") : "null")');
+        window.priceBeginText = '@Resources.BeginAt';
+        window.reserveDateDefaultText = '@Resources.SelectDate';
+        window.notAvailableText = '@Resources.NotAvailable';
+    </script>
+    <meta name="title" content="@ViewBag.Title" />
+    <meta property="og:title" content="@ViewBag.Title" />
+    <meta property="og:url" content="@System.Web.HttpContext.Current.Request.Url.ToString()" />
+    <meta property="og:description" content="@MvcHtmlString.Create(ViewBag.ItemFullShortDescription)" />
+    <meta property="og:type" content="product" />
+    <meta property="og:site_name" content="@MvcHtmlString.Create(ViewBag.SiteName)" />
+    <meta property="og:price:amount" content="@Model.CheapestPrice.ToString("###0.00", CultureInfo.InvariantCulture)" />
+    <meta property="og:price:currency" content="EUR" />
+    @if (Model.ItemImages != null && Model.ItemImages.Any())
+    {
+        <meta property="og:image" content="@Html.GetFullItemImageUrl(Model.ItemId, Model.ItemImages[0], "large")" />
+    }
+}
+@section foot
+{
+    @if (itemClass == "product green-fee")
+    {
+        if (reservationAPIType == ReservationAPIType.Albatros)
+        {
+            <script>
+                window.courseId = '@Model.AlbatrosCourseId';
+            </script>
+            <script src="@Url.Content("~/Assets/Libraries/jquery-number-editor/jquery.number-editor.js")"></script>
+            <script src="@Url.Content("~/Assets/Front/scripts/pages/albatros-teesheet.js")"></script>
+        }
+        else if (reservationAPIType == ReservationAPIType.Prima)
+        {
+            <script src="@Url.Content("~/Assets/Libraries/jquery-number-editor/jquery.number-editor.js")"></script>
+            <script src="@Url.Content("~/Assets/Front/scripts/pages/prima-teesheet.js")"></script>
+        }
+        else if (reservationAPIType == ReservationAPIType.DLG && Model.HasTeeSheet)
+        {
+            <script>
+                window.teeSheetData = eval('@MvcHtmlString.Create(ViewBag.TeeSheetData)');
+                window.startHour = eval('@(Model.Course != null ? Model.Course.StartTime.Hours : 7)');
+                window.endHour = eval('@(Model.Course != null ? Model.Course.EndTime.Hours : 20)');
+                window.duration = eval('@(Model.Course != null ? Model.Course.Duration : 1)');
+                window.defaultPrice = eval('@(Model.Course != null ? Model.Course.DefaultPrice : 0)');
+                window.teeSheetEmptyText = "@MvcHtmlString.Create(Resources.NoTeeTimeAvailable)";
+                window.bookingAdvanceDescription = '@MvcHtmlString.Create(Resources.BookingAdvanceDescription)';
+            </script>
+            <script src="@Url.Content("~/Assets/Libraries/jquery.teesheet/jquery.teesheet.js")"></script>
+            <script src="@Url.Content("~/Assets/Front/scripts/pages/teesheet.js")"></script>
+        }
+    }
+    <script src="@Url.Content("~/Assets/Front/scripts/pages/product.js")"></script>
+
+    @if(ViewBag.ConversionTrackingCode != null && !String.IsNullOrWhiteSpace((string)ViewBag.ConversionTrackingCode))
+    {
+        @MvcHtmlString.Create((string)ViewBag.ConversionTrackingCode)
+    }
+}
+<div id="page-item-detail" class="@itemClass">
+    <div id="item-info" data-id="@Model.ItemId" data-itemtype="@Model.ItemTypeId" data-price="@Model.Price.ToString("###0.00", CultureInfo.InvariantCulture)" data-period-price="@Model.PeriodPrice.ToString("###0.00", CultureInfo.InvariantCulture)" data-cheapest-period-price="@Model.CheapestPeriodPrice.ToString("###0.00", CultureInfo.InvariantCulture)" data-special-price="@Model.SpecialPrice.ToString("###0.00", CultureInfo.InvariantCulture)" data-has-special-price="@(Model.HasSpecialPrice ? 1 : 0)" data-has-period-price="@(Model.HasPeriodPrice ? 1 : 0)" data-has-cheapest-period-price="@(Model.HasCheapestPeriodPrice ? 1 : 0)" data-cheapest-price="@Model.CheapestPrice.ToString("###0.00", CultureInfo.InvariantCulture)" itemscope itemtype="http://schema.org/Offer">
+        <div class="row">
+            <section id="item-images-section" class="col-md-12">
+                <div id="item-images-slider" class="royalSlider rsDefault@(Model.ItemImages != null && Model.ItemImages.Count > 1 ? " longLengthThumbnails" : "")">
+                    @if (Model.ItemImages != null && Model.ItemImages.Any())
+                    {
+                        foreach (ItemImage img in Model.ItemImages)
+                        {
+                            <div class="slide-image" style="background: url(@Html.GetItemImageUrl(Model.ItemId, img, "large")) no-repeat center center;background-size: cover;" data-rstmb="@Html.GetItemImageUrl(Model.ItemId, img, "thumbnail")"></div>
+                        }
+                    }
+                    else
+                    {
+                        <div class="slide-image" style="background: url(@Url.Content("~/Assets/Front/img/no-item-slide-image.png")) no-repeat center center;background-size: cover;" data-rstmb="@Url.Content("~/Assets/Front/img/no-item-slide-image.png")"></div>
+                    }
+                </div>
+            </section>
+        </div>
+        <div class="row">
+            <section id="item-info-section" class="col-md-12">
+                <article>
+                    @if (Model.ItemLangs != null && Model.ItemLangs.Any())
+                    {
+                        if (!String.IsNullOrEmpty(Model.ItemLangs[0].ItemName))
+                        { <h3 id="item-name" itemprop="name">@Model.ItemLangs[0].ItemName</h3> }
+                        if (!String.IsNullOrEmpty(Model.ItemLangs[0].ItemDesc))
+                        { <div itemprop="description" id="item-description">@MvcHtmlString.Create(Model.ItemLangs[0].ItemDesc)</div> }
+                    }
+                    @Html.Partial("~/Views/_Shared/UC/Front/Item/UCItemPriceTag.cshtml", Model)
+                    <div class="review-panel">
+                        <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+                            Avis: <div class="starrr review-stars fixed" data-rating="@Model.AverageRating" title="@(Model.AverageRating > 0 ? Resources.WriteYourReview : Resources.BeTheFirstToReview)"></div>
+                            <meta itemprop="ratingValue" content="@Model.AverageRating" />
+                            <meta itemprop="worstRating" content="1" />
+                            <meta itemprop="bestRating" content="5" />
+                        </div>
+                    </div>
+                </article>
+            </section>
+        </div>
+    </div>
+    @if (itemClass == "product green-fee" && Model.HasTeeSheet)
+    {
+        @Html.Partial("~/Views/_Shared/UC/Front/Item/UCTeeSheet.cshtml", Model)
+    }
+    @Html.Partial("~/Views/_Shared/UC/Front/Item/UCItemFooter.cshtml", Model)
+
+    @if (relatedItemModel != null)
+    {
+        @Html.Partial("~/Views/_Shared/UC/Front/Item/UCProductList.cshtml", relatedItemModel)
+    }
+</div>
+<a id="open-rating-popup-button" href="#rating-popup"></a>
+<div id="rating-popup">
+    <div class="form-group">
+        <label class="control-label">@Resources.YourRating</label>
+        <div class="input-icon">
+            <div class="starrr review-stars" data-rating="@Model.AverageRating" title="@(Model.AverageRating > 0 ? Resources.WriteYourReview : Resources.BeTheFirstToReview)"></div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label">@Resources.Subject</label>
+        <div class="input-icon">
+            <input id="review-subject-input" class="form-control" placeholder="@Resources.Subject" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label">@Resources.YourReview</label>
+        <div class="input-icon">
+            <textarea id="review-message-input" class="form-control" placeholder="@Resources.WriteYourReview"></textarea>
+        </div>
+    </div>
+    <div class="form-actions">
+        <button type="submit" id="submit-review-button" class="btn btn-primary pull-right">
+            &gt; @Resources.SubmitReview
+        </button>
+    </div>
+</div>
+<a id="open-rating-finish-button" href="#rating-finish-popup"></a>
+<div id="rating-finish-popup" style="display: none;">
+    @Resources.ReviewThankYou
+</div>
+@Html.Partial("~/Views/_Shared/UC/Front/Item/UCAddedProductPopup.cshtml")
+
+<a href="#error-popup" id="error-link"></a>
+<div id="error-popup" style="display: none">
+    <p class="popup-content"></p>
+    <div class="action-buttons margin-top-20">
+        <a class="ok-button btn btn-primary pull-right">OK</a>
+    </div>
+</div>

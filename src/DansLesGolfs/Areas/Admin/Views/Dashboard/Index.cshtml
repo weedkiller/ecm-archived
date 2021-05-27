@@ -1,0 +1,34 @@
+﻿@{
+    ViewBag.Title = "Admin Dashboard";
+    Layout = "~/Views/_Shared/MP/_Admin.cshtml";
+}
+@section head
+{
+}
+@section foot
+{
+    <script src="@Url.Content("~/Assets/Admin/scripts/index.js")" type="text/javascript"></script>
+    <script>
+        jQuery(document).ready(function ($) {
+            var data = eval('@Html.Json((List<object>)ViewBag.OrdersJSON)');
+            $.plot('#sales_chart', data);
+        });
+    </script>
+}
+<div id="page-dashboard">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        @Resources.SaleActivities
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <div id="sales_chart" class="chart">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

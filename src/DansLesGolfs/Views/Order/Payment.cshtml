@@ -1,0 +1,242 @@
+﻿@using DansLesGolfs
+@using DansLesGolfs.BLL
+@model DansLesGolfs.Models.OrderShippingModel
+@{
+    ViewBag.Title = Resources.Payment;
+    Layout = "~/Views/_Shared/MP/Front/_FullWidth.cshtml";
+    decimal totalDiscount = Model.Cart.GetDiscount();
+    decimal totalShippingCost = Model.Cart.GetTotalShippingCost();
+    decimal totalPrice = Model.Cart.GetTotalPrice();
+    var siteGroups = from it in Model.Cart.Items
+                     group it by it.SiteName into siteGroup
+                     orderby siteGroup.Key
+                     select siteGroup;
+}
+@section head
+{
+    <link rel="stylesheet" type="text/css" href="@Href("~/Assets/Front/css/cart.css")">
+}
+@section foot
+{
+    <script>
+        window.msg = {};
+        window.msg.confirmDeleteMsg = '@Resources.ConfirmDeleteMessage';
+        window.lydiaVendorToken = '@ViewBag.LydiaVendorToken';
+    </script>
+    <script src="@Url.Content("~/Assets/Libraries/bootstrap-bootbox/bootbox.min.js")"></script>
+    <script src="@Url.Content("~/Assets/Front/scripts/pages/cart.js")"></script>
+    <script src="@Url.Content("~/Assets/Libraries/jquery-number-editor/jquery.number-editor.js")"></script>
+    <script src="@Url.Content("~/Assets/Front/scripts/pages/order-payment.js")"></script>
+    <script>
+        @foreach(CartItem it in Model.Cart.Items)
+        {
+            @MvcHtmlString.Create("callConversionTracking(" + it.ItemId + ");")
+        }
+    </script>
+}
+<div id="page-order-payment" class="margin-bottom-40">
+    <div class="row">
+        <section id="shipping-info" class="col-md-12">
+
+            <h1 class="page-title">@Resources.MyCart</h1>
+            @Html.Partial("~/Views/_Shared/UC/Front/Order/UCPaymentProcess.cshtml", 4)
+            <h2 class="page-subtitle">@Resources.BasketSummary</h2>
+            @if (TempData["ErrorMessage"] != null)
+            {
+                <div class="alert alert-danger">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    @MvcHtmlString.Create(TempData["ErrorMessage"].ToString())
+                </div>
+            }
+            <table id="cart-summary" class="table table-bordered table-hover table-cart">
+                <thead>
+                    <tr>
+                        <th class="column-description" colspan="2">@(Resources.Item + "(s)")</th>
+                        <th class="column-unit-price">@Resources.UnitPrice</th>
+                        <th class="column-quantity">@Resources.Quantity</th>
+                        <th class="column-shipping-cost">@Resources.ShippingCost</th>
+                        <th class="column-total-price">@Resources.TotalPrice</th>
+                    </tr>
+                </thead>
+                @if (Model.Cart.Items != null && Model.Cart.Items.Any())
+                {
+                    <tbody>
+                        @foreach (var site in siteGroups)
+                        {
+                            <tr>
+                                <td class="column-header" colspan="6">@MvcHtmlString.Create(site.Key)</td>
+                            </tr>
+                            foreach (var item in site)
+                            {
+                                <tr data-id="@item.ItemId" data-unit-price="@item.UnitPrice.ToString("#,##0.00")" data-total-price="@item.TotalPrice.ToString("#,##0.00")">
+                                    @if (item.Item.ItemImages != null && item.Item.ItemImages.Any())
+                                    {
+                                        <td class="column-thumnail" style="background-image: url(@Html.GetItemImageUrl(item.ItemId, item.Item.ItemImages[0], "thumbnail",item.Item.DlgCardStyleId.ToString()))"></td>
+                                    }
+                                    else
+                                    {
+                                        <td class="column-thumnail"><div><img src="#" /></div></td>
+                                    }
+                                    <td class="column-description">
+                                        <a href="@Html.ItemUrl(item.Item)">@MvcHtmlString.Create(item.Description)</a>
+                                        @if (item.Item.ItemTypeId == (int)ItemType.Type.Product)
+                                        {
+                                            if (item.Item.UnitInStock <= 0)
+                                            {
+                                                <div class="item-status outofstock">@("0 " + Resources.RemainingItems)</div>
+                                            }
+                                            else
+                                            {
+                                                <div class="item-status instock">@(item.Item.UnitInStock + " " + (item.Item.UnitInStock == 1 ? Resources.RemainingItem : Resources.RemainingItems))</div>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <div class="item-status available">@Resources.ItemAvailable</div>
+                                        }
+                                    </td>
+                                    <td class="column-unit-price"><span class="price-number">@item.UnitPrice.ToString("#,##0.00")</span> &euro; </td>
+                                    <td class="column-quantity">@item.Quantity</td>
+                                    <td class="column-shipping-cost"><span class="price-number">@item.TotalShippingCost.ToString("#,##0.00")</span> &euro; </td>
+                                    <td class="column-total-price"><span class="price-number">@((item.TotalBasePrice + item.TotalShippingCost).ToString("#,##0.00"))</span> &euro; </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td class="column-promotion" colspan="6"><span class="column-promoion-code">@Resources.PromotionalCode : </span><input type="text" id="coupon-code" value="@Model.Cart.CouponCode" /> <button id="apply-coupon-button" class="btn btn-primary button-promotion">&gt; @Resources.ApplyToCart</button></td>
+                        <tr>
+                            @if (Model.Cart.HasCoupon)
+                            {
+                            <tr class="row-promotion-code" @MvcHtmlString.Create(totalDiscount > 0 ? "" : " style=\"display: none;\"")>
+                                <td class="column-promotion-code" colspan="2">@Resources.PromotionalCode</td>
+                                <td class="column-unit-price">
+                                    @if (Model.Cart.Coupon.CouponGroup.CouponType == (int)CouponType.Amount)
+                                    {
+                                        @MvcHtmlString.Create("-" + Model.Cart.Coupon.CouponGroup.Reduction + " &euro;");
+                                    }
+                                    else if (Model.Cart.Coupon.CouponGroup.CouponType == (int)CouponType.Percent)
+                                    {
+                                        @(Model.Cart.Coupon.CouponGroup.Reduction + "%");
+                                    }
+                                    else
+                                    {
+                                        @("0%");
+                                    }
+                                </td>
+                                <td colspan="2" class="column-quantity">&nbsp;</td>
+                                <td class="column-total-price"><span class="price-number">-@totalDiscount.ToString("#,##0.00") &euro;</span></td>
+                            </tr>
+                            }
+                            }
+                            <tr class="row-coupons-discounts">
+                                <td class="column-coupons-discounts" colspan="2">@Resources.MyCouponsAndDiscount <button id="dlg-card-button" class="btn btn-primary">&gt; @Resources.Select</button></td>
+                                <td class="column-unit-price">&nbsp;</td>
+                                <td colspan="2" class="column-quantity">&nbsp;</td>
+                                <td class="column-total-price"><span class="price-number"><!--0 &euro;--></span></td>
+                            </tr>
+                            <tr class="row-total-price">
+                                <td class="column-description" colspan="5" data-subtotal="@totalPrice.ToString("###0.00", System.Globalization.CultureInfo.InvariantCulture)">
+                                    <span class="column-sub-total-ttc">@Resources.TotalTTC</span>
+                                </td>
+                                <td class="column-total-price">
+                                    <span class="price-number">@totalPrice.ToString("#,##0.00")</span> <span class="currency">&euro;</span>
+                                </td>
+                            </tr>
+                        </tfoot>
+                }
+                else
+                {
+                    <tbody>
+                        <tr>
+                            <td colspan="6" class="text-center">@Resources.TheBasketIsEmpty</td>
+                        </tr>
+                    </tbody>
+                }
+            </table>
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="payment-gateways">
+                        <h4>@Resources.ChooseYourPaymentGateway</h4>
+                        <ul class="payment-gateways-list">
+                            @if (totalPrice > 0)
+                            {
+                                @*<li class="cb">
+                                        <input type="radio" name="payment-gateway" value="cb" checked="checked" />
+                                    </li>
+                                    <li class="mastercard">
+                                        <input type="radio" name="payment-gateway" value="mastercard" />
+                                    </li>
+                                    <li class="visa">
+                                        <input type="radio" name="payment-gateway" value="visa" />
+                                    </li>*@
+                                <li class="lydia-card">
+                                    <input type="radio" name="payment-gateway" value="lydia-card" checked="checked" />
+                                </li>
+                                <li class="lydia-mobile">
+                                    <input type="radio" name="payment-gateway" value="lydia-mobile" />
+                                </li>
+                                @*<li class="paypal">
+                                        <input type="radio" name="payment-gateway" value="paypal" />
+                                    </li>*@
+                                <li class="check">
+                                    <label for="check">@Resources.Check</label>
+                                    <input type="radio" id="check" name="payment-gateway" value="check" />
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="free">
+                                    <label for="check">@Resources.GetFree</label>
+                                    <input type="radio" id="free" name="payment-free" value="free" checked="checked" />
+                                </li>
+                            }
+                        </ul>
+                        <div>@Resources.SSLDescription <i class="icon-lock"></i> @Resources.SSLDescription2</div>
+                        <ul class="payment-options">
+                            <li><input type="checkbox" id="IsAcceptTermsAndAgreements" value="1" /> @Resources.AcceptThe <a href="@Url.Content("~/page/terms-and-agreements")" target="_blank">@Resources.TermsAndAgreements</a></li>
+                            <li><input type="checkbox" id="IsSaveCardInformation" value="1" checked="checked" /> <a href="@Url.Content("~/page/creditcard-saving")" target="_blank">@Resources.Save</a> @Resources.TheInforrmationInTheCard</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="require-box">
+                        <span class="pull-right">
+                            <a href="@Url.Content("~/Order/Shipping")" id="back-to-shopping-button" class="btn btn-default">&gt; @Resources.BackToPreviousStep</a>
+                            <a href="javascript:void(0)" id="checkout-button" class="btn btn-primary disabled-link" disabled="disabled">&gt; @Resources.CompleteOrder</a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<a href="#agreement-confirm-popup" id="agreement-confirm-link"></a>
+<div id="agreement-confirm-popup" style="display: none">
+    <p>@Resources.YouMustAcceptTermsAndAgreements</p>
+    <div class="action-buttons margin-top-20">
+        <a class="ok-button btn btn-primary pull-right">OK</a>
+    </div>
+</div>
+
+<a href="#cart-status-popup" id="cart-status-link"></a>
+<div id="cart-status-popup" style="display: none">
+    <h4>@Resources.TransactionIsInvalid</h4>
+    <p class="popup-content"></p>
+    <div class="action-buttons margin-top-20">
+        <a class="ok-button btn btn-primary pull-right">OK</a>
+    </div>
+</div>
+
+<a href="#error-popup" id="error-link"></a>
+<div id="error-popup" style="display: none">
+    <h4>Error</h4>
+    <p class="popup-content"></p>
+    <div class="action-buttons margin-top-20">
+        <a class="ok-button btn btn-primary pull-right">OK</a>
+    </div>
+</div>

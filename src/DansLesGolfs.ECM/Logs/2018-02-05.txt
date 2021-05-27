@@ -1,0 +1,13 @@
+2018-02-05 15:17:05.8629   7 Error                          DansLesGolfs.ECM.Controllers.BaseController System.ArgumentException: '
+pla@ugolf.eu' is not a valid email address.
+Parameter name: address
+   at  ???. ?(String argument, String name)
+   at Limilabs.Mail.Headers.MailBox..ctor(String address, String name)
+   at Limilabs.Mail.Headers.MailBox..ctor(String address)
+   at DansLesGolfs.ECM.Controllers.EmailingController.SendTestEmail(String emails, Int32[] customerGroupIds) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\EmailingController.cs:line 1192 System.ArgumentException: '
+pla@ugolf.eu' is not a valid email address.
+Parameter name: address
+   at  ???. ?(String argument, String name)
+   at Limilabs.Mail.Headers.MailBox..ctor(String address, String name)
+   at Limilabs.Mail.Headers.MailBox..ctor(String address)
+   at DansLesGolfs.ECM.Controllers.EmailingController.SendTestEmail(String emails, Int32[] customerGroupIds) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\EmailingController.cs:line 1192

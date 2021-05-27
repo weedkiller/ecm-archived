@@ -1,0 +1,37 @@
+﻿@using DansLesGolfs.Base
+@{
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    Sponsor Email
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <label for="SiteName">Subject</label>
+                        </div>
+                        <div class="col-md-10">
+                            @Html.TextBox("Subject", (string)ViewBag.SiteName, new { required = "required", maxlength = 100, @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <label for="ItemDesc">Body</label>
+                        </div>
+                        <div class="col-md-10">
+                            @Html.TextArea("Body", (string)ViewBag.Description, new { maxlength = 1000, rows = 20, @class = "form-control editor" })
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+</div>

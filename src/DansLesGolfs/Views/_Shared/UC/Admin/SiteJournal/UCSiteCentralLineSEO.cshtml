@@ -1,0 +1,116 @@
+﻿@using DansLesGolfs.BLL
+@using System.Globalization
+@model SiteCentralLineSEO
+@{
+    List<RestaurantSupplier> restaurantSuppliers = (List<RestaurantSupplier>)ViewBag.RestaurantSuppliers;
+    List<RestaurantProductCategory> restaurantProductCategories = (List<RestaurantProductCategory>)ViewBag.RestaurantProductCategories;
+    List<long> siteRestaurantSupplierIds = (List<long>)ViewBag.SiteRestaurantSupplierIds;
+    List<long> siteRestaurantProductCategoryIds = (List<long>)ViewBag.SiteRestaurantProductCategoryIds;
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    @Resources.CentralLineSEO
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            <label>@Resources.InvoiceEntry</label>
+                        </div>
+                        <div class="col-md-8">
+                            <label for="InvoiceEntryField"><input type="checkbox" id="InvoiceEntryField" name="InvoiceEntryField" value="true" @(Model.InvoiceEntryField ? " checked=\"checked\"" : "") /> @Resources.Field</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                        </div>
+                        <div class="col-md-8">
+                            <label for="InvoiceEntryRestaurant"><input type="checkbox" id="InvoiceEntryRestaurant" name="InvoiceEntryRestaurant" value="true" @(Model.InvoiceEntryRestaurant ? " checked=\"checked\"" : "") /> @Resources.Restaurant</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                        </div>
+                        <div class="col-md-8">
+                            <label for="InvoiceEntryOther"><input type="checkbox" id="InvoiceEntryOther" name="InvoiceEntryOther" value="true" @(Model.InvoiceEntryOther ? " checked=\"checked\"" : "") /> Proshop / Practice / Services / Carts</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            <label for="InformationRequestDate">@Resources.Date</label>
+                        </div>
+                        <div class="col-md-8">
+                            @Html.TextBox("InformationRequestDate", Model.InformationRequestDate.ToString("dd/MM/yyyy"), new { maxlength = 10, @class = "form-control datepicker" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            <label for="BeingCalledByProductResp">@Resources.BeingCalledByProductResp</label>
+                        </div>
+                        <div class="col-md-8">
+                            @Html.TextArea("BeingCalledByProductResp", Model.BeingCalledByProductResp, new { maxlength = 4000, rows = 4, @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            <label for="InformationRequestOther">@Resources.Other</label>
+                        </div>
+                        <div class="col-md-8">
+                            @Html.TextArea("InformationRequestOther", Model.InformationRequestOther, new { maxlength = 4000, rows = 4, @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                @if (restaurantSuppliers.Any())
+                {
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                <label>@Resources.Suppliers</label>
+                            </div>
+                            <div class="col-md-8">
+                                <ul>
+                                    @foreach (var it in restaurantSuppliers)
+                                    {
+                                        <li><label for="SiteRestaurantSupplier-@it.RestaurantSupplierId"><input type="checkbox" id="SiteRestaurantSupplier-@it.RestaurantSupplierId" name="SiteRestaurantSuppliers" value="@it.RestaurantSupplierId" @(siteRestaurantSupplierIds.Contains(it.RestaurantSupplierId) ? "checked=\"checked\"" : "") /> @it.SupplierName</label></li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                }
+                @if (restaurantProductCategories.Any())
+                {
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                <label>@Resources.Categories</label>
+                            </div>
+                            <div class="col-md-8">
+                                <ul>
+                                    @foreach (var it in restaurantProductCategories)
+                                    {
+                                        <li><label for="SiteRestaurantProductCategory-@it.RestaurantProductCategoryId"><input type="checkbox" id="SiteRestaurantProductCategory-@it.RestaurantProductCategoryId" name="SiteRestaurantProductCategories" value="@it.RestaurantProductCategoryId" @(siteRestaurantProductCategoryIds.Contains(it.RestaurantProductCategoryId) ? "checked=\"checked\"" : "") /> @it.CategoryName</label></li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

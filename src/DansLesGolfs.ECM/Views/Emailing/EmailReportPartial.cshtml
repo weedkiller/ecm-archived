@@ -1,0 +1,49 @@
+﻿@{
+    Layout = null;
+}
+@(Html.Kendo().Grid<SendingEmailViewModel>()
+    .Name("gridContactList")
+    .Columns(columns =>
+    {
+        columns.Bound(p => p.Email).Title(Resources.Email);
+        columns.Bound(p => p.FirstName).Title(Resources.FirstName);
+        columns.Bound(p => p.LastName).Title(Resources.LastName);
+        columns.Bound(p => p.Status).Title(Resources.Success)
+            .ClientTemplate("<input type=\"checkbox\" readonly=\"readonly\" #= Status == 1 ? checked=\"checked\" : \"\" # class=\"chkbx\" />")
+            .Sortable(true)
+            .Filterable(false)
+            .Groupable(false);
+        columns.Bound(p => p.IsOpened).Title(Resources.Open).ClientTemplate("<input type=\"checkbox\" readonly=\"readonly\" #= IsOpened == 1 ? checked=\"checked\" : \"\" # class=\"chkbx\" />")
+            .Sortable(true)
+            .Filterable(false)
+            .Groupable(false);
+        columns.Bound(p => p.IsClicked).Title(Resources.Click).ClientTemplate("<input type=\"checkbox\" readonly=\"readonly\" #= IsClicked == 1 ? checked=\"checked\" : \"\" # class=\"chkbx\" />")
+            .Sortable(true)
+            .Filterable(false)
+            .Groupable(false);
+        columns.Bound(p => p.IsUnsubscribed).Title(Resources.Unsubscribe).ClientTemplate("<input type=\"checkbox\" readonly=\"readonly\" #= IsUnsubscribed == 1 ? checked=\"checked\" : \"\" # class=\"chkbx\" />")
+            .Sortable(true)
+            .Filterable(false)
+            .Groupable(false);
+        columns.Bound(p => p.IsBounced).Title(Resources.Bounce).ClientTemplate("<input type=\"checkbox\" readonly=\"readonly\" #= IsBounced == 1 ? checked=\"checked\" : \"\" # class=\"chkbx\" />")
+            .Sortable(true)
+            .Filterable(false)
+            .Groupable(false);
+    })
+    .Resizable(c => c.Columns(true))
+    .Selectable(s =>
+    {
+        s.Mode(GridSelectionMode.Multiple);
+        s.Type(GridSelectionType.Row);
+    })
+    .Pageable()
+    .Sortable()
+    .Scrollable()
+    .Filterable()
+    .DataSource(dataSource => dataSource
+        .Ajax()
+        .PageSize(100)
+        .Sort(it => it.Add(c => c.Email).Descending())
+        .Read(read => read.Action("AjaxGetSendingEmailList", "Emailing", new { id = ViewBag.id }))
+     )
+)

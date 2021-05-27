@@ -1,0 +1,95 @@
+﻿@using DansLesGolfs.Models
+@using DansLesGolfs.BLL
+@model DansLesGolfs.BLL.Item
+@{
+    ViewBag.Title = Model.ItemLangs != null && Model.ItemLangs.Any() ? Model.ItemLangs[0].ItemName.StripHtml() : Model.ItemCode;
+    if (!String.IsNullOrEmpty(Model.ItemLangs[0].ItemDesc))
+    {
+        ViewBag.ItemDesc = Model.ItemLangs[0].ItemDesc.StripHtml();
+    }
+    Layout = "~/Views/_Shared/MP/Front/_Print.cshtml";
+    ProductsListModel relatedItemModel = ViewBag.RelatedItems as ProductsListModel;
+}
+
+@if (Model.ItemImages != null && Model.ItemImages.Any())
+{
+    <img src="@Html.GetItemImageUrl(Model.ItemId, Model.ItemImages[0], "large")" class="align-center" />
+}
+<h1 id="item-name">@Model.ItemLangs[0].ItemName</h1>
+<p class="align-justify">
+    @MvcHtmlString.Create(ViewBag.ItemDesc)
+</p>
+
+<h2>@Resources.Specifications</h2>
+<div class="attribute-section">
+    <div class="section-left">
+        <div class="item-attribute">
+            <div class="attribute-caption">@Resources.Condition :</div>
+            <div class="attribute-value">@Model.ShapeName</div>
+        </div>
+        <div class="item-attribute">
+            <div class="attribute-caption">@Resources.Dexterity :</div>
+            <div class="attribute-value">@Model.DexterityName</div>
+        </div>
+        <div class="item-attribute">
+            <div class="attribute-caption">@Resources.Genre :</div>
+            <div class="attribute-value">@Model.GenreName</div>
+        </div>
+        <div class="item-attribute">
+            <div class="attribute-caption">@Resources.Brand :</div>
+            <div class="attribute-value">@Model.BrandName</div>
+        </div>
+    </div>
+    <div class="section-right">
+        <div class="item-attribute">
+            <div class="attribute-caption">@Resources.Shaft :</div>
+            <div class="attribute-value">@Model.ShaftName</div>
+        </div>
+        <div class="item-attribute">
+            <div class="attribute-caption">@Resources.Size :</div>
+            <div class="attribute-value">@Model.Size</div>
+        </div>
+        <div class="item-attribute">
+            <div class="attribute-caption">@Resources.Type :</div>
+            <div class="attribute-value">@Model.ShapeName</div>
+        </div>
+    </div>
+</div>
+
+<h2>@Resources.DeliveryDetail</h2>
+<div class="attribute-section">
+    <div class="section-left">
+        <div class="item-attribute">
+            <div class="attribute-caption">@Resources.StateOfTheObject :</div>
+            <div class="attribute-value">@Model.ShapeName</div>
+        </div>
+        <div class="item-attribute">
+            <div class="attribute-caption">@Resources.DeliveryDate :</div>
+            <div class="attribute-value">@Resources.EstimatedBetween @Model.ShippingMinDate @Model.ShippingMaxDate</div>
+        </div>
+        <div class="item-attribute">
+            <div class="attribute-caption"></div>
+            <div class="attribute-value"></div>
+        </div>
+    </div>
+    <div class="section-right near">
+        <div class="item-attribute">
+            <div class="attribute-caption">@Resources.Return :</div>
+            <div class="attribute-value">@MvcHtmlString.Create(Model.CanReturn ? "<span class=\"accept-return-status\">" + Resources.Yes + "</span> " + Resources.RefundWithIn + " " + (Model.RefundWithIn > 1 ? Model.RefundWithIn + " " + Resources.Days : Model.RefundWithIn + " " + Resources.Day) : "<span class=\"accept-return-status\">" + Resources.No + "</span> ")</div>
+        </div>
+        <div class="item-attribute">
+            <div class="attribute-caption">@Resources.Shipping :</div>
+            <div class="attribute-value">
+                <strong>@MvcHtmlString.Create(Model.ShippingCost <= 0 ? Resources.FreeShipping : Model.ShippingCost.ToString("#,##0.00") + " &euro;")</strong> @Model.ShippingTypeName<br />
+            </div>
+        </div>
+        <div class="item-attribute">
+            <div class="attribute-caption"></div>
+            <div class="attribute-value">
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    window.print();
+</script>

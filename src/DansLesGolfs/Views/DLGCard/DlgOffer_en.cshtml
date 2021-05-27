@@ -1,0 +1,133 @@
+﻿@using DansLesGolfs
+@{
+    Layout = "~/Views/_Shared/MP/Front/_Default.cshtml";
+    var User = (DansLesGolfs.BLL.User)ViewBag.User;
+}
+
+@section head
+{
+    <link href="@Url.Content("~/Assets/Libraries/fancybox/source/jquery.fancybox.css")" rel="stylesheet" />
+    <script>
+        window.itemType = '@ViewBag.ItemType';
+    </script>
+}
+
+@section foot
+{
+    <script src="@Url.Content("~/Assets/Libraries/fancybox/source/jquery.fancybox.js")"></script>
+    <script src="@Url.Content("~/Assets/Libraries/bootstrap-starrr/bootstrap.starrr.js")"></script>
+    <script src="@Url.Content("~/Assets/Front/scripts/product-search.js")"></script>
+    <script>
+        jQuery(document).ready(function ($) {
+            $('#dlg-item-detail-popup-link').fancybox({
+                padding: 0
+            });
+
+            $('.product a').click(function (e) {
+                var $product = $(this).parents('.product');
+                var id = $product.data('id');
+                $.ajax({
+                    url: getUrl('ItemAjax/GetDLGItemDetail'),
+                    data: { itemId: id },
+                    dataType: 'json',
+                    type: 'post',
+                    success: function (result) {
+                        if (result.isSuccess) {
+                            openDLGDetailPopup(result.html, e);
+                        }
+                    }
+                });
+            });
+        });
+
+        function openDLGDetailPopup(html, e) {
+            jQuery('#dlg-item-detail-popup').html(html);
+            jQuery(".starrr").starrr();
+            jQuery('#dlg-item-detail-popup-link').trigger('click');
+        }
+    </script>
+}
+
+<div id="page-card-dashboard">
+
+    <div class="row margin-bottom-40">
+
+        <div class="col-md-12">
+            <div class="card-box">
+
+                <div class="card-box-form">
+
+                    <div class="card-box-form-title">
+                        <h3>Offer DLG Card</h3>
+                    </div>
+
+                    <div class="card-box-text">
+                        The <span class="card-box-text-hightlight card-box-text-bold ">DLG Card</span> is a gift card be used on <span class="card-box-text-hightlight">DansLesGolfs.com</span>.
+                    </div>
+                    <div class="card-box-text">
+                        You can offer it to all your loved ones. If they do not yet know DansLesGolfs.com, invite them to join us by going to the section @Html.ActionLink("Sponsorship", "Sponsorship", "Account") They will become your referrals and will enjoy all the benefits of DansLesGolfs.com.
+                    </div>
+
+                    <div class="card-box-text">
+                        With the <span class="card-box-card-hightlight text-box text-bold">Card DLG</span>, you are sure to please your loved ones with a gift from a 100% Golf wide range of offerings: Green fees, Stays, Training courses, driving range cards, equipment ... the best prices.
+                    </div>
+
+                    <div class="card-box-text">
+                        <span class="card-box-card-hightlight text-box text-bold">Card DLG</span> is fully customizable:
+                    </div>
+
+                    <div class="card-box-text card-box-tab">
+                        <ul class="card-box-text-list">
+                            <li><span class="card-box-text-hightlight">•</span> Choose the desired amount in multiples of <span class="card-box-card-hightlight text-box text-bold">€ 20 </span>or <span class="card-box-card-hightlight text-box text-bold">100 € </span></li>
+                            <li>
+                                <span class="card-box-text-hightlight">•</span> E-Card, immediate receipt by email <span style="display: none;">
+                                    or in his home gift bag
+                                    <br />
+                                    (additional cost of € 5)
+                                </span>
+                            </li>
+                            <li><span class="card-box-text-hightlight">•</span> Selecting a theme </li>
+                            <li><span class="card-box-text-hightlight">•</span> Add a personal message </li>
+                        </ul>
+                    </div>
+
+                    <div class="card-box-button-dlgcard">
+                        @Html.ActionLink("> Offer DLG Card", "DlgOrder", "DLGCard", new { }, new { @class = "btn btn-primary" })
+                    </div>
+
+                    <div class="card-box-form-title">
+                        <h3>Using the DLG Card</h3>
+                    </div>
+
+
+                    <div class="card-box-text-list">
+                        <ul class="card-box-nontab">
+                            <li>
+                                <span class="card-box-text-hightlight card-box-text-size-header">1. </span>You have one year to use your <span class="card-box-text-hightlight card-box-text-bold">Card DLG </span>, from the date of activation.
+                            </li>
+                            <li>
+                                <span class="card-box-text-hightlight card-box-text-size-header">2. </span>You have the freedom to use your <span class="card-box-text-hightlight card-box-text-bold">Card DLG </span>on the sales of your choice. Once in the order summary, simply select the amount of your gift card will be automatically deducted from the total of your order.
+                            </li>
+                            <li>
+                                <span class="card-box-text-hightlight card-box-text-size-header">3. </span>The gift card can be used in multiples of <span class="card-box-text-hightlight">€ 20 </span>or <span class="card-box-text-hightlight">100 € </span>, so you can use it on a single command or split over several orders.
+                            </li>
+                        </ul>
+
+                    </div>
+
+                    <div class="card-box-nontab card-box-padding-text">
+                        You are the proud recipient of a <span class="card-box-card-hightlight text-box text-bold">Card DLG </span>?
+                    </div>
+
+                    <div class="card-box-nontab card-box-padding-text">
+                        Find it in @Html.ActionLink("My Account", "Index", "Account") &nbsp; / &nbsp; @Html.ActionLink("My vouchers and coupons", "CouponsAndDiscounts", "Account")
+                    </div>
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

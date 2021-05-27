@@ -1,0 +1,188 @@
+﻿<div id="topnav">
+    <div class="container">
+        <div class="row">
+
+            <!-- Language Switcher -->
+            <div id="language-switcher">
+                <ul>
+                    @if (CultureHelper.GetCurrentNeutralCulture() == "en")
+                    {
+                        <li>
+                            <a href="@Html.LanguageUrl("fr-FR;2")" class="fr">
+                                <img src="@Url.Content("~/Assets/Front/img/header_footer/flag-france.png")" />
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            <a href="@Html.LanguageUrl("en-US;1")" class="en">
+                                <img src="@Url.Content("~/Assets/Front/img/header_footer/flag-england.png")" />
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+            <!-- End Language Switcher -->
+            <!-- Gift Card -->
+            @*<div id="gift-card-voucher">
+                <a href="@Url.Content("~/ProgramClassic")"><img src="@Url.Content("~/Assets/Front/img/header_footer/icon-gift-card_1.png")" /></a>
+                <a href="@Url.Content("~/PassDLGSupreme")"><img src="@Url.Content("~/Assets/Front/img/header_footer/icon-gift-card_2.png")" /></a>
+                <a href="@Url.Content("~/DLGCard")"><img src="@Url.Content("~/Assets/Front/img/header_footer/icon-gift-card_3.png")" /></a>
+            </div>*@
+            <!-- End Gift Card -->
+            @*<!-- Panier box -->
+                 <a id="panier" href="javascript:void(0);">
+                    <span id="panier-img-left">
+                        <img src="@Url.Content("~/Assets/Front/img/header_footer/panier-img-left.png")" alt="Golfs" />
+                    </span>
+                    <span id="panier-text-middle">
+                        @Resources.Cart
+                    </span>
+                    <!--<span id="panier-noti-right">
+
+                    </span>-->
+                </a>
+                <!-- End panier box -->*@
+            <!-- Search Box -->
+            <div id="search-box">
+                <form id="search-form" action="@Url.Content("~/Product/Search")" method="post">
+                    <input type="text" id="q" name="q" placeholder="@Resources.SearchPlaceholder" value="@ViewBag.SearchTerm" />
+                    <!--
+                    -->
+                    <input type="submit" id="search-form-submit" name="submit" value="OK" />
+                </form>
+            </div>
+            <!-- End Search Box -->
+            <!-- User Logon Widget -->
+            <div id="user-logon">
+                @Html.Partial("~/Views/_Shared/UC/UserLogon.cshtml")
+                <!-- Log in box -->
+                <div id="regbar">
+
+                    <div id="navthing">
+
+                        <div class="login">
+
+                            <div class="arrow-up"></div>
+                            <div class="arrow-up-2"></div>
+
+                            <div class="formholder">
+
+                                <!-- User -->
+                                <h4>@Resources.EnterYourPassword</h4>
+                                <div>
+                                    <span>
+                                        <img src="@Url.Content("~/Assets/Front/img/header_footer/us.png")" />
+                                    </span>
+                                    <input placeholder="@Resources.Username" id="us" type="text" class="contact-data" value="">
+                                </div>
+
+                                <!-- Password -->
+                                <h4 style="margin-top: 10px;">@Resources.EnterYourPassword</h4>
+                                <div style="float:left;">
+                                    <img src="@Url.Content("~/Assets/Front/img/header_footer/pass.png")" />
+                                </div>
+
+                                <div style="border: solid 1px #e5e5e5; float:left;">
+                                    <div style="float:left;">
+                                        <input placeholder="@Resources.Password" type="password" style="border:none;" id="pass" class="contact-data" value="">
+                                    </div>
+                                    <div style="float:right;">
+                                        <input style="border:none;" type="button" class="btn login-ok" value="OK">
+                                    </div>
+                                </div>
+
+                                <!-- forgot password-->
+                                <div id="forgot-passwrod-wrap">
+                                    <a class="forgot-password-link" href="@Url.Content("~/ForgotPassword")">
+                                        @Resources.ForgotPassword
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- End User Logon Widget -->
+            <!-- User menu box -->
+            <div id="regbar_user">
+
+                <div id="navthing_user">
+
+                    <div class="user-menu">
+
+                        <div class="arrow-up-user"></div>
+                        <div class="arrow-up-2-user"></div>
+
+                        <div class="formholder_user">
+
+                            <nav>
+                                <ul>
+                                    <li id="first">
+                                        <a href="@Url.Action("Details", "Account")">
+                                            @Resources.MyDetails
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Orders", "Account")">
+                                            @Resources.MyOrders
+                                        </a><span class="us-menu-notic"></span>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Messages", "Account")">
+                                            @Resources.MyMessages
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Addresses", "Account")">
+                                            @Resources.MyAddresses
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("ChangePassword", "Account")">
+                                            @Resources.MyPassword
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Sponsorship", "Account")">
+                                            @Resources.MySponsorship
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("CouponsAndDiscounts", "Account")">
+                                            @Resources.MyCouponsAndDiscount
+                                        </a><span class="us-menu-notic"></span>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("CreditCard", "Account")">
+                                            @Resources.MyCreditCard
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Newsletters", "Account")">
+                                            Mes inscriptions aux newsletters
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Content("~/Logout")">
+                                            @Resources.SignOut
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

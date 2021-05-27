@@ -1,0 +1,98 @@
+﻿@using DansLesGolfs.Base
+@using DansLesGolfs.BLL
+@model List<User>
+@using System.Globalization;
+@{
+    List<User> untypeCustomers = (List<User>)ViewBag.UnTypeCustomers;
+}
+<div class="row customer-table-box">
+    <div class="form-group">
+        <div class="col-md-2 control-label">
+            <label for="SpecialPrice">@Resources.Customers</label>
+        </div>
+        <div class="col-md-10">
+            <table id="selected-customer-datatable" class="dataTable table table-bordered table-striped table-scrollable table-hover">
+                <thead>
+                    <tr>
+                        <th class="checkboxes column-checkbox">
+                            <input type="checkbox" />
+                        </th>
+                        <th class="column-email">@Resources.Email</th>
+                        <th class="column-firstname">@Resources.FirstName</th>
+                        <th class="column-lastname">@Resources.LastName</th>
+                        <th class="column-delete">
+                            @Resources.Delete
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.Any())
+                    {
+                        foreach (User customer in Model)
+                        {
+                            <tr data-id="@customer.UserId">
+                                <td class="checkboxes column-checkbox">
+                                    <input type="checkbox" />
+                                    <input type="hidden" name="CustomerId" id="customer-@customer.UserId" value="@customer.UserId" />
+                                </td>
+                                <td class="column-firstname">
+                                    <span>@customer.Firstname</span>
+                                </td>
+                                <td class="column-lastname">
+                                    <span>@customer.Lastname</span>
+                                </td>
+                                <td class="column-delete">
+                                    <a href="javascript:void(0)" class="delete-link">@Resources.Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr class="column-empty"><td colspan="6">@Resources.ThereIsNoCustomerInGroup</td></tr>
+                    }
+                </tbody>
+            </table>
+            <div class="margin-bottom-10">
+                <a href="#customer-popup" class="add-customer-button btn btn-primary">@Resources.Add</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="customer-popup" style="display: none">
+    <table id="customer-datatable" class="dataTable table table-bordered table-striped table-scrollable table-hover">
+        <thead>
+            <tr>
+                <th class="checkboxes column-checkbox">
+                    <input type="checkbox" />
+                </th>
+                <th class="column-email">@Resources.Email</th>
+                <th class="column-firstname">@Resources.FirstName</th>
+                <th class="column-lastname">@Resources.LastName</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (User customer in untypeCustomers)
+{
+    <tr data-id="@customer.UserId" data-email="@customer.Email" data-firstname="@customer.Firstname" data-lastname="@customer.Lastname">
+        <td class="checkboxes column-checkbox">
+            <input type="checkbox" />
+            <input type="hidden" name="CustomerId" id="customer-@customer.UserId" value="@customer.UserId" />
+        </td>
+        <td class="column-email">
+            <span>@customer.Email</span>
+        </td>
+        <td class="column-firstname">
+            <span>@customer.Firstname</span>
+        </td>
+        <td class="column-lastname">
+            <span>@customer.Lastname</span>
+        </td>
+    </tr>
+}
+        </tbody>
+    </table>
+    <div class="margin-bottom-10">
+        <a href="javascript:void(0);" class="add-customer-to-group-button btn btn-primary">@Resources.AddToGroup</a>
+    </div>
+</div>

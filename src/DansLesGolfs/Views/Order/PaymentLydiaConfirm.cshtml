@@ -1,0 +1,33 @@
+﻿@using DansLesGolfs
+@model DansLesGolfs.Models.OrderShippingModel
+@{
+    ViewBag.Title = Resources.Payment;
+    decimal subtotal = Model.Cart.GetSubTotal();
+}
+<div id="lydia-payment-button" style="display: none;"></div>
+<div id="lydia-error-message"></div>
+<div class="waiting-message" style="width: 100%; position: absolute; top: 47%; text-align: center; font-size: 28px;">
+    @MvcHtmlString.Create(ViewBag.WaitingMessage)
+</div>
+<script src="@Url.Content("~/Assets/Libraries/jquery-1.10.2.min.js")"></script>
+<script src="@Url.Content("~/Assets/Libraries/lydiasdk/lydiasdk.js")"></script>
+<script>
+    function validateLydiaPayment() {
+        $.post('@Url.Content("~/Order/AjaxCheckLydiaPaymentStatus")', {
+            id: '@ViewBag.OrderId',
+            requestId: '@Model.LydiaRequestId'
+        }, 'json');
+    }
+
+    function sendEmailConfirm() {
+        $.post('@Url.Content("~/Order/AjaxSendConfirmationEmail")', {
+            orderId: '@ViewBag.OrderId'
+        }, 'json');
+    }
+
+    $(document).ready(function () {
+        validateLydiaPayment();
+        sendEmailConfirm();
+        window.location = '@ViewBag.ConfirmationUrl';
+    });
+</script>

@@ -1,0 +1,19 @@
+﻿@using DansLesGolfs.BLL
+@model DansLesGolfs.BLL.WebContent
+@{
+    ViewBag.Title = Model.TopicName;
+    Layout = "~/Views/_Shared/MP/Front/_Default.cshtml";
+}
+@section head
+{
+}
+@section foot
+{
+    <script src="@Url.Content("~/Assets/Front/scripts/pages/page.js")"></script>
+}
+<div id="page-content-detail">
+    <article>
+        <h1 class="page-title">@Model.TopicName</h1>
+        @MvcHtmlString.Create(Model.ContentText)
+    </article>
+</div>

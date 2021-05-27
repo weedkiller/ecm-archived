@@ -1,0 +1,466 @@
+﻿@using DansLesGolfs
+@using DansLesGolfs.BLL
+
+@model ItemDlgCardCore
+@{
+    Layout = "~/Views/_Shared/MP/Front/_Default.cshtml";
+    var User = (DansLesGolfs.BLL.User)ViewBag.User;
+}
+
+@section head
+{
+    <link href="@Url.Content("~/Assets/Libraries/fancybox/source/jquery.fancybox.css")" rel="stylesheet" />
+    <script>
+        window.itemType = '@ViewBag.ItemType';
+    </script>
+}
+
+@section foot
+{
+    <script src="@Url.Content("~/Assets/Libraries/fancybox/source/jquery.fancybox.js")"></script>
+    <script src="@Url.Content("~/Assets/Libraries/bootstrap-starrr/bootstrap.starrr.js")"></script>
+    <script src="@Url.Content("~/Assets/Front/scripts/product-search.js")"></script>
+    <script>
+
+        function Cansubmit() {
+            var dlgcardCheck = $("#DlgCardStyleId").val();
+
+            if (dlgcardCheck == 0) {
+                $("#card-step-validate").addClass("input-validation-error");
+                return false;
+            } else {
+
+                $("#card-step-validate").removeClass("input-validation-error");
+                return true;
+            }
+        }
+
+        $(document).ready(function () {
+            $('#card-agree-submit').prop("disabled", true);
+
+            $("#card-agree").on("click", function () {
+                if ($("#card-agree").is(':checked')) {
+                    $('#card-agree-submit').prop("disabled", false); // Element(s) are now enabled.
+                }
+                else {
+                    $('#card-agree-submit').prop("disabled", true); // Element(s) are now enabled.
+                }
+
+            });
+
+
+
+            $('#dlg-item-detail-popup-link').fancybox({
+                padding: 0
+            });
+
+            $('.product a').click(function (e) {
+                var $product = $(this).parents('.product');
+                var id = $product.data('id');
+                $.ajax({
+                    url: getUrl('ItemAjax/GetDLGItemDetail'),
+                    data: { itemId: id },
+                    dataType: 'json',
+                    type: 'post',
+                    success: function (result) {
+                        if (result.isSuccess) {
+                            openDLGDetailPopup(result.html, e);
+                        }
+                    }
+                });
+            });
+
+            //get card
+
+            $("#ItemId").change(function () {
+                $("#DlgCardStyleId").val("");
+
+                var itemId = $("#ItemId").val();
+
+                $(".card-image").hide();
+                $("#image-" + itemId).show();
+
+                $.ajax({
+                    url: '@Url.Action("GetItemPriceDlgCardPartial", "DLGCard")',
+                    data: { itemId: itemId },
+                    type: 'post',
+                    success: function (result) {
+                        $("#amount").html("");
+                        $("#amount").append(result);
+
+                        var total = parseInt($("#itemPriceDlgCardId option:selected").text()) * $("#Quantity").val();
+
+                        $("#total-amount").html(total + " €");
+                    }
+                });
+
+
+                $.ajax({
+                    url: '@Url.Action("GetDLGCardStylePartial", "DLGCard")',
+                    data: { itemId: itemId },
+                    type: 'post',
+                    success: function (result) {
+                        $("#cardstyle-render").html("");
+                        $("#cardstyle-render").append(result);
+
+                    }
+                });
+            });
+
+            $("body").on('change', '#itemPriceDlgCardId', function () {
+                var total = parseInt($("#itemPriceDlgCardId option:selected").text()) * $("#Quantity").val();
+                $("#total-amount").html(total + " €");
+            });
+
+            $("#Quantity").on('change', function () {
+                var total = parseInt($("#itemPriceDlgCardId option:selected").text()) * $("#Quantity").val();
+                $("#total-amount").html(total + " €");
+            });
+
+
+            $("body").on('change', '.DlgCardStyleId', function () {
+                var valueselect = $("input[type='radio'].DlgCardStyleId:checked").val();
+                var valueselectatt = $("input[type='radio'].DlgCardStyleId:checked").attr("data-value");
+                $("#DlgCardStyleId").val(valueselect);
+                $("#ImageCardName").val(valueselectatt);
+            });
+
+
+            @*                $.ajax({
+                    url: '@Url.Action("AddItem", "Cart")',
+                    data: { itemId: itemId,quantity: 3 },
+                     type: 'post',
+                     success: function (result) {
+
+                     }
+                 });
+            });*@
+
+
+
+
+        });
+
+        function openDLGDetailPopup(html, e) {
+            jQuery('#dlg-item-detail-popup').html(html);
+            jQuery(".starrr").starrr();
+            jQuery('#dlg-item-detail-popup-link').trigger('click');
+        }
+    </script>
+}
+
+@using (Html.BeginForm("SaveDLGCardDetail", "DLGCard", FormMethod.Post,
+                                      new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+{
+
+    @Html.HiddenFor(m => m.DlgCardStyleId)
+    @Html.HiddenFor(m => m.ImageCardName)
+    <div id="page-card-dashboard" class="dld-card-order">
+
+        <div class="row margin-bottom-40">
+
+            <div class="col-md-12">
+
+                <div class="card-box">
+
+                    <div class="card-box-form">
+
+                        @* <form class="form-horizontal">*@
+
+
+                        <div class="card-box-form-title">
+                            @Resources.Dlgcard_header
+                        </div>
+
+                        <div class="card-box-form-title-secound">
+                            <p>
+                                @Resources.Dlgcard_title1
+                            </p>
+
+                            <p>
+                                @Resources.Dlgcard_title2
+                            </p>
+                        </div>
+
+                        <!-- Step 1 -->
+                        <div class="card-step">
+
+                            <!-- Title -->
+                            <div class="c-step-title">
+                                <label class="big-number">1. </label>
+                                <label class="desc">@Resources.Dlgcard_header_step1</label>
+                            </div>
+
+                            <!-- Body -->
+                            <div class="card-step-body">
+
+                                <div class="form-group">
+                                    <div class="col-md-2 control-label">@Resources.FirstName</div>
+                                    <div class="col-md-5">
+                                        @*<input type="text" id="firstname" name="firstname" class="form-control valid" value="">*@
+                                        @Html.ValidationMessageFor(m => m.Firstname)
+                                        @Html.TextBoxFor(m => m.Firstname, new { @class = "form-control valid" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-2 control-label">@Resources.LastName</div>
+                                    <div class="col-md-5">
+                                        @* <input type="text" id="lastname" name="lastname" class="form-control valid" value="">*@
+                                        @Html.ValidationMessageFor(m => m.Lastname)
+                                        @Html.TextBoxFor(m => m.Lastname, new { @class = "form-control valid" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-2 control-label">@Resources.Email</div>
+                                    <div class="col-md-5">
+                                        @* <input type="email" id="email" name="email" class="form-control valid" value="">*@
+                                        @Html.ValidationMessageFor(m => m.Email)
+                                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control valid" })
+                                    </div>
+                                </div>
+
+                                <p>
+                                    @Resources.Dlgcard_content_step1
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="card-step">
+
+                            <!-- Title -->
+                            <div class="c-step-title">
+                                <label class="big-number">2. </label>
+                                <label class="desc">@Resources.Dlgcard_header_step2 </label>
+                            </div>
+
+                            <!-- Body -->
+                            <div class="card-step-body">
+
+                                <table id="card-type-table">
+
+                                    <thead>
+                                        <tr>
+                                            <td>@Resources.Dlgcard_cardtype_step2</td>
+                                            <td>@Resources.Amount </td>
+                                            <td>@Resources.Quantity </td>
+                                            <td>@Resources.Dlgcard_totalamount_step2 </td>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div id="select-type" class="wrap-ddl">
+                                                    <div class="form-group">
+                                                        @Html.DropDownListFor(m => m.ItemId, new SelectList(Model.ItemDlgCardList, "ItemId", "ItemCode"), new { @data_val = "true", @class = "form-control" })
+                                                        @*                                                    <select data-val="true">
+                                                                <option selected="selected" value="0">DLG CARD</option>
+                                                                <option value="1">CARD 1</option>
+                                                                <option value="2">CARD 2</option>
+                                                                <option value="3">CARD 3</option>
+                                                            </select>*@
+                                                    </div>
+                                                </div>
+                                                @*<div>
+                                                    <label>
+                                                        @{ var countimage = 0;}
+                                                        @foreach (var imagedata in Model.ItemDlgCardList)
+                                                        {
+                                                            if (countimage == 0)
+                                                            {
+                                                                <img class="card-image" src="@Url.Content("~/Uploads/Cards/"+@imagedata.ItemId+"/" + @imagedata.ImageName)" width="130" height="90" alt='' id="image-@imagedata.ItemId" />
+                                                            }
+                                                            else
+                                                            {
+                                                                <img class="card-image" src="@Url.Content("~/Uploads/Cards/"+ @imagedata.ItemId+"/" + @imagedata.ImageName)" width="130" height="90" alt='' id="image-@imagedata.ItemId" style="display:none;" />
+                                                            }
+                                                            countimage++;
+                                                        }
+                                                    </label>
+                                                </div>*@
+                                            </td>
+                                            <td>
+                                                <div id="amount" class="wrap-ddl">
+                                                    @Html.Partial("_itemPricePartial", Model)
+                                                    @* <select data-val="true">
+                                                            <option selected="selected" value="0">100</option>
+                                                            <option value="1">200</option>
+                                                            <option value="2">300</option>
+                                                            <option value="3">400</option>
+                                                        </select>*@
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div id="" class="wrap-ddl">
+                                                    <div class="form-group">
+                                                        @{
+                                                        List<SelectListItem> listQuantity = new List<SelectListItem>();
+                                                        listQuantity.Add(new SelectListItem
+                                                        {
+                                                            Text = "1",
+                                                            Value = "1"
+                                                        });
+                                                        listQuantity.Add(new SelectListItem
+                                                        {
+                                                            Text = "2",
+                                                            Value = "2"
+                                                        });
+                                                        listQuantity.Add(new SelectListItem
+                                                        {
+                                                            Text = "3",
+                                                            Value = "3"
+                                                        });
+                                                        listQuantity.Add(new SelectListItem
+                                                        {
+                                                            Text = "4",
+                                                            Value = "4"
+                                                        });
+
+                                                        }
+
+                                                        @Html.DropDownListFor(m => m.Quantity, new SelectList(listQuantity, "Value", "Text"), new { @data_val = "true", @class = "form-control" })
+
+                                                        @*<select data-val="true" id="quantity">
+                                                                <option selected="selected" value="1">1</option>
+                                                                <option value="2">2</option>
+                                                                <option value="3">3</option>
+                                                                <option value="4">4</option>
+                                                            </select>*@
+
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="wrap-ddl">
+                                                    <label id="total-amount">@Model.ItemPriceDlgCardList[0].Price.ToString("#,##0.00") &euro;</label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="card-step">
+
+                            <!-- Title -->
+                            <div class="c-step-title">
+                                <label class="big-number">3. </label>
+                                <label class="desc">@Resources.Dlgcard_header_step3 </label>
+                            </div>
+
+                            <!-- Body -->
+                            <div class="card-step-body" id="card-step-validate">
+                                <p>
+                                    @Resources.Dlgcard_content_step3
+                                </p>
+
+                                <div id="cardstyle-render">
+                                    @Html.Partial("_CardStylePartial", Model)
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                        <!-- Step 4 -->
+                        <div class="card-step">
+
+                            <!-- Title -->
+                            <div class="c-step-title">
+                                <label class="big-number">4. </label>
+                                <label class="desc">@Resources.Dlgcard_header_step4 </label>
+                            </div>
+
+                            <!-- Body -->
+                            <div class="card-step-body">
+
+                                <div class="form-group">
+                                    <div class="col-md-3 control-label">@Resources.Dlgcard_Personalmessage_step4</div>
+                                    <div class="col-md-5">
+                                        @*                                        <textarea class="personal-msg" placeholder="Bonjour,
+                                                          Je t' offre cette carte cadeau a utilliser sur ie site danslsgolfs.com
+                                                          Je suis certain(e) que tu y trouveras ton bonheur ! A bientot !"
+                                            cols="70" rows="8"></textarea>*@
+                                        @Html.ValidationMessageFor(m => m.PersonalMessage)
+                                        @Html.TextAreaFor(m => m.PersonalMessage, new { @class = "personal-msg", @placeholder = "", @cols = "60", @rows = "8" })
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-3 control-label">@Resources.FromLong</div>
+                                    <div class="col-md-5">
+                                        @*<input type="email" id="from" name="from" placeholder="Nathalie Noissette" class="form-control valid" value="">*@
+                                        @Html.ValidationMessageFor(m => m.MessageFrom)
+                                        @Html.TextBoxFor(m => m.MessageFrom, new { @placeholder = "", @class = "form-control valid" })
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <!-- Search -->
+                        <div class="card-step">
+
+                            <!-- Body -->
+                            <div class="card-step-body">
+
+                                <label>
+                                    <img src="@Url.Content("~/Assets/Front/img/dlg_card/search.png")" alt='' />
+                                </label>
+
+                                <label>
+                                    <a style="color: #f7417e; text-decoration: underline;" href='#'>@Resources.Dlgcard_viewgiftcard_step4</a>
+                                </label>
+
+                            </div>
+
+                        </div>
+
+                        <!-- Agree checkbox -->
+                        <div class="card-step">
+
+                            <!-- Body -->
+                            <div class="card-step-body">
+
+                                <label class="checkbox">
+                                    <input id="card-agree" type="checkbox" name="agree" value="True" />
+                                    @*I agree and acknowledge having knowledge <span style="color: #d80927;">Terms of Use </span>*@
+                                    @Html.Raw(HttpUtility.HtmlDecode(Resources.Dlgcard_agree_step4.ToString())) <a href="@Url.Content("~/TermsAndConditions")">@Resources.DLGCardTermsAndAgreements</a>
+                                </label>
+
+                            </div>
+
+                        </div>
+
+                        <!-- Button -->
+                        <div class="btn-validate-card">
+                            <div class="form-group">
+                                <div class="col-md-offset-4 col-md-5">
+                                    <button type="submit" id="card-agree-submit" onclick="return Cansubmit();" class="btn btn-primary">@Resources.Dlgcard_validate_step4</button>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        @*</form>*@
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+}

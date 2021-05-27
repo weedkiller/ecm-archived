@@ -1,0 +1,50 @@
+﻿@model DansLesGolfs.BLL.User
+@{
+    Layout = "~/Views/_Shared/MP/Front/_FullWidth.cshtml";
+    ViewBag.Title = Resources.Identification;
+}
+@section head
+{
+    <link href="@Url.Content("~/Assets/Libraries/fancybox/source/jquery.fancybox.css")" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="@Href("~/Assets/Front/css/cart.css")">
+}
+@section foot
+{
+    <script src="@Url.Content("~/Assets/Libraries/fancybox/source/jquery.fancybox.js")"></script>
+<script src="@Url.Content("~/Assets/Libraries/jquery-numeric/jquery.numeric.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Assets/Front/scripts/pages/order-identification.js")"></script>
+}
+<div id="page-order-identification">
+    <div class="row">
+        <section id="user-info" class="col-md-12">
+            <h1 class="page-title">@Resources.MyCart</h1>
+            @Html.Partial("~/Views/_Shared/UC/Front/Order/UCPaymentProcess.cshtml", 2)
+            @Html.Partial("~/Views/_Shared/UC/Front/Order/UCOrderIdentification.cshtml", Model)
+        </section>
+    </div>
+</div>
+<a href="#facebook-login-popup"></a>
+<div id="#facebook-login-popup" class="hide">
+    <h4>@Resources.PleaseInputYourInfo</h4>
+    <p class="margin-bottom-20">@Resources.PleaseInputYourInfoDescription</p>
+    <div>
+        <input type="email" name="email" placeholder="@Resources.Email" />
+    </div>
+    <div>
+        <input type="password" name="password" placeholder="@Resources.Password" />
+    </div>
+    <div class="action-buttons">
+        <button id="register-button" class="btn btn-primary">@Resources.Register</button>
+        <button id="cancel-button" class="btn btn-default">@Resources.Cancel</button>
+    </div>
+    <div class="error-message margin-top-10"></div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="require-box">
+            <span class="pull-right">
+                <a href="@Url.Content("~/Cart")" id="back-to-shopping-button" class="btn btn-default">&gt; @Resources.BackToPreviousStep</a>
+            </span>
+        </div>
+    </div>
+</div>

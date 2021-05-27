@@ -1,0 +1,251 @@
+@model DansLesGolfs.BLL.User
+<div class="form-order-shipping-tab">
+    <div class="form-order-shipping-tab-box">
+        <div class="row">
+            <div class="col-md-6">
+                <form method="post" id="register-form">
+                    <div class="form-order-shipping-tab1-leftbox">
+                        <div class="form-order-shipping-tab1-leftbox-header">
+                            <div class="form-order-shipping-tab1-leftbox-header-title">
+                                @Resources.NewCustomer
+                            </div>
+                            <div class="form-order-shipping-tab1-leftbox-header-remark">@Resources.Order_RegisterDescription</div>
+                            <div id="facebook-login-panel">
+                                <p>@MvcHtmlString.Create(Resources.TwoSecondsWithFacebook)</p>
+                                <a id="signup-with-facebook" class="fblogin-button" href="javascript:void(0)">@Resources.SignupWithFacebook</a>
+                                <small>@Resources.FacebookPermissionAgreement</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-5 control-label text-left"><label for="Email">@Resources.Email<span class="require-pink">*</span></label></div>
+                            <div class="col-md-7">
+                                <input type="email" id="Email" name="Email" class="form-control" value="@Model.Email" required="required" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-5 control-label text-left"><label for="EmailConfirm">@Resources.ConfirmationEmail<span class="require-pink">*</span></label></div>
+                            <div class="col-md-7">
+                                <input type="email" id="EmailConfirm" name="EmailConfirm" class="form-control" value="@Model.Email" required="required" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-5 control-label text-left"><label for="Password">@Resources.Password <span class="require-pink">*</span></label></div>
+                            <div class="col-md-7">
+                                <input type="password" id="Password" name="Password" class="form-control" value="@Model.Password" required="required" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-5 control-label text-left"><label for="PasswordConfirm">@Resources.ConfirmPassword <span class="require-pink">*</span></label></div>
+                            <div class="col-md-7">
+                                <input type="password" id="PasswordConfirm" name="PasswordConfirm" class="form-control" value="@Model.Password" required="required" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-5 control-label text-left"><label for="Civilite">@Resources.MyDetails_Civility</label></div>
+                            <div class="col-md-7">
+                                @Html.DropDownList("TitleId", (IEnumerable<SelectListItem>)ViewBag.DropDownTitles, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-5 control-label text-left"><label for="Firstname">@Resources.FirstName <span class="require-pink">*</span></label></div>
+                            <div class="col-md-7">
+                                <input type="text" id="Firstname" name="Firstname" class="form-control" value="@Model.Firstname" required="required" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-5 control-label text-left"><label for="Lastname">@Resources.LastName <span class="require-pink">*</span></label></div>
+                            <div class="col-md-7">
+                                <input type="text" id="Lastname" name="Lastname" class="form-control" value="@Model.Lastname" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-5 control-label text-left"><label for="Birthdate">@Resources.BirthDate <span class="require-pink">*</span></label></div>
+                            <div class="col-md-7">
+                                <input type="text" id="Birthdate" name="Birthdate" class="form-control datepicker" value="@(Model.Birthdate.HasValue ? Model.Birthdate.Value.ToString("dd/MM/yyyy") : String.Empty)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-5 control-label text-left"><label for="Address">@Resources.Address <span class="require-pink">*</span></label></div>
+                            <div class="col-md-7">
+                                @Html.TextBoxFor(m => m.Address, new { maxlength = 500, @class = "form-control", required = "required" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-5 control-label text-left"><label for="Complement">@Resources.MyDetails_Complement</label></div>
+                            <div class="col-md-7">
+                                <input type="text" id="Complement" name="Complement" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-5 control-label text-left"><label for="PostalCode">@Resources.PostalCode <span class="require-pink">*</span></label></div>
+                            <div class="col-md-7">
+                                @Html.TextBoxFor(m => m.PostalCode, new { maxlength = 50, @class = "form-control number", required = "required" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-5 control-label text-left"><label for="City">@Resources.City <span class="require-pink">*</span></label></div>
+                            <div class="col-md-7">
+                                <select id="CityId" name="CityId" class="form-control" data-city-id="@Model.CityId">
+                                    <option value="0">@Resources.PleaseEnterPostalCode</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-5 control-label text-left"><label for="CountryId">@Resources.MyDetails_Country <span class="require-pink">*</span></label></div>
+                            <div class="col-md-7">
+                                @Html.DropDownListFor(m => m.CountryId, (IEnumerable<SelectListItem>)ViewBag.Countries, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-5 control-label text-left"><label for="Phone">@Resources.Phone</label></div>
+                            <div class="col-md-2">
+                                @Html.TextBoxFor(m => m.PhoneCountryCode, new { maxlength = 3, @class = "form-control" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(m => m.Phone, new { maxlength = 50, @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-5 control-label text-left"><label for="MobilePhone">@Resources.MobilePhone</label></div>
+                            <div class="col-md-2">
+                                <input type="text" id="MobilePhoneCountryCode" name="MobilePhoneCountryCode" class="form-control" />
+                            </div>
+                            <div class="col-md-5">
+                                <input type="text" id="MobilePhone" name="MobilePhone" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-5 control-label text-left"><label for="Remarks">@Resources.Remarks</label></div>
+                            <div class="col-md-7">
+                                <textarea id="Remarks" name="Remarks" class="form-control"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-offset-5 col-md-7">
+                                <label class="checkbox">
+                                    <input type="checkbox" id="IsReceiveSpecialOffers" name="IsReceiveSpecialOffers" value="True" />
+                                    @Resources.MyDetails_Receive
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-offset-5 col-md-7">
+                                <label class="checkbox">
+                                    <input type="checkbox" id="IsReceiveNewsletters" name="IsReceiveNewsletters" value="True" />
+                                    @Resources.IWishSubscription
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="action-buttons margin-bottom-20">
+                        <div class="row">
+                            <div class="col-md-5 col-centered">
+                                <input type="submit" class="btn btn-primary" value="&gt; @Resources.Validate" /><div class="loader loader-small loader-inline hide"></div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <div class="form-order-shipping-tab1-rightbox">
+                    <form method="post" id="login-form">
+                        <div class="form-order-shipping-tab1-rightbox-header">
+                            <div class="form-order-shipping-tab1-rightbox-header-title">@Resources.ExistsCustomer</div>
+                            <div class="form-order-shipping-tab1-rightbox-header-remark">@Resources.Order_LoginDescription</div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-4 control-label text-right"><label for="LoginEmail">E-mail <span class="require-pink">*</span></label></div>
+                                <div class="col-md-7">
+                                    <input type="email" id="LoginEmail" name="Email" class="form-control" placeholder="@Resources.Email" required="required" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-4 control-label text-right"><label for="LoginPassword">@Resources.Password <span class="require-pink">*</span></label></div>
+                                <div class="col-md-7">
+                                    <input type="password" id="LoginPassword" name="Password" class="form-control" placeholder="@Resources.Password" required="required" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-11 control-label">
+                                    <a class="small pull-right" href="@Url.Content("~/ForgotPassword")">@Resources.ForgotPassword</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-offset-4 col-md-7">
+                                    <input type="submit" class="btn btn-primary" value="&gt; @Resources.Validate" />
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="form-order-shipping-tab1-rightbox">
+                    <form method="post" id="subscription-form">
+                        <div class="form-order-shipping-tab1-rightbox-header">
+                            <div class="form-order-shipping-tab1-rightbox-header-title">@Resources.Subscription</div>
+                            <div class="form-order-shipping-tab1-rightbox-header-remark">@MvcHtmlString.Create(Resources.Order_SubscriptionDescription)</div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <input type="text" id="SubscriptionEmail" name="SubscriptionEmail" class="form-control" value="" placeholder="Carte LeClug Golf" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <input type="text" id="SubscriptionPassword" name="SubscriptionPassword" class="form-control" value="" placeholder="Pass DLG Suprême" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-4 col-md-7">
+                                <input type="submit" class="btn btn-primary" value="&gt; @Resources.Validate" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

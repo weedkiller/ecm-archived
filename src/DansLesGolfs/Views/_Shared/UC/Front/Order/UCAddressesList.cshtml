@@ -1,0 +1,34 @@
+﻿@using DansLesGolfs.BLL
+@model List<Address>
+@if (Model.Count > 0)
+{
+    int i = 0;
+    foreach (Address it in Model)
+    {
+        <tr data-id="@it.AddressId" data-address-name="@it.AddressName" data-firstname="@it.Firstname" data-lastname="@it.Lastname" data-title-id="@it.TitleId" data-complement="@it.Complement" data-address="@it.Addresss" data-postal-code="@it.PostalCode" data-city-id="@it.CityId" data-city-name="@it.CityName" data-country="@it.Country" data-country-code="@it.MobilePhoneCountryCode" data-mobile="@it.MobilePhone" data-digicode="" data-floor="@it.Floor">
+            <td class="column-address-name">
+                <input type="radio" name="AddressId" value="@it.AddressId" @(i == 0 ? "checked=\"checked\"" : "") /> @it.AddressName
+            </td>
+            <td class="column-receipt-name">
+                @it.Firstname @it.Lastname
+            </td>
+            <td class="column-address">
+                @it.Addresss @it.CityName @it.CountryName @it.PostalCode
+            </td>
+            <td class="column-phone">
+                @(!String.IsNullOrEmpty(it.MobilePhone) ? it.MobilePhone : "")
+            </td>
+            <td class="column-tools">
+                <a href="javascript:void(0)" class="edit-link">@Resources.Edit</a>
+                <a href="javascript:void(0)" class="delete-link">X</a>
+            </td>
+        </tr>
+        i++;
+    }
+}
+else
+{
+    <tr>
+        <th colspan="5">@Resources.ThereIsNoAddress</th>
+    </tr>
+}

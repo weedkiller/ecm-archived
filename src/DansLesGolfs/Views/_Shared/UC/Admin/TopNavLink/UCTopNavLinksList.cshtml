@@ -1,0 +1,19 @@
+@using DansLesGolfs.BLL
+@model List<TopNavLink>
+@if (Model != null && Model.Any())
+{
+    foreach (TopNavLink link in Model)
+    {
+        <div class="topnavlink topnavlink-@link.TopNavLinkId" data-id="@link.TopNavLinkId">
+            <div>
+                <img src="@link.ImageUrl" class="ads_image" />
+            </div>
+            <div>
+                <input type="url" maxlength="255" name="link_url" value="@link.LinkUrl" placeholder="@Resources.LinkUrl" class="form-control" />
+            </div>
+            <a href="javascript:void(0);" class="delete-button">
+                <img src="@Url.Content("~/Assets/Admin/img/icons/icon-delete.png")" />
+            </a>
+        </div>
+    }
+}

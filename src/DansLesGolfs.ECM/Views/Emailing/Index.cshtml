@@ -1,0 +1,56 @@
+﻿@{
+    Layout = "~/Views/_Shared/MP/_Layout.cshtml";
+}
+@section head
+{
+}
+@section foot
+{
+    <script src="@Url.Content("~/Assets/Libraries/tinymce/tinymce.min.js")"></script>
+    <script>
+        $('.info-form').validate();
+        tinymce.init({
+            selector: "textarea.editor"
+        });
+    </script>
+}
+<h1>Not Complete Yet</h1>
+<form method="post" id="form-send-email" class="info-form">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        @Resources.EmailInformation
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-2 control-label">
+                                <label for="Subject">@Resources.Subject</label>
+                            </div>
+                            <div class="col-md-10">
+                                @Html.TextBox("Subject", (string)ViewBag.Name, new { Required = "Required", @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-2 control-label">
+                                <label for="Description">@Resources.Description</label>
+                            </div>
+                            <div class="col-md-10">
+                                @Html.TextArea("Description", (string)ViewBag.Description, new { Required = "Required", @class = "form-control editor", rows = 5 })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @Html.Hidden("id")
+    <input type="submit" id="submit" name="submit" value="@Resources.Next" class="btn btn-primary" />
+    <input type="reset" id="reset" name="reset" value="@Resources.Reset" class="btn" />
+    <a href="@Url.Content("~/EmailTemplate")" class="btn btn-default">@Resources.Back</a>
+</form>

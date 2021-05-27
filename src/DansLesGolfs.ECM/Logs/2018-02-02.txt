@@ -1,0 +1,20 @@
+2018-02-02 10:32:14.7085  10 Error                          DansLesGolfs.ECM.Controllers.BaseController System.NullReferenceException: Object reference not set to an instance of an object.
+   at DansLesGolfs.ECM.Controllers.EmailTemplateController.DoSaveSuccess(Int32 id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\EmailTemplateController.cs:line 112
+   at DansLesGolfs.ECM.Controllers.BaseECMCRUDController`1.Form() in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\BaseClass\BaseECMCRUDController.cs:line 457 System.NullReferenceException: Object reference not set to an instance of an object.
+   at DansLesGolfs.ECM.Controllers.EmailTemplateController.DoSaveSuccess(Int32 id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\EmailTemplateController.cs:line 112
+   at DansLesGolfs.ECM.Controllers.BaseECMCRUDController`1.Form() in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\BaseClass\BaseECMCRUDController.cs:line 457
+2018-02-02 10:32:27.7170  15 Error                          DansLesGolfs.ECM.Controllers.BaseController System.NullReferenceException: Object reference not set to an instance of an object.
+   at DansLesGolfs.ECM.Controllers.EmailTemplateController.DoSaveSuccess(Int32 id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\EmailTemplateController.cs:line 112
+   at DansLesGolfs.ECM.Controllers.BaseECMCRUDController`1.Form() in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\BaseClass\BaseECMCRUDController.cs:line 457 System.NullReferenceException: Object reference not set to an instance of an object.
+   at DansLesGolfs.ECM.Controllers.EmailTemplateController.DoSaveSuccess(Int32 id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\EmailTemplateController.cs:line 112
+   at DansLesGolfs.ECM.Controllers.BaseECMCRUDController`1.Form() in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\BaseClass\BaseECMCRUDController.cs:line 457
+2018-02-02 10:35:59.4771   5 Error                          DansLesGolfs.ECM.Controllers.BaseController System.NullReferenceException: Object reference not set to an instance of an object.
+   at DansLesGolfs.ECM.Controllers.EmailTemplateController.DoSaveSuccess(Int32 id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\EmailTemplateController.cs:line 112
+   at DansLesGolfs.ECM.Controllers.BaseECMCRUDController`1.Form() in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\BaseClass\BaseECMCRUDController.cs:line 457 System.NullReferenceException: Object reference not set to an instance of an object.
+   at DansLesGolfs.ECM.Controllers.EmailTemplateController.DoSaveSuccess(Int32 id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\EmailTemplateController.cs:line 112
+   at DansLesGolfs.ECM.Controllers.BaseECMCRUDController`1.Form() in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\BaseClass\BaseECMCRUDController.cs:line 457
+2018-02-02 10:36:37.7354   5 Error                          DansLesGolfs.ECM.Controllers.BaseController System.NullReferenceException: Object reference not set to an instance of an object.
+   at DansLesGolfs.ECM.Controllers.EmailTemplateController.DoSaveSuccess(Int32 id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\EmailTemplateController.cs:line 112
+   at DansLesGolfs.ECM.Controllers.BaseECMCRUDController`1.Form() in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\BaseClass\BaseECMCRUDController.cs:line 457 System.NullReferenceException: Object reference not set to an instance of an object.
+   at DansLesGolfs.ECM.Controllers.EmailTemplateController.DoSaveSuccess(Int32 id) in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\EmailTemplateController.cs:line 112
+   at DansLesGolfs.ECM.Controllers.BaseECMCRUDController`1.Form() in D:\Coding\ECM\DansLesGolfs.ECM\Libraries\BaseClass\BaseECMCRUDController.cs:line 457

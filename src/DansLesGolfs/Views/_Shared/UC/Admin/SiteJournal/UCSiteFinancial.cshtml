@@ -1,0 +1,197 @@
+﻿@using DansLesGolfs.BLL
+@model SiteFinancial
+@{
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    @Resources.Financial
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            <label for="MemberAmount">@Resources.MemberAmount</label>
+                        </div>
+                        <div class="col-md-8">
+                            @Html.TextBox("MemberAmount", Model.MemberAmount, new { maxlength = 100, @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            <label for="PaymentType">@Resources.PaymentType</label>
+                        </div>
+                        <div class="col-md-8">
+                            @Html.DropDownList("PaymentType", (List<SelectListItem>)ViewBag.PaymentTypesDropDownList, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            <label for="PaymentDate">@Resources.PaymentDate</label>
+                        </div>
+                        <div class="col-md-8">
+                            @Html.TextBox("PaymentDate", Model.PaymentDate.ToString("dd/MM/yyyy"), new { maxlength = 10, @class = "form-control datepicker" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            <label for="ClassicCard">Classic Card</label>
+                        </div>
+                        <div class="col-md-8">
+                            @Html.TextBox("ClassicCard", Model.ClassicCard, new { maxlength = 100, @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            <label for="ClassicCardTurnover">Classic Card Turnover</label>
+                        </div>
+                        <div class="col-md-8">
+                            @Html.TextBox("ClassicCardTurnover", Model.ClassicCardTurnover, new { maxlength = 100, @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            <label for="GolfCardTurnover">Golf Card Turnover</label>
+                        </div>
+                        <div class="col-md-8">
+                            @Html.TextBox("GolfCardTurnover", Model.GolfCardTurnover, new { maxlength = 100, @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            <label for="ClassicCorpoTurnover">Classic Corpo Turnover</label>
+                        </div>
+                        <div class="col-md-8">
+                            @Html.TextBox("ClassicCorpoTurnover", Model.ClassicCorpoTurnover, new { maxlength = 100, @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            <label for="RFAPractice">RFA Practice</label>
+                        </div>
+                        <div class="col-md-8">
+                            @Html.TextBox("RFAPractice", Model.RFAPractice, new { maxlength = 100, @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            <label for="RFAProshop">RFA Proshop</label>
+                        </div>
+                        <div class="col-md-8">
+                            @Html.TextBox("RFAProshop", Model.RFAProshop, new { maxlength = 100, @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            <label for="RFAField">RFA Field</label>
+                        </div>
+                        <div class="col-md-8">
+                            @Html.TextBox("RFAField", Model.RFAField, new { maxlength = 100, @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            <label for="RFAServices">RFA Services</label>
+                        </div>
+                        <div class="col-md-8">
+                            @Html.TextBox("RFAServices", Model.RFAServices, new { maxlength = 100, @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            <label for="RFACarts">RFA Carts</label>
+                        </div>
+                        <div class="col-md-8">
+                            @Html.TextBox("RFACarts", Model.RFACarts, new { maxlength = 100, @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            <label for="RFARestauration">RFA Restauration</label>
+                        </div>
+                        <div class="col-md-8">
+                            @Html.TextBox("RFARestauration", Model.RFARestauration, new { maxlength = 100, @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            <label for="RFATotal">RFA Total</label>
+                        </div>
+                        <div class="col-md-8">
+                            @Html.TextBox("RFATotal", Model.RFATotal, new { maxlength = 100, @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            <label for="AdsPackVisibility">Ads Pack Visibility</label>
+                        </div>
+                        <div class="col-md-8">
+                            @Html.TextBox("AdsPackVisibility", Model.AdsPackVisibility, new { maxlength = 100, @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            <label for="AdsAdditionalServices">Ads Additional Services</label>
+                        </div>
+                        <div class="col-md-8">
+                            @Html.TextBox("AdsAdditionalServices", Model.AdsAdditionalServices, new { maxlength = 100, @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            <label for="AdsShow">Ads Show</label>
+                        </div>
+                        <div class="col-md-8">
+                            @Html.TextBox("AdsShow", Model.AdsShow, new { maxlength = 100, @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            <label for="CommisionGFOnline">Commision GF Online</label>
+                        </div>
+                        <div class="col-md-8">
+                            @Html.TextBox("CommisionGFOnline", Model.CommisionGFOnline, new { maxlength = 100, @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

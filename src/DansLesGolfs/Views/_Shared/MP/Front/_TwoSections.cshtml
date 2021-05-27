@@ -1,0 +1,69 @@
+﻿@{
+}
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="@CultureHelper.GetCurrentNeutralCulture()" dir="@(CultureHelper.IsRightToLeft() ? "rtl" : "ltr")">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+    <title>@Html.MetaTitle(ViewBag.Title != null ? (string)ViewBag.Title : "")</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <meta name="og:app_id" content="@ViewBag.FBAppId" />
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/x-icon" href="@Url.Content("~/Assets/Front/img/favicon.ico")" />
+    @Styles.Render("~/Bundles/css")
+    @RenderSection("head", false)
+</head>
+<body class="two-sections @Html.GetBodyClasses()">
+    <div id="fb-root"></div>
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.async = true;
+            js.src = "//connect.facebook.net/en_US/all.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+    @Html.Partial("~/Views/_Shared/UC/Front/TopNav.cshtml")
+    <div id="container">
+        @Html.Partial("~/Views/_Shared/UC/Front/Header.cshtml")
+        <div id="content">
+            <div id="content-body">
+                <div id="sidebar">
+                    <!-- Search Filters -->
+                    @Html.Partial("~/Views/_Shared/UC/Front/SearchFilters.cshtml")
+                    <!-- End Search Filters -->
+                </div>
+                @RenderBody()
+            </div>
+        </div>
+        @Html.Partial("~/Views/_Shared/UC/Front/Footer.cshtml")
+    </div>
+    <a id="scroll-up-button" href="javascript:void(0)">Up</a>
+    @*@Html.Raw(JSNLog.JavascriptLogging.Configure())*@
+    <script>
+        window.FBAppId = '@ViewBag.FBAppId';
+        window.FBChannelUrl = '@Url.ServerUrl("~/Common/FBChannel")';
+        window.googleAPIKey = '@ViewBag.GoogleAPIKey';
+        window.defaultLatitude = '@ViewBag.DefaultLatitude';
+        window.defaultLongitude = '@ViewBag.DefaultLongitude';
+        window.locale = 'fr_FR';
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    @Scripts.Render("~/Bundles/js")
+    @if (((string)ViewBag.CurrentCulture).Contains("fr"))
+    {
+        <script src="@Url.Content("~/Assets/Libraries/dlg-cart-popup/i18n/fr-FR.js")"></script>
+        <script src="@Url.Content("~/Assets/Libraries/jquery.teesheet/i18n/fr-FR.js")"></script>
+        <script src="@Url.Content("~/Assets/Libraries/jquery-ui/i18n/datepicker-fr.js")"></script>
+        <script src="@Url.Content("~/Assets/Libraries/jquery-validation/localization/messages_fr.js")"></script>
+    }
+    @RenderSection("foot")
+    @Html.Partial("~/Views/_Shared/UC/Admin/AdminBar.cshtml")
+</body>
+</html>

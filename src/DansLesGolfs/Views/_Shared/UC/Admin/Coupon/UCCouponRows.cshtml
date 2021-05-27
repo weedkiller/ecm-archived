@@ -1,0 +1,22 @@
+﻿@using DansLesGolfs.Base
+@using DansLesGolfs.BLL
+@model List<Coupon>
+@{
+}
+@foreach (Coupon coupon in Model)
+{
+    <tr class="coupon-@coupon.CouponId" data-id="@coupon.CouponId">
+        <td class="column-checkbox">
+            <input class="coupon-@coupon.CouponId" type="checkbox" value="@coupon.CouponId" />
+        </td>
+        <td>
+            @coupon.CouponCode
+        </td>
+        <td class="coupon-@coupon.CouponId @(coupon.IsAvailable ? "success" : "danger")">
+            @(coupon.IsAvailable ? Resources.Yes : Resources.No)
+        </td>
+        <td>
+            <a href="javascript:void(0)" class="delete-link">@Resources.Delete</a>
+        </td>
+    </tr>
+}

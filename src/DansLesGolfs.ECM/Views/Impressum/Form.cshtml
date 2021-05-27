@@ -1,0 +1,69 @@
+﻿@{
+    Layout = "~/Views/_Shared/MP/_Layout.cshtml";
+}
+@section head
+{
+}
+@section foot
+{
+    <script src="@Url.Content("~/Assets/Libraries/tinymce/tinymce.min.js")"></script>
+    <script>
+        $('.info-form').validate();
+        tinymce.init({
+            selector: "textarea.editor"
+        });
+        $('.info-form').validate();
+    </script>
+}
+<form method="post" id="form-@ViewBag.ClassName" class="info-form">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        @Resources.PrivacyInformation
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    @if (ViewBag.LogonUserType == UserType.Type.SuperAdmin || ViewBag.LogonUserType == UserType.Type.Admin)
+                    {
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-3 control-label">
+                                    <label for="SiteId">@Resources.Site</label>
+                                </div>
+                                <div class="col-md-9">
+                                    @Html.DropDownList("SiteId", (IEnumerable<SelectListItem>)ViewBag.Sites, new { @class = "form-control", required = "required" })
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-3 control-label">
+                                <label for="Name">@Resources.Name</label>
+                            </div>
+                            <div class="col-md-9">
+                                @Html.TextBox("Name", (string)ViewBag.Name, new { Required = "Required", maxlength = 50, @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-3 control-label">
+                                <label for="Detail">@Resources.Detail</label>
+                            </div>
+                            <div class="col-md-9">
+                                @Html.TextArea("Detail", (string)ViewBag.Detail, new { Required = "Required", maxlength = 4000, rows = 8, @class = "form-control editor" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @Html.Hidden("id")
+    <input type="submit" id="submit" name="submit" value="@Resources.Save" class="btn btn-primary" />
+    <input type="reset" id="reset" name="reset" value="@Resources.Reset" class="btn" />
+    <a href="@Url.Content("~/Impressum")" class="btn btn-default">@Resources.Back</a>
+</form>

@@ -1,0 +1,36 @@
+﻿@using DansLesGolfs.Base
+@{
+}
+<div class="row">
+    <div class="col-md-12">
+        @if (DataManager.ToInt((object)ViewBag.id) <= 0)
+        {
+            <p>@Html.T("Please save product first.")</p>
+        }
+        else
+        {
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        @Resources.Variations
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <ul id="item-modifiers-list">
+                    </ul>
+                </div>
+            </div>
+            <div class="action-buttons">
+                <!--<div class="pull-left">
+                    <a href="javascript:void(0);" id="btn-save-modifiers" class="btn btn-primary">@Resources.SaveModifiers</a>
+                </div>
+                <div class="pull-right">
+                    <div class="panel-body">
+                        <a id="btn-add-modifier" class="btn btn-default" href="javascript:void(0)">@Resources.AddModifier</a>
+                        @Html.DropDownList("Modifiers", (IEnumerable<SelectListItem>)ViewBag.Modifiers)
+                    </div>
+                </div>-->
+            </div>
+        }
+    </div>
+</div>

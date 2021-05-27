@@ -1,0 +1,185 @@
+﻿@using DansLesGolfs.BLL
+@{
+    DateTime? fromDate = (DateTime?)ViewBag.FromDate;
+    DateTime? toDate = (DateTime?)ViewBag.ToDate;
+    fromDate = fromDate.HasValue ? fromDate.Value : DateTime.Today;
+    toDate = toDate.HasValue ? toDate.Value : DateTime.Today.AddDays(1);
+    string searchShapeIds = ViewBag.SearchShapeIds;
+    string searchGenreIds = ViewBag.SearchGenreIds;
+}
+<div id="product-filter">
+    <ul>
+        <li class="green-fees"><a href="#green-fees-tab">@MvcHtmlString.Create(Resources.ReserveGreenFee)</a></li>
+        @*<li class="stay" onclick="javascript:open('https://www.leclub-golf.com/?sid=news');"><a href="javascript:void(0);">@MvcHtmlString.Create(Resources.StayPackages)</a></li>*@
+        @*<li class="stay"><a href="#stay-tab">@MvcHtmlString.Create(Resources.StayPackages)</a></li>*@
+    @*<li class="stages"><a href="#golf-lesson-tab">@MvcHtmlString.Create(Resources.GolfLessons)</a></li>
+    <li class="practice"><a href="#driving-range-tab">@MvcHtmlString.Create(Resources.SearchDrivingRangeTab)</a></li>
+        <li class="dlg-shop"><a href="#dlg-shop-tab">DLG Shop</a></li>*@
+        <li class="ou-jouer"><a href="#where-to-play-tab">@MvcHtmlString.Create(Resources.WhereToPlay)</a></li>
+    </ul>
+    <div id="green-fees-tab" class="tab-content">
+        <h3 class="tab-headline">@Resources.Reserve</h3>
+        <h3 class="tab-headline">@Resources.AGreenFee,</h3>
+        <p class="tab-description">@Resources.FromOurSelection</p>
+        <form method="post" class="form" action="@Url.Content("~/GreenFee")">
+            <fieldset>
+                <legend>@Resources.Golf</legend>
+                @Html.DropDownList("RegionId", (IEnumerable<SelectListItem>)ViewBag.FranceRegions)
+                @Html.DropDownList("StateId", (IEnumerable<SelectListItem>)ViewBag.FranceStates)
+                @Html.DropDownList("SiteId", (IEnumerable<SelectListItem>)ViewBag.FranceSites)
+            </fieldset>
+            <fieldset>
+                <div class="form-group">
+                    <label>@Resources.From</label>
+                    <input type="text" name="FromDate" value="@fromDate.Value.ToString("dd/MM/yyyy")" class="datepicker form-control" />
+                </div>
+                <div class="form-group">
+                    <label>@Resources.End</label>
+                    <input type="text" name="ToDate" value="@toDate.Value.ToString("dd/MM/yyyy")" class="datepicker form-control" />
+                </div>
+                @*@Html.DropDownList("TimeSlot", (IEnumerable<SelectListItem>)ViewBag.TimeSlots)*@
+                <div class="margin-top-10">
+                    <label for="IncludePractice" class="text-uppercase">@Resources.PracticeCard</label>
+                    <label for="IncludePractice"><input type="checkbox" id="IncludePractice" name="IncludePractice" value="true" @(DataManager.ToBoolean((object)ViewBag.IncludePractice) ? "checked=\"checked\"" : "") />@Resources.Include</label>
+                </div>
+            </fieldset>
+            <div class="action-buttons">
+                <input type="submit" class="btn btn-primary" value="&gt; @Resources.Search" />
+            </div>
+            <input type="hidden" name="ItemType" value="green-fees" />
+        </form>
+    </div>
+    @*<div id="stay-tab" class="tab-content">
+        <h3 class="tab-headline">@Resources.Reserve</h3>
+        <h3 class="tab-headline">@Resources.YourStay</h3>
+        <p class="tab-description">@Resources.FromOurSelectionOfOffers</p>
+        <form method="post" class="form" action="@Url.Content("~/StayPackage")">
+            <fieldset>
+                <legend>@Resources.Destination</legend>
+                @Html.DropDownList("CountryId", (IEnumerable<SelectListItem>)ViewBag.DropDownStayCountries)
+                @Html.DropDownList("RegionId", (IEnumerable<SelectListItem>)ViewBag.DropDownRegionsByCountry)
+                @Html.DropDownList("StateId", (IEnumerable<SelectListItem>)ViewBag.DropDownStates)
+                @Html.DropDownList("SiteId", (IEnumerable<SelectListItem>)ViewBag.DropDownSites)
+            </fieldset>
+            <fieldset>
+                <div class="form-group">
+                    <label>@Resources.DepartureMonth</label>
+                    @Html.DropDownList("DepartureMonth", (IEnumerable<SelectListItem>)ViewBag.DepartureMonths)
+                </div>
+            </fieldset>
+            <div class="action-buttons">
+                <input type="submit" class="btn btn-primary" value="&gt; @Resources.Search" />
+            </div>
+            <input type="hidden" name="ItemType" value="stay-package" />
+        </form>
+    </div>
+    <div id="golf-lesson-tab" class="tab-content">
+        <h3 class="tab-headline">@Resources.Reserve</h3>
+        <h3 class="tab-headline">@Resources.YourStage</h3>
+        <p class="tab-description">@Resources.FromOurSelectionOfOffers</p>
+        <form method="post" class="form" action="@Url.Content("~/GolfLesson")">
+            <fieldset>
+                <legend>@Resources.Destination</legend>
+                @Html.DropDownList("CountryId", (IEnumerable<SelectListItem>)ViewBag.DropDownStageCountries)
+                @Html.DropDownList("RegionId", (IEnumerable<SelectListItem>)ViewBag.DropDownRegionsByCountry)
+                @Html.DropDownList("StateId", (IEnumerable<SelectListItem>)ViewBag.DropDownStates)
+                @Html.DropDownList("SiteId", (IEnumerable<SelectListItem>)ViewBag.DropDownSites)
+                @Html.DropDownList("GolfLessonCategoryId", (IEnumerable<SelectListItem>)ViewBag.DropDownGolfLessonCategories)
+            </fieldset>
+            <fieldset class="compact">
+                <legend>@Resources.DepartureMonth</legend>
+                @Html.DropDownList("DepartureMonth", (IEnumerable<SelectListItem>)ViewBag.DepartureMonths)
+            </fieldset>
+            <fieldset>
+                <legend>@Resources.Accommodation</legend>
+                <div class="row">
+                    <div class="col-md-10">
+                        @Resources.IncludeDealsWithAccommodation
+                    </div>
+                    <div class="col-md-2">
+                        <input type="checkbox" id="IncludeAccommodation" name="IncludeAccommodation" @(DataManager.ToBoolean((object)ViewBag.IncludeAccommodation) ? "checked=\"checked\"" : "") value="true" />
+                    </div>
+                </div>
+            </fieldset>
+            <div class="action-buttons">
+                <input type="submit" class="btn btn-primary" value="&gt; @Resources.Search" />
+            </div>
+            <input type="hidden" name="ItemType" value="driving-range" />
+        </form>
+    </div>
+    <div id="driving-range-tab" class="tab-content">
+        <h3 class="tab-headline">@Resources.BuyA</h3>
+        <h3 class="tab-headline">Practice</h3>
+        <p class="tab-description">@Resources.BuyPracticeCard</p>
+        <form method="post" class="form" action="@Url.Content("~/DrivingRange")">
+            <fieldset>
+                <legend>@Resources.Golf</legend>
+                @Html.DropDownList("RegionId", (IEnumerable<SelectListItem>)ViewBag.FranceRegions)
+                @Html.DropDownList("StateId", (IEnumerable<SelectListItem>)ViewBag.FranceStates)
+                @Html.DropDownList("SiteId", (IEnumerable<SelectListItem>)ViewBag.FranceSites)
+            </fieldset>
+            <div class="action-buttons">
+                <input type="submit" class="btn btn-primary" value="&gt; @Resources.Search" />
+            </div>
+            <input type="hidden" name="ItemType" value="golf-lesson" />
+        </form>
+    </div>
+    <div id="dlg-shop-tab" class="tab-content">
+        <h3 class="tab-headline">@Resources.Welcome</h3>
+        <h3 class="tab-headline">@Resources.ToTheDLGShop</h3>
+        <p class="tab-description">@Resources.FindOutOurLatestHolidayDeals</p>
+        <form method="post" class="form" action="@Url.Content("~/DLGShop")">
+            <fieldset>
+                <legend>@Resources.Product</legend>
+                <div id="dlg-shop-checkboxes">
+                    @foreach (ModifierChoice c in (List<ModifierChoice>)ViewBag.FilterShapes)
+                    {
+                        <div class="checkbox-control">
+                            <label for="modifier-choice-@c.ChoiceId">@c.ChoiceName</label><input type="checkbox" id="modifier-choice-@c.ChoiceId" name="SearchShapeIds" value="@c.ChoiceId" @(searchShapeIds.Contains(c.ChoiceId.ToString()) ? " checked=\"checked\"" : "") />
+                        </div>
+                    }
+                    @foreach (ModifierChoice c in (List<ModifierChoice>)ViewBag.FilterGenres)
+                    {
+                        <div class="checkbox-control">
+                            <label for="modifier-choice-@c.ChoiceId">@c.ChoiceName</label><input type="checkbox" id="modifier-choice-@c.ChoiceId" name="SearchGenreIds" value="@c.ChoiceId" @(searchGenreIds.Contains(c.ChoiceId.ToString()) ? " checked=\"checked\"" : "") />
+                        </div>
+                    }
+                    <div class="checkbox-control">
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                @Html.DropDownList("ItemCategoryId", (IEnumerable<SelectListItem>)ViewBag.DropDownItemCategories)
+                @Html.DropDownList("ItemSubCategoryId", (IEnumerable<SelectListItem>)ViewBag.DropDownItemSubCategories)
+                @Html.DropDownList("SearchDexterityId", (IEnumerable<SelectListItem>)ViewBag.DropDownDexterities)
+                @Html.DropDownList("SearchLevelId", (IEnumerable<SelectListItem>)ViewBag.DropDownLevels)
+                @Html.DropDownList("SearchShaftId", (IEnumerable<SelectListItem>)ViewBag.DropDownShafts)
+            </fieldset>
+            <div class="action-buttons">
+                <input type="submit" class="btn btn-primary" value="&gt; @Resources.Search" />
+            </div>
+            <input type="hidden" name="ItemType" value="product" />
+        </form>
+    </div>*@
+    <div id="where-to-play-tab" class="tab-content">
+        <h3 class="tab-headline">@Resources.FindAGolfCourse</h3>
+        <p class="tab-description">@Resources.FindAllOur</p>
+        <p class="tab-description">@Resources.GoodDeals</p>
+        <form method="post" class="form where-to-play-form" action="@Url.Content("~/FindCourse")">
+            <fieldset>
+                <legend>@Resources.Golf</legend>
+                @Html.DropDownList("CountryId", (IEnumerable<SelectListItem>)ViewBag.DropDownCountries)
+                @Html.DropDownList("RegionId", (IEnumerable<SelectListItem>)ViewBag.DropDownRegionsByCountry)
+                @Html.DropDownList("StateId", (IEnumerable<SelectListItem>)ViewBag.DropDownStates)
+                @Html.DropDownList("SiteId", (IEnumerable<SelectListItem>)ViewBag.DropDownSites)
+            </fieldset>
+            <fieldset>
+                <div id="search-map" class="map-canvas"></div>
+            </fieldset>
+            <div class="action-buttons">
+                <input type="submit" class="btn btn-primary" value="&gt; @Resources.Search" />
+            </div>
+            <input type="hidden" name="ItemType" value="golf-lesson" />
+        </form>
+    </div>
+</div>

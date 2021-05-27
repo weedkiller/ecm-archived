@@ -1,0 +1,53 @@
+﻿@using DansLesGolfs.Base
+@{
+    Layout = "~/Views/_Shared/MP/_Admin.cshtml";
+}
+@section head
+{
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Assets/Libraries/uploadifive/uploadifive.css")" />
+}
+@section foot
+{
+    <script>
+        window.itemId = '@ViewBag.id';
+    </script>
+    <script src="@Url.Content("~/Assets/Libraries/uploadifive/jquery.uploadifive.min.js")"></script>
+    <script src="@Url.Content("~/Assets/Admin/scripts/page/slideshow.js")"></script>
+}
+<div id="page-slideshow">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                @Html.T("Slideshow Images")
+            </h3>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>@Resources.ItemImageUploadDescription</p>
+                    <input type="file" accept="image/*" id="slideshow-file" />
+                </div>
+            </div>
+            <ul id="images-list"></ul>
+            <div class="action-buttons">
+                <button id="save-slideshow-button" class="btn btn-primary">@Resources.Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="slide-save-success-dialog" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">@Resources.SaveSlideImagesSuccessful</h4>
+            </div>
+            <div class="modal-body">
+                <p>@Resources.SaveSlideImagesSuccessful</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">@Resources.Close</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

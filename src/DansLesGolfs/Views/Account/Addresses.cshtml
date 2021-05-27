@@ -1,0 +1,117 @@
+﻿@using DansLesGolfs
+@using DansLesGolfs.BLL
+@{
+    ViewBag.Title = Resources.Address;
+    Layout = "~/Views/_Shared/MP/Front/_Default.cshtml";
+}
+@section head
+{
+    <link rel="stylesheet" type="text/css" href="@Href("~/Assets/Front/css/account.css")">
+}
+@section foot
+{
+    <script>
+        jQuery(function ($) {
+            $('.address-box:eq(0) input[type=radio]').prop('checked', true);
+        });
+
+        function deleteAddress(addressid) {
+
+            var r = confirm("Are you sure to delete this Address?");
+            if (r == true) {
+
+                location.href = 'DeleteAddress?id=' + addressid;
+            } else {
+                txt = "You pressed Cancel!";
+            }
+        }
+    </script>
+}
+<form method="post" id="form-@ViewBag.ClassName" class="info-form" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="panel panel-default">
+                <div class="panel-heading" style="float:left;width:100%">
+                    <div style="float: left; width: 75%;">
+                        <h3 class="panel-title" style="color: #d80927;">
+                            @Html.T(Resources.MyAddresses)
+                        </h3>
+                    </div>
+                    <div style="float:left;width:25%">
+                        <input type="button" id="add" name="add" value="@Html.T(" > " + Resources.AddAddress)" class="btn btn-primary" style="padding:5px;width:150px;" onclick="location.href='@Url.Content("~/Account/AddressesDetail")'" />
+                    </div>
+                </div>
+                <div style="height:40px;">&nbsp</div>
+                @{int i = 1;}
+                @foreach (var item in (List<Address>)ViewBag.ListAddress)
+                {
+                    <text>
+
+                <div class="address-box panel-body" style="width: 100%; border-top: 1px solid #ddd;padding-left:5px;position:relative; ">
+
+                    <div style="float: left; margin-right :5px;margin-top:70px "><input type="radio" name="radio">&nbsp</div>
+                    <div class="panel-body" style="float: left; width: 50%; border: 1px solid #ddd; border-top-right-radius: 3px; border-top-left-radius: 3px; ">
+                        <div style="float: left; z-index: 9999; margin-left: -30px; margin-top: -30px; position: absolute; padding-left: 12px; padding-top: 6px; color: #FFF; background: url(../Assets/Front/img/account/icon_number_green.png) no-repeat; width: 30px; height: 30px; ">@i</div>
+                        <div style="margin-top:0px;margin-bottom:10px;font-weight:bold;">
+                            @item.AddressName &nbsp&nbsp
+                        </div>
+                        @if (!String.IsNullOrEmpty(item.Firstname) || !String.IsNullOrEmpty(item.Lastname))
+                        {
+                            <div style="margin-top:0px;margin-bottom:10px;">
+                                @Html.T(item.Firstname) &nbsp&nbsp @Html.T(item.Lastname)&nbsp&nbsp
+                            </div>
+                        }
+                        @if (!String.IsNullOrEmpty(item.Addresss))
+                        {
+                            <div style="margin-top:0px;margin-bottom:5px;">
+                                @item.Addresss &nbsp&nbsp
+                            </div>
+                        }
+                        @if (!String.IsNullOrEmpty(item.PostalCode))
+                        {
+                            <div style="margin-top:0px;margin-bottom:5px;">
+                                @Html.T(item.PostalCode) &nbsp&nbsp  @Html.T(item.CityName) &nbsp&nbsp
+                            </div>
+                        }
+                        @if (!String.IsNullOrEmpty(item.CountryName))
+                        {
+                            <div style="margin-top:0px;margin-bottom:10px;">
+                                @Html.T(item.CountryName) &nbsp&nbsp
+                            </div>
+                        }
+                        @if (!string.IsNullOrEmpty(item.Floor))
+                        {
+                            <div style="margin-top: 2px; margin-bottom: 2px;">
+                                @Resources.Floor @item.Floor &nbsp&nbsp
+                            </div>
+                        }
+                        @if (!string.IsNullOrEmpty(item.Phone))
+                        {
+                            <div style="margin-top:2px;margin-bottom:2px;">
+                                @(String.IsNullOrEmpty(item.PhoneCountryCode) ?  item.Phone : item.PhoneCountryCode + " " + item.Phone) &nbsp&nbsp
+                            </div>
+                        }
+                    </div>
+                    <div class="button-del-modify-address" style="position:absolute;bottom: 16px;left: 29em;">
+                        <div style="float: left;padding-right: 10px;">
+
+                            <input type="button" id="edit" name="edit" value="&gt; @Resources.Edit" class="btn btn-primary" onclick="location.href='@Url.Content("~/Account/AddressesDetail/" + item.AddressId)'" style="padding-bottom: 5px; padding-top: 5px; width: 120px;" />
+                        </div>
+                        <div style="float: left;">
+
+                            <input type="button" id="delete" name="delete" value="&gt; @Resources.Remove" class="btn btn-primary" onclick="return deleteAddress(@item.AddressId)" style="width:120px; padding-bottom:5px;padding-top:5px;" />
+                        </div>
+                    </div>
+                </div>
+
+                    </text>
+                                i++;
+                }
+
+            </div>
+
+
+        </div>
+    </div>
+</form>

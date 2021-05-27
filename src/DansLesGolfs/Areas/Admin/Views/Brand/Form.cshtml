@@ -1,0 +1,70 @@
+﻿@using DansLesGolfs.Base
+@{
+    Layout = "~/Views/_Shared/MP/_Admin.cshtml";
+}
+@section head
+{
+}
+@section foot
+{
+    <script>
+        $('.info-form').validate();
+    </script>
+}
+<form method="post" id="form-@ViewBag.ClassName" class="info-form" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        @Resources.BrandInformation
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-2 control-label">
+                                <label for="BrandName">@Resources.BrandName</label>
+                            </div>
+                            <div class="col-md-10">
+                                @Html.TextBox("BrandName", (string)ViewBag.BrandName, new { Required = "Required", maxlength = 100, @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-2 control-label">
+                                <label for="BrandDesc">@Resources.Description</label>
+                            </div>
+                            <div class="col-md-10">
+                                @Html.TextArea("BrandDesc", (string)ViewBag.BrandDesc, new { Rows = 5, maxlength = 4000, @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-2 control-label">
+                                <label for="BrandImage">@Resources.Logo</label>
+                            </div>
+                            <div class="col-md-10">
+                                @if(ViewBag.BrandImage != null && ViewBag.BrandImage != "")
+                                {
+                                    <img src="@Url.Content("~/Uploads/Brands/" + ViewBag.BrandImage)" />
+                                }
+                                else
+                                {
+                                    <img src="@Url.Content("~/Assets/Front/img/no-image-200x100.png")" />
+                                }
+                                <input type="file" id="BrandImage" name="BrandImage" accept="gif,png,jpg,jpeg,svg" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" name="id" value="@ViewBag.id" />
+    <input type="submit" id="submit" name="submit" value="@Resources.Save" class="btn btn-primary" />
+    <input type="reset" id="reset" name="reset" value="@Resources.Reset" class="btn" />
+    <a href="@Url.Content("~/Admin/Brand")" class="btn btn-default">@Resources.Back</a>
+</form>

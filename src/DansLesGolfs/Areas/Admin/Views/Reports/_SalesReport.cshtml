@@ -1,0 +1,135 @@
+﻿@using DansLesGolfs.Base
+@using DansLesGolfs.BLL
+@model SalesReportModel
+
+@{
+    Layout = "~/Views/_Shared/MP/_Admin.cshtml";
+}
+@section head
+{
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="~/Content/css/bootstrap-table.css">
+    <style>
+        .modal-dialog {
+            left: 0 !important;
+            width: 100% !important;
+            padding:20px;
+            height:550px;
+        }
+
+       .modal-content {
+           
+            padding:10px;
+        }
+    </style>
+
+}
+
+@section foot
+{
+    <script>
+        $(function () {
+
+            $('#myModal').bind('hidden.bs.modal', function () {
+                $("html").css("margin-right", "0px");
+            });
+            $('#myModal').bind('show.bs.modal', function () {
+                $("html").css("margin-right", "-15px");
+            });
+
+        });
+    </script>
+
+    <script type="text/javascript" src="~/Scripts/tableExport.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.base64.js"></script>
+    <script type="text/javascript" src="~/Scripts/html2canvas.js"></script>
+    <script type="text/javascript" src="~/Scripts/jspdf/libs/sprintf.js"></script>
+    <script type="text/javascript" src="~/Scripts/jspdf/jspdf.js"></script>
+    <script type="text/javascript" src="~/Scripts/jspdf/libs/base64.js"></script>
+}
+
+<style type="text/css">
+    .float-left {
+        float: left;
+    }
+
+    .th-salesreport {
+    }
+
+    .text-center {
+        text-align: center;
+    }
+
+
+</style>
+
+
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="float-left col-md-2">Start Date</div>
+        <div class="float-left col-md-4">
+            <div class="input-group date form_date startdate" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input1" data-link-format="yyyy-mm-dd">
+                <input class="form-control" size="16" type="text" value="" readonly>
+                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+            </div>
+            <input type="hidden" id="dtp_input1" value="" /><br />
+        </div>
+
+        <div class="float-left col-md-2">End Date</div>
+        <div class="float-left col-md-4">
+            <div class="input-group date form_date enddate float-left" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                <input class="form-control" size="16" type="text" value="" readonly>
+                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+            </div>
+            <input type="hidden" id="dtp_input2" value="" /><br />
+        </div>
+
+
+    </div>
+    <div style="clear: both"></div>
+    <br />
+    <div class="col-md-12">
+        <a href="@Url.Action("GeneratePDF", "Reports")" target="_blank">
+            <button type="button" class="btn btn-danger">
+                <img src="~/Content/icons/pdf.png" width="16" height="16" />
+                Export Pdf</button></a>
+        <button type="button" class="btn btn-success" onclick="$('#tablesalesreport').tableExport({type:'excel',escape:'false'});">
+            <img src="~/Content/icons/xls.png" width="16" height="16" />
+            Export Excel</button>
+        <button type="button" class="btn btn-info" data-toggle="modal" id="showreportbutton" data-target=""><span class="glyphicon glyphicon-share" aria-hidden="true" style=""></span> Show Report</button>
+       <button type="button" class="btn pull-right btn-warning" data-toggle="modal" id="showfullscreentbutton" data-target="#myModal"><span class="glyphicon glyphicon-zoom-in" aria-hidden="true" style=""></span> Show FullScreen</button>
+    </div>
+    <div style="clear: both"></div>
+    <br />
+    <div class="col-md-12">
+        <div style="overflow: auto; height: 600px;" id="SalesData">
+
+            @Html.Partial("_SalesTableData", Model)
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="position:absolute;" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Sales Report</h4>
+            </div>
+            <div class="" id="SalesDatapopup" style="">
+
+                @Html.Partial("_SalesTableData", Model)
+            </div>
+             <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+      </div>
+        </div>
+    </div>
+</div>
+
+
+
+

@@ -1,0 +1,7 @@
+﻿@using DansLesGolfs
+@using DansLesGolfs.BLL
+@model ItemDlgCardCore
+
+<div class="form-group">
+    @Html.DropDownListFor(m => m.itemPriceDlgCardId, new SelectList(Model.ItemPriceDlgCardList, "ItemPriceId", "Price"), new { @data_val = "true", @class = "form-control" })
+</div>

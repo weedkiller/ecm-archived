@@ -1,0 +1,18 @@
+@using DansLesGolfs.BLL
+@model List<DansLesGolfs.BLL.ItemReview>
+<div id="item-reviews">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="review-panel">
+                @Resources.Review
+                <div class="starrr review-stars" data-rating="@ViewBag.YourRating" title="@(ViewBag.AverageRating > 0 ? Resources.WriteYourReview : Resources.BeTheFirstToReview)"></div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <a href="#rating-popup" id="post-comment-link"><img src="@Url.Content("~/Assets/Front/img/icon-comments-green.png")" style="margin-right: 10px" /> @Resources.MakeAComment</a>
+        </div>
+    </div>
+    <div id="reviews-list">
+        @Html.Partial("~/Views/_Shared/UC/Front/Item/UCItemReviews.cshtml", Model)
+    </div>
+</div>

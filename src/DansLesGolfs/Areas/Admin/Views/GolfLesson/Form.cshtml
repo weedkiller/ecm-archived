@@ -1,0 +1,79 @@
+﻿@using DansLesGolfs.Base
+@{
+    Layout = "~/Views/_Shared/MP/_Admin.cshtml";
+}
+@section head
+{
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Assets/Libraries/uploadifive/uploadifive.css")" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Assets/Libraries/bootstrap-tagsinput/bootstrap-tagsinput.css")" />
+}
+@section foot
+{
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    <script>
+        window.itemId = '@ViewBag.id';
+        window.itemTypeId = '@ViewBag.ItemTypeId';
+        window.latitude = '@DataManager.ToDecimal(ViewBag.Latitude).ToString(System.Globalization.CultureInfo.InvariantCulture)';
+        window.longitude = '@DataManager.ToDecimal(ViewBag.Longitude).ToString(System.Globalization.CultureInfo.InvariantCulture)';
+        window.defaultLatitude = '@DataManager.ToDecimal(ViewBag.DefaultLatitude).ToString(System.Globalization.CultureInfo.InvariantCulture)';
+        window.defaultLongitude = '@DataManager.ToDecimal(ViewBag.DefaultLongitude).ToString(System.Globalization.CultureInfo.InvariantCulture)';
+        window.deleteText = '@Resources.Delete';
+        window.confirmDeleteText = '@MvcHtmlString.Create(Resources.ConfirmDeleteMessage)';
+        jQuery(document).ready(function () {
+            if (window.itemId > 0) {
+                loadItemImages();
+            }
+        });
+    </script>
+    <script src="@Url.Content("~/Assets/Libraries/uploadifive/jquery.uploadifive.min.js")"></script>
+    <script src="@Url.Content("~/Assets/Libraries/bootstrap-tagsinput/bootstrap-tagsinput.min.js")"></script>
+    <script src="@Url.Content("~/Assets/Libraries/tinymce/tinymce.min.js")"></script>
+    <script src="@Url.Content("~/Assets/Admin/scripts/page/product.js")"></script>
+    <script src="@Url.Content("~/Assets/Admin/scripts/page/item-map.js")"></script>
+}
+<form method="post" id="form-@ViewBag.ClassName" class="info-form">
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#product-info" data-toggle="tab">@Resources.ProductInfo</a></li>
+        <li><a href="#product-images" data-toggle="tab">@Resources.ProductImages</a></li>
+        <li><a href="#item-map" data-toggle="tab">@Resources.Map</a></li>
+        <li><a href="#item-advanced" data-toggle="tab">@Resources.Advanced</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="product-info">@Html.Partial("~/Views/_Shared/UC/Admin/Item/UCGoftLessonInfo.cshtml")</div>
+        <div class="tab-pane" id="product-images">@Html.Partial("~/Views/_Shared/UC/Admin/Item/UCProductImages.cshtml")</div>
+        <div class="tab-pane" id="item-map">@Html.Partial("~/Views/_Shared/UC/Admin/Item/UCMap.cshtml")</div>
+        <div class="tab-pane" id="item-advanced">@Html.Partial("~/Views/_Shared/UC/Admin/Item/UCAdvanced.cshtml")</div>
+    </div>
+    <input type="hidden" name="id" value="@ViewBag.id" />
+    <input type="submit" id="submit" name="submit" value="@Resources.Save" class="btn btn-primary" />
+    <input type="reset" id="reset" name="reset" value="@Resources.Reset" class="btn" />
+    <a href="@Url.Content("~/Admin/GolfLesson")" class="btn btn-default">@Resources.Back</a>
+</form>
+<!-- Product Modifier Form Popup -->
+<div style="display:none">
+    <div class="row">
+        <div id="modifier-form-popup" class="col-lg-12">
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-4 control-label">
+                        <label for="MailingListName">@Resources.ChoiceName</label>
+                    </div>
+                    <div class="col-md-8">
+                        @Html.TextBox("ChoiceName", (string)ViewBag.MailingListName, new { Required = "Required", @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-2 control-label">
+                        <label for="Price">@Resources.Price</label>
+                    </div>
+                    <div class="col-md-10">
+                        @Html.TextBox("Price", DataManager.ToDecimal((object)ViewBag.Price).ToString("#,##0.00"), new { type = "number", min = 0, @class = "input-x-small text-right" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Product Modifier Form Popup -->

@@ -1,0 +1,138 @@
+﻿@using DansLesGolfs
+@using DansLesGolfs.BLL
+@model List<AccountOrder>
+
+@{
+    ViewBag.Title = Resources.MyOrders;
+    Layout = "~/Views/_Shared/MP/Front/_Default.cshtml";
+}
+@section head
+{
+}
+@section foot
+{
+    <script src="@Url.Content("~/Assets/Front/scripts/pages/account-order.js")"></script>
+}
+<style>
+    #order-table {
+        border: 1px solid #d0d0d0;
+        width: 100%;
+    }
+
+    .order-box-header h1 {
+        height: 35px;
+        background-color: #e7e7e7;
+        color: #d80927;
+        font-weight: 700;
+        font-size: 17px;
+        padding: 10px;
+        border-bottom: 1px solid #d0d0d0;
+        margin-bottom: 0;
+    }
+
+    .order-box-title th {
+        padding: 10px;
+        height: 40px;
+        line-height: 20px;
+        font-weight: 700;
+        font-size: 14px;
+        background-color: #fafafa;
+        border-bottom: 1px solid #d0d0d0;
+        text-align: center;
+    }
+
+
+    #order-table tbody td {
+        padding: 20px 10px;
+    }
+
+        #order-table tbody td a {
+            font-weight: 700;
+        }
+
+    .clear {
+        clear: both;
+    }
+
+    .order-box-content {
+        min-height: 60px;
+        padding: 10px 17px;
+        border-bottom: 1px solid #d0d0d0;
+        background-color: #f5f5f5;
+        text-align: center;
+        overflow: hidden;
+    }
+</style>
+
+
+
+<div id="page-account-orders">
+    <div class="row margin-bottom-40">
+        <div class="col-md-12">
+            <table id="order-table">
+                <thead>
+                    <tr class="order-box-header">
+                        <th colspan="5"><h1>@Resources.MyOrders</h1></th>
+                    </tr>
+                </thead>
+                <tr class="order-box-title">
+                    <th class="order-box-title-Salestitle">@Resources.Salestitle</th>
+                    <th class="order-box-title-Ordertitle text-center">@Resources.Ordertitle</th>
+                    <th class="order-box-title-Datetitle text-center">@Resources.Datetitle</th>
+                    <th class="order-box-title-Amounttitle text-center">@Resources.Amounttitle</th>
+                    <th class="order-box-title-Deliverystatustitle text-center">@Resources.Deliverystatustitle</th>
+                </tr>
+                <tbody>
+                    @foreach (var data in Model)
+                    {
+                        <tr class="order-box-content">
+                            <td class="order-box-title-Salescontent text-lineheight">@data.VendorName</td>
+                            <td class="order-box-title-Ordercontent text-center text-lineheight">@data.OrderNumber</td>
+                            <td class="order-box-title-Datecontent text-center text-lineheight">@data.OrderDate.ToShortDateString()</td>
+                            <td class="order-box-title-Amountcontent text-center text-lineheight">@data.TotalPrice.ToString("#,##0.00") &euro;</td>
+                            <td class="order-box-title-Deliverystatuscontent text-center">
+                                <a href="@Url.Action("OrdersDetail", "Account", new { @orderId = data.OrderId })" class="text-lineheight">@Html.Raw(Resources.DetailsOfTheOrder)</a> <br />
+                                <a href="@Url.Action("ViewOrderInvoice", "Account", new { @id = data.OrderId })" target="_blank">@Html.Raw(Resources.ChangingOfInvoice)</a> <br />
+                                <a href="javascript:void(0)" class="order-help-link" data-id="@data.OrderId">@Resources.Help</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<a id="help-popup-link" href="#help-popup" style="display: none;"></a>
+<div id="help-popup" style="display: none;" data-id="0">
+    <p>@MvcHtmlString.Create(Resources.OrderHelpText)</p>
+    <form id="order-help-form">
+        <div class="form-group">
+            <label for="OrderHelpSubject">@MvcHtmlString.Create(Resources.Subject)</label>
+            <div class="input-icon">
+                <input type="text" id="OrderHelpSubject" name="OrderHelpSubject" class="form-control" required="required">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="OrderHelpMessage">@MvcHtmlString.Create(Resources.Message)</label>
+            <div class="input-icon">
+                <textarea id="OrderHelpMessage" name="OrderHelpMessage" class="form-control" rows="5" required="required"></textarea>
+            </div>
+        </div>
+        <div class="form-actions">
+            <button id="submit-button" class="btn btn-primary pull-right">
+                &gt; @Resources.Send
+            </button>
+            <a href="javascript:void(0);" class="close-button btn btn-default pull-right margin-right-10">
+                &gt; @Resources.Close
+            </a>&nbsp;
+        </div>
+    </form>
+</div>
+<a id="help-thankyou-popup-link" href="#help-thankyou-popup" style="display: none;"></a>
+<div id="help-thankyou-popup" style="display: none;" data-id="0">
+    <h3>@MvcHtmlString.Create(Resources.YourRequestHasBeenSent)</h3>
+    <p>@MvcHtmlString.Create(Resources.OrderHelpThankYouText)</p>
+    <div class="form-actions">
+        <button id="submit-button" class="btn btn-primary pull-right">OK</button>
+    </div>
+</div>

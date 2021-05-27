@@ -1,0 +1,171 @@
+﻿@using DansLesGolfs
+@{
+    ViewBag.Title = Resources.MyAddresses;
+    Layout = "~/Views/_Shared/MP/Front/_Default.cshtml";
+
+}
+@section head
+{
+    <link rel="stylesheet" type="text/css" href="@Href("~/Assets/Front/css/account.css")" >
+
+    <style>
+        #uniform-CountryId {
+            width: 310px !important;
+           
+        }
+        .dropdown-list-contry > .selector{
+           width: 310px !important;
+            font-style:normal;
+        }
+
+        .dropdown-list-contry > .selector > span{
+           width: 304px !important;
+        }
+    </style>
+}
+@section foot
+{
+    <script type="text/javascript" src="@Href("~/Assets/Front/scripts/pages/account-address.js")"></script>
+}
+
+
+
+
+<form method="post" id="form-aa" class="info-form" enctype="multipart/form-data" action="@Url.Content("~/Account/AddressesDetail")">
+    <div class="row">
+        <div class="col-md-10">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+
+                        @*@Html.T(Resources.Address)*@
+
+                        @Resources.AddAddress
+
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                <label for="AddressName">@Resources.FirstName</label>
+                            </div>
+                            <div class="col-md-8">
+                                @Html.TextBox("Firstname", (string)ViewBag.Firstname, new { maxlength = 500, @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                <label for="AddressName">@Resources.LastName</label>
+                            </div>
+                            <div class="col-md-8">
+                                @Html.TextBox("Lastname", (string)ViewBag.Lastname, new { maxlength = 500, @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                <label for="AddressName">@Resources.AddressName</label>
+                            </div>
+                            <div class="col-md-8">
+                                @Html.TextBox("AddressName", (string)ViewBag.AddressName, new { maxlength = 500, @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+@*                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                <label for="Address">@Html.T(Resources.MyAddresses)</label>
+                            </div>
+                            <div class="col-md-8">
+                                @Html.TextBox("Address", (string)ViewBag.Address, new { maxlength = 500, @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>*@
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                <label for="Address">@Resources.Street</label>
+                            </div>
+                            <div class="col-md-8">
+                                @Html.TextBox("Address", (string)ViewBag.Street, new { maxlength = 500, @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                <label for="City">@Resources.City</label>
+                            </div>
+                            <div class="col-md-8">
+                                <select id="CityId" name="CityId" class="form-control" data-city-id="@ViewBag.CityId">
+                                    <option value="0">@Resources.PleaseEnterPostalCode</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                <label for="PostalCode">@Resources.PostalCode</label>
+                            </div>
+                            <div class="col-md-8">
+                                @Html.TextBox("PostalCode", (string)ViewBag.PostalCode, new { maxlength = 50, @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                <label for="CountryId">@Resources.Country</label>
+                            </div>
+                            <div class="col-md-8 dropdown-list-contry">
+                                @Html.DropDownList("CountryId", (IEnumerable<SelectListItem>)ViewBag.Countries, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                <label for="Floor">@Resources.Buildingflooranddoor</label>
+                            </div>
+                            <div class="col-md-8">
+                                @Html.TextBox("Floor", (string)ViewBag.Floor, new { maxlength = 200, @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                <label for="Phone">@Resources.Phone</label>
+                            </div>
+                            <div class="col-md-2">
+                                @Html.TextBox("PhoneCountryCode", (string)ViewBag.PhoneCountryCode, new { maxlength = 200, @class = "form-control" })
+                            </div>
+                            <div class="col-md-6">
+                                @Html.TextBox("Phone", (string)ViewBag.Phone, new { maxlength = 200, @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    @*                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                <label for="MobilePhone">@Html.T(Resources.MobilePhone)</label>
+                            </div>
+                            <div class="col-md-8">
+                                @Html.TextBox("MobilePhone", (string)ViewBag.MobilePhone, new { maxlength = 200, @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>*@
+                </div>
+            </div>
+
+        </div>
+    </div>
+    @Html.Hidden("id", (int)ViewBag.id)
+    <input type="submit" id="submit" name="submit" value="> @Resources.Save" class="btn btn-primary" />
+    <a href="@Url.Action("Addresses","Account")"><input type="button" id="reset" name="reset" value="@Resources.Cancel" class="btn" /></a>
+</form>

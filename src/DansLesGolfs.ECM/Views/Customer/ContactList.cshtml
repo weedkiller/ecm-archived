@@ -1,0 +1,75 @@
+﻿@model List<DansLesGolfs.BLL.User>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ContactList</title>   
+     <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="@Url.Content("~/Assets/Admin/plugins/font-awesome/css/font-awesome.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Assets/Admin/plugins/bootstrap/css/bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Assets/Admin/plugins/uniform/css/uniform.default.css")" rel="stylesheet" type="text/css" /><!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN PAGE LEVEL PLUGIN STYLES -->
+    <link href="@Url.Content("~/Assets/Admin/plugins/gritter/css/jquery.gritter.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Assets/Admin/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Assets/Admin/plugins/fullcalendar/fullcalendar/fullcalendar.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Assets/Admin/plugins/jqvmap/jqvmap/jqvmap.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Assets/Admin/plugins/jquery-easy-pie-chart/jquery.easy-pie-chart.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Assets/Admin/plugins/data-tables/DT_bootstrap.css")" rel="stylesheet" type="text/css" />
+    <!-- END PAGE LEVEL PLUGIN STYLES -->
+    <!-- BEGIN THEME STYLES -->
+    <link href="@Url.Content("~/Assets/Admin/css/style-metronic.css")" rel="stylesheet" )" type="text/css" />
+    <link href="@Url.Content("~/Assets/Admin/css/style.css")" rel="stylesheet" )" type="text/css" />
+    <link href="@Url.Content("~/Assets/Admin/css/style-responsive.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Assets/Admin/css/plugins.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Assets/Admin/css/pages/tasks.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Assets/Admin/css/themes/default.css")" rel="stylesheet" type="text/css" id="style_color" />
+</head>
+<body>
+    <div class="page-content">
+        <table id="contact-list-table" class="dataTable table table-bordered table-striped table-scrollable table-hover">
+            <thead>
+                <tr>
+                    <th class="checkboxes">
+                        <input type="checkbox" />
+                    </th>
+                    <th>
+                        @Resources.Name
+                    </th>
+                    <th>
+                        @Resources.Email
+                    </th>
+                    <th>
+                        @Resources.Remove
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (DansLesGolfs.BLL.User customer in Model)
+                {
+                    <tr>
+                        <td>
+                            <input type="checkbox" value="@customer.UserId" />
+                        </td>
+                        <td>
+                            @customer.Fullname;
+                        </td>
+                        <td>
+                            @customer.Email
+                        </td>
+                        <td>
+                            <a href="javascript:void(0);" class="delete-link">Remove</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</body>
+</html>

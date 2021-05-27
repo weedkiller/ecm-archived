@@ -1,0 +1,11 @@
+﻿@{
+    Layout = "~/Views/_Shared/MP/_EmailTemplate.cshtml";
+}
+<div>
+    <h1>@Resources.Hello, @ViewBag.ReceiverName</h1>
+    <p>There is a new DLG Shop registeration on @ViewBag.SiteUrl</p>
+    <p><strong style="width: 120px; text-align: right; margin-right: 10px; display: inline-block;">@Resources.Name</strong> : @ViewBag.TitleName @ViewBag.FirstName @ViewBag.LastName</p>
+    <p><strong style="width: 120px; text-align: right; margin-right: 10px; display: inline-block;">@Resources.SiteName</strong> : @ViewBag.SiteName</p>
+    <p><strong style="width: 120px; text-align: right; margin-right: 10px; display: inline-block;">@Resources.Email</strong> : @ViewBag.Email</p>
+    <p><strong style="width: 120px; text-align: right; margin-right: 10px; display: inline-block;">@Resources.Telephone</strong> : @ViewBag.Telephone</p>
+</div>

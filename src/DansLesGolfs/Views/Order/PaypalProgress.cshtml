@@ -1,0 +1,58 @@
+﻿@using DansLesGolfs
+@model DansLesGolfs.Models.OrderShippingModel
+@{
+    ViewBag.Title = Resources.Payment;
+    Layout = "~/Views/_Shared/MP/Front/_FullWidth.cshtml";
+    decimal subtotal = Model.Cart.GetSubTotal();
+}
+@section head
+{
+    <link rel="stylesheet" type="text/css" href="@Href("~/Assets/Front/css/cart.css")">
+}
+@section foot
+{
+    <script>
+        var interval = eval('@ViewBag.Interval');
+        var checkCount = eval('@ViewBag.CheckCount');
+        var times = 0;
+        var intervalId = 0;
+        var guid = '@Model.OrderGuid.ToString()';
+        jQuery(document).ready(function ($) {
+            doCheckPaypalOrder();
+        });
+
+        function doCheckPaypalOrder() {
+            intervalId = setInterval(function () {
+                if (times < 10) {
+                    times++;
+
+                    jQuery.post(getUrl('Order/PaypalProgressCheck'), { guid: guid }, function (result) {
+                        if (result.isSuccess) {
+                            stopCheck();
+                            window.location = getUrl('Order/Confirmation/' + result.orderId);
+                        }
+                    }, 'json');
+                } else {
+                    stopCheck();
+                    window.location = getUrl('Order/PaymentFailed');
+                }
+            }, interval);
+        }
+
+        function stopCheck() {
+            clearInterval(intervalId);
+        }
+    </script>
+}
+<div id="page-order-payment" class="margin-bottom-40">
+    <div class="row">
+        <section id="shipping-info" class="col-md-12">
+
+            <h1 class="page-title">@Resources.MyCart</h1>
+            @Html.Partial("~/Views/_Shared/UC/Front/Order/UCPaymentProcess.cshtml", 4)
+            <div class="text-center">
+                <img src="@Url.Content("~/Assets/Front/img/paypal-logo-circle.svg")" style="width: 256px; margin: 0 auto;" class="img-responsive" />
+            </div>
+        </section>
+    </div>
+</div>

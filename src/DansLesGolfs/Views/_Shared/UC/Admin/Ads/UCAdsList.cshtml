@@ -1,0 +1,35 @@
+@using DansLesGolfs.BLL
+@model List<Ad>
+@if (Model != null && Model.Any())
+{
+    foreach (Ads ads in Model)
+    {
+        <div class="ads ads-@ads.AdsId" data-id="@ads.AdsId">
+            <div>
+                <img src="@ads.ImageUrl" class="ads_image" />
+            </div>
+            <div>
+                <input type="text" maxlength="50" name="ads_name" value="@ads.AdsName" placeholder="@Resources.AdName" class="form-control" />
+            </div>
+            <div>
+                <input type="url" maxlength="255" name="link_url" value="@ads.LinkUrl" placeholder="@Resources.LinkUrl" class="form-control" />
+            </div>
+            <div>
+                <input type="text" name="from_date" value="@ads.FromDate.ToString("dd/MM/yyyy")" placeholder="@Resources.From" class="form-control datepicker" />
+            </div>
+            <div>
+                <input type="text" name="to_date" value="@ads.ToDate.ToString("dd/MM/yyyy")" placeholder="@Resources.To" class="form-control datepicker" />
+            </div>
+            <a href="javascript:void(0);" class="delete-button">
+                <img src="@Url.Content("~/Assets/Admin/img/icons/icon-delete.png")" />
+            </a>
+        </div>
+    }
+}
+else
+{
+    <div class="no-ads">
+        <p class="text-center">@Resources.ThereIsNoAdsInAdset</p>
+        <p class="text-center"><button class="btn btn-primary create-ads-button">@Resources.CreateAds</button></p>
+    </div>
+}

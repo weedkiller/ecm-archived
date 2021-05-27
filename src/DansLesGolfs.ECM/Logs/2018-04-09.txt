@@ -1,0 +1,17 @@
+2018-04-09 20:22:15.5475   7 Error                          DansLesGolfs.ECM.Controllers.BaseController System.Exception: Error while getting customer in page 35, Club ID: 17133.
+Message:The remote server returned an error: (500) Internal Server Error.
+
+==============
+
+Error while getting customer in page 40, Club ID: 17133.
+Message:The remote server returned an error: (500) Internal Server Error.
+   at DansLesGolfs.Data.SqlDataAccess.SyncCustomerGroup(Int64 customerGroupId)
+   at DansLesGolfs.ECM.Controllers.CustomerGroupController.<>c__DisplayClass15_0.<AjaxSyncCustomerGroups>b__0() in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\CustomerGroupController.cs:line 348 System.Exception: Error while getting customer in page 35, Club ID: 17133.
+Message:The remote server returned an error: (500) Internal Server Error.
+
+==============
+
+Error while getting customer in page 40, Club ID: 17133.
+Message:The remote server returned an error: (500) Internal Server Error.
+   at DansLesGolfs.Data.SqlDataAccess.SyncCustomerGroup(Int64 customerGroupId)
+   at DansLesGolfs.ECM.Controllers.CustomerGroupController.<>c__DisplayClass15_0.<AjaxSyncCustomerGroups>b__0() in D:\Coding\ECM\DansLesGolfs.ECM\Controllers\CustomerGroupController.cs:line 348

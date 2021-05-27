@@ -1,0 +1,504 @@
+﻿@using DansLesGolfs
+@Model
+@{
+    ViewBag.Title = Resources.MyDetails;
+    Layout = "~/Views/_Shared/MP/Front/_Default.cshtml";
+    var User = (DansLesGolfs.BLL.User)ViewBag.User;
+}
+@section head
+{
+    <link rel="stylesheet" type="text/css" href="@Href("~/Assets/Front/css/account.css")">
+    <link href="@Url.Content("~/Assets/Libraries/fancybox/source/jquery.fancybox.css")" rel="stylesheet" />
+}
+@section foot
+{
+    <script src="@Url.Content("~/Assets/Libraries/jquery-numeric/jquery.numeric.min.js")"></script>
+    <script type="text/javascript">
+        function isDate(txtDate) {
+            var currVal = txtDate;
+            if (currVal == '')
+                return false;
+
+            //Declare Regex
+            var rxDatePattern = /^(\d{1,2})(\/|-)(\d{1,2})(\/|-)(\d{4})$/;
+            var dtArray = currVal.match(rxDatePattern); // is format OK?
+
+            if (dtArray == null)
+                return false;
+
+            //Checks for mm/dd/yyyy format.
+            dtMonth = dtArray[1];
+            dtDay = dtArray[3];
+            dtYear = dtArray[5];
+
+            if (dtMonth < 1 || dtMonth > 12)
+                return false;
+            else if (dtDay < 1 || dtDay > 31)
+                return false;
+            else if ((dtMonth == 4 || dtMonth == 6 || dtMonth == 9 || dtMonth == 11) && dtDay == 31)
+                return false;
+            else if (dtMonth == 2) {
+                var isleap = (dtYear % 4 == 0 && (dtYear % 100 != 0 || dtYear % 400 == 0));
+                if (dtDay > 29 || (dtDay == 29 && !isleap))
+                    return false;
+            }
+            return true;
+        }
+
+
+        function Setdate() {
+            var getday = $("#setdays").val();
+            var getmonth = $("#setmonth").val();
+            var getyear = $("#setyears").val();
+
+            if (getday != "" && getmonth != "" && getyear != "") {
+                var fulldate = getmonth + "/" + getday + "/" + getyear;
+
+                if (isDate(fulldate)) {
+                    var d = new Date(fulldate);
+                    //alert('Valid Date');
+                    $("#birthdate").val(d.toJSON());
+                    $(".birthdate-error").hide();
+                    $(".birthdate-error").html("");
+                    return true;
+                }
+                else {
+                    //alert('Invalid Date');
+                    $(".birthdate-error").show();
+                    $(".birthdate-error").html("Invalid Date");
+                }
+                //var d = new Date(fulldate);
+                //d.setDate(getday);
+                //d.setYear(getyear);
+                //d.setMonth(getmonth);
+
+                //alert(d);
+                return false;
+            }
+            return false;
+        }
+
+        /**
+        * Prepare shipping data.
+        */
+        function prepareShippingData() {
+            jQuery.post(getUrl('Order/PrepareShippingCacheData'))
+        }
+
+        /**
+        * Load cities drop down list by postal code.
+        */
+        function loadCitiesDropDownList(callback) {
+            jQuery.ajax({
+                url: getUrl('Common/GetDataByPostalCode'),
+                type: 'post',
+                dataType: 'json',
+                data: { postalCode: jQuery('input[name=postalcode]').val() },
+                beforeSend: function () {
+                    showLoader(true, '#MyDetailsForm');
+                },
+                success: function (result) {
+                    showLoader(false, '#MyDetailsForm');
+                    if (result.isSuccess) {
+                        jQuery('#MyDetailsForm #ddlCountry').val(result.countryId).prop('value', result.countryId).data('country-id', result.countryId);
+                        html = '';
+                        for (var i in result.cities) {
+                            html += '<option value="' + result.cities[i].CityId + '">' + result.cities[i].CityName + '</option>';
+                        }
+                        jQuery('#MyDetailsForm #ddlCity').html(html);
+                        if (jQuery('#MyDetailsForm #ddlCity').data('city-id') > 0) {
+                            jQuery('#MyDetailsForm #ddlCity').val(jQuery('#MyDetailsForm #ddlCity').data('city-id')).data('city-id', 0);
+                        } else {
+                            jQuery('#MyDetailsForm #ddlCity').val(result.cityId).data('city-id', 0);
+                        }
+
+                        jQuery.uniform.update();
+                        if (callback && typeof (callback) == 'function') {
+                            callback();
+                        }
+                    }
+                },
+                error: function (xhr, msg) {
+                    showLoader(false, '#MyDetailsForm');
+                }
+            });
+        }
+
+        $(function () {
+            loadCitiesDropDownList();
+
+            // Prevent these field to input non-numeric characters.
+            $('#MyDetailsForm input[name=phone]').numeric();
+
+            $('input[name=postalcode]').change(function () {
+                loadCitiesDropDownList();
+            });
+
+            $('#MyDetailsForm').on('submit', function (e) {
+
+                Setdate();
+
+            });
+
+
+            $('#VerifyModal').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget) // Button that triggered the modal
+                var recipient = button.data('whatever') // Extract info from data-* attributes
+                // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+                // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+                var modal = $(this);
+                var textshow = '@Resources.Accounttextnewemail' + " (" + '@User.Firstname' + '@User.Lastname' + ")";
+                modal.find('.modal-title').text(textshow)
+                //modal.find('.modal-body input').val(recipient)
+            });
+
+
+            $("#accountveryfy-email-button").click(function () {
+                $(".alert").hide();
+                var newemail = $("#Account-newemail").val();
+                var confirmemail = $("#Account-confirmnewemail").val();
+
+                if (newemail == confirmemail) {
+
+
+                    $.ajax({
+                        type: "POST",
+                        traditional: true,
+                        async: false,
+                        cache: false,
+                        url: '@Url.Action("ValidateEmail", "Account")',
+                        data: { email: newemail },
+                        success: function (result) {
+                            if (result != true) {
+                                $(".alert-success").show();
+                                $("#email").val(newemail);
+                            } else {
+                                $(".alert-danger").show();
+                            }
+                            var $btn = $(this).button('loading')
+                        },
+                        error: function (xhr) {
+                            //debugger;
+                            var $btn = $(this).button('loading')
+                            alert("Error has occurred..");
+                        }
+                    });
+                } else {
+                    $(".alert-danger").show();
+                }
+
+            });
+
+
+
+        });
+
+
+        $("#MyDetailsForm").validate({
+            rules: {
+                email: {
+                    required: true,
+                    email: true
+                },
+                emailcon: {
+                    required: true,
+                    email: true,
+                    equalTo: "#email"
+                },
+                password: {
+                    required: true
+                },
+                passwordcon: {
+                    required: true,
+                    equalTo: "#password"
+                },
+                firstname: {
+                    required: true
+                },
+                lastname: {
+                    required: true
+                },
+                address: {
+                    required: true
+                },
+                postalcode: {
+                    required: true
+                },
+                city: {
+                    required: true
+                },
+                country: {
+                    required: function (element) {
+                        return $("#ddlCountry").val() == '';
+                    }
+                }
+                //,radgender: {
+                //    required: true
+                //}
+            }
+
+            , errorPlacement: function (error, element) {
+                if ($(element).is('select')) {
+                    element.parent().after(error); // special placement for select elements
+                }
+                else if ($(element).attr('type') == 'radio') {
+                    element.parent().next().after(error);
+                }
+                else {
+                    error.insertAfter(element);  // default placement for everything else
+                }
+            }
+
+            //,unhighlight: function (element, errorClass, validClass) {
+            //    if (element.type === 'radio') {
+            //        this.findByName(element.name).removeClass(errorClass).addClass(validClass);
+            //    } else {
+            //        if (element.tagName == "SELECT") {
+            //            $(element).parent().removeClass(errorClass).addClass(validClass);
+            //        } else {
+            //            $(element).removeClass(errorClass).addClass(validClass);
+            //        }
+
+            //    }
+            //}
+        });
+    </script>
+
+
+}
+
+<div id="page-account-dashboard">
+    <div class="row margin-bottom-40">
+        <div class="col-md-12">
+            <div class="account-box">
+                <div class="account-box-header">@Resources.MyDetails</div>
+                <div class="account-box-form">
+                    <div class="account-box-form-title">
+                        @Resources.MyDetails_HeaderDescription
+                    </div>
+                    @if (TempData["ErrorMessage"] != null)
+                    {
+                        <div class="alert alert-danger">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            @MvcHtmlString.Create(TempData["ErrorMessage"].ToString())
+                        </div>
+                    }
+                    @if (TempData["SuccessMessage"] != null)
+                    {
+                        <div class="alert alert-success">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            @MvcHtmlString.Create(TempData["SuccessMessage"].ToString())
+                        </div>
+                    }
+                    @using (Ajax.BeginForm("Details", "Account", new AjaxOptions { HttpMethod = "Post", OnSuccess = "alert('success');" }, new { @class = "form-horizontal", @id = "MyDetailsForm" }))
+                    {
+                        @*<div class="form-group">
+                                                        <div class="col-md-12">
+                                                            @if (String.IsNullOrEmpty(ViewBag.IsFacebookId))
+                                                            {
+
+                                                                <div id="login-facebook-form" class="text-center col-md-12">
+                                                                    <h4 style="padding-bottom:10px;margin-bottom: 0 !important;"><span style="color:#3d6191;">en 2 secondes </span><span style="color:#8c9091;font-weight:100 !important;">avec Facebook</span></h4>
+                                                                    <a id="btn-facebook-login" class="fblogin-button-connect" href="javascript:void(0)" style="width:260px;margin:0 auto;display:block;">
+                                                                        <img src="~/Content/image/connect-facebook.png" style="padding-bottom:5px;" /></a>
+                                                                    <h6 style="font-size:10px;padding-bottom:20px;">Nous ne publions rien sur wotre mur sans votre accords.</h6>
+                                                                </div>
+
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="button-disconnect" style="margin: 0 auto; width: 173px; padding-bottom: 10px;">
+                                                                    <a href="@Url.Action("UpdateConnectWithFacebook", "Account", new { @userId = User.UserId })">
+                                                                        <button type="button" class="btn btn-primary" data-toggle="modal" style="padding: 5px 25px !important;">
+                                                                            Disconnect Facebook</button></a>
+                                                                </div>
+                                                            }
+                                                        </div>
+                                                        <div class="col-md-4 control-label">E-mail <span class="require-pink">*</span></div>
+                                                        <div class="col-md-5">
+                                                            <input type="email" id="email" name="email" class="form-control" value="@User.Email" readonly />
+                                                        </div>
+                                                        <div class="col-md-2" style="padding: 0;">
+                                                             <button type="button" style="padding: 4px 23px;">Verify</button>
+                                                            @if (String.IsNullOrEmpty(ViewBag.IsFacebookId))
+                                                            {
+                                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#VerifyModal" data-whatever="@User.Email" style="height: 25px;
+                            padding: 5px 10px !important;">
+                                                                    @Resources.Account_Verify</button>
+                                                            }
+                                                        </div>
+                                                        <div class="modal fade" id="VerifyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog">
+
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                                        <h4 class="modal-title" id="exampleModalLabel">New Email</h4>
+
+
+                                                                    </div>
+
+                                                                    <div class="modal-body">
+                                                                        <div class="form-group">
+                                                                            <div class="alert alert-success" role="alert" style="display: none;">Well done!</div>
+                                                                            <div class="alert alert-danger" role="alert" style="display: none;">Oh snap!</div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="recipient-name" class="control-label">@Resources.Account_newemail:</label>
+                                                                            <input type="text" class="form-control" id="Account-newemail" value="">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="recipient-name" class="control-label">@Resources.Account_confirmemail:</label>
+                                                                            <input type="text" class="form-control" id="Account-confirmnewemail" value="">
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                        <button type="button" class="btn btn-primary" id="accountveryfy-email-button">@Resources.Account_VerifyEmailButton
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                            @*<div class="form-group">
+                                                        <div class="col-md-4 control-label">Confirmation E-mail <span class="require-pink">*</span></div>
+                                                        <div class="col-md-5">
+                                                            <input type="email" name="emailcon" class="form-control" value="@User.Email" /></div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="col-md-4 control-label">@Resources.Password <span class="require-pink">*</span></div>
+                                                        <div class="col-md-5">
+                                                            <input type="password" id="password" name="password" class="form-control" value="@User.Password" /></div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="col-md-4 control-label">@Resources.ConfirmPassword <span class="require-pink">*</span></div>
+                                                        <div class="col-md-5">
+                                                            <input type="password" name="passwordcon" class="form-control" value="@User.Password" /></div>
+                                                    </div>*@
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">@Resources.NameTitle</div>
+                            <div class="col-md-5">
+                                @* <select name="civilite" class="form-control">
+                                        <option value=""></option>
+                                    </select>*@
+                                @Html.DropDownList("Civilite", (IEnumerable<SelectListItem>)(ViewBag.DropDownTitles), new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">@Resources.FirstName <span class="require-pink">*</span></div>
+                            <div class="col-md-5">
+                                <input type="text" name="firstname" class="form-control" value="@User.Firstname" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">@Resources.LastName <span class="require-pink">*</span></div>
+                            <div class="col-md-5">
+                                <input type="text" name="lastname" class="form-control" value="@User.Lastname" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">@Resources.BirthDate <span class="require-pink">*</span></div>
+                            <div class="col-md-5">
+                                <input type="hidden" name="birthdate" id="birthdate" class="form-control" value="@(User.Birthdate.HasValue ? User.Birthdate.Value.ToString("yyyy-MM-dd") : String.Empty)" />
+                                @Html.DropDownList("setdays", ViewBag.getDays as List<SelectListItem>)
+                                @Html.DropDownList("setmonth", ViewBag.getmonth as List<SelectListItem>)
+                                @Html.DropDownList("setyears", ViewBag.getyear as List<SelectListItem>, new { style = "width: 70px" })
+                                <label for="birthdate" class="error birthdate-error"></label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">@Resources.Address <span class="require-pink">*</span></div>
+                            <div class="col-md-5">
+                                <input type="text" name="address" class="form-control" value="@User.Address" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">@Resources.MyDetails_Complement</div>
+                            <div class="col-md-5">
+                                <input type="text" name="complement" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">@Resources.PostalCode <span class="require-pink">*</span></div>
+                            <div class="col-md-5">
+                                <input type="text" name="postalcode" class="form-control number" value="@User.PostalCode" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">@Resources.City <span class="require-pink">*</span></div>
+                            <div class="col-md-5">
+                                <select id="ddlCity" name="city" class="form-control" data-city-id="@User.CityId">
+                                    <option value="0">@Resources.PleaseEnterPostalCode</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">@Resources.MyDetails_Country <span class="require-pink">*</span></div>
+                            <div class="col-md-5">
+                                <select id="ddlCountry" name="country" class="form-control" data-country-id="@ViewBag.CountryId">
+                                    @foreach (var item in (List<DansLesGolfs.BLL.Country>)ViewBag.Countries)
+                                    {
+                                        <option value="@item.CountryId" @if (item.CountryId == User.CountryId) { <text> selected="selected" </text>       }>
+                                            @item.CountryName
+                                        </option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">@Resources.Phone</div>
+                            <div class="col-md-2">
+                                <input type="tel" name="phone_country_code" class="form-control" value="@User.MobilePhoneCountryCode" />
+                            </div>
+                            <div class="col-md-3">
+                                <input type="tel" name="phone" class="form-control" value="@User.MobilePhone" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">Portable</div>
+                            <div class="col-md-5">
+                                <input type="text" name="portable" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">Profession</div>
+                            <div class="col-md-5">
+                                <input type="text" name="profession" class="form-control" />
+                            </div>
+                        </div>
+                        @*<div class="form-group">
+                                <div class="col-md-4 control-label">Radio <span class="require-pink">*</span></div>
+                                <div class="col-md-5">
+                                    <label class="radio-inline">
+                                        <input type="radio" name="radgender" value="m" /> Male
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="radgender" value="f" /> FeMale
+                                    </label>
+                                </div>
+                            </div>*@
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-9">
+                                <label class="checkbox">
+                                    <input type="checkbox" name="receive" value="True" @if (User.IsReceiveEmailInfo == true) { <text> checked="checked" </text>      } />
+                                    @Resources.MyDetails_Receive
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-4 col-md-5">
+                                <button type="submit" class="btn btn-primary">@Resources.MyDetails_Save</button>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="require-box">
+                <span class="require-pink">*</span> @Resources.MyDetails_Require
+            </div>
+        </div>
+    </div>
+</div>

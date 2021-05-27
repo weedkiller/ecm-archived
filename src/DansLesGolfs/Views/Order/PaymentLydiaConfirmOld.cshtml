@@ -1,0 +1,76 @@
+﻿@using DansLesGolfs
+@model DansLesGolfs.Models.OrderShippingModel
+@{
+    ViewBag.Title = Resources.Payment;
+    decimal subtotal = Model.Cart.GetSubTotal();
+}
+<div id="lydia-payment-button" style="display: none;"></div>
+<div id="lydia-error-message"></div>
+<div class="waiting-message" style="width: 100%; position: absolute; top: 47%; text-align: center; font-size: 28px;">
+    @MvcHtmlString.Create(ViewBag.WaitingMessage)
+</div>
+<script src="@Url.Content("~/Assets/Libraries/jquery-1.10.2.min.js")"></script>
+<script src="@Url.Content("~/Assets/Libraries/lydiasdk/lydiasdk.js")"></script>
+<script>
+    $(document).ready(function () {
+        window.baseUrl = "@ViewBag.LydiaBaseUrl";
+        var requestId = '@Model.LydiaRequestId';
+        waiting(requestId);
+    });
+
+    function waiting(requestId) {
+        $.post(window.baseUrl + "api/request/state.json", { request_id: requestId }, function (data) {
+            if (data.state == "0") {
+                setTimeout(function () { wating(requestId) }, 2000);
+            } else {
+                saveOrderLydia(requestId, data.state, data.message);
+            }
+        }, 'json');
+    }
+
+    function saveOrderLydia(requestId, state, message) {
+        $.ajax({
+            url: 'PaymentLydiaCheck',
+            data: { requestId: requestId, state: state, message: message },
+            type: 'post',
+            dataType: 'json',
+            success: function (result) {
+                if (result.isSuccess) {
+                    sendEmailConfirm(result.postProcessUrl, result.orderId);
+                    setTimeout(function () { window.location = result.url; }, 1000);                    
+                } else {
+                    cancelLydia(requestId, result.url);
+                }
+            },
+            error: function (xhr, msg) {
+                window.location = 'PaymentLydiaCancel';
+            }
+        });
+    }
+
+    function cancelLydia(requestId, redirectUrl) {
+        $.ajax({
+            url: window.baseUrl + "api/transaction/cancel.json",
+            data: {
+                vendor_token: '@ViewBag.LydiaVendorToken',
+                order_ref: '@Model.OrderNumber',
+                amount: eval('@subtotal.ToString("###0.##", System.Globalization.CultureInfo.InvariantCulture)'),
+                signature: '@ViewBag.LydiaSignature'
+            },
+            type: 'post',
+            dataType: 'json',
+            success: function (result) {
+                window.location = redirectUrl;
+            },
+            error: function (xhr, msg) {
+                window.location = 'PaymentLydiaCancel';
+            }
+        });
+    }
+
+    function sendEmailConfirm(url, orderId) {
+        $.post(url, {
+            orderId: orderId
+        }, 'json');
+    }
+</script>

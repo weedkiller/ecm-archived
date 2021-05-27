@@ -1,0 +1,238 @@
+﻿@using DansLesGolfs.BLL
+@using DansLesGolfs.Models
+@model Item
+@{
+    ViewBag.Title = Resources.ChooseYourOffer;
+    Layout = "~/Views/_Shared/MP/Front/_Default.cshtml";
+    ProductsListModel relatedItemModel = ViewBag.RelatedItems as ProductsListModel;
+}
+@section head
+{
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Assets/Libraries/jquery.teesheet/jquery.teesheet.css")" />
+    <link href="@Url.Content("~/Assets/Front/plugins/royalslider/royalslider.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Assets/Front/plugins/royalslider/skins/default/rs-default.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Assets/Libraries/mCustomScrollbar/jquery.mCustomScrollbar.css")" rel="stylesheet" />
+    <script>
+        window.itemId = '@Model.ItemId';
+        window.itemType = '@Html.ItemClasses(Model)';
+    </script>
+}
+@section foot
+{
+    <script src="@Url.Content("~/Assets/Front/plugins/royalslider/jquery.royalslider.min.js")"></script>
+    <script src="@Url.Content("~/Assets/Libraries/mCustomScrollbar/jquery.mCustomScrollbar.js")"></script>
+    <script src="@Url.Content("~/Assets/Libraries/jquery.teesheet/jquery.teesheet.js")"></script>
+    <script src="@Url.Content("~/Assets/Front/scripts/pages/product.js")"></script>
+    <script>
+        window.teeSheetData = eval('@MvcHtmlString.Create(ViewBag.TeeSheetData)');
+
+        var months = ["January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+        jQuery(document).ready(function ($) {
+            $('#teesheet-confirm-popup-link').fancybox({
+                modal: true
+            });
+
+            $('#confirm-teesheet-button').click(onTeeSheetConfirmPopupLinkClicked);
+
+            $('#teesheet-editor').teeSheet({
+                startHour: eval('@(Model.Course != null ? Model.Course.StartTime.Hours : 8)'),
+                endHour: eval('@(Model.Course != null ? Model.Course.EndTime.Hours : 18)'),
+                duration: eval('@(Model.Course != null ? Model.Course.Duration : 2)'),
+                defaultPrice: eval('@(Model.Course != null ? Model.Course.DefaultPrice : 0)'),
+                currency: '&euro;',
+                breakHours: [12],
+                data: window.teeSheetData,
+                readOnly: true,
+
+                onPriceChanged: function ($teesheet) {
+                    var percent = Math.round(eval($teesheet.data('percent')));
+                    var isExpired = false;
+                    var date = $teesheet.data('date');
+                    if (date) {
+                        var datePart = date.split('-');
+                        if (datePart.length == 3) {
+                            var start = $teesheet.data('start');
+                            var now = new Date();
+                            var teeSheetDateTime = new Date(eval(datePart[0]), eval(datePart[1]) - 1, eval(datePart[2]), start, 0, 0, 0);
+                            if ((now >= teeSheetDateTime)) {
+                                isExpired = true;
+                            }
+                        }
+                    }
+                    if (isExpired) {
+                        $teesheet.removeClass('discount-0')
+                            .removeClass('discount-1')
+                            .removeClass('discount-2')
+                            .removeClass('discount-3')
+                            .addClass('expired');
+                    }
+                    else if (percent <= 0) {
+                        $teesheet.removeClass('discount-1')
+                            .removeClass('discount-2')
+                            .removeClass('discount-3')
+                            .removeClass('expired')
+                            .addClass('discount-0');
+                    } else if (percent <= 20) {
+                        $teesheet.removeClass('discount-0')
+                            .removeClass('discount-2')
+                            .removeClass('discount-3')
+                            .removeClass('expired')
+                            .addClass('discount-1');
+                    } else if (percent < 40) {
+                        $teesheet.removeClass('discount-0')
+                            .removeClass('discount-1')
+                            .removeClass('discount-3')
+                            .removeClass('expired')
+                            .addClass('discount-2');
+                    } else {
+                        $teesheet.removeClass('discount-0')
+                            .removeClass('discount-1')
+                            .removeClass('discount-2')
+                            .removeClass('expired')
+                            .addClass('discount-3');
+                    }
+
+                },
+                onTeeSheetClicked: function ($teesheet) {
+
+                    var day = $teesheet.data('day');
+
+                    var percent = Math.round(eval($teesheet.data('percent')));
+                    //if (percent == 0)
+                    //    return;
+
+                    if ($teesheet.hasClass('expired'))
+                        return;
+
+                    window.teeSheetId = $teesheet.data('id');
+                    window.teeSheetDate = $teesheet.parents('table').find('thead .day-' + day).data('date');
+                    window.teeSheetStart = $teesheet.data('start');
+                    window.teeSheetEnd = $teesheet.data('end');
+                    window.teeSheetPrice = $teesheet.data('price');
+                    window.teeSheetDiscount = $teesheet.data('discount');
+
+                    var d = new Date();
+                    $('#teesheet-confirm-popup').data('id', window.teeSheetId).data('date', window.teeSheetDate);
+                    $('#teesheet-confirm-popup .teesheet-date').text(d.getDate() + '/' + months[d.getMonth()] + '/' + d.getFullYear());
+                    $('#teesheet-confirm-popup .teesheet-start').text(window.teeSheetStart + ':00');
+                    $('#teesheet-confirm-popup .teesheet-end').text(window.teeSheetEnd + ':00');
+                    if (window.teeSheetDiscount > 0) {
+                        $('#teesheet-confirm-popup .teesheet-price').text((window.teeSheetPrice - window.teeSheetDiscount).toFixed(2));
+                    } else {
+                        $('#teesheet-confirm-popup .teesheet-price').text(window.teeSheetPrice.toFixed(2));
+                    }
+                    /*jQuery.ajax({
+                        url: getUrl('Cart/AddItem'),
+                        type: 'post',
+                        dataType: 'json',
+                        data: { itemId: jQuery('#item-info').data('id'), quantity: qty, reserveDate: jQuery('#reserve-date').val() },
+                        success: function (result) {
+                            if (result.isSuccess) {
+                                window.location = getUrl('cart');
+                            }
+                        }
+                    });*/
+                    $('#teesheet-confirm-popup-link').click();
+                },
+                onClearTeeSheet: function ($teesheet) {
+                    $teesheet.removeClass('discount-0 discount-1 discount-2 discount-3 expired');
+                }
+            });
+        });
+
+        function onTeeSheetConfirmPopupLinkClicked() {
+            jQuery.ajax({
+                url: getUrl('Cart/AddItemTeeSheet'),
+                type: 'post',
+                dataType: 'json',
+                data: { itemId: jQuery('#item-info').data('id'), teeSheetId: window.teeSheetId, teeSheetDate: window.teeSheetDate, numberOfPlayers: jQuery('#input-number-players').val() },
+                success: function (result) {
+                    if (result.isSuccess) {
+                        window.location = getUrl('cart');
+                    }
+                }
+            });
+        }
+    </script>
+}
+<div id="page-teesheet">
+    <div id="item-info" class="margin-bottom-20" data-id="@Model.ItemId" data-itemtype="@Model.ItemTypeId" data-price="@Model.Price" data-special-price="@Model.SpecialPrice" data-has-special-price="@(Model.HasSpecialPrice ? 1 : 0)">
+        <div class="row">
+            <section id="item-images-section" class="col-md-12">
+                <div id="item-images-slider" class="royalSlider rsDefault@(Model.ItemImages != null && Model.ItemImages.Count > 1 ? " longLengthThumbnails" : "")">
+                    @if (Model.ItemImages != null && Model.ItemImages.Any())
+                    {
+                        foreach (ItemImage img in Model.ItemImages)
+                        {
+                            <img itemprop="image" src="@Html.GetItemImageUrl(Model.ItemId, img, "large")" data-rstmb="@Html.GetItemImageUrl(Model.ItemId, img, "thumbnail")" onerror="this.src = '@Url.Content("~/Assets/Front/img/no-item-slide-image.png")'" />
+                        }
+                    }
+                    else
+                    {
+                        <img itemprop="image" src="@Url.Content("~/Assets/Front/img/no-item-slide-image.png")" data-rstmb="@Url.Content("~/Assets/Front/img/no-item-slide-image.png")" />
+                    }
+                </div>
+            </section>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="teesheet-wrapper">
+                    <h1 class="page-title">@Resources.ChooseYourOffer</h1>
+                    <div id="teesheet-editor"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @if (relatedItemModel != null)
+    {
+        @Html.Partial("~/Views/_Shared/UC/Front/Item/UCProductList.cshtml", relatedItemModel)
+    }
+    <a id="teesheet-confirm-popup-link" href="#teesheet-confirm-popup"></a>
+    <div id="teesheet-confirm-popup">
+        <h3 class="popup-title">@Resources.TeeSheetConfirmPopupTitle</h3>
+        <div class="form-group">
+            <h4>@Model.ItemName</h4>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <label class="control-label col-md-4">Date :</label>
+                <span class="teesheet-date col-md-3"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <label class="control-label col-md-4">From :</label>
+                <span class="teesheet-start col-md-3"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <label class="control-label col-md-4">To :</label>
+                <span class="teesheet-end col-md-3"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <label class="control-label col-md-4">Price :</label>
+                <span class="teesheet-price col-md-3"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <label class="col-md-4">No. of Players</label>
+                <div class="col-md-2">
+                    <input type="number" id="input-number-players" class="text-right form-control" value="1" min="1" />
+                </div>
+            </div>
+        </div>
+        <div class="form-actions">
+            <button id="close-rating-popup-button" class="btn btn-danger pull-left">
+                @Resources.Close <i class="glyphicon glyphicon-remove-circle"></i>
+            </button>
+            <button type="submit" id="confirm-teesheet-button" class="btn btn-primary pull-right">
+                @Resources.AddToCart <i class="glyphicon glyphicon-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+</div>

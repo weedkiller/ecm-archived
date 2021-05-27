@@ -1,0 +1,79 @@
+﻿@using DansLesGolfs.BLL
+@using DansLesGolfs.Models
+@model Item
+@{
+    ViewBag.Title = Resources.ChooseYourOffer;
+    Layout = "~/Views/_Shared/MP/Front/_Default.cshtml";
+    DateTime teeSheetDate = (DateTime)ViewBag.TeeSheetDate;
+}
+@section head
+{
+    <link href="@Url.Content("~/Assets/Front/plugins/royalslider/royalslider.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Assets/Front/plugins/royalslider/skins/default/rs-default.css")" rel="stylesheet" />
+    <script>
+        window.itemId = '@Model.ItemId';
+        window.itemType = '@Html.ItemClasses(Model)';
+        window.courseId = '@Model.AlbatrosCourseId';
+    </script>
+}
+@section foot
+{
+    <script src="@Url.Content("~/Assets/Front/plugins/royalslider/jquery.royalslider.min.js")"></script>
+    <script src="@Url.Content("~/Assets/Front/scripts/pages/albatros-teesheet.js")"></script>
+}
+<div id="page-teesheet">
+    <div id="item-info" class="margin-bottom-20" data-id="@Model.ItemId" data-itemtype="@Model.ItemTypeId" data-price="@Model.Price" data-special-price="@Model.SpecialPrice" data-has-special-price="@(Model.HasSpecialPrice ? 1 : 0)">
+        <div class="row">
+            <section id="item-images-section" class="col-md-12">
+                <div id="item-images-slider" class="royalSlider rsDefault">
+                    @if (Model.ItemImages != null && Model.ItemImages.Any())
+                    {
+                        foreach (ItemImage img in Model.ItemImages)
+                        {
+                            <img src="@Html.GetItemImageUrl(Model.ItemId, img, "large")" data-rstmb="@Html.GetItemImageUrl(Model.ItemId, img, "thumbnail")" onerror="this.src = '@Url.Content("~/Assets/Front/img/no-item-slide-image.png")'" />
+                        }
+                    }
+                    else
+                    {
+                        <img src="@Url.Content("~/Assets/Front/img/no-item-slide-image.png")" data-rstmb="@Url.Content("~/Assets/Front/img/no-item-slide-image.png")" />
+                    }
+                </div>
+            </section>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="page-title">@Resources.ChooseYourOffer</h1>
+                <div id="teesheet-editor"></div>
+            </div>
+        </div>
+    </div>
+    <div id="albatros-teesheet">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="form-group">
+                        <div class="control-label col-md-6">
+                            <label for="DepartureTime">@Resources.DepartureTime</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" id="DepatureTime" name="DepartureTime" class="datepicker form-control" value="@teeSheetDate.ToString("dd/MM/yyyy")" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <table id="albatros-teesheet-table" class="table table-bordered" data-course-id="@Model.AlbatrosCourseId">
+            <thead>
+                <tr>
+                    <th class="col-departure-time">@Resources.DepartureTime</th>
+                    <th class="col-site">@Resources.Site</th>
+                    <th class="col-available-departure">@Resources.AvailableDepature</th>
+                    <th class="col-rate">@Resources.Rate</th>
+                    <th class="col-discount">@Resources.Discount</th>
+                    <th class="col-reservation">@Resources.Reservation</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>

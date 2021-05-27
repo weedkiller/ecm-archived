@@ -1,0 +1,8 @@
+﻿@model List<SlideImage>
+
+@foreach (SlideImage image in Model)
+{
+    <a href="@(String.IsNullOrWhiteSpace(image.LinkUrl) ? "javascript:void(0);" : image.LinkUrl)" title="@image.Description.StripHtml()">
+        <img src="@image.ImageUrl" alt="@image.Description.StripHtml()" />
+    </a>
+}

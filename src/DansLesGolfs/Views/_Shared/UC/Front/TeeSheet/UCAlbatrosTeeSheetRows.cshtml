@@ -1,0 +1,29 @@
+﻿@using DansLesGolfs.Models
+@model List<AlbatrosTeeSheetModel>
+@{
+    DateTime now = DateTime.Now;
+}
+@if (Model.Any())
+{
+    foreach (AlbatrosTeeSheetModel it in Model)
+    {
+        if (it.Date > now)
+        {
+            <tr @MvcHtmlString.Create(!it.IsAllowed ? "class=\"disabled\"" : string.Empty) data-id="@it.TeeTimeId" data-date="@it.Date.ToString("yyyy-M-d")" data-time="@it.Date.ToString(@"HH\:mm")" data-price="@it.ReductionFee" data-gametype="@(it.IsHoles9 ? 9 : 18)" data-max="@it.Max" data-booked="@it.Booked" data-available="@(it.Max - it.Booked)">
+            <td class="col-departure-time">@(it.Date.ToString("HH") + "H" + it.Date.ToString("mm"))</td>
+            <td class="col-site">@it.SiteName<div class="tee-name">@it.TeeName</div></td>
+            <td class="col-available-departure">@((it.Free) + "/" + it.Max)</td>
+            <td class="col-rate">@it.ReductionFee.ToString("#,##0.00")</td>
+            <td class="col-discount">@(it.ReductionPercent + "%")</td>
+            <td class="col-number-players"><input class="number-editor form-control" name="number_of_players" value="1" min="1" max="@(it.Max - it.Booked)" @(!it.IsAllowed ? " disabled=\"disabled\"" : "") /></td>
+            <td class="col-reservation"><button class="btn btn-primary reserve-button" @(!it.IsAllowed ? " disabled=\"disabled\"" : "")>@Resources.Reserve</button></td>
+            </tr>
+        }
+    }
+}
+else
+{
+    <tr>
+        <td colspan="6">@Resources.ThereisNoAvailableSlot</td>
+    </tr>
+}

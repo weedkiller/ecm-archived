@@ -1,0 +1,168 @@
+﻿@using DansLesGolfs.Base
+@using System.Data
+@model Emailing
+@{
+    Layout = "~/Views/_Shared/MP/_Layout.cshtml";
+    ViewBag.Title = Resources.ReportOf + " : " + ViewBag.EmailCampaignName;
+}
+@section head
+{
+}
+@section foot
+{
+}
+<div class="panel">
+    <div class="panel-body">
+        <h1>@Resources.ReportOf : <a href="@Url.Content("~/Emailing/Form/" + ViewBag.id)">@ViewBag.EmailCampaignName</a></h1>
+        <div class="row margin-top-30">
+            <div class="col-md-3">
+                <div class="dashboard-stat green">
+                    <div class="visual">
+                        <i class="fa"></i>
+                    </div>
+                    <div class="details">
+                        <div class="number">
+                            <span data-counter="counterup" data-value="@ViewBag.TotalOpens">@ViewBag.TotalOpens / @ViewBag.TotalSentEmails</span>
+                        </div>
+                        <div class="desc">@Resources.Open</div>
+                    </div>
+                    @*<a class="more" href="javascript:;">
+                            @Resources.ViewMore
+                            <i class="m-icon-swapright m-icon-white"></i>
+                        </a>*@
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="dashboard-stat blue">
+                    <div class="visual">
+                        <i class="fa"></i>
+                    </div>
+                    <div class="details">
+                        <div class="number">
+                            <span data-counter="counterup" data-value="@ViewBag.TotalClicks">@ViewBag.TotalClicks / @ViewBag.TotalSentEmails</span>
+                        </div>
+                        <div class="desc">@Resources.Clicks</div>
+                    </div>
+                    @*<a class="more" href="javascript:;">
+                            @Resources.ViewMore
+                            <i class="m-icon-swapright m-icon-white"></i>
+                        </a>*@
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="dashboard-stat purple">
+                    <div class="visual">
+                        <i class="fa"></i>
+                    </div>
+                    <div class="details">
+                        <div class="number">
+                            <span data-counter="counterup" data-value="@ViewBag.TotalUnsubscribers">@ViewBag.TotalUnsubscribers / @ViewBag.TotalSentEmails</span>
+                        </div>
+                        <div class="desc">@Resources.Unsubscribers</div>
+                    </div>
+                    @*<a class="more" href="javascript:;">
+                            @Resources.ViewMore
+                            <i class="m-icon-swapright m-icon-white"></i>
+                        </a>*@
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="dashboard-stat red">
+                    <div class="visual">
+                        <i class="fa"></i>
+                    </div>
+                    <div class="details">
+                        <div class="number">
+                            <span data-counter="counterup" data-value="@ViewBag.TotalBounces">@ViewBag.TotalBounces / @ViewBag.TotalSentEmails</span>
+                        </div>
+                        <div class="desc">@Resources.Bounces</div>
+                    </div>
+                    @*<a class="more" href="javascript:;">
+                            @Resources.ViewMore
+                            <i class="m-icon-swapright m-icon-white"></i>
+                        </a>*@
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="dashboard-stat green">
+                    <div class="visual">
+                        <i class="fa"></i>
+                    </div>
+                    <div class="details">
+                        <div class="number">
+                            <span data-counter="counterup" data-value="@ViewBag.OpenPercent">@DataManager.ToDecimal(ViewBag.OpenPercent).ToString("#,##0.00") %</span>
+                        </div>
+                        <div class="desc">% @Resources.Open</div>
+                    </div>
+                    @*<a class="more" href="javascript:;">
+                            @Resources.ViewMore
+                            <i class="m-icon-swapright m-icon-white"></i>
+                        </a>*@
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="dashboard-stat blue">
+                    <div class="visual">
+                        <i class="fa"></i>
+                    </div>
+                    <div class="details">
+                        <div class="number">
+                            <span data-counter="counterup" data-value="@ViewBag.ClickPercent">@DataManager.ToDecimal(ViewBag.ClickPercent).ToString("#,##0.00") %</span>
+                        </div>
+                        <div class="desc">% @Resources.Clicks</div>
+                    </div>
+                    @*<a class="more" href="javascript:;">
+                            @Resources.ViewMore
+                            <i class="m-icon-swapright m-icon-white"></i>
+                        </a>*@
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="dashboard-stat purple">
+                    <div class="visual">
+                        <i class="fa"></i>
+                    </div>
+                    <div class="details">
+                        <div class="number">
+                            <span data-counter="counterup" data-value="@ViewBag.UnsubscribePercent">@DataManager.ToDecimal(ViewBag.UnsubscribePercent).ToString("#,##0.00") %</span>
+                        </div>
+                        <div class="desc">% @Resources.Unsubscribers</div>
+                    </div>
+                    @*<a class="more" href="javascript:;">
+                            @Resources.ViewMore
+                            <i class="m-icon-swapright m-icon-white"></i>
+                        </a>*@
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="dashboard-stat red">
+                    <div class="visual">
+                        <i class="fa"></i>
+                    </div>
+                    <div class="details">
+                        <div class="number">
+                            <span data-counter="counterup" data-value="@ViewBag.BouncePercent">@DataManager.ToDecimal(ViewBag.BouncePercent).ToString("#,##0.00") %</span>
+                        </div>
+                        <div class="desc">% @Resources.Bounces</div>
+                    </div>
+                    @*<a class="more" href="javascript:;">
+                            @Resources.ViewMore
+                            <i class="m-icon-swapright m-icon-white"></i>
+                        </a>*@
+                </div>
+            </div>
+        </div>
+        <div class="margin-bottom-20">
+            @Html.Partial("NetmessageReportPartial")
+        </div>
+        <a href="@Url.Content("~/Emailing")" class="btn btn-default">@Resources.Back</a>
+    </div>
+</div>

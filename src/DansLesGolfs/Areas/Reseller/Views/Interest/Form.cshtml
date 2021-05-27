@@ -1,0 +1,62 @@
+﻿@using DansLesGolfs.Base
+@{
+    Layout = "~/Views/_Shared/MP/_Reseller.cshtml";
+}
+@section head
+{
+}
+@section foot
+{
+    <script>
+        $('.info-form').validate();
+    </script>
+}
+<form method="post" id="form-@ViewBag.ClassName" class="info-form">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        @Html.T("Interest Information")
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                <label for="CategoryId">@Resources.Category</label>
+                            </div>
+                            <div class="col-md-8">
+                                @Html.DropDownList("CategoryId", (IEnumerable<SelectListItem>)ViewBag.ItemCategories, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                <label for="InterestName">@Resources.InterestName</label>
+                            </div>
+                            <div class="col-md-8">
+                                @Html.TextBoxLang("InterestName", (List<InterestLang>)ViewBag.InterestLangs, "InterestName", new { Required = "Required", maxlength = 200, @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                <label for="InterestDesc">@Resources.InterestDescription</label>
+                            </div>
+                            <div class="col-md-8">
+                                @Html.TextAreaLang("InterestDesc", (List<InterestLang>)ViewBag.InterestLangs, "InterestDesc", new { Rows = 5, maxlength = 4000, @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" name="id" value="@ViewBag.id" />
+    <input type="submit" id="submit" name="submit" value="@Resources.Save" class="btn btn-primary" />
+    <input type="reset" id="reset" name="reset" value="@Resources.Reset" class="btn" />
+    <a href="@Url.Content("~/Reseller/Interest")" class="btn btn-default">@Resources.Back</a>
+</form>

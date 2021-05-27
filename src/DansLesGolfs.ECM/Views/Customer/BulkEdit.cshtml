@@ -1,0 +1,191 @@
+﻿@using DansLesGolfs.Base;
+@{
+    Layout = "~/Views/_Shared/MP/_Layout.cshtml";
+}
+@section head
+{
+}
+@section foot
+{
+    <script>
+        $('.datepicker').datepicker({
+            dateFormat: 'dd/mm/yy',
+            autoSize: true,
+            firstDay: 1
+        });
+    </script>
+    <script src="@Url.Content("~/Assets/Admin/scripts/page/customer-bulk-edit.js")"></script>
+}
+<div id="page-customer-bulk-edit">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">@Resources.Filters</h2>
+        </div>
+        <div id="filter-panel" class="panel-body">
+            <form>
+                <div class="row">
+                    <div class="control-label col-md-2">
+                        <label for="email">@Resources.Email</label>
+                    </div>
+                    <div class="col-md-2">
+                        <select id="emailOp" name="emailOp" class="form-control">
+                            <option value="con">@Resources.Contain</option>
+                            <option value="start">@Resources.StartWith</option>
+                            <option value="end">@Resources.EndWith</option>
+                            <option value="eq">@Resources.Equal</option>
+                            <option value="neq">@Resources.NotEqual</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="text" id="email" name="email" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="control-label col-md-2">
+                        <label for="birthdateFrom">@Resources.BirthDate</label>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="text" id="birthdateFrom" name="birthdateFrom" class="form-control datepicker" placeholder="@Resources.From" />
+                    </div>
+                    <div class="col-md-2">
+                        <input type="text" id="birthdateTo" name="birthdateTo" class="form-control datepicker" placeholder="@Resources.To" />
+                    </div>
+
+                    <div class="control-label col-md-2">
+                        <label for="gender">@Resources.Gender</label>
+                    </div>
+                    <div class="col-md-2">
+                        <select id="gender" name="gender" class="form-control">
+                            <option value=""></option>
+                            <option value="0">@Resources.Male</option>
+                            <option value="1">@Resources.Female</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="control-label col-md-2">
+                        <label for="firstname">@Resources.FirstName</label>
+                    </div>
+                    <div class="col-md-2">
+                        <select id="firstnameOp" name="firstnameOp" class="form-control">
+                            <option value="con">@Resources.Contain</option>
+                            <option value="start">@Resources.StartWith</option>
+                            <option value="end">@Resources.EndWith</option>
+                            <option value="eq">@Resources.Equal</option>
+                            <option value="neq">@Resources.NotEqual</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="text" id="firstname" name="firstname" class="form-control" />
+                    </div>
+
+                    <div class="control-label col-md-2">
+                        <label for="lastname">@Resources.LastName</label>
+                    </div>
+                    <div class="col-md-2">
+                        <select id="lastnameOp" name="lastnameOp" class="form-control">
+                            <option value="con">@Resources.Contain</option>
+                            <option value="start">@Resources.StartWith</option>
+                            <option value="end">@Resources.EndWith</option>
+                            <option value="eq">@Resources.Equal</option>
+                            <option value="neq">@Resources.NotEqual</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="text" id="lastname" name="lastname" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="control-label col-md-2">
+                        <label for="licenseNumber">@Resources.LicenseNumber</label>
+                    </div>
+                    <div class="col-md-2">
+                        <select id="licenseNumberOp" name="licenseNumberOp" class="form-control">
+                            <option value="con">@Resources.Contain</option>
+                            <option value="start">@Resources.StartWith</option>
+                            <option value="end">@Resources.EndWith</option>
+                            <option value="eq">@Resources.Equal</option>
+                            <option value="neq">@Resources.NotEqual</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="text" id="licenseNumber" name="licenseNumber" class="form-control" />
+                    </div>
+
+                    <div class="control-label col-md-2">
+                        <label for="career">@Resources.Career</label>
+                    </div>
+                    <div class="col-md-2">
+                        <select id="careerOp" name="careerOp" class="form-control">
+                            <option value="con">@Resources.Contain</option>
+                            <option value="start">@Resources.StartWith</option>
+                            <option value="end">@Resources.EndWith</option>
+                            <option value="eq">@Resources.Equal</option>
+                            <option value="neq">@Resources.NotEqual</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="text" id="career" name="career" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="control-label col-md-2">
+                        <label for="customerType">@Resources.CustomerType</label>
+                    </div>
+                    <div class="col-md-2">
+                        <select id="customerTypeOp" name="customerTypeOp" class="form-control">
+                            <option value="con">@Resources.Contain</option>
+                            <option value="start">@Resources.StartWith</option>
+                            <option value="end">@Resources.EndWith</option>
+                            <option value="eq">@Resources.Equal</option>
+                            <option value="neq">@Resources.NotEqual</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="text" id="customerType" name="customerType" class="form-control" />
+                    </div>
+
+                    <div class="control-label col-md-2">
+                        <label for="subCustomerType">@Resources.SubCustomerType</label>
+                    </div>
+                    <div class="col-md-2">
+                        <select id="subCustomerTypeOp" name="subCustomerTypeOp" class="form-control">
+                            <option value="con">@Resources.Contain</option>
+                            <option value="start">@Resources.StartWith</option>
+                            <option value="end">@Resources.EndWith</option>
+                            <option value="eq">@Resources.Equal</option>
+                            <option value="neq">@Resources.NotEqual</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="text" id="subCustomerType" name="subCustomerType" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-2">
+                        <a id="search-button" class="btn btn-primary">@Resources.Search</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <p><span class="label label-info">Tip</span> If you want to scroll in horizontal direction, just put the cursor over the grid then hold Shift Key and scrolling mouse button.</p>
+    <div class="action-buttons margin-bottom-20">
+        <a id="edit-button" class="btn btn-primary" title="@Resources.Edit" disabled>@Resources.Edit</a>
+        <a id="add-button" class="btn btn-primary" title="@Resources.Add">@Resources.Add</a>
+        <a id="import-button" class="btn btn-primary" title="@Resources.Import" href="@Url.Content("~/Customer/Import")">@Resources.Import</a>
+        <a id="delete-button" class="btn btn-primary" title="@Resources.DeleteSelectedCustomers">@Resources.Delete</a>
+    </div>
+    <div class="pager margin-bottom-10"></div>
+    <div id="gridview">
+        @Html.Partial("BulkEditGridPartial")
+    </div>
+    <div class="pager margin-top-10"></div>
+</div>

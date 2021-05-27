@@ -1,0 +1,72 @@
+﻿@using DansLesGolfs.Base
+@{
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    @Resources.ConversionTracking
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <label for="CategoryId">@Resources.ViewContent</label>
+                        </div>
+                        <div class="col-md-8">
+                            @Html.TextArea("TrackingCodeViewContent", (string)ViewBag.TrackingCodeViewContent, new { rows = 12, @class = "form-control" })
+                        </div>
+                        <div class="col-md-2">
+                            <a href="javascript:void(0);" class="test-tracking-code-button btn btn-primary">@Resources.Test</a>
+                            <p class="test-status"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <label for="CategoryId">@Resources.AddToCart</label>
+                        </div>
+                        <div class="col-md-8">
+                            @Html.TextArea("TrackingCodeAddToCart", (string)ViewBag.TrackingCodeAddToCart, new { rows = 12, @class = "form-control" })
+                        </div>
+                        <div class="col-md-2">
+                            <a href="javascript:void(0);" class="test-tracking-code-button btn btn-primary">@Resources.Test</a>
+                            <p class="test-status"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <label for="CategoryId">@Resources.InitialCheckout</label>
+                        </div>
+                        <div class="col-md-8">
+                            @Html.TextArea("TrackingCodeInitialCheckout", (string)ViewBag.TrackingCodeInitialCheckout, new { rows = 12, @class = "form-control" })
+                        </div>
+                        <div class="col-md-2">
+                            <a href="javascript:void(0);" class="test-tracking-code-button btn btn-primary">@Resources.Test</a>
+                            <p class="test-status"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <label for="CategoryId">@Resources.Purchase</label>
+                        </div>
+                        <div class="col-md-8">
+                            @Html.TextArea("TrackingCodePurchase", (string)ViewBag.TrackingCodePurchase, new { rows = 12, @class = "form-control" })
+                        </div>
+                        <div class="col-md-2">
+                            <a href="javascript:void(0);" class="test-tracking-code-button btn btn-primary">@Resources.Test</a>
+                            <p class="test-status"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

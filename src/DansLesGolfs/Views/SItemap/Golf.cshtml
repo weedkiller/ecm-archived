@@ -1,0 +1,44 @@
+@using DansLesGolfs.BLL
+@model List<Site>
+<?xml version="1.0" encoding="UTF-8" ?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemalocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    @if (Model != null && Model.Any())
+    {
+        foreach (Site site in Model)
+        {
+            <url>
+                <loc>@Url.RouteUrl("SiteDetail", new { slug = site.SiteSlug }, Request.Url.Scheme)</loc>
+                <lastmod>@site.UpdateDate.ToString("yyyy-MM-ddTHH:mm:ss")-05:00</lastmod>
+                <changefreq>weekly</changefreq>
+                <priority>0.6</priority>
+                @if (site.SiteImages != null && site.SiteImages.Any())
+                {
+                    string siteName = !string.IsNullOrWhiteSpace(site.SiteName) ? site.SiteName : "";
+                    foreach (SiteImage img in site.SiteImages)
+                    {
+                        <image:image>
+                            <image:loc>@Html.GetFullSiteImageUrl(site.SiteId, img, "original")</image:loc>
+                            <image:caption><![CDATA[@siteName]]></image:caption>
+                        </image:image>
+                        <image:image>
+                            <image:loc>@Html.GetFullSiteImageUrl(site.SiteId, img, "large")</image:loc>
+                            <image:caption><![CDATA[@siteName]]></image:caption>
+                        </image:image>
+                        <image:image>
+                            <image:loc>@Html.GetFullSiteImageUrl(site.SiteId, img, "medium")</image:loc>
+                            <image:caption><![CDATA[@siteName]]></image:caption>
+                        </image:image>
+                        <image:image>
+                            <image:loc>@Html.GetFullSiteImageUrl(site.SiteId, img, "small")</image:loc>
+                            <image:caption><![CDATA[@siteName]]></image:caption>
+                        </image:image>
+                        <image:image>
+                            <image:loc>@Html.GetFullSiteImageUrl(site.SiteId, img, "thumbnail")</image:loc>
+                            <image:caption><![CDATA[@siteName]]></image:caption>
+                        </image:image>
+                    }
+                }
+            </url>
+        }
+    }
+</urlset>

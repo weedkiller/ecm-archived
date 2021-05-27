@@ -1,0 +1,63 @@
+2016-02-28 07:49:53.6634  33 Error                          DansLesGolfs.Controllers.BaseController System.ArgumentException: An item with the same key has already been added.
+   at System.ThrowHelper.ThrowArgumentException(ExceptionResource resource)
+   at System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
+   at DansLesGolfs.Data.PrimaDataAccess.Confirm(String courseId, DateTime reserveDate, Int32 numberOfPlayers, String lockCode, User user, Nullable`1 reserveDateTime9In, String[]& bookingIds, String& msg) in E:\websites\DLG\DansLesGolfs.Data\PrimaDataAccess.cs:line 228
+   at DansLesGolfs.Controllers.OrderController.CheckPrimaAPI(Order order, ShoppingCart cart) in E:\websites\DLG\DansLesGolfs\Controllers\OrderController.cs:line 1707
+   at DansLesGolfs.Controllers.OrderController.SaveOrder(Order order, Boolean forceNew, Boolean skipSendConfirmationEmail) in E:\websites\DLG\DansLesGolfs\Controllers\OrderController.cs:line 1596 System.ArgumentException: An item with the same key has already been added.
+   at System.ThrowHelper.ThrowArgumentException(ExceptionResource resource)
+   at System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
+   at DansLesGolfs.Data.PrimaDataAccess.Confirm(String courseId, DateTime reserveDate, Int32 numberOfPlayers, String lockCode, User user, Nullable`1 reserveDateTime9In, String[]& bookingIds, String& msg) in E:\websites\DLG\DansLesGolfs.Data\PrimaDataAccess.cs:line 228
+   at DansLesGolfs.Controllers.OrderController.CheckPrimaAPI(Order order, ShoppingCart cart) in E:\websites\DLG\DansLesGolfs\Controllers\OrderController.cs:line 1707
+   at DansLesGolfs.Controllers.OrderController.SaveOrder(Order order, Boolean forceNew, Boolean skipSendConfirmationEmail) in E:\websites\DLG\DansLesGolfs\Controllers\OrderController.cs:line 1596
+2016-02-28 07:49:53.9674  33 Error                          DansLesGolfs.Controllers.BaseController An item with the same key has already been added. 
+2016-02-28 08:01:23.6061  20 Error                          DansLesGolfs.Controllers.BaseController System.Net.WebException: The remote server returned an error: (401) Unauthorized.
+   at System.Net.HttpWebRequest.EndGetResponse(IAsyncResult asyncResult)
+   at DansLesGolfs.Data.PrimaDataAccess.SendRequest(String method, String path, Dictionary`2 parameters) in E:\websites\DLG\DansLesGolfs.Data\PrimaDataAccess.cs:line 76
+   at DansLesGolfs.Data.PrimaDataAccess.Lock(String courseId, DateTime date, Int32 numberOfPlayers, String& msg) in E:\websites\DLG\DansLesGolfs.Data\PrimaDataAccess.cs:line 194
+   at DansLesGolfs.Controllers.CartController.AddItemPrimaTeeSheet(Nullable`1 itemId, String courseId, String teeDate, String teeTime, String teeTime9In, String teeTime9Out, Int32 numberOfPlayers, Decimal price, String gameType) in E:\websites\DLG\DansLesGolfs\Controllers\CartController.cs:line 330 System.Net.WebException: The remote server returned an error: (401) Unauthorized.
+   at System.Net.HttpWebRequest.EndGetResponse(IAsyncResult asyncResult)
+   at DansLesGolfs.Data.PrimaDataAccess.SendRequest(String method, String path, Dictionary`2 parameters) in E:\websites\DLG\DansLesGolfs.Data\PrimaDataAccess.cs:line 76
+   at DansLesGolfs.Data.PrimaDataAccess.Lock(String courseId, DateTime date, Int32 numberOfPlayers, String& msg) in E:\websites\DLG\DansLesGolfs.Data\PrimaDataAccess.cs:line 194
+   at DansLesGolfs.Controllers.CartController.AddItemPrimaTeeSheet(Nullable`1 itemId, String courseId, String teeDate, String teeTime, String teeTime9In, String teeTime9Out, Int32 numberOfPlayers, Decimal price, String gameType) in E:\websites\DLG\DansLesGolfs\Controllers\CartController.cs:line 330
+2016-02-28 08:01:28.2605  20 Error                          DansLesGolfs.Controllers.BaseController System.Net.WebException: The remote server returned an error: (401) Unauthorized.
+   at System.Net.HttpWebRequest.EndGetResponse(IAsyncResult asyncResult)
+   at DansLesGolfs.Data.PrimaDataAccess.SendRequest(String method, String path, Dictionary`2 parameters) in E:\websites\DLG\DansLesGolfs.Data\PrimaDataAccess.cs:line 76
+   at DansLesGolfs.Data.PrimaDataAccess.Lock(String courseId, DateTime date, Int32 numberOfPlayers, String& msg) in E:\websites\DLG\DansLesGolfs.Data\PrimaDataAccess.cs:line 194
+   at DansLesGolfs.Controllers.CartController.AddItemPrimaTeeSheet(Nullable`1 itemId, String courseId, String teeDate, String teeTime, String teeTime9In, String teeTime9Out, Int32 numberOfPlayers, Decimal price, String gameType) in E:\websites\DLG\DansLesGolfs\Controllers\CartController.cs:line 330 System.Net.WebException: The remote server returned an error: (401) Unauthorized.
+   at System.Net.HttpWebRequest.EndGetResponse(IAsyncResult asyncResult)
+   at DansLesGolfs.Data.PrimaDataAccess.SendRequest(String method, String path, Dictionary`2 parameters) in E:\websites\DLG\DansLesGolfs.Data\PrimaDataAccess.cs:line 76
+   at DansLesGolfs.Data.PrimaDataAccess.Lock(String courseId, DateTime date, Int32 numberOfPlayers, String& msg) in E:\websites\DLG\DansLesGolfs.Data\PrimaDataAccess.cs:line 194
+   at DansLesGolfs.Controllers.CartController.AddItemPrimaTeeSheet(Nullable`1 itemId, String courseId, String teeDate, String teeTime, String teeTime9In, String teeTime9Out, Int32 numberOfPlayers, Decimal price, String gameType) in E:\websites\DLG\DansLesGolfs\Controllers\CartController.cs:line 330
+2016-02-28 08:23:08.5117  46 Error                          DansLesGolfs.Controllers.BaseController System.Net.WebException: The remote server returned an error: (500) Internal Server Error.
+   at System.Net.HttpWebRequest.EndGetResponse(IAsyncResult asyncResult)
+   at DansLesGolfs.Data.PrimaDataAccess.SendRequest(String method, String path, Dictionary`2 parameters) in E:\websites\DLG\DansLesGolfs.Data\PrimaDataAccess.cs:line 76
+   at DansLesGolfs.Data.PrimaDataAccess.Confirm(String courseId, DateTime reserveDate, Int32 numberOfPlayers, String lockCode, User user, Nullable`1 reserveDateTime9In, String[]& bookingIds, String& msg) in E:\websites\DLG\DansLesGolfs.Data\PrimaDataAccess.cs:line 231
+   at DansLesGolfs.Controllers.OrderController.CheckPrimaAPI(Order order, ShoppingCart cart) in E:\websites\DLG\DansLesGolfs\Controllers\OrderController.cs:line 1683
+   at DansLesGolfs.Controllers.OrderController.SaveOrder(Order order, Boolean forceNew, Boolean skipSendConfirmationEmail) in E:\websites\DLG\DansLesGolfs\Controllers\OrderController.cs:line 1596 System.Net.WebException: The remote server returned an error: (500) Internal Server Error.
+   at System.Net.HttpWebRequest.EndGetResponse(IAsyncResult asyncResult)
+   at DansLesGolfs.Data.PrimaDataAccess.SendRequest(String method, String path, Dictionary`2 parameters) in E:\websites\DLG\DansLesGolfs.Data\PrimaDataAccess.cs:line 76
+   at DansLesGolfs.Data.PrimaDataAccess.Confirm(String courseId, DateTime reserveDate, Int32 numberOfPlayers, String lockCode, User user, Nullable`1 reserveDateTime9In, String[]& bookingIds, String& msg) in E:\websites\DLG\DansLesGolfs.Data\PrimaDataAccess.cs:line 231
+   at DansLesGolfs.Controllers.OrderController.CheckPrimaAPI(Order order, ShoppingCart cart) in E:\websites\DLG\DansLesGolfs\Controllers\OrderController.cs:line 1683
+   at DansLesGolfs.Controllers.OrderController.SaveOrder(Order order, Boolean forceNew, Boolean skipSendConfirmationEmail) in E:\websites\DLG\DansLesGolfs\Controllers\OrderController.cs:line 1596
+2016-02-28 08:23:08.6303  46 Error                          DansLesGolfs.Controllers.BaseController The remote server returned an error: (500) Internal Server Error. 
+2016-02-28 08:23:15.8701  19 Error                          DansLesGolfs.Controllers.BaseController System.Net.WebException: The remote server returned an error: (500) Internal Server Error.
+   at System.Net.HttpWebRequest.EndGetResponse(IAsyncResult asyncResult)
+   at DansLesGolfs.Data.PrimaDataAccess.SendRequest(String method, String path, Dictionary`2 parameters) in E:\websites\DLG\DansLesGolfs.Data\PrimaDataAccess.cs:line 76
+   at DansLesGolfs.Data.PrimaDataAccess.Confirm(String courseId, DateTime reserveDate, Int32 numberOfPlayers, String lockCode, User user, Nullable`1 reserveDateTime9In, String[]& bookingIds, String& msg) in E:\websites\DLG\DansLesGolfs.Data\PrimaDataAccess.cs:line 231
+   at DansLesGolfs.Controllers.OrderController.CheckPrimaAPI(Order order, ShoppingCart cart) in E:\websites\DLG\DansLesGolfs\Controllers\OrderController.cs:line 1683
+   at DansLesGolfs.Controllers.OrderController.SaveOrder(Order order, Boolean forceNew, Boolean skipSendConfirmationEmail) in E:\websites\DLG\DansLesGolfs\Controllers\OrderController.cs:line 1596 System.Net.WebException: The remote server returned an error: (500) Internal Server Error.
+   at System.Net.HttpWebRequest.EndGetResponse(IAsyncResult asyncResult)
+   at DansLesGolfs.Data.PrimaDataAccess.SendRequest(String method, String path, Dictionary`2 parameters) in E:\websites\DLG\DansLesGolfs.Data\PrimaDataAccess.cs:line 76
+   at DansLesGolfs.Data.PrimaDataAccess.Confirm(String courseId, DateTime reserveDate, Int32 numberOfPlayers, String lockCode, User user, Nullable`1 reserveDateTime9In, String[]& bookingIds, String& msg) in E:\websites\DLG\DansLesGolfs.Data\PrimaDataAccess.cs:line 231
+   at DansLesGolfs.Controllers.OrderController.CheckPrimaAPI(Order order, ShoppingCart cart) in E:\websites\DLG\DansLesGolfs\Controllers\OrderController.cs:line 1683
+   at DansLesGolfs.Controllers.OrderController.SaveOrder(Order order, Boolean forceNew, Boolean skipSendConfirmationEmail) in E:\websites\DLG\DansLesGolfs\Controllers\OrderController.cs:line 1596
+2016-02-28 08:23:15.8701  19 Error                          DansLesGolfs.Controllers.BaseController The remote server returned an error: (500) Internal Server Error. 
+2016-02-28 08:24:20.5089  14 Error                          DansLesGolfs.Controllers.BaseController System.Net.WebException: The remote server returned an error: (401) Unauthorized.
+   at System.Net.HttpWebRequest.EndGetResponse(IAsyncResult asyncResult)
+   at DansLesGolfs.Data.PrimaDataAccess.SendRequest(String method, String path, Dictionary`2 parameters) in E:\websites\DLG\DansLesGolfs.Data\PrimaDataAccess.cs:line 76
+   at DansLesGolfs.Data.PrimaDataAccess.Lock(String courseId, DateTime date, Int32 numberOfPlayers, String& msg) in E:\websites\DLG\DansLesGolfs.Data\PrimaDataAccess.cs:line 194
+   at DansLesGolfs.Controllers.CartController.AddItemPrimaTeeSheet(Nullable`1 itemId, String courseId, String teeDate, String teeTime, String teeTime9In, String teeTime9Out, Int32 numberOfPlayers, Decimal price, String gameType) in E:\websites\DLG\DansLesGolfs\Controllers\CartController.cs:line 329 System.Net.WebException: The remote server returned an error: (401) Unauthorized.
+   at System.Net.HttpWebRequest.EndGetResponse(IAsyncResult asyncResult)
+   at DansLesGolfs.Data.PrimaDataAccess.SendRequest(String method, String path, Dictionary`2 parameters) in E:\websites\DLG\DansLesGolfs.Data\PrimaDataAccess.cs:line 76
+   at DansLesGolfs.Data.PrimaDataAccess.Lock(String courseId, DateTime date, Int32 numberOfPlayers, String& msg) in E:\websites\DLG\DansLesGolfs.Data\PrimaDataAccess.cs:line 194
+   at DansLesGolfs.Controllers.CartController.AddItemPrimaTeeSheet(Nullable`1 itemId, String courseId, String teeDate, String teeTime, String teeTime9In, String teeTime9Out, Int32 numberOfPlayers, Decimal price, String gameType) in E:\websites\DLG\DansLesGolfs\Controllers\CartController.cs:line 329

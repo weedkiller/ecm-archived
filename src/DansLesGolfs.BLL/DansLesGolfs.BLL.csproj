@@ -1,0 +1,491 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E513F7C6-1D28-46DA-8323-1AD0D071B02E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DansLesGolfs.BLL</RootNamespace>
+    <AssemblyName>DansLesGolfs.BLL</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Rotativa, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rotativa.1.6.4\lib\net40\Rotativa.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccountOrder.cs" />
+    <Compile Include="AccountOrderDetail.cs" />
+    <Compile Include="AccountSponsorship.cs" />
+    <Compile Include="AddDlgCard.cs" />
+    <Compile Include="AdditionalFields.cs" />
+    <Compile Include="ContractFooter.cs" />
+    <Compile Include="Creditcardassociations.cs" />
+    <Compile Include="DLGCardBalanceAdmin.cs" />
+    <Compile Include="DlgCardHistory.cs" />
+    <Compile Include="DlgCardHistoryModel.cs" />
+    <Compile Include="DLGCardObj.cs" />
+    <Compile Include="Entities\Ad.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Address.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Adset.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Brand.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Category.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\City.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Content.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Country.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Coupon.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\CouponGroup.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Course.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\CourseType.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Creditcardassociation.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\CustomerAddress.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\CustomerCreditCard.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\CustomerGroup.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\CustomerType.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\CustomerTypeLang.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\DLGCard.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\DLGCardBalance.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\DLGCardStyle.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\DLGModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DLGModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\DLGModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\DLGModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DLGModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\EmailAccount.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Emailing.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\EmailingAttachment.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\EmailingList.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\EmailLog.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\EmailQue.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\EmailTemplate.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\EmailTemplateAttachment.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\EmailTemplateLang.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\EmailTemplateVariable.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\EmailTracking.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\EmailUnsubscription.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\GolfBrand.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Impressum.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Interest.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\InterestLang.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Item.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ItemCategory.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ItemChoice.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ItemConversionTracking.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ItemImage.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ItemLang.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ItemModifier.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ItemPosition.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ItemPrice.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ItemReview.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ItemType.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Language.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\MailingList.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Menu.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\MenuItem.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Modifier.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ModifierChoice.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ModifierChoiceLang.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ModifierLang.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\NetMessageCampaign.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\NetmessageReport.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\NetmessageReportRecord.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Option.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Order.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\OrderItem.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Post.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Promotion.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Region.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ReservationAPI.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\RestaurantProductCategory.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\RestaurantSupplier.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ShippingTypeLang.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Site.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\SiteCentralLineSEO.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\SiteCommercialFollowUp.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\SiteCommunication.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\SiteEvent.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\SiteFinancial.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\SiteImage.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\SiteLang.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\SiteRestaurantProductCategory.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\SiteRestaurantSupplier.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\SiteReview.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\SlideImage.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\SponsorEmail.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\State.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Supplier.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Tax.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TeeSheet.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Title.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TitleLang.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TopNavLink.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UnsubscribeReason.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\User.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserMessage.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserMessageAttached.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserType.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\VariationHD.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\WebContent.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\z.cs">
+      <DependentUpon>DLGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ItemPriceDlgCard.cs" />
+    <Compile Include="ItemTypeCategory.cs" />
+    <Compile Include="jQueryDataTableParamModel.cs" />
+    <Compile Include="PromotionModel.cs" />
+    <Compile Include="PromotionViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SaleItemReport.cs" />
+    <Compile Include="SalesReport.cs" />
+    <Compile Include="SalesReportModel.cs" />
+    <Compile Include="UserInterested.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DansLesGolfs.Base\DansLesGolfs.Base.csproj">
+      <Project>{5059ad59-f4e1-4239-a840-3012a0df76e2}</Project>
+      <Name>DansLesGolfs.Base</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="App_Browsers\qt.browser" />
+    <EntityDeploy Include="Entities\DLGModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DLGModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Entities\DLGModel.edmx.diagram">
+      <DependentUpon>DLGModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Scripts\jquery-2.2.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\themes\base\accordion.css" />
+    <Content Include="Content\themes\base\all.css" />
+    <Content Include="Content\themes\base\autocomplete.css" />
+    <Content Include="Content\themes\base\base.css" />
+    <Content Include="Content\themes\base\button.css" />
+    <Content Include="Content\themes\base\core.css" />
+    <Content Include="Content\themes\base\datepicker.css" />
+    <Content Include="Content\themes\base\dialog.css" />
+    <Content Include="Content\themes\base\draggable.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\menu.css" />
+    <Content Include="Content\themes\base\progressbar.css" />
+    <Content Include="Content\themes\base\resizable.css" />
+    <Content Include="Content\themes\base\selectable.css" />
+    <Content Include="Content\themes\base\selectmenu.css" />
+    <Content Include="Content\themes\base\slider.css" />
+    <Content Include="Content\themes\base\sortable.css" />
+    <Content Include="Content\themes\base\spinner.css" />
+    <Content Include="Content\themes\base\tabs.css" />
+    <Content Include="Content\themes\base\theme.css" />
+    <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="Entities\DLGModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DLGModel.edmx</DependentUpon>
+      <LastGenOutput>DLGModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Entities\DLGModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DLGModel.edmx</DependentUpon>
+      <LastGenOutput>DLGModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Rotativa\wkhtmltopdf.exe" />
+    <Content Include="Scripts\jquery-2.2.2.intellisense.js" />
+    <Content Include="Scripts\jquery-2.2.2.js" />
+    <Content Include="Scripts\jquery-2.2.2.min.js" />
+    <Content Include="Scripts\jquery-ui-1.11.4.js" />
+    <Content Include="Scripts\jquery-ui-1.11.4.min.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

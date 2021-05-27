@@ -1,0 +1,48 @@
+﻿@{
+    Layout = "~/Views/_Shared/MP/_Layout.cshtml";
+}
+@section head
+{
+}
+@section foot
+{
+    <script type="text/javascript">
+        window.controllerName = "@ViewBag.ObjectName";
+        window.primaryKey = "@ViewBag.PrimaryKey";
+        window.columnLength = 4;
+        window.syncConfirmText = '@Resources.SyncConfirmText';
+    </script>
+    <script type="text/javascript" src="@Url.Content("~/Assets/Admin/scripts/list-page.js")"></script>
+}
+<div class="panel">
+    <div class="panel-body">
+        <div class="row margin-bottom-20">
+            <div class="col-md-12">
+                <a class="btn btn-primary" href="@Url.Content("~/" + ViewBag.ObjectName +  "/Form")">@Resources.Add</a>
+            </div>
+        </div>
+        <div class="row margin-bottom-20">
+            <div class="col-md-12">
+                @ViewBag.CRUDGrid
+            </div>
+        </div>
+        <div class="row margin-top-50">
+            <div class="col-md-5">
+                <select class="actions-dropdown form-control">
+                    <option value="delete-selected">@Resources.DeleteSelectedItems</option>
+                    @if (ViewBag.ActionList != null)
+                    {
+                        foreach (var action in (Dictionary<string, string>)ViewBag.ActionList)
+                        {
+                            <option value="@action.Key">@action.Value</option>
+                        }
+                    }
+                </select>
+            </div>
+            <div class="col-md-1">
+                <button class="action-button btn btn-primary">@Resources.Action</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="notify-window"></div>

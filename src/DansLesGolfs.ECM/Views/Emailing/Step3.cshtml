@@ -1,0 +1,110 @@
+﻿@using DansLesGolfs.BLL
+@{
+    Layout = "~/Views/_Shared/MP/_Layout.cshtml";
+    List<CustomerGroup> customerGroups = (List<CustomerGroup>)ViewBag.CustomerGroups;
+}
+@section head
+{
+}
+@section foot
+{
+    <script src="@Url.Content("~/Assets/Libraries/tinymce/tinymce.min.js")"></script>
+    <script src="@Url.Content("~/Assets/Admin/scripts/page/email-sending.js")"></script>
+    <script>
+        $('.info-form').validate();
+    </script>
+    @if(TempData["IsSave"] != null)
+    {
+        <script>
+            $.post(getUrl('Emailing/AjaxAddEmailIntoQueue'));
+        </script>
+    }
+}
+        <form method="post" action="@Url.Content("~/Emailing/SaveStep3")" id="form-send-email" class="info-form">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">
+                                @Resources.SendingEmail
+                            </h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-2 control-label">
+                                        <label for="SendMailUsing">@Resources.Using</label>
+                                    </div>
+                                    <div class="col-md-2">
+                                        @Html.DropDownList("SendMailUsing", (IEnumerable<SelectListItem>)ViewBag.SendMailUsingOptions, new { @class = "form-control" })
+                                    </div>
+                                </div>
+                            </div>
+                            @if (customerGroups.Any())
+                    {
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-2 control-label">
+                                    <label for="MailingLists">@Resources.CustomerGroups</label>
+                                </div>
+                                <div class="col-md-10">
+                                    <ul class="mailings-list">
+                                        @foreach (CustomerGroup it in customerGroups)
+                                {
+                                    <li>
+                                        <label for="customergroup-@it.CustomerGroupId">
+                                            <input type="checkbox" id="customergroup-@it.CustomerGroupId" name="CustomerGroupIds" value="@it.CustomerGroupId" /> @it.CustomerGroupName
+                                        </label>
+                                    </li>
+                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+            }
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-2 control-label">
+                                        <label for="OtherEmails">@Resources.AdditionalEmails</label>
+                                    </div>
+                                    <div class="col-md-10">
+                                        @Html.TextArea("OtherEmails", new { @class = "form-control", rows = 8 })
+                                        <p class="description">@Resources.UseSemiColonToSplitEachEmail</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-2 control-label">
+                                    </div>
+                                    <div class="col-md-10">
+                                        <label for="SendToAllCustomer"><input type="checkbox" id="SendToAllCustomer" name="SendToAllCustomer" value="True" @(DataManager.ToBoolean(ViewBag.IsSendToAllCustomer) ? "checked=\"checked\"" : "") /> @Resources.SendToAllCustomers</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row margin-top-10">
+                                <div class="form-group">
+                                    <div class="col-md-2 control-label">
+                                        <label for="CustomerGroups">&nbsp;</label>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <a class="btn btn-primary" id="test-email-button" href="javascript:void(0);">@Resources.TestEmail</a>
+                                        <div id="test-email-panel" class="margin-top-10 margin-bottom-10 hide well">
+                                            <textarea id="test-email-textarea" class="form-control" rows="8"></textarea>
+                                            <p><a href="javascript:void(0);" id="send-test-email-button" class="btn btn-primary">@Resources.TestSendingEmail</a></p>
+                                            <p class="description">@Resources.UseSemiColonToSplitEachEmail</p>
+                                            <p id="test-email-info-msg" class="alert alert-info hide">@Resources.EmailsAreSendingPleaseWait</p>
+                                            <p id="test-email-success-msg" class="alert alert-success hide">@Resources.TestEmailWasSent</p>
+                                            <p id="test-email-error-msg" class="alert alert-danger hide"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <input type="submit" id="Previous" name="Previous" value="@Resources.Previous" class="btn btn-primary" />
+            <input type="submit" id="Send" name="Send" value="@Resources.Send" class="btn btn-primary" />
+            <input type="submit" id="Schedule" name="Schedule" value="@Resources.Schedule" class="btn btn-primary" />
+        </form>

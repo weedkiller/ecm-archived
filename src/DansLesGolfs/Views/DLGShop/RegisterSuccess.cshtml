@@ -1,0 +1,17 @@
+﻿@using DansLesGolfs.BLL
+@model WebContent
+@{
+    ViewBag.Title = ViewBag.SuccessMessage;
+    Layout = "~/Views/_Shared/MP/Front/_FullWidth.cshtml";
+}
+@section head
+{
+}
+@section foot
+{
+}
+<div id="page-dlgshop-register-success">
+    <h1 style="font-size: 3em; width: 80%; text-align: center; margin: 100px auto 0;">
+        @MvcHtmlString.Create(ViewBag.SuccessMessage)
+    </h1>
+</div>

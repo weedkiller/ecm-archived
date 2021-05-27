@@ -1,0 +1,113 @@
+﻿@using DansLesGolfs.BLL
+@model SiteEvent
+@{
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    @Resources.Event
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            <label for="HasChallenge">Challenge</label>
+                        </div>
+                        <div class="col-md-1">
+                            <input type="checkbox" id="HasChallenge" name="HasChallenge" value="true" @(Model.HasChallenge ? " checked=\"checked\"" : "") />
+                        </div>
+                        <div class="col-md-7">
+                            @Html.TextBox("ChallengeDate", Model.HasChallenge ? Model.ChallengeDate.ToString("dd/MM/yyyy") : "", (Model.HasChallenge ? (object)new { maxlength = 10, @class = "form-control datepicker" } : new { maxlength = 10, @class = "form-control datepicker", disabled = "disabled" }))
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            <label for="HasPingClassicTour">PING Classic Tour</label>
+                        </div>
+                        <div class="col-md-1">
+                            <input type="checkbox" id="HasPingClassicTour" name="HasPingClassicTour" value="true" @(Model.HasPingClassicTour ? " checked=\"checked\"" : "") />
+                        </div>
+                        <div class="col-md-7">
+                            @Html.TextBox("PingClassicTourDate", Model.HasPingClassicTour ? Model.PingClassicTourDate.ToString("dd/MM/yyyy") : "", (Model.HasPingClassicTour ? (object)new { maxlength = 10, @class = "form-control datepicker" } : new { maxlength = 10, @class = "form-control datepicker", disabled = "disabled" }))
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            <label for="HasCongressOwner">Congress Presence</label>
+                        </div>
+                        <div class="col-md-8">
+                            <label for="HasCongressOwner"><input type="checkbox" id="HasCongressOwner" name="HasCongressOwner" value="true" @(Model.HasCongressOwner ? " checked=\"checked\"" : "") /> Owner</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+
+                        </div>
+                        <div class="col-md-8">
+                            <label for="HasCongressManager"><input type="checkbox" id="HasCongressManager" name="HasCongressManager" value="true" @(Model.HasCongressManager ? " checked=\"checked\"" : "") /> Manager</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+
+                        </div>
+                        <div class="col-md-8">
+                            <label for="HasCongressGreenKeeper"><input type="checkbox" id="HasCongressGreenKeeper" name="HasCongressGreenKeeper" value="true" @(Model.HasCongressGreenKeeper ? " checked=\"checked\"" : "") /> Green Keeper</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+
+                        </div>
+                        <div class="col-md-8">
+                            <label for="HasCongressRestaurateur"><input type="checkbox" id="HasCongressRestaurateur" name="HasCongressRestaurateur" value="true" @(Model.HasCongressRestaurateur ? " checked=\"checked\"" : "") /> Restaurateur</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+
+                        </div>
+                        <div class="col-md-8">
+                            <label for="HasCongressRespProshop"><input type="checkbox" id="HasCongressRespProshop" name="HasCongressRespProshop" value="true" @(Model.HasCongressRespProshop ? " checked=\"checked\"" : "") /> Resp. Proshop</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            <label for="HasShowroomManager">Showroom Presence</label>
+                        </div>
+                        <div class="col-md-8">
+                            <label for="HasShowroomManager"><input type="checkbox" id="HasShowroomManager" name="HasShowroomManager" value="true" @(Model.HasShowroomManager ? " checked=\"checked\"" : "") /> Manager</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+
+                        </div>
+                        <div class="col-md-8">
+                            <label for="HasShowroomRespProshop"><input type="checkbox" id="HasShowroomRespProshop" name="HasShowroomRespProshop" value="true" @(Model.HasShowroomRespProshop ? " checked=\"checked\"" : "") /> Resp. Proshop</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

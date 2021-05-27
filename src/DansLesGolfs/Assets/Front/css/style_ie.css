@@ -1,0 +1,19 @@
+h1, h2, h3, h4 {
+    font-family: 'Trebuchet MS', Arial, Helvetica, 'MS Sans Serif';
+    font-weight: 700;
+}
+
+#header #main-menu {
+    font: 16px 'Trebuchet MS', Arial, Helvetica, 'MS Sans Serif';
+    font-weight: 700;
+}
+
+#footer #footer-heading h3 {
+    font: 16px 'Trebuchet MS', Arial, Helvetica, 'MS Sans Serif';
+    font-weight: 700;
+}
+
+#products-list .product .product-info .view-offer {
+    font: 14px 'Trebuchet MS', Arial, Helvetica, 'MS Sans Serif';
+    font-weight: 700;
+}

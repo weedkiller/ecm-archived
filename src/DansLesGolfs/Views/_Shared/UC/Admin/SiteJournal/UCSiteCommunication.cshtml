@@ -1,0 +1,138 @@
+﻿@using DansLesGolfs.BLL
+@using System.Globalization
+@model SiteCommunication
+@{
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    @Resources.Communication
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            <label for="NewslettersOrder">Newsletters Order</label>
+                        </div>
+                        <div class="col-md-8">
+                            @Html.TextBox("NewslettersOrder", Model.NewslettersOrder, new { maxlength = 5, @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            <label for="NewslettersSendDate">Newsletters Send Date</label>
+                        </div>
+                        <div class="col-md-8">
+                            @Html.TextBox("NewslettersSendDate", Model.NewslettersSendDate.ToString("dd/MM/yyyy"), new { maxlength = 10, @class = "form-control datepicker" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            <label for="NewslettersSendDetail">Newsletters Detail</label>
+                        </div>
+                        <div class="col-md-8">
+                            @Html.TextArea("NewslettersSendDetail", Model.NewslettersSendDetail, new { maxlength = 4000, rows = 3, @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            <label for="UsePageGuide">Visibility Pack</label>
+                        </div>
+                        <div class="col-md-8">
+                            <label for="UsePageGuide"><input type="checkbox" id="UsePageGuide" name="UsePageGuide" value="true" @(Model.UsePageGuide ? " checked=\"checked\"" : "") /> Page Guide</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+
+                        </div>
+                        <div class="col-md-8">
+                            <label for="UsePageSite"><input type="checkbox" id="UsePageSite" name="UsePageSite" value="true" @(Model.UsePageSite ? " checked=\"checked\"" : "") /> Page Site</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+
+                        </div>
+                        <div class="col-md-8">
+                            <label for="UseStaysOffers"><input type="checkbox" id="UseStaysOffers" name="UseStaysOffers" value="true" @(Model.UseStaysOffers ? " checked=\"checked\"" : "") /> Stay Offers</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+
+                        </div>
+                        <div class="col-md-8">
+                            <label for="UseTerminal"><input type="checkbox" id="UseTerminal" name="UseTerminal" value="true" @(Model.UseTerminal ? " checked=\"checked\"" : "") /> Terminal</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+
+                        </div>
+                        <div class="col-md-8">
+                            <label for="UseShowBooklet"><input type="checkbox" id="UseShowBooklet" name="UseShowBooklet" value="true" @(Model.UseShowBooklet ? " checked=\"checked\"" : "") /> Show Booklet</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            <label for="UseLogoOnSite">Communication Support</label>
+                        </div>
+                        <div class="col-md-8">
+                            <label for="UseLogoOnSite"><input type="checkbox" id="UseLogoOnSite" name="UseLogoOnSite" value="true" @(Model.UseLogoOnSite ? " checked=\"checked\"" : "") /> Logo On Site</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+
+                        </div>
+                        <div class="col-md-8">
+                            <label for="UseTotem"><input type="checkbox" id="UseTotem" name="UseTotem" value="true" @(Model.UseTotem ? " checked=\"checked\"" : "") /> Totem</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+
+                        </div>
+                        <div class="col-md-8">
+                            <label for="UseGuideFlyers"><input type="checkbox" id="UseGuideFlyers" name="UseGuideFlyers" value="true" @(Model.UseGuideFlyers ? " checked=\"checked\"" : "") /> Guide Flyers</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            
+                        </div>
+                        <div class="col-md-8">
+                            <label for="UseSheet"><input type="checkbox" id="UseSheet" name="UseSheet" value="true" @(Model.UseSheet ? " checked=\"checked\"" : "") /> Sheet</label>
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

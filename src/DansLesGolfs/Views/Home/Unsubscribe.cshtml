@@ -1,0 +1,47 @@
+﻿@{
+    Layout = "~/Views/_Shared/MP/Front/_FullWidth.cshtml";
+    List<UnsubscribeReason> unsubscribeReasons = (List<UnsubscribeReason>)ViewBag.UnsubscribeReasons;
+}
+@section head
+{
+}
+@section foot
+{
+}
+<div id="page-unsubscribe" class="text-center">
+    <h1 class="page-title margin-top-70 heading-xl">@Resources.Unsubscribe</h1>
+    @if (ViewBag.ErrorMessage != null)
+    {
+        <div class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>Error!</strong> @MvcHtmlString.Create(ViewBag.ErrorMessage)
+        </div>
+    }
+    <p>@MvcHtmlString.Create(String.Format(Resources.UnsubscribeConfirmText, ViewBag.Email))</p>
+    <form action="@Url.Content("~/Home/ProcessUnsubscribe")" method="post">
+        @if (unsubscribeReasons.Any())
+        {
+            <div class="row">
+                <div class="col-md-6 col-centered">
+                    <ul class="text-left">
+                        @foreach (UnsubscribeReason it in unsubscribeReasons)
+                        {
+                            <li data-id="@it.UnsubscribeReasonId"><input type="radio" id="unsubscribe_reason_id-@it.UnsubscribeReasonId" name="unsubscribe_reason_id" value="@it.UnsubscribeReasonId" /> @MvcHtmlString.Create(it.Detail)</li>
+                        }
+                        <li data-id="0">
+                            <input type="radio" name="unsubscribe_reason_id" value="0" />
+                            @Resources.Other<br />
+                            <textarea id="other_detail" name="other_detail" class="form-control" cols="30" rows="3" placeholder="@Resources.PleaseTellUsToImproveService"></textarea>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        }
+        @Html.Hidden("email", (string)ViewBag.Email)
+        @Html.Hidden("campaignId", (string)ViewBag.CampaignId)
+        @Html.Hidden("emailId", (string)ViewBag.EmailId)
+        @Html.Hidden("siteId", (string)ViewBag.SiteId)
+        <input type="submit" id="submit" name="submit" value="@Resources.Unsubscribe" class="btn btn-primary" />
+        &nbsp;<a href="@Url.Content("~/")" class="btn btn-default">@Resources.NoCancel</a>
+    </form>
+</div>

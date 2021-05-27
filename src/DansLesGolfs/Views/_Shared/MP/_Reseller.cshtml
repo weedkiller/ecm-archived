@@ -1,0 +1,130 @@
+﻿@{
+}
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="@CultureHelper.GetCurrentNeutralCulture()" dir="@(CultureHelper.IsRightToLeft() ? "rtl" : "ltr")">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+    <title>@Html.MetaTitle(ViewBag.Title != null ? (string)ViewBag.Title : "")</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <meta http-equiv="Content-type" content="text/html; chartset=utf-8" />
+    @Html.Partial("~/Views/_Shared/UC/Admin/AdminStyles.cshtml")
+    @RenderSection("head", false)
+</head>
+<body class="home">
+    <div id="fb-root"></div>
+    <div id="topnav">
+        <div class="container">
+            <div class="row">
+                <!-- Language Switcher -->
+                <div id="language-switcher">
+                    <ul>
+                        @if (CultureHelper.GetCurrentNeutralCulture() == "en")
+                        {
+                            <li>
+                                <a href="@Html.LanguageUrl("fr-FR;2")" class="fr">
+                                    <img src="@Url.Content("~/Assets/Front/img/header_footer/flag-france.png")" />
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li>
+                                <a href="@Html.LanguageUrl("en-US;1")" class="en">
+                                    <img src="@Url.Content("~/Assets/Front/img/header_footer/flag-england.png")" />
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+                <!-- End Language Switcher -->
+                <!-- Gift Card -->
+                <div id="gift-card-voucher">
+                    <a href="javascript:void(0)"><img src="@Url.Content("~/Assets/Front/img/icon-gift-card.png")" /></a>
+                </div>
+                <!-- End Gift Card -->
+                <!-- Search Box -->
+                <div id="search-box">
+                    <form id="search-form" action="@Url.Content("~/Product/Search")" method="post">
+                        <input type="text" id="q" name="q" placeholder="@Resources.SearchPlaceholder" />
+                        <!--
+                        -->
+                        <input type="submit" id="search-form-submit" name="submit" value="OK" />
+                    </form>
+                </div>
+                <!-- End Search Box -->
+                <!-- User Logon Widget -->
+                <div id="user-logon">@Html.Partial("~/Views/_Shared/UC/Front/UserLogon.cshtml")</div>
+                <!-- End User Logon Widget -->
+            </div>
+        </div>
+    </div>
+    <div id="container">
+        <header id="header">
+            <h1 id="logo"><a href="@Url.Content("~/")">Dans Les Golfs</a></h1>
+        </header>
+        <div id="content">
+            <div id="sidebar">
+                @Html.Partial("~/Views/_Shared/UC/Reseller/MenuList.cshtml")
+            </div>
+            <div id="content-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+                        <h3 class="page-title">
+                            @ViewBag.TitleName
+                        </h3>
+                        <ul class="page-breadcrumb breadcrumb">
+                            <li>
+                                <i class="fa fa-home"></i>
+                                <a href="@Url.Content("~/Reseller")">
+                                    Dashboard
+                                </a>
+                                <i class="fa fa-angle-right"></i>
+                            </li>
+                            @if (ViewBag.Breadcrumbs != null)
+                            {
+                                foreach (var entry in (Dictionary<string, string>)ViewBag.Breadcrumbs)
+                                {
+                                    <li>
+                                        <a href="@Url.Content(entry.Value)">
+                                            @entry.Key
+                                        </a>
+                                        <i class="fa fa-angle-right"></i>
+                                    </li>
+                                }
+                            }
+                        </ul>
+                        <!-- END PAGE TITLE & BREADCRUMB-->
+                    </div>
+                </div>
+                @if (ViewBag.SuccessMessage != null)
+                {
+                    <div class="alert alert-success">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        @MvcHtmlString.Create(ViewBag.SuccessMessage)
+                    </div>
+                }
+                @if (ViewBag.ErrorMessages != null)
+                {
+                    <div class="alert alert-danger">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        @MvcHtmlString.Create(ViewBag.ErrorMessages)
+                    </div>
+                }
+                @RenderBody()
+            </div>
+        </div>
+
+        @Html.Partial("~/Views/_Shared/UC/Front/Footer.cshtml")
+        <a id="scroll-up-button" href="javascript:void(0)">Up</a>
+    </div>
+    @Html.Partial("~/Views/_Shared/UC/Admin/AdminScripts.cshtml")
+    @RenderSection("foot")
+</body>
+</html>

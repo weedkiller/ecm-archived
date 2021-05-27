@@ -1,0 +1,112 @@
+﻿@{
+    Layout = "~/Views/_Shared/MP/_Reseller.cshtml";
+    List<ModifierChoice> choices = ViewBag.ModifierChoices != null ? (List<ModifierChoice>)ViewBag.ModifierChoices : new List<ModifierChoice>();
+}
+@section head
+{
+}
+@section foot
+{
+    <script src="@Url.Content("~/Assets/Libraries/tinymce/tinymce.min.js")"></script>
+    <script>
+        $('.info-form').validate();
+        tinymce.init(window.tinymceOptions);
+    </script>
+}
+<form method="post" id="form-@ViewBag.ClassName" class="info-form">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        @Html.T("Product Attribute Information")
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-2 control-label">
+                                <label for="ModifierName">@Resources.ModifierName</label>
+                            </div>
+                            <div class="col-md-10">
+                                @Html.TextBoxLang("ModifierName", (List<ModifierLang>)ViewBag.ModifierLangs, "ModifierName", new { required = "required", maxlength = 100, @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-2 control-label">
+                                <label for="ModifierDesc">@Resources.Description</label>
+                            </div>
+                            <div class="col-md-10">
+                                @Html.TextAreaLang("ModifierDesc", (List<ModifierLang>)ViewBag.ModifierLangs, "ModifierDesc", new { maxlength = 500, rows = 8, @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-2 control-label">
+                                <label for="CourseTypeId">@Resources.ControlType</label>
+                            </div>
+                            <div class="col-md-10">
+                                @Html.DropDownList("ControlType", (IEnumerable<SelectListItem>)ViewBag.ControlTypes, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-2 control-label">
+                                <label for="Choices">@Resources.Choices</label>
+                            </div>
+                            <div class="col-md-10">
+                                <table id="price-period-datatable" class="price-datatable dataTable table table-bordered table-striped table-scrollable table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th class="checkboxes column-checkbox">
+                                                <input type="checkbox" />
+                                            </th>
+                                            <th class="column-price">@Resources.ChoiceName</th>
+                                            <th class="column-delete">
+                                                @Resources.Delete
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (choices.Any())
+                                        {
+                                            foreach (ModifierChoice choice in choices)
+                                            {
+                                                <tr data-id="@choice.ChoiceId">
+                                                    <td class="checkboxes column-checkbox">
+                                                        <input type="checkbox" />
+                                                    </td>
+                                                    <td class="column-choice-name">
+                                                        <input type="text" name="ChoiceName" class="text-right" value="@choice.ChoiceName" />
+                                                    </td>
+                                                    <td class="column-delete">
+                                                        <a href="javascript:void(0)" class="delete-link">@Resources.Delete</a>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <tr class="column-empty"><td colspan="6">@Resources.ThereIsNoChoice</td></tr>
+                                        }
+                                    </tbody>
+                                </table>
+                                <div class="margin-bottom-10">
+                                    <a href="javascript:void()" class="add-price-button btn btn-primary">@Resources.AddChoice</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" name="id" value="@ViewBag.id" />
+    <input type="submit" id="submit" name="submit" value="@Resources.Save" class="btn btn-primary" />
+    <input type="reset" id="reset" name="reset" value="@Resources.Reset" class="btn" />
+    <a href="@Url.Content("~/Reseller/Modifier")" class="btn btn-default">@Resources.Back</a>
+</form>

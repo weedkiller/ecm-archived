@@ -1,0 +1,26 @@
+﻿@using DansLesGolfs.Base
+@using DansLesGolfs.BLL
+@model List<Item>
+@{
+}
+@foreach (Item item in Model)
+{
+    <tr class="coupon-@item.ItemId" data-id="@item.ItemId">
+        <td class="column-checkbox">
+            <input class="item-@item.ItemId" type="checkbox" value="@item.ItemId" />
+            <input type="hidden" name="ItemIds" value="@item.ItemId" />
+        </td>
+        <td class="column-item-name">
+            @item.ItemName
+        </td>
+        <td class="column-item-type-name">
+            @item.ItemTypeName
+        </td>
+        <td class="column-site-name">
+            @item.SiteName
+        </td>
+        <td>
+            <a href="javascript:void(0)" class="delete-link">@Resources.Delete</a>
+        </td>
+    </tr>
+}

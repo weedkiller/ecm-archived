@@ -1,0 +1,28 @@
+﻿@using DansLesGolfs.Base
+@using DansLesGolfs.BLL
+@using System.Globalization
+@{
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    @Resources.PracticalInfo
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <label for="PracticalInfo">@Resources.PracticalInfo</label>
+                        </div>
+                        <div class="col-md-10">
+                            @Html.TextAreaLang("PracticalInfo", (List<SiteLang>)ViewBag.SiteLangs, "PracticalInfo", new { rows = 20, @class = "form-control editor" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

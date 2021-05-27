@@ -1,0 +1,88 @@
+﻿@{
+    string email = ViewBag.ReceiverEmail != null ? (string)ViewBag.ReceiverEmail : DataManager.ToString(System.Web.HttpContext.Current.Session["LogonUserEmail"]);
+}
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="@CultureHelper.GetCurrentNeutralCulture()" dir="@(CultureHelper.IsRightToLeft() ? "rtl" : "ltr")">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+    <title>@Html.MetaTitle(ViewBag.Title != null ? (string)ViewBag.Title : "")</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta http-equiv="Content-type" content="text/html; chartset=utf-8" />
+    @RenderSection("head", false)
+</head>
+<body>
+    <table style="width:674px; margin: 0 auto;">
+        <tr>
+            <td bgcolor="#ffffff">
+                <table id="header-table" width="668" height="103" border="0" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td colspan="7" width="668" height="83" style="overflow: hidden;vertical-align:bottom;"><a href="@Url.ServerUrl("~/")"><img src="@Url.ServerUrl("~/Assets/Front/img/email/email-header_01.jpg")" width="668" height="83" alt="" style="display:block;"></a></td>
+                    </tr>
+                    <tr>
+                        <td width="86" height="20" style="overflow: hidden;vertical-align:top;"><img src="@Url.ServerUrl("~/Assets/Front/img/email/email-header_02.jpg")" width="86" height="20" alt="" /></td>
+                        <td width="78" height="20" style="overflow: hidden;vertical-align:top;"><a href="@Url.ServerUrl("~/GreenFee")"><img src="@Url.ServerUrl("~/Assets/Front/img/email/email-header_03.jpg")" width="78" height="20" alt="" style="display:block;"></a></td>
+                        <td width="135" height="20" style="overflow: hidden;vertical-align:top;"><a href="@Url.ServerUrl("~/Item/programme-classic-leclub-golf")"><img src="@Url.ServerUrl("~/Assets/Front/img/email/email-header_04.jpg")" width="135" height="20" alt="" style="display:block;"></a></td>
+                        <td width="68" height="20" style="overflow: hidden;vertical-align:top;"><a href="https://www.leclub-golf.com/?sid=news"><img src="@Url.ServerUrl("~/Assets/Front/img/email/email-header_05.jpg")" width="68" height="20" alt="" style="display:block;"></a></td>
+                        <td width="77" height="20" style="overflow: hidden;vertical-align:top;"><a href="@Url.ServerUrl("~/DLGShop")"><img src="@Url.ServerUrl("~/Assets/Front/img/email/email-header_06.jpg")" width="77" height="20" alt="" style="display:block;"></a></td>
+                        <td width="118" height="20" style="overflow: hidden;vertical-align:top;"><a href="@Url.ServerUrl("~/FindCourse")"><img src="@Url.ServerUrl("~/Assets/Front/img/email/email-header_07.jpg")" width="118" height="20" alt="" style="display:block;"></a></td>
+                        <td width="106" height="20" style="overflow: hidden;vertical-align:top;"><img src="@Url.ServerUrl("~/Assets/Front/img/email/email-header_08.jpg")" width="106" height="20" alt=""></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td bgcolor="#ffffff" align="center" style="padding: 20px 0;">
+                <table border="0" cellpadding="0" cellspacing="0" width="640">
+                    <tbody>
+                        <tr>
+                            <td align="left"></td>
+                        </tr>
+                        <tr>
+                            <td align="left">
+                                @RenderBody()
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">
+                                <table border="0" cellpadding="0" cellspacing="0" width="578">
+                                    <tbody>
+                                        <tr>
+                                            <td align="right" valign="top"></td>
+                                            <td align="right"></td>
+                                        </tr>
+                                        <tr>
+                                            <td align="right" valign="top"><span style="color:#d80927;font-weight:bold">@Resources.Sincerely,</span><br>@MvcHtmlString.Create(String.Format(Resources.DansLesGolfsTeam, Url.ServerUrl("~/")))</td>
+                                            <td align="right" width="118"><a href="@Url.ServerUrl("~/")"><img alt="DansLesGolfs.com" src="@Url.ServerUrl("~/Assets/Front/img/email/leclub-golf-logo.png")" width="90"></a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td height="1"><img height="1" src="@Url.ServerUrl("~/Assets/Front/img/email/hr.png")" width="668"></td>
+        </tr>
+        <tr>
+            <td align="center" bgcolor="#ffffff">
+                <table>
+                    <tr>
+                        <td width="47"><a href="@Url.ServerUrl("~/")"><img src="@Url.ServerUrl("~/Assets/Front/img/email/leclub-golf-logo.png")" width="47" /></a></td>
+                        <td>
+                            <span style="color: #959595; font-family: Arial,Helvetica,sans-serif; font-size: 11px;">LeClub Golf - 7/9 rue nationale - 92100 BOULOGNE BILLANCOURT</span> - <a href="mailto:contact@danslesgolfs.com"><span style="color:#d80927;text-decoration:none;font-size: 0.8em">contact@danslesgolfs.com</span></a><br />
+                            <span style="color: #959595; font-family: Arial,Helvetica,sans-serif; font-size: 11px;">@Resources.IfYouWantToUnsubscrice</span> : <a href="@Url.ServerUrl("~/Home/Unsubscribe?email=" + email)" target="_blank"><span style="color:#d80927;text-decoration:none;font-size: 0.8em;text-transform:lowercase;">@Resources.Unsubscribe</span></a>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    @RenderSection("foot", false)
+</body>
+</html>

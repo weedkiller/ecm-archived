@@ -1,0 +1,110 @@
+﻿@{
+    Layout = "~/Views/_Shared/MP/_Reseller.cshtml";
+    bool hideAddButton = ViewBag.HideAddButton == null ? false : (bool)ViewBag.HideAddButton;
+    DateTime fromDate = (DateTime)ViewBag.FromDate;
+    DateTime toDate = (DateTime)ViewBag.ToDate;
+}
+@section head
+{
+    <script>
+        window.confirmDeleteText = '@MvcHtmlString.Create(Resources.ConfirmDeleteSelectedItems)';
+    </script>
+}
+@section foot
+{
+    <script type="text/javascript" src="@Url.Content("~/Assets/Reseller/scripts/page/report-sale-items.js")"></script>
+}
+<div class="row margin-bottom-10">
+    <div class="col-md-1">
+        <label for="FromDate">@Resources.From</label>
+    </div>
+    <div class="col-md-3">
+        <input type="text" id="FromDate" name="FromDate" value="@fromDate.ToString("dd/MM/yyyy")" class="datepicker form-control" />
+    </div>
+    <div class="col-md-1">
+        <label for="FromDate">@Resources.To</label>
+    </div>
+    <div class="col-md-3">
+        <input type="text" id="ToDate" name="ToDate" value="@toDate.ToString("dd/MM/yyyy")" class="datepicker form-control" />
+    </div>
+</div>
+<div class="row margin-bottom-10">
+    <div class="col-md-12">
+        <a id="refresh-button" href="javascript:void(0);" class="btn btn-primary">@Resources.Refresh</a>
+        <a id="view-report-button" href="javascript:void(0);" class="btn btn-primary">@Resources.ViewReport</a>
+    </div>
+</div>
+<div class="panel">
+    <div class="panel-body">
+        <table id="datatable" class="dataTable table table-bordered table-striped table-scrollable table-hover">
+            <thead>
+                <tr>
+                    <th class="column-review-item unorderable">
+                        #
+                    </th>
+                    <th class="column-month unorderable">
+                        @Resources.Month
+                    </th>
+                    <th class="column-numberofweeks unorderable">
+                        @Resources.NumberOfWeeks
+                    </th>
+                    <th class="column-delete unorderable">
+                        @Resources.OrderDate
+                    </th>
+                    <th class="column-delete unorderable">
+                        @Resources.Invoice
+                    </th>
+                    <th class="column-ordernumber unorderable">
+                        @Resources.OrderNumber
+                    </th>
+                    <th class="column-categoryname unorderable">
+                        @Resources.CategoryName
+                    </th>
+                    <th class="column-itemcode unorderable">
+                        @Resources.ProductCode
+                    </th>
+                    <th class="column-itemname unorderable">
+                        @Resources.ProductName
+                    </th>
+                    <th class="column-reservedate unorderable">
+                        @Resources.ReserveDate
+                    </th>
+                    <th class="column-sitename unorderable">
+                        @Resources.SiteName
+                    </th>
+                    <th class="column-firstname unorderable">
+                        @Resources.FirstName
+                    </th>
+                    <th class="column-lastname unorderable">
+                        @Resources.LastName
+                    </th>
+                    <th class="column-paymenttype unorderable">
+                        @Resources.PaymentType
+                    </th>
+                    <th class="column-quantity unorderable">
+                        @Resources.Quantity
+                    </th>
+                    <th class="column-discount unorderable">
+                        @Resources.TotalBasePrice
+                    </th>
+                    <th class="column-discount unorderable">
+                        @Resources.Discount
+                    </th>
+                    <th class="column-discount unorderable">
+                        @Resources.ShippingCost
+                    </th>
+                    <th class="column-totalwithvat unorderable">
+                        Total TTC
+                    </th>
+                    <th class="column-totalwithvat unorderable">
+                        Total HT
+                    </th>
+                    <th class="column-golfbrandname unorderable">
+                        @Resources.GolfBrandName
+                    </th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>

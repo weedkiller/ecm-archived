@@ -1,0 +1,55 @@
+﻿@using DansLesGolfs
+@using DansLesGolfs.Models
+@model UserMessageViewModel
+@{
+    ViewBag.Title = Resources.MyMessages;
+    Layout = "~/Views/_Shared/MP/Front/_Default.cshtml";
+}
+@section head
+{
+    <link rel="stylesheet" type="text/css" href="@Href("~/Assets/Front/css/user-menu.css")">
+
+
+}
+@section foot
+{
+}
+
+
+
+<div id="page-account-dashboard">
+    <div class="row margin-bottom-40">
+        <div class="col-md-12">
+            <div class="account-box">
+                <div class="account-box-header">Message Detail</div>
+                <div class="account-box-table">
+
+                    <div id="message-detail">
+                        <div class="data">
+                            <label class="title">Message Subject : </label>
+                            <label class="value">@Model.UserMessageModelList[0].Subject</label>
+                        </div>
+
+                        <div class="data">
+                            <label class="title">Message From User : </label>
+                            <label class="value">@Model.UserMessageModelList[0].FromName</label>
+                        </div>
+
+                        <div class="data">
+                            <label class="title">Message To User : </label>
+                            <label class="value">@Model.UserMessageModelList[0].ToName</label>
+                        </div>
+
+                        <div class="data">
+                            <label class="title">Message Detail : </label>
+                            <label class="value">@Model.UserMessageModelList[0].Body</label>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

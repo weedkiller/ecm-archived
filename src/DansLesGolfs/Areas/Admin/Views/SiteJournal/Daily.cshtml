@@ -1,0 +1,60 @@
+﻿@{
+    Layout = "~/Views/_Shared/MP/_Admin.cshtml";
+    DateTime visitDate = (DateTime)ViewBag.VisitDate;
+    Site site = (Site)ViewBag.Site;
+}
+@section head
+{
+}
+@section foot
+{
+    <script src="@Url.Content("~/Assets/Admin/scripts/page/site-journal-daily.js")"></script>
+}
+<form method="post" id="form-site-journal" class="info-form">
+    <h1 class="margin-top-20 margin-bottom-40"><a href="@Url.Content("~/Admin/Site/Form/" + ViewBag.SiteId)">@Resources.DailyJournalFor : @site.SiteName</a></h1>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-2 control-label text-right">
+                        <label for="SiteId">@Resources.Site</label>
+                    </div>
+                    <div class="col-md-10">
+                        @Html.DropDownList("SiteId", (IEnumerable<SelectListItem>)ViewBag.Sites, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-3 control-label text-right">
+                        <label for="VisitDate">@Resources.VisitDate</label>
+                    </div>
+                    <div class="col-md-6">
+                        @Html.TextBox("VisitDate", visitDate.ToString("dd/MM/yyyy"), new { @class = "form-control datepicker text-center", maxlength = 10 })
+                    </div>
+                    <div class="col-md-3">
+                        <a href="javascript:void(0);" id="load-data-button" class="btn btn-primary">@Resources.LoadData</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            @Html.Partial("~/Views/_Shared/UC/Admin/SiteJournal/UCSiteCommercialFollowUp.cshtml", (SiteCommercialFollowUp)ViewBag.SiteCommercialFollowUp)
+        </div>
+        <div class="col-md-6">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+        </div>
+    </div>
+    <input type="hidden" name="id" value="@ViewBag.SiteId" />
+    <div class="action-buttons">
+        <input type="submit" id="submit" name="submit" value="@Resources.Save" class="btn btn-primary" />
+        <a href="@Url.Content("~/Admin/Site/Form/" + ViewBag.SiteId)" class="btn btn-default">@Resources.Back</a>
+    </div>
+</form>

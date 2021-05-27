@@ -1,0 +1,147 @@
+﻿@using DansLesGolfs.BLL
+@model DansLesGolfs.BLL.Order
+@{
+    ViewBag.Title = Resources.PaymentConfirmation;
+    Layout = "~/Views/_Shared/MP/Front/_FullWidth.cshtml";
+    decimal totalDiscount = Model.GetDiscount();
+    decimal totalShippingCost = Model.GetTotalShippingCost();
+    decimal totalPrice = Model.GetTotalPrice();
+}
+@section head
+{
+    <link rel="stylesheet" type="text/css" href="@Href("~/Assets/Front/css/cart.css")">
+}
+@section foot
+{
+    @if(Model != null && Model.OrderItems != null && Model.OrderItems.Any())
+    {
+        foreach(OrderItem it in Model.OrderItems)
+        {
+            if(!String.IsNullOrWhiteSpace(it.ConversionTrackingCode))
+            {
+                @MvcHtmlString.Create(it.ConversionTrackingCode);
+            }
+        }
+    }
+}
+<div id="page-order-payment" class="margin-bottom-40">
+    <div class="row">
+        <section id="shipping-info" class="col-md-12">
+            <h1 class="page-title">@Resources.MyCart</h1>
+            @Html.Partial("~/Views/_Shared/UC/Front/Order/UCPaymentProcess.cshtml", 5)
+            <h2 class="page-subtitle">@Resources.PaymentConfirmation</h2>
+            <div class="well">
+                @MvcHtmlString.Create(ViewBag.ConfirmationContent)
+            </div>
+
+            <table id="cart-summary" class="table table-bordered table-hover table-cart">
+                <thead>
+                    <tr>
+                        <th class="column-description" colspan="2">@(Resources.Item + "(s)")</th>
+                        <th class="column-unit-price">@Resources.UnitPrice</th>
+                        <th class="column-quantity">@Resources.Quantity</th>
+                        <th class="column-shipping-cost">@Resources.ShippingCost</th>
+                        <th class="column-total-price">@Resources.TotalPrice</th>
+                    </tr>
+                </thead>
+                @if (Model.OrderItems != null && Model.OrderItems.Any())
+                {
+                    <tbody>
+                        @foreach (OrderItem item in Model.OrderItems)
+                        {
+                            <tr>
+                                <td class="column-header" colspan="6">@item.Item.SiteName</td>
+                            </tr>
+                            <tr data-id="@item.ItemId" data-unit-price="@item.UnitPrice.ToString("#,##0.00")" data-total-price="@item.TotalPrice.ToString("#,##0.00")">
+                                @if (item.Item.ItemImages != null && item.Item.ItemImages.Any())
+                                {
+                                    <td class="column-thumnail" style="background-image: url(@Html.GetItemImageUrl(item.ItemId, item.Item.ItemImages[0], "thumbnail",item.Item.DlgCardStyleId.ToString()))"></td>
+
+                                }
+                                else
+                                {
+                                    <td class="column-thumnail"><div><img src="#" /></div></td>
+                                }
+                                <td class="column-description">
+                                    <a href="@Html.ItemUrl(item.Item)">@item.ItemName</a>
+                                    @if (item.Item.ItemTypeId == (int)ItemType.Type.Product)
+                                    {
+                                        if (item.Item.UnitInStock <= 0)
+                                        {
+                                            <div class="item-status outofstock">@("0 " + Resources.RemainingItems)</div>
+                                        }
+                                        else
+                                        {
+                                            <div class="item-status instock">@(item.Item.UnitInStock + " " + (item.Item.UnitInStock == 1 ? Resources.RemainingItem : Resources.RemainingItems))</div>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <div class="item-status available">@Resources.ItemAvailable</div>
+                                    }
+                                </td>
+                                <td class="column-unit-price"><span class="price-number">@item.UnitPrice.ToString("#,##0.00")</span> &euro; </td>
+                                <td class="column-quantity">@item.Quantity</td>
+                                <td class="column-shipping-cost"><span class="price-number">@item.TotalShippingCost.ToString("#,##0.00")</span> &euro; </td>
+                                <td class="column-total-price"><span class="price-number">@((item.TotalBasePrice + item.TotalShippingCost).ToString("#,##0.00"))</span> &euro; </td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        @if (Model.CouponId > 0)
+                        {
+                            <tr class="row-promotion-code">
+                                <td class="column-promotion-code" colspan="2">@Resources.PromotionalCode</td>
+                                <td class="column-unit-price">
+                                    @*@if (Model.Coupon.CouponGroup.CouponType == (int)CouponType.CashValue)
+                                {
+                                    @MvcHtmlString.Create("-" + Model.Coupon.Remaining + " &euro;");
+                                }*@
+                                    @if (Model.ReductionType == (int)CouponType.Amount)
+                                    {
+                                        @MvcHtmlString.Create("-" + Model.ReductionRate.ToString("###0.##") + " &euro;");
+                                    }
+                                    else if (Model.ReductionType == (int)CouponType.Percent)
+                                    {
+                                        @(Model.ReductionRate.ToString("###0.##") + "%");
+                                    }
+                                    else
+                                    {
+                                        @("0%");
+                                    }
+                                </td>
+                                <td colspan="2" class="column-quantity">&nbsp;</td>
+                                <td class="column-total-price"><span class="price-number">-@totalDiscount.ToString("#,##0.00") &euro;</span></td>
+                            </tr>
+                        }
+                        @if (Model.CouponId > 0)
+                        {
+                            <tr class="row-coupons-discounts">
+                                <td class="column-coupons-discounts" colspan="2">@Resources.MyCouponsAndDiscount <button id="dlg-card-button" class="btn btn-primary">DLG Card</button></td>
+                                <td class="column-unit-price">&nbsp;</td>
+                                <td colspan="2" class="column-quantity">&nbsp;</td>
+                                <td class="column-total-price"><span class="price-number">0 &euro;</span></td>
+                            </tr>
+                        }
+                        <tr class="row-total-price">
+                            <td class="column-description" colspan="5" data-subtotal="@totalPrice.ToString("###0.00", System.Globalization.CultureInfo.InvariantCulture)">
+                                <span class="column-sub-total-ttc">@Resources.TotalTTCPaid</span>
+                            </td>
+                            <td class="column-total-price">
+                                <span class="price-number">@totalPrice.ToString("#,##0.00")</span> <span class="currency">&euro;</span>
+                            </td>
+                        </tr>
+                    </tfoot>
+                }
+                else
+                {
+                    <tbody>
+                        <tr>
+                            <td colspan="6" class="text-center">@Resources.TheBasketIsEmpty</td>
+                        </tr>
+                    </tbody>
+                }
+            </table>
+        </section>
+    </div>
+</div>

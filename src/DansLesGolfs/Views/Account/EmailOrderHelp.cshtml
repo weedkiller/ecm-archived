@@ -1,0 +1,21 @@
+﻿@using DansLesGolfs
+@using DansLesGolfs.BLL
+@model Order
+@{
+    Layout = "~/Views/_Shared/MP/_EmailTemplate.cshtml";
+}
+@section head
+{
+}
+@section foot
+{
+}
+<p><strong>@Resources.Subject</strong> : @MvcHtmlString.Create((string)ViewBag.Subject)</p>
+<p>@Resources.ThisCustomerContactYou : <a href="@Url.ServerUrl("~/Order/Confirmation/" + Model.OrderId)">@Model.OrderNumber</a></p>
+<p><strong>@Resources.CustomerName</strong> : @ViewBag.CustomerFullname</p>
+<p><strong>@Resources.Email</strong> : @ViewBag.CustomerEmail</p>
+<p><strong>@Resources.Phone</strong> : @ViewBag.CustomerPhone</p>
+<p>
+    <strong>@Resources.Message</strong> : <br />
+    @Html.Raw((string)ViewBag.Message)
+</p>

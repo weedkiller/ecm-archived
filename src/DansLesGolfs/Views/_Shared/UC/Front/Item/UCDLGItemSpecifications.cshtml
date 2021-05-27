@@ -1,0 +1,48 @@
+@using DansLesGolfs.BLL
+@model DansLesGolfs.BLL.Item
+<div class="attribute-section">
+    <div class="section-left">
+        <div class="item-attribute">
+            <div class="attribute-caption">@Resources.Condition :</div>
+            <div class="attribute-value">@Model.ShapeName</div>
+        </div>
+        <div class="item-attribute">
+            <div class="attribute-caption">@Resources.Dexterity :</div>
+            <div class="attribute-value">@Model.DexterityName</div>
+        </div>
+        <div class="item-attribute">
+            <div class="attribute-caption">@Resources.Genre :</div>
+            <div class="attribute-value">@Model.GenreName</div>
+        </div>
+        <div class="item-attribute">
+            <div class="attribute-caption">@Resources.Brand :</div>
+            <div class="attribute-value">@Model.BrandName</div>
+        </div>
+    </div>
+    <div class="section-right">
+        <div class="item-attribute">
+            <div class="attribute-caption">@Resources.Shaft :</div>
+            <div class="attribute-value">@Model.ShaftName</div>
+        </div>
+        <div class="item-attribute">
+            <div class="attribute-caption">@Resources.Size :</div>
+            <div class="attribute-value">@Model.Size</div>
+        </div>
+        <div class="item-attribute">
+            <div class="attribute-caption">@Resources.Type :</div>
+            <div class="attribute-value">@Model.ShapeName</div>
+        </div>
+    </div>
+</div>
+
+@if (Model.ItemLangs != null && Model.ItemLangs.Any())
+{
+    if (!String.IsNullOrEmpty(Model.ItemLangs[0].ItemName))
+    {
+        <div class="row">
+            <div class="col-md-12">
+                <div id="item-description">@MvcHtmlString.Create(Model.ItemLangs[0].ItemDesc)</div>
+            </div>
+        </div>
+    }
+}

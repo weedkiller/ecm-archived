@@ -1,0 +1,102 @@
+﻿@using DansLesGolfs
+@using DansLesGolfs.Models
+@model DLGShopRegisterModel
+@{
+    ViewBag.Title = Resources.HowToOpenYourProShopOnline;
+    Layout = "~/Views/_Shared/MP/Front/_Default.cshtml";
+}
+@section head
+{
+}
+@section foot
+{
+}
+<div id="page-dlgcard">
+    <form method="post">
+        <div class="row margin-bottom-40">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            @Resources.HowToOpenYourProShopOnline
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <p class="text-justify">@Resources.OpenDLGShopOfferText</p>
+                        <p class="text-justify">@Resources.OpenDLGShopDescriptionText</p>
+                        @if (ViewBag.ErrorMessage != null)
+                        {
+                            <div class="alert alert-danger">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                @MvcHtmlString.Create(ViewBag.ErrorMessage)
+                            </div>
+                        }
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-3 control-label text-right">
+                                    <label for="TitleId">@Resources.NameTitle</label>
+                                </div>
+                                <div class="col-md-6">
+                                    @Html.DropDownList("TitleName", (IEnumerable<SelectListItem>)ViewBag.DropDownTitles, new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-3 control-label text-right">
+                                    <label for="FirstName">@Resources.FirstName <span class="require-pink">*</span></label>
+                                </div>
+                                <div class="col-md-6">
+                                    @Html.TextBox("FirstName", (string)ViewBag.FirstName, new { required = "required", maxlength = 100, @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-3 control-label text-right">
+                                    <label for="LastName">@Resources.LastName <span class="require-pink">*</span></label>
+                                </div>
+                                <div class="col-md-6">
+                                    @Html.TextBox("LastName", (string)ViewBag.LastName, new { required = "required", maxlength = 100, @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-3 control-label text-right">
+                                    <label for="SiteName">@Resources.Sites <span class="require-pink">*</span></label>
+                                </div>
+                                <div class="col-md-6">
+                                    @Html.TextBox("SiteName", (string)ViewBag.SiteName, new { required = "required", maxlength = 100, @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-3 control-label text-right">
+                                    <label for="Email">e-Mail <span class="require-pink">*</span></label>
+                                </div>
+                                <div class="col-md-6">
+                                    @Html.TextBox("Email", (string)ViewBag.Email, new { type = "email", required = "required", maxlength = 100, @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row margin-bottom-20">
+                            <div class="form-group">
+                                <div class="col-md-3 control-label text-right">
+                                    <label for="Telephone">Tel. <span class="require-pink">*</span></label>
+                                </div>
+                                <div class="col-md-6">
+                                    @Html.TextBox("Telephone", (string)ViewBag.Telephone, new { required = "required", maxlength = 100, @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <input type="submit" id="submit" name="submit" value="&gt; @Resources.Validate" class="btn btn-primary" />
+                        </div>
+                    </div> <!-- End of Panel Body -->
+                </div> <!-- End of Panel -->
+            </div>
+        </div>
+    </form>
+</div>

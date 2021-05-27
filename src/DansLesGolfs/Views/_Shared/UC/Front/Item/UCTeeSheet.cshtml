@@ -1,0 +1,156 @@
+﻿@using DansLesGolfs.BLL
+@using DansLesGolfs.Models
+@{
+    DateTime teeSheetDate = DateTime.Today;
+    ReservationAPIType reservationAPIType = (ReservationAPIType)ViewBag.ReservationAPI;
+    if (reservationAPIType == ReservationAPIType.Albatros || reservationAPIType == ReservationAPIType.Prima)
+    {
+        teeSheetDate = (DateTime)ViewBag.TeeSheetDate;
+    }
+}
+@if (Model.SiteId > 0)
+{
+    <div id="page-teesheet">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="teesheet-wrapper">
+                    <h1 class="page-title">@Resources.ChooseYourOffer</h1>
+                    @if (reservationAPIType == ReservationAPIType.Albatros)
+                    {
+                        <div id="albatros-teesheet">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="form-group form-horizontal">
+                                            <div class=" control-label col-md-6">
+                                                <label for="DepartureTime">@Resources.DepartureTime</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input type="text" id="DepatureTime" name="DepartureTime" class="datepicker form-control" value="@teeSheetDate.ToString("dd/MM/yyyy")" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <table id="albatros-teesheet-table" class="table table-bordered" data-course-id="@Model.AlbatrosCourseId" data-site-id="@Model.SiteId">
+                                <thead>
+                                    <tr>
+                                        <th class="col-departure-time">@Resources.DepartureTime</th>
+                                        <th class="col-site">@Resources.Site</th>
+                                        <th class="col-available-departure">@Resources.AvailableDepature</th>
+                                        <th class="col-rate">@Resources.Rate</th>
+                                        <th class="col-discount">@Resources.Discount</th>
+                                        <th class="col-number-players">@Resources.NumberOfPlayers</th>
+                                        <th class="col-reservation">@Resources.Reservation</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    }
+                    else if (reservationAPIType == ReservationAPIType.Prima)
+                    {
+                        <div id="prima-teesheet">
+                            <div class="row">
+                                <div class="form-group form-horizontal">
+                                    <div class="control-label col-md-3">
+                                        <label for="DepartureTime">@Resources.DepartureTime</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input type="text" id="DepatureTime" name="DepartureTime" class="datepicker form-control" value="@teeSheetDate.ToString("dd/MM/yyyy")" />
+                                    </div>
+                                    <div class="control-label col-md-1">
+                                            <label for="prima-gametype">@Resources.Holes</label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <select id="prima-gametype" name="prima_gametype">
+                                                <option value="1" selected>9</option>
+                                                <option value="2">18</option>
+                                            </select>
+                                        </div>
+                                </div>
+                            </div>
+                            <table id="prima-teesheet-table" class="table table-bordered" data-site-id="@Model.SiteId">
+                                <thead>
+                                    <tr>
+                                        <th class="col-departure-time">@Resources.DepartureTime</th>
+                                        <th class="col-availability">@Resources.Availability</th>
+                                        <th class="col-coursename">@Resources.Course</th>
+                                        <th class="col-holes">@Resources.Holes</th>
+                                        <th class="col-rate">@Resources.Rate</th>
+                                        <th class="col-discount">@Resources.Discount</th>
+                                        <th class="col-number-players">@Resources.NumberOfPlayers</th>
+                                        <th class="col-reservation">@Resources.Reservation</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <div id="teesheet-editor"></div>
+                    }
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <a id="teesheet-confirm-popup-link" href="#teesheet-confirm-popup"></a>
+    <div id="teesheet-confirm-popup">
+        <h3 class="popup-title">@Resources.TeeSheetConfirmPopupTitle</h3>
+        <div class="form-group">
+            <h4>@Model.ItemName</h4>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <label class="control-label col-md-4">Date :</label>
+                <span class="teesheet-date col-md-3"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <label class="control-label col-md-4">@Resources.From :</label>
+                <span class="teesheet-start col-md-3"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <label class="control-label col-md-4">@Resources.To :</label>
+                <span class="teesheet-end col-md-3"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <label class="control-label col-md-4">@Resources.UnitPrice :</label>
+                <span class="teesheet-price col-md-3"></span>
+            </div>
+        </div>
+        <div class="form-group lift-up">
+            <div class="row">
+                <label class="col-md-4">@Resources.NumberOfPlayers</label>
+                <div class="col-md-2">
+                    <select id="input-number-players" class="form-control">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="form-actions">
+            <button id="close-confirm-popup-button" class="btn btn-default pull-left close-button">
+                &gt; @Resources.ContinueToShopping
+            </button>
+            <button type="submit" id="confirm-teesheet-button" class="btn btn-primary pull-right">
+                &gt; @Resources.AddToCart
+            </button>
+        </div>
+    </div>
+
+}

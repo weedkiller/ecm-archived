@@ -1,0 +1,37 @@
+﻿@using DansLesGolfs.Base
+@{
+    Layout = "~/Views/_Shared/MP/_Reseller.cshtml";
+}
+@section head
+{
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Assets/Libraries/uploadifive/uploadifive.css")" />
+}
+@section foot
+{
+    <script>
+        window.itemId = '@ViewBag.id';
+    </script>
+    <script src="@Url.Content("~/Assets/Libraries/uploadifive/jquery.uploadifive.min.js")"></script>
+    <script src="@Url.Content("~/Assets/Reseller/scripts/page/slideshow.js")"></script>
+}
+<div id="page-slideshow">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                @Html.T("Slideshow Images")
+            </h3>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>@Resources.ItemImageUploadDescription</p>
+                    <input type="file" accept="image/*" id="slideshow-file" />
+                </div>
+            </div>
+            <ul id="images-list"></ul>
+            <div class="action-buttons">
+                <button id="save-slideshow-button" class="btn btn-primary">@Resources.Save</button>
+            </div>
+        </div>
+    </div>
+</div>

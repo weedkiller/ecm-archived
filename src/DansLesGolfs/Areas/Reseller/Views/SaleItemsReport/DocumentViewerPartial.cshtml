@@ -1,0 +1,26 @@
+﻿@using DevExpress.Web.Mvc.UI;
+
+@{
+    var col = ViewBag.ColumnName;
+
+}
+
+@Html.DevExpress().DocumentViewer(settings =>
+{
+    settings.Name = "SaleItemsReport";
+    settings.Report = Model;
+    settings.CallbackRouteValues = new
+    {
+        Controller = "SaleItemsReport",
+        Action = "DocumentViewerPartial",
+        fromDate = ViewBag.FromDate,
+        toDate = ViewBag.ToDate
+    };
+    settings.ExportRouteValues = new
+    {
+        Controller = "SaleItemsReport",
+        Action = "ExportDocumentViewer",
+        fromDate = ViewBag.FromDate,
+        toDate = ViewBag.ToDate
+    };
+}).GetHtml()

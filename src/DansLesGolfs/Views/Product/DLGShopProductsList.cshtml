@@ -1,0 +1,45 @@
+﻿@{
+    Layout = "~/Views/_Shared/MP/Front/_Default.cshtml";
+}
+@section head
+{
+    <link href="@Url.Content("~/Assets/Libraries/fancybox/source/jquery.fancybox.css")" rel="stylesheet" />
+    <script>
+        window.itemType = '@ViewBag.ItemType';
+    </script>
+}
+@section foot
+{
+    <script>
+        jQuery(document).ready(function ($) {
+            $('#dlg-item-detail-popup-link').fancybox({
+                padding: 0
+            });
+
+            //$('.product a').click(function (e) {
+            //    var $product = $(this).parents('.product');
+            //    var id = $product.data('id');
+            //    $.ajax({
+            //        url: getUrl('ItemAjax/GetDLGItemDetail'),
+            //        data: { itemId: id },
+            //        dataType: 'json',
+            //        type: 'post',
+            //        success: function (result) {
+            //            if (result.isSuccess) {
+            //                openDLGDetailPopup(result.html, e);
+            //            }
+            //        }
+            //    });
+            //});
+        });
+
+        function openDLGDetailPopup(html, e) {
+            jQuery('#dlg-item-detail-popup').html(html);
+            jQuery(".starrr").starrr();
+            jQuery('#dlg-item-detail-popup-link').trigger('click');
+        }
+    </script>
+}
+<div class="margin-bottom-40">
+    @Html.Partial("~/Views/_Shared/UC/Front/Item/UCDLGShopProductList.cshtml")
+</div>

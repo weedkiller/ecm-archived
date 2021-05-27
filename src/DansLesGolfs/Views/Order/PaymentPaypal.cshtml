@@ -1,0 +1,50 @@
+﻿@using DansLesGolfs
+@model DansLesGolfs.Models.OrderShippingModel
+@{
+    ViewBag.Title = Resources.Payment;
+    decimal subtotal = Model.Cart.GetSubTotal();
+}
+<form id="paypal-form" action="@ViewBag.PaypalUrl" method="post">
+    <input type="hidden" name="cmd" value="_cart" />
+    <input type="hidden" name="upload" value="1">
+    <input type="hidden" name="business" value="@ViewBag.PaypalBusinessEmail" />
+    <input type="hidden" name="invoice" value="@Model.OrderNumber" />
+
+    @for (int i = 0, j = 0; i < Model.Cart.Items.Count; i++)
+    {
+        j = i + 1;
+        <input type="hidden" name="item_number_@j" value="@Model.Cart.Items[i].ItemId" />
+        <input type="hidden" name="item_name_@j" value="@Model.Cart.Items[i].Description" />
+        <input type="hidden" name="amount_@j" value="@Model.Cart.Items[i].UnitPrice.ToString("#,##")" />
+        <input type="hidden" name="quantity_@j" value="@Model.Cart.Items[i].Quantity" />
+                            <!--<input type="hidden" name="tax_rate_@j" value="7" />-->
+    }
+
+    @* Coupon *@
+    @if (Model.Cart.HasCoupon)
+    {
+        if (Model.Cart.Coupon.CouponGroup.CouponType == (int)DansLesGolfs.BLL.CouponType.Amount)
+        {
+            <input type="hidden" name="discount_amount_cart" value="@Model.Cart.Coupon.CouponGroup.Reduction.ToString("#,##")" />
+        }
+        else if (Model.Cart.Coupon.CouponGroup.CouponType == (int)DansLesGolfs.BLL.CouponType.Percent)
+        {
+            <input type="hidden" name="discount_rate_cart" value="@Model.Cart.Coupon.CouponGroup.Reduction.ToString("#,##")" />
+        }
+    }
+
+    <input type="hidden" name="custom" value="addressId=@(Model.AddressId)&customerId=@(Model.CustomerId)">
+    <input type="hidden" name="currency_code" value="EUR" />
+    <input type="hidden" name="rm" value="2" />
+    <input type="hidden" name="return" value="@Url.Action("PaypalProgress", "Order", null, Request.Url.Scheme)" />
+    <input type="hidden" name="shopping_url" value="@Url.Action("Index", "Home", null, Request.Url.Scheme)" />
+    <input type="hidden" name="notify_url" value="@Url.Action("PaypalIPN", "Order", null, Request.Url.Scheme)" />
+    <input type="hidden" name="cancel_return" value="@Url.Action("Payment", "Order", null, Request.Url.Scheme)" /> <br />
+    <input type="hidden" name="no_shipping" value="1">
+    <!--<input type="image" src="@Url.Content("~/Assets/Front/img/icon-payment-paypal.jpg")" border="0" name="submit" alt="@Resources.SecurePaymentsByPaypal" />
+    <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />-->
+</form>
+<script>
+    var form = document.getElementById('paypal-form');
+    form.submit();
+</script>

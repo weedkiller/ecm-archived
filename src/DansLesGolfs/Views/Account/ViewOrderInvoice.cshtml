@@ -1,0 +1,19 @@
+﻿@using DansLesGolfs
+@using DansLesGolfs.BLL
+@using DevExpress.Web.Mvc.UI;
+@model DansLesGolfs.Reports.rpOrderInvoice
+
+@{
+    ViewBag.Title = Resources.OrderInvoice + " : #" + ViewBag.OrderNumber;
+    Layout = "~/Views/_Shared/MP/_Report.cshtml";
+}
+@section head
+{
+    @Html.DevExpress().GetStyleSheets(new StyleSheet { ExtensionSuite = ExtensionSuite.Report })
+    @Html.DevExpress().GetScripts(new Script { ExtensionSuite = ExtensionSuite.Report })
+
+}
+@section foot
+{
+}
+@Html.Partial("OrderInvoiceDocViewer")

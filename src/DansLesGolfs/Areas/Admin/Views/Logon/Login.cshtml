@@ -1,0 +1,54 @@
+﻿@{
+    ViewBag.Title = Resources.Login;
+    Layout = "~/Views/_Shared/MP/_AdminFullWidth.cshtml";
+}
+@section head
+{
+
+}@section foot
+{
+    <script src="@Url.Content("~/Assets/Front/scripts/pages/login.js")"></script>
+}
+<div id="page-login" class="margin-bottom-40 margin-top-20">
+    <div class="row">
+        <div class="col-md-6 col-centered">
+            <!-- BEGIN LOGIN FORM -->
+            <form class="login-form" method="post">
+                <h3 class="form-title text-center">Login to your account</h3>
+                @if (@ViewBag.ErrorMessage != null)
+                {
+                    <div class="alert alert-danger">
+                        <button class="close" data-close="alert"></button>
+                        <span>@ViewBag.ErrorMessage</span>
+                    </div>
+                }
+                <div class="form-group">
+                    <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+                    <label class="control-label visible-ie8 visible-ie9">@Resources.Email</label>
+                    <div class="input-icon">
+                        <i class="fa fa-user"></i>
+                        <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="@Resources.Email" name="username" value="@ViewBag.Username" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label visible-ie8 visible-ie9">@Resources.Password</label>
+                    <div class="input-icon">
+                        <i class="fa fa-lock"></i>
+                        <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Password" name="password" value="@ViewBag.Password" />
+                    </div>
+                </div>
+                <div>
+                    <label class="checkbox">
+                        <input type="checkbox" name="remember" value="1" @(ViewBag.Remember == 1 ? "checked=\"checked\"" : "") /> @Resources.RememberMe
+                    </label>
+                    <button type="submit" class="btn btn-primary pull-right">
+                        Login <i class="glyphicon glyphicon-arrow-right"></i>
+                    </button>
+                </div>
+                <div class="forget-password">
+                    <a href="@Url.Content("~/ForgotPassword")">@(Resources.ForgotPassword)?</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

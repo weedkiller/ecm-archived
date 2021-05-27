@@ -1,0 +1,117 @@
+﻿@model DansLesGolfs.Models.RegisterModel
+@{
+    ViewBag.Title = Resources.Register;
+    Layout = "~/Views/_Shared/MP/Front/_FullWidth.cshtml";
+}
+@section head
+{
+
+}@section foot
+{
+    <script src="@Url.Content("~/Assets/Front/scripts/pages/register.js")"></script>
+}
+<div id="page-register" class="margin-bottom-40 margin-top-20">
+    <div class="row">
+        <div class="col-md-5">
+            <!-- BEGIN LOGIN FORM -->
+            <form class="register-form" method="post">
+                <h3 class="form-title text-center">Create New Account</h3>
+                @if (@ViewBag.ErrorMessage != null)
+                {
+                    <div class="alert alert-danger">
+                        <button class="close" data-close="alert"></button>
+                        <span>@ViewBag.ErrorMessage</span>
+                    </div>
+                }
+                <div class="form-group">
+                    <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+                    <label class="control-label visible-ie8 visible-ie9">@Resources.Email</label>
+                    <div class="input-icon">
+                        <i class="fa fa-envelope"></i>
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control placeholder-no-fix", autocomplete = "off", placeholder = Resources.Email, required = "required", type = "email" })
+                        @Html.ValidationMessageFor(m => m.Email)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label visible-ie8 visible-ie9">@Resources.Password</label>
+                    <div class="input-icon">
+                        <i class="fa fa-lock"></i>
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control placeholder-no-fix", autocomplete = "off", placeholder = Resources.Password, required = "required" })
+                        @Html.ValidationMessageFor(m => m.Password)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label visible-ie8 visible-ie9">@Resources.ConfirmPassword</label>
+                    <div class="input-icon">
+                        <i class="fa fa-lock"></i>
+                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control placeholder-no-fix", autocomplete = "off", placeholder = Resources.ConfirmPassword, required = "required" })
+                        @Html.ValidationMessageFor(m => m.ConfirmPassword)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label visible-ie8 visible-ie9">@Resources.FirstName</label>
+                    <div class="input-icon">
+                        <i class="fa fa-user"></i>
+                        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control placeholder-no-fix", autocomplete = "off", placeholder = Resources.FirstName, required = "required" })
+                        @Html.ValidationMessageFor(m => m.FirstName)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label visible-ie8 visible-ie9">@Resources.LastName</label>
+                    <div class="input-icon">
+                        <i class="fa fa-user"></i>
+                        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control placeholder-no-fix", autocomplete = "off", placeholder = Resources.LastName, required = "required" })
+                        @Html.ValidationMessageFor(m => m.LastName)
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <label class="checkbox">
+                        @Html.CheckBoxFor(m => m.IsReceiveEmailInfo) @Resources.IsReceiveNewsletters
+                    </label>
+                    <button type="submit" class="btn btn-primary">
+                        @Resources.Register
+                    </button>
+                    <a href="@Url.Content("~/Login")" class="btn btn-default">@Resources.UseExistsAccount</a>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-2 text-center margin-top-70"><h3>@Resources.Or</h3></div>
+        <div id="login-facebook-form" class="text-center col-md-5">
+            <h3 class="hidden-sm">@Resources.LoginWithFacebook</h3>
+            <a id="btn-facebook-login" class="margin-top-10 fblogin-button" href="javascript:void(0)"><img src="@Url.Content("~/Assets/Front/img/login-with-facebook-button.png")" /></a>
+        </div>
+    </div>
+</div>
+<!-- END LOGIN -->
+<div class="modal fade" id="facebook-login-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">@Resources.PleaseEnterYourInformation</h4>
+            </div>
+            <div class="modal-body">
+                <p>@Resources.PleaseEnterYourInformation</p>
+                <div class="form-group">
+                    <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+                    <label class="control-label visible-ie8 visible-ie9">@Resources.Email</label>
+                    <div class="input-icon">
+                        <i class="fa fa-user"></i>
+                        <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="@Resources.Email" name="username" value="@ViewBag.Username" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label visible-ie8 visible-ie9">@Resources.Password</label>
+                    <div class="input-icon">
+                        <i class="fa fa-lock"></i>
+                        <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Password" name="password" value="@ViewBag.Password" />
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button id="btn-save-facebook-login" type="button" class="btn btn-primary">Save</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

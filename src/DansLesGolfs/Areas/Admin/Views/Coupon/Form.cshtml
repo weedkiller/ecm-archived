@@ -1,0 +1,101 @@
+﻿@using DansLesGolfs.Base
+@using DansLesGolfs.BLL
+@{
+    Layout = "~/Views/_Shared/MP/_Admin.cshtml";
+    long couponGroupId = ViewBag.CouponGroupId != null ? DataManager.ToLong(ViewBag.CouponGroupId) : 0;
+}
+@section head
+{
+}
+@section foot
+{
+    <script src="@Url.Content("~/Assets/Admin/scripts/page/coupon.js")"></script>
+    <script>
+        window.couponGroupId = '@couponGroupId';
+        window.deleteText = '@Resources.Delete';
+        $('.info-form').validate();
+        $('.datepicker').datepicker({
+            format: 'dd/mm/yy',
+            todayHighlight: true,
+            firstDay: 1
+        });
+    </script>
+}
+<form method="post" id="form-@ViewBag.ClassName" class="info-form coupon-form">
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#coupon-group-info" data-toggle="tab">@Resources.CouponGroupInformation</a></li>
+        @if (couponGroupId > 0)
+        {
+            <li><a href="#coupons" data-toggle="tab">@Resources.Coupons</a></li>
+        }
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="coupon-group-info">@Html.Partial("~/Views/_Shared/UC/Admin/Coupon/UCCouponGroupInfo.cshtml")</div>
+        <div class="tab-pane" id="coupons">@Html.Partial("~/Views/_Shared/UC/Admin/Coupon/UCCoupons.cshtml", (List<Coupon>)ViewBag.Coupons)</div>
+    </div>
+    <input type="hidden" name="id" value="@ViewBag.id" />
+    <input type="submit" id="submit" name="submit" value="@Resources.Save" class="btn btn-primary" />
+    <input type="reset" id="reset" name="reset" value="@Resources.Reset" class="btn" />
+    <a href="@Url.Content("~/Admin/Coupon")" class="btn btn-default">@Resources.Back</a>
+</form>
+
+<div id="import-coupons-popup" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">@Resources.Import</h4>
+            </div>
+            <div class="modal-body">
+                <p>Please input the coupon code that you want to import one code per line. The coupon code that already belong in database will be skipped.</p>
+                <div class="form-group">
+                    <div class="control-label">
+                        <label for="coupons-list">Coupon Codes</label>
+                    </div>
+                    <div>
+                        <textarea id="coupons-list" class="form-control" style="height: 320px;"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary ok-button">@Resources.Import</button>
+                <button type="button" class="btn btn-primary cancel-button" data-dismiss="modal">@Resources.Cancel</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div id="confirm-import-coupons-popup" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">@Resources.Confirmation</h4>
+            </div>
+            <div class="modal-body">
+                <div class="popup-content"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary ok-button">@Resources.Confirm</button>
+                <button type="button" class="btn btn-primary cancel-button" data-dismiss="modal">@Resources.Cancel</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div id="error-popup" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Error</h4>
+            </div>
+            <div class="modal-body">
+                <div class="popup-content"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">@Resources.Close</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

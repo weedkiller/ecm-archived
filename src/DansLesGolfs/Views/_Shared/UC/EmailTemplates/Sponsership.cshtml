@@ -1,0 +1,11 @@
+﻿@*@model DansLesGolfs.BLL.AccountSponsorship
+@Html.Raw(Model.SponsorContent)z*@
+
+@model DansLesGolfs.BLL.AccountSponsorship
+@{
+    ViewBag.Title = Resources.Sponsor;
+    Layout = "~/Views/_Shared/MP/_EmailTemplate.cshtml";
+}
+<div id="email-sponsor" style="width: 580px; height: auto; word-wrap: break-word;">
+    @Model.SponsorContent
+</div>

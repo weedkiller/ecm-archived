@@ -1,0 +1,14 @@
+﻿@{
+    Layout = "~/Views/_Shared/MP/Front/_FullWidth.cshtml";
+}
+@section head
+{
+    <meta http-equiv="refresh" content="3;url=@Url.ServerUrl("~/")" />
+}
+@section foot
+{
+}
+<div id="page-unsubscribe-success" class="text-center">
+    <h1 class="page-title margin-top-70 heading-xl">@Resources.YourRequestHasBeenProcessed</h1>
+    <p>@Resources.WeWillRedirectYouToHomepage</p>
+</div>

@@ -1,0 +1,141 @@
+﻿@model DansLesGolfs.BLL.Emailing
+@{
+    Layout = "~/Views/_Shared/MP/_Layout.cshtml";
+    List<EmailingAttachment> attachments = ViewBag.Attachments is List<EmailingAttachment> && ViewBag.Attachments != null ? (List<EmailingAttachment>)ViewBag.Attachments : new List<EmailingAttachment>();
+    long id = Model.EmailId;
+}
+@section head
+{
+    <script>
+        window.askForMirrorLinkText = "@MvcHtmlString.Create(Resources.EnterTextForMirrorPageLink)";
+        window.sampleMirrorLinkText = "@MvcHtmlString.Create(Resources.SeeTheOnlineVersion)";
+        window.askForUnsubscribeLinkText = "@MvcHtmlString.Create(Resources.EnterTextForUnsubscribeLink)";
+        window.sampleUnsubscribeLinkText = "@MvcHtmlString.Create(Resources.ClickHereToUnsubscribe)";
+        window.warningMirrorLinkText = "@MvcHtmlString.Create(Resources.PleaseAddMirrorPageLink)";
+        window.warningUnsubscribeLink = "@MvcHtmlString.Create(Resources.PleaseAddUnsubscribeLink)";
+    </script>
+}
+@section foot
+{
+    <script>
+        window.assetUrl = '@Url.ServerUrl("~/Common/GetEmailTemplateImages")';
+        window.uploadUrl = '@Url.ServerUrl("~/Common/UploadEmailTemplateImages")';
+        window.deleteUrl = '@Url.ServerUrl("~/Common/DeleteEmailTemplateImage")';
+    </script>
+    @*@if (ViewBag.EditorLimitAccess)
+    {
+        <script>
+            window.editorLimitAccess = true;
+        </script>
+    }*@
+    @Html.IncludeVersionedJs(Url.Content("~/Assets/Admin/scripts/page/email-sending.js"))
+    @Html.IncludeVersionedJs(Url.Content("~/Assets/Admin/scripts/page/email-sending-step2.js"))
+    <script>
+            $('.info-form').validate();
+    </script>
+}
+@helper VariableSelector()
+{
+    <div class="variable-panel">
+        <div class="row">
+            <div class="col-md-6">
+                <select class="variable-selector form-control">
+                    @foreach (EmailTemplateVariable v in (List<EmailTemplateVariable>)ViewBag.EmailTemplateVariables)
+                    {
+                        <option value="{!@v.VariableName}" title="@v.Description">{!@v.VariableName}</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-6">
+                <a href="javascript:void(0);" class="add-variable-button btn btn-primary">@Resources.Add</a>
+                <a href="javascript:void(0);" class="add-mirrorpage-button btn btn-primary">@Resources.Add Mirror Page</a>
+                <a href="javascript:void(0);" class="add-unsubscribe-button btn btn-primary">@Resources.Unsubscribe</a>
+            </div>
+        </div>
+        <div class="variable-description"></div>
+    </div>
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    @Html.T("Email Body")
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <label for="SelectTemplateId">@Resources.EmailTemplates</label>
+                        </div>
+                        <div class="col-md-5">
+                            @Html.DropDownList("SelectTemplateId", (IEnumerable<SelectListItem>)ViewBag.EmailTemplates, new { @class = "form-control" })
+                        </div>
+                        <div class="col-md-5">
+                            <a id="load-template-button" href="javascript:void(0);" class="btn btn-primary">@Resources.LoadData</a>
+                            @*<a id="preview-template-button" href="javascript:void(0);" class="btn btn-primary">@Resources.Preview</a>*@
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <label>Attachments</label>
+                        </div>
+                        <div class="col-md-10">
+                            <input type="file" id="attachments" name="attachments" />
+                            <ul id="attachments-list">
+                                @foreach (var it in attachments)
+                                {
+                                    <li id="attachment-@it.EmailingAttachmentId" data-id="@it.EmailingAttachmentId" class="attachment-file">
+                                        <span><i class="fa fa-file-text"></i> @it.FileName <a class="delete-link" href="javascript:void(0)"><span class="fa fa-trash-o"></span></a></span>
+                                    </li>
+                                }
+                            </ul>
+                            <input type="hidden" id="deletedAttachmentIds" name="deletedAttachmentIds" value="" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div id="editor-container" class="margin-bottom-30">
+    <div id="editor-tips" class="margin-bottom-10">
+        <p>
+            <span class="label label-info">Tip</span> @Resources.EmailTemplateCreationTips
+        </p>
+    </div>
+    <div id="gjs" class="grapesjs-container">
+        @if (Model.HtmlDetailString != null)
+        {
+            @MvcHtmlString.Create(Model.MjmlDetailString)
+        }
+        else
+        {
+            <mjml>
+                <mj-body>
+                    <mj-container>
+                    </mj-container>
+                </mj-body>
+            </mjml>
+        }
+    </div>
+</div>
+
+<form method="post" action="@Url.Content("~/Emailing/SaveStep2")" id="form-send-email" class="info-form">
+    <input type="hidden" id="TemplateId" name="TemplateId" value="@Model.TemplateId" />
+    <input type="hidden" id="MjmlDetailString" name="MjmlDetailString" value="@Model.MjmlDetailString" />
+    <input type="hidden" id="HtmlDetailString" name="HtmlDetailString" value="@Model.HtmlDetailString" />
+    <input type="submit" id="Previous" name="Previous" value="@Resources.Previous" class="btn btn-primary" />
+    <input type="submit" id="Next" name="Next" value="@Resources.Next" class="btn btn-primary" />
+    <a id="preview-button" href="javascript:void(0);" class="btn btn-primary">@Resources.Preview</a>
+</form>

@@ -1,0 +1,159 @@
+﻿@using DansLesGolfs
+@using DansLesGolfs.Models
+@model UserMessageViewModel
+@*@{
+    ViewBag.Title = Resources.MyMessages;
+    Layout = "~/Views/_Shared/MP/Front/_Default.cshtml";
+}*@
+@section head
+{
+    <link rel="stylesheet" type="text/css" href="@Href("~/Assets/Front/css/user-menu.css")">
+
+
+}
+@section foot
+{
+   
+}
+
+  <div class="account-box">
+                <div class="account-box-header">@Resources.MyMessages</div>
+                <div class="account-box-table">
+                    <div id="message-tools" class="account-box-table-tools">
+                                                <div class="account-box-table-tool-cbx">
+                            <input type="checkbox" name="cbxAll" id="cbxAll" value="True" />
+                        </div>
+                        <div class="account-box-table-tool-btn">
+                            <button type="button" class="account-box-table-tool-btn-delete">Supprimer</button>
+                            <button type="button" class="account-box-table-tool-btn-archiver">Archiver</button>
+                            <button type="button" class="account-box-table-tool-btn-transfer">Transférer</button>
+                            <select class="account-box-table-tool-btn-move message-flatleft">
+                                <option>Déplacer ver</option>
+                            </select>
+                            <select class="account-box-table-tool-btn-mark message-flatleft">
+                                <option>Marquer comme</option>
+                            </select>
+                        </div>
+                        @using (Html.BeginForm("MessagesSearch", "Account", FormMethod.Post,
+                                      new { enctype = "multipart/form-data" }))
+                        {
+                            
+                            <div class="account-box-table-tool-search">
+                               @* <input type="text" id="searchtext" class="searchtext" placeholder="Recherchez..." />*@
+                                @Html.TextBoxFor(m => m.SearchText, new { @placeholder="Recherchez..."})
+                                <button type="submit">OK</button>
+                            </div>
+                        }
+                    </div>
+                    <div id="message-box-header">
+                        <div class="account-box-table-tools">
+                            <div class="account-message-checkbox float-left">&nbsp;</div>
+                            <div class="account-message-flag float-left"><i class="fa fa-flag" style="width: 14px; height: 14px;"></i></div>
+                            <div class="account-message-attach float-left"><i class="fa fa-paperclip"></i></div>
+                            <div class="account-message-from float-left">De</div>
+                            <div class="account-message-to float-left">Fin de la vente</div>
+                            <div class="account-message-subject float-left">Sujet</div>
+                            <div class="account-message-date float-left">
+                                <div class="dropdown">
+                              @*      <button class="btn btn-danger" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                                        Recu
+    <span class="caret"></span>
+                                    </button>*@
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                        @foreach (var data in Model.UserMessageModelList)
+                        {
+                            var setClassactive = "";
+                            if (data.ReadDate.HasValue)
+                            {
+                                setClassactive = "account-box-content";
+                            }
+                            else
+                            {
+                                setClassactive = "account-box-content backcolor-box-content";
+                            }
+                            
+                            <a href="@Url.Action("MessageDetail", "Account", new { @messageId = data.MessageId})">
+                            <div class="@setClassactive" id="account-box-content-@data.MessageId" data-value="@data.MessageId">
+                                <div class="account-message-checkbox float-left">
+                                    <input type="checkbox" />
+                                </div>
+                                <div class="account-message-flag float-left" id="" data-value="@data.MessageId">
+                                    @if (data.IsFlag)
+                                    {
+                                        <i class="fa fa-flag flagActive" id="fa-flag-@data.MessageId" style="width: 14px; height: 14px;"></i>
+                                    }
+                                    else
+                                    {
+                                        <i class="fa fa-flag" id="fa-flag-@data.MessageId" style="width: 14px; height: 14px; "></i>
+                                    }
+
+                                </div>
+
+                                <div class="account-message-attach float-left">
+                                    @if (data.HasAttachedFile)
+                                    {
+                                        <a href="~/Uploads/UserMessage/@data.FileName@data.FileExtension"><i class="fa fa-paperclip"></i></a>
+                                    }
+                                    
+                                </div>
+
+                                <div class="account-message-from float-left">@data.FirstName @data.Lastname</div>
+                                <div class="account-message-to float-left">Termine</div>
+                                <div class="account-message-subject float-left">@data.Subject</div>
+                                <div class="account-message-date float-left">
+                                    @data.SentDate.Value.ToString("dd/MM/yy")
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+                            </a>
+                            
+                                                                       }
+                    </div>
+
+                </div>
+            </div>
+
+            @{
+                
+                int paggingnumber = 0;
+                int paggingnumbermod = 0;
+
+                if (Model.UserMessageModelList.Count > 0)
+                {
+                    paggingnumber = (Model.UserMessageModelList[0].ToltalItemCount / 10);
+
+                    paggingnumbermod = Model.UserMessageModelList[0].ToltalItemCount % 10;
+                }
+                    
+                if(paggingnumbermod > 0 ){
+                    paggingnumber = paggingnumber + 1;
+                }
+                
+            }
+
+           
+                <ul class="pagination pagination-sm">
+                    @if (Model.PageIndex > 1)
+                    {
+                    <li><a href="@Url.Action("Messages", "Account", new { @pageIndex = (Model.PageIndex - 1) })">&laquo;</a></li>
+                    }
+                     @for(int i=0;i<paggingnumber;i++){
+                         var page = i + 1;
+                         var setActive = (page == Model.PageIndex  ? "active" : "");
+                        <li class="@setActive"><a href="@Url.Action("Messages", "Account", new { @pageIndex = page  })">@page</a></li>
+                         
+                     }
+                    @if(paggingnumber > Model.PageIndex){
+                    <li><a href="@Url.Action("Messages", "Account", new { @pageIndex = (Model.PageIndex + 1) })">&raquo;</a></li>
+                    }
+                </ul>
+            

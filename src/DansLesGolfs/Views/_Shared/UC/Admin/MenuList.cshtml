@@ -1,0 +1,689 @@
+﻿<ul class="page-sidebar-menu">
+    <li class="sidebar-toggler-wrapper">
+        <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+        <div class="sidebar-toggler hidden-phone">
+        </div>
+        <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+    </li>
+    <li class="menu-dashboard">
+        <a href="@Url.Content("~/Admin")">
+            <i class="glyphicon glyphicon-home"></i>
+            <span class="title">
+                @Resources.Dashboard
+            </span>
+            <span class="selected"></span>
+        </a>
+    </li>
+    <li class="menu-orders">
+        <a href="@Url.Content("~/Admin/Orders")">
+            <i class="glyphicon glyphicon-list-alt"></i>
+            <span class="title">
+                @Resources.Menu
+            </span>
+        </a>
+    </li>
+    <li>
+        <a href="javascrip:void(0);">
+            <i class="glyphicon glyphicon-folder-close"></i>
+            <span class="title">
+                @Resources.Review
+            </span>
+            <span class="arrow"></span>
+        </a>
+        <ul class="sub-menu">
+            <li class="menu-itemreview">
+                <a href="@Url.Content("~/Admin/ItemReview")">
+                    <i class="glyphicon glyphicon-list"></i>
+                    <span class="title">
+                        @Resources.ItemReview
+                    </span>
+                </a>
+            </li>
+            <li class="menu-sitereview">
+                <a href="@Url.Content("~/Admin/SiteReview")">
+                    <i class="glyphicon glyphicon-list"></i>
+                    <span class="title">
+                        @Resources.SiteReview
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <a href="javascrip:void(0);">
+            <i class="glyphicon glyphicon-folder-close"></i>
+            <span class="title">
+                @Resources.Coupon
+            </span>
+            <span class="arrow"></span>
+        </a>
+        <ul class="sub-menu">
+            <li class="menu-coupon">
+                <a href="@Url.Content("~/Admin/Coupon")">
+                    <i class="glyphicon glyphicon-list"></i>
+                    <span class="title">
+                        @Resources.Coupon
+                    </span>
+                </a>
+            </li>
+            <li class="menu-addcoupon">
+                <a href="@Url.Content("~/Admin/Coupon/Form")">
+                    <i class="glyphicon glyphicon-list"></i>
+                    <span class="title">
+                        @Resources.AddCoupon
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <a href="javascrip:void(0);">
+            <i class="glyphicon glyphicon-folder-close"></i>
+            <span class="title">
+                @Resources.Product
+            </span>
+            <span class="arrow"></span>
+        </a>
+        <ul class="sub-menu">
+            <li class="menu-item">
+                <a href="@Url.Content("~/Admin/Item")">
+                    <i class="glyphicon glyphicon-list"></i>
+                    <span class="title">
+                        @Resources.Products
+                    </span>
+                </a>
+            </li>
+            <li class="menu-additem">
+                <a href="@Url.Content("~/Admin/Item/Form")">
+                    <i class="glyphicon glyphicon-list"></i>
+                    <span class="title">
+                        @Resources.AddProduct
+                    </span>
+                </a>
+            </li>
+            <li class="menu-itemcategory">
+                <a href="@Url.Content("~/Admin/ItemCategory")">
+                    <i class="glyphicon glyphicon-list"></i>
+                    <span class="title">
+                        @Resources.ProductCategories
+                    </span>
+                </a>
+            </li>
+            <li class="menu-modifier">
+                <a href="@Url.Content("~/Admin/Modifier")">
+                    <i class="glyphicon glyphicon-list"></i>
+                    <span class="title">
+                        @Resources.Modifiers
+                    </span>
+                </a>
+            </li>
+            <li class="menu-brand">
+                <a href="@Url.Content("~/Admin/Brand")">
+                    <i class="glyphicon glyphicon-list"></i>
+                    <span class="title">
+                        @Resources.Brands
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <a href="javascrip:void(0);">
+            <i class="glyphicon glyphicon-folder-close"></i>
+            <span class="title">
+                @Resources.GreenFees
+            </span>
+            <span class="arrow"></span>
+        </a>
+        <ul class="sub-menu">
+            <li class="menu-greenfee">
+                <a href="@Url.Content("~/Admin/GreenFee")">
+                    <i class="glyphicon glyphicon-list"></i>
+                    <span class="title">
+                        @Resources.GreenFees
+                    </span>
+                </a>
+            </li>
+            <li class="menu-addgreenfee">
+                <a href="@Url.Content("~/Admin/GreenFee/Form")">
+                    <i class="glyphicon glyphicon-list"></i>
+                    <span class="title">
+                        @Resources.AddGreenFee
+                    </span>
+                </a>
+            </li>
+            <li class="menu-greenfeecategory">
+                <a href="@Url.Content("~/Admin/GreenFeeCategory")">
+                    <i class="glyphicon glyphicon-list"></i>
+                    <span class="title">
+                        @Resources.GreenFeeCategories
+                    </span>
+                </a>
+            </li>
+            <li class="menu-greenfee-settings">
+                <a href="@Url.Content("~/Admin/GreenFee/Settings")">
+                    <i class="glyphicon glyphicon-list"></i>
+                    <span class="title">
+                        @Resources.GreenFeeSettings
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <a href="javascrip:void(0);">
+            <i class="glyphicon glyphicon-folder-close"></i>
+            <span class="title">
+                @Resources.StayPackages
+            </span>
+            <span class="arrow"></span>
+        </a>
+        <ul class="sub-menu">
+            <li class="menu-staypackage">
+                <a href="@Url.Content("~/Admin/StayPackage")">
+                    <i class="glyphicon glyphicon-list"></i>
+                    <span class="title">
+                        @Resources.StayPackages
+                    </span>
+                </a>
+            </li>
+            <li class="menu-addstaypackage">
+                <a href="@Url.Content("~/Admin/StayPackage/Form")">
+                    <i class="glyphicon glyphicon-list"></i>
+                    <span class="title">
+                        @Resources.AddStayPackage
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <a href="javascrip:void(0);">
+            <i class="glyphicon glyphicon-folder-close"></i>
+            <span class="title">
+                @Resources.Lessons
+            </span>
+            <span class="arrow"></span>
+        </a>
+        <ul class="sub-menu">
+            <li class="menu-golflesson">
+                <a href="@Url.Content("~/Admin/GolfLesson")">
+                    <i class="glyphicon glyphicon-list"></i>
+                    <span class="title">
+                        @Resources.Lessons
+                    </span>
+                </a>
+            </li>
+            <li class="menu-addgolflesson">
+                <a href="@Url.Content("~/Admin/GolfLesson/Form")">
+                    <i class="glyphicon glyphicon-list"></i>
+                    <span class="title">
+                        @Resources.AddLesson
+                    </span>
+                </a>
+            </li>
+            <li class="menu-golflessoncategory">
+                <a href="@Url.Content("~/Admin/GolfLessonCategory")">
+                    <i class="glyphicon glyphicon-list"></i>
+                    <span class="title">
+                        @Resources.GolfLessonType
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <a href="javascrip:void(0);">
+            <i class="glyphicon glyphicon-folder-close"></i>
+            <span class="title">
+                @Resources.DrivingRanges
+            </span>
+            <span class="arrow"></span>
+        </a>
+        <ul class="sub-menu">
+            <li class="menu-drivingrange">
+                <a href="@Url.Content("~/Admin/DrivingRange")">
+                    <i class="glyphicon glyphicon-list"></i>
+                    <span class="title">
+                        @Resources.DrivingRanges
+                    </span>
+                </a>
+            </li>
+            <li class="menu-adddrivingrange">
+                <a href="@Url.Content("~/Admin/DrivingRange/Form")">
+                    <i class="glyphicon glyphicon-list"></i>
+                    <span class="title">
+                        @Resources.AddDrivingRange
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </li>
+    @*<li>
+            <a href="javascrip:void(0);">
+                <i class="glyphicon glyphicon-folder-close"></i>
+                <span class="title">
+                    @Resources.TeeSheet
+                </span>
+                <span class="arrow">
+                </span>
+            </a>
+            <ul class="sub-menu">
+                <li class="menu-teesheet">
+                    <a href="@Url.Content("~/Admin/TeeSheet")">
+                        <i class="glyphicon glyphicon-list"></i>
+                        <span class="title">
+                            @Resources.TeeSheet
+                        </span>
+                    </a>
+                </li>
+                <li class="menu-bookingreport">
+                    <a href="@Url.Content("~/Admin/BookingReport")">
+                        <i class="glyphicon glyphicon-list"></i>
+                        <span class="title">
+                            @Resources.BookingReport
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="menu-giftcard">
+            <a href="@Url.Content("~/Admin/GiftCard")">
+                <i class="glyphicon glyphicon-list"></i>
+                <span class="title">
+                    @Resources.GiftCard
+                </span>
+            </a>
+        </li>*@
+    <li>
+        <a href="javascrip:void(0);">
+            <i class="glyphicon glyphicon-folder-close"></i>
+            <span class="title">
+                @Resources.Sites
+            </span>
+            <span class="arrow"></span>
+        </a>
+        <ul class="sub-menu">
+            <li class="menu-site">
+                <a href="@Url.Content("~/Admin/Site")">
+                    <i class="glyphicon glyphicon-list"></i>
+                    <span class="title">
+                        @Resources.Sites
+                    </span>
+                </a>
+            </li>
+            <li class="menu-addsite">
+                <a href="@Url.Content("~/Admin/Site/Form")">
+                    <i class="glyphicon glyphicon-list"></i>
+                    <span class="title">
+                        @Resources.AddSite
+                    </span>
+                </a>
+            </li>
+            <li class="menu-course">
+                <a href="@Url.Content("~/Admin/Course")">
+                    <i class="glyphicon glyphicon-list"></i>
+                    <span class="title">
+                        @Resources.Course
+                    </span>
+                </a>
+            </li>
+            <li class="menu-sitejournalyearly">
+                <a href="@Url.Content("~/Admin/SiteJournal/Yearly")">
+                    <i class="glyphicon glyphicon-list"></i>
+                    <span class="title">
+                        @Resources.YearlyJournal
+                    </span>
+                </a>
+            </li>
+            <li class="menu-sitejournaldaily">
+                <a href="@Url.Content("~/Admin/SiteJournal/Daily")">
+                    <i class="glyphicon glyphicon-list"></i>
+                    <span class="title">
+                        @Resources.DailyJournal
+                    </span>
+                </a>
+            </li>
+            <li class="menu-restaurantsupplier">
+                <a href="@Url.Content("~/Admin/RestaurantSupplier")">
+                    <i class="glyphicon glyphicon-list"></i>
+                    <span class="title">
+                        @Resources.RestaurantSuppliers
+                    </span>
+                </a>
+            </li>
+            <li class="menu-restaurantproductcategory">
+                <a href="@Url.Content("~/Admin/RestaurantProductCategory")">
+                    <i class="glyphicon glyphicon-list"></i>
+                    <span class="title">
+                        @Resources.RestaurantProductCategories
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <a href="javascrip:void(0);">
+            <i class="glyphicon glyphicon-folder-close"></i>
+            <span class="title">
+                @Resources.ContentManagement
+            </span>
+            <span class="arrow"></span>
+        </a>
+        <ul class="sub-menu">
+            <li class="menu-slideshow">
+                <a href="@Url.Content("~/Admin/SlideShow")">
+                    <i class="glyphicon glyphicon-list"></i>
+                    <span class="title">
+                        @Resources.Slideshow
+                    </span>
+                </a>
+            </li>
+            <li class="menu-news">
+                <a href="@Url.Content("~/Admin/News")">
+                    <i class="glyphicon glyphicon-list"></i>
+                    <span class="title">
+                        @Resources.News
+                    </span>
+                </a>
+            </li>
+            <li class="menu-specialoffer">
+                <a href="@Url.Content("~/Admin/SpecialOffer")">
+                    <i class="glyphicon glyphicon-list"></i>
+                    <span class="title">
+                        @Resources.SpecialOffer
+                    </span>
+                </a>
+            </li>
+            <li class="menu-webcontent">
+                <a href="@Url.Content("~/Admin/WebContent")">
+                    <i class="glyphicon glyphicon-list"></i>
+                    <span class="title">
+                        Contents
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <a href="javascrip:void(0);">
+            <i class="glyphicon glyphicon-folder-close"></i>
+            <span class="title">
+                @Resources.ReferenceTables
+            </span>
+            <span class="arrow"></span>
+        </a>
+        <ul class="sub-menu">
+            <li class="menu-golfbrand">
+                <a href="@Url.Content("~/Admin/GolfBrand")">
+                    <i class="glyphicon glyphicon-list"></i>
+                    <span class="title">
+                        @Resources.GolfBrands
+                    </span>
+                </a>
+            </li>
+            <li class="menu-tax">
+                <a href="@Url.Content("~/Admin/Tax")">
+                    <i class="glyphicon glyphicon-list"></i>
+                    <span class="title">
+                        @Resources.Taxes
+                    </span>
+                </a>
+            </li>
+            <li class="menu-supplier">
+                <a href="@Url.Content("~/Admin/Supplier")">
+                    <i class="glyphicon glyphicon-list"></i>
+                    <span class="title">
+                        @Resources.Suppliers
+                    </span>
+                </a>
+            </li>
+            @*<li class="menu-interest">
+                    <a href="@Url.Content("~/Admin/Interest")">
+                        <i class="glyphicon glyphicon-list"></i>
+                        <span class="title">
+                            @Resources.UserInteresting
+                        </span>
+                    </a>
+                </li>*@
+            <li class="menu-sponsor-email">
+                <a href="@Url.Content("~/Admin/SponsorEmail")">
+                    <i class="glyphicon glyphicon-list"></i>
+                    <span class="title">
+                        @Resources.SponsorEmail
+                    </span>
+                </a>
+            </li>
+
+        </ul>
+    </li>
+    <li>
+        <a href="javascrip:void(0);">
+            <i class="glyphicon glyphicon-envelope"></i>
+            <span class="title">
+                @Resources.EmailTemplates
+            </span>
+            <span class="arrow"></span>
+        </a>
+        <ul class="sub-menu">
+            <li class="menu-emailtemplate">
+                <a href="@Url.Content("~/Admin/EmailTemplate")">
+                    <i class="glyphicon glyphicon-list"></i>
+                    <span class="title">
+                        @Resources.EmailTemplates
+                    </span>
+                </a>
+            </li>
+            <li class="menu-adddrivingrange">
+                <a href="@Url.Content("~/Admin/EmailTemplate/Form")">
+                    <i class="glyphicon glyphicon-list"></i>
+                    <span class="title">
+                        @Resources.AddEmailTemplate
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <a href="javascrip:void(0);">
+            <i class="glyphicon glyphicon-folder-close"></i>
+            <span class="title">
+                @Resources.Reports
+            </span>
+            <span class="arrow"></span>
+        </a>
+        <ul class="sub-menu">
+            <li class="menu-salesreport">
+                <a href="@Url.Content("~/Admin/Reports/SalesReport")">
+                    <i class="glyphicon glyphicon-list"></i>
+                    <span class="title">
+                        @Resources.SalesReport
+                    </span>
+                </a>
+            </li>
+            <li class="menu-saleitemsreport">
+                <a href="@Url.Content("~/Admin/SaleItemsReport")">
+                    <i class="glyphicon glyphicon-list"></i>
+                    <span class="title">
+                        @Resources.SaleDetail
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <a href="javascrip:void(0);">
+            <i class="glyphicon glyphicon-folder-close"></i>
+            <span class="title">
+                @Resources.Membership
+            </span>
+            <span class="arrow"></span>
+        </a>
+        <ul class="sub-menu">
+            <li class="menu-user">
+                <a href="@Url.Content("~/Admin/User")">
+                    <i class="glyphicon glyphicon-user"></i>
+                    <span class="title">
+                        @Resources.Users
+                    </span>
+                </a>
+            </li>
+            <li class="menu-customer">
+                <a href="@Url.Content("~/Admin/Customer")">
+                    <i class="glyphicon glyphicon-user"></i>
+                    <span class="title">
+                        @Resources.Customers
+                    </span>
+                </a>
+            </li>
+            <li class="menu-reseller">
+                <a href="@Url.Content("~/Admin/Reseller")">
+                    <i class="glyphicon glyphicon-user"></i>
+                    <span class="title">
+                        @Resources.Resellers
+                    </span>
+                </a>
+            </li>
+            <li class="menu-editprofile">
+                <a href="@Url.Content("~/Admin/User/EditProfile")">
+                    <i class="glyphicon glyphicon-user"></i>
+                    <span class="title">
+                        @Resources.EditProfile
+                    </span>
+                </a>
+            </li>
+            @*<li class="menu-usertype">
+                    <a href="@Url.Content("~/Admin/UserType")">
+                        <i class="glyphicon glyphicon-user"></i>
+                        <span class="title">
+                            @Resources.UserTypes
+                        </span>
+                    </a>
+                </li>*@
+        </ul>
+    </li>
+    @*  <li class="menu-dlgemail">
+            <a href="@Url.Content("~/DLGEmail")">
+                <i class="glyphicon glyphicon-envelope"></i>
+                <span class="title">DLG Email</span>
+            </a>
+        </li>*@
+    <li class="menu-dlgcard">
+        @*  <a href="@Url.Action("DisplayDlgCardList", "DlgCard")">
+                <i class="glyphicon glyphicon-credit-card"></i>
+                <span class="title">DLG Card</span>
+            </a>*@
+        <a href="javascrip:void(0);">
+            <i class="glyphicon glyphicon-credit-card"></i>
+            <span class="title">
+                DLG Card
+            </span>
+            <span class="arrow"></span>
+        </a>
+        <ul class="sub-menu">
+            <li class="menu-displaydlgcardlist">
+                <a href="@Url.Action("DisplayDlgCardList", "DlgCard")">
+                    <i class="glyphicon glyphicon-list"></i>
+                    <span class="title">
+                        DlgCard
+                    </span>
+                </a>
+            </li>
+            <li class="menu-dlgcardhistory">
+                <a href="@Url.Action("DlgCardHistory", "DlgCard")">
+                    <i class="glyphicon glyphicon-list"></i>
+                    <span class="title">
+                        DlgCard History
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li class="menu-promotion">
+        <a href="javascrip:void(0);">
+            <i class="glyphicon glyphicon-credit-card"></i>
+            <span class="title">
+                Promotion
+            </span>
+            <span class="arrow"></span>
+        </a>
+        <ul class="sub-menu">
+            <li class="menu-PromotionAdmin">
+                <a href="@Url.Action("AddPromotion", "PromotionAdmin")">
+                    <i class="glyphicon glyphicon-list"></i>
+                    <span class="title">
+                        Add Promotion
+                    </span>
+                </a>
+            </li>
+            <li class="menu-PromotionList">
+                <a href="@Url.Action("PromotionList", "PromotionAdmin")">
+                    <i class="glyphicon glyphicon-list"></i>
+                    <span class="title">
+                        Promotion List
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li class="menu-usermessage">
+        <a href="javascrip:void(0);">
+            <i class="glyphicon glyphicon-credit-card"></i>
+            <span class="title">
+                User Message
+            </span>
+            <span class="arrow"></span>
+        </a>
+        <ul class="sub-menu">
+            <li class="menu-PromotionAdmin">
+                <a href="@Url.Action("AddUserMessageAdmin", "UserMessageAdmin")">
+                    <i class="glyphicon glyphicon-list"></i>
+                    <span class="title">
+                        Add UserMessage
+                    </span>
+                </a>
+            </li>
+            <li class="menu-PromotionList">
+                <a href="@Url.Action("UserMessageList", "UserMessageAdmin")">
+                    <i class="glyphicon glyphicon-list"></i>
+                    <span class="title">
+                        UserMessage List
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li class="menu-ads-manager">
+        <a href="@Url.Content("~/Admin/Advertise/Manage")">
+            <i class="glyphicon glyphicon-list-alt"></i>
+            <span class="title">
+                @Resources.AdsManager
+            </span>
+        </a>
+    </li>
+    <li class="menu-top-nav-link">
+        <a href="@Url.Content("~/Admin/TopNavLink")">
+            <i class="glyphicon glyphicon-list-alt"></i>
+            <span class="title">
+                @Resources.TopNavigationLink
+            </span>
+        </a>
+    </li>
+    <li class="menu-menu-manager">
+        <a href="@Url.Content("~/Admin/Menu")">
+            <i class="glyphicon glyphicon-list-alt"></i>
+            <span class="title">
+                @Resources.Menu
+            </span>
+        </a>
+    </li>
+    <li class="menu-clearcache">
+        <a href="@Url.Action("ClearCache", "Common")">
+            <i class="glyphicon glyphicon-list-alt"></i>
+            <span class="title">
+                Clear Cache
+            </span>
+        </a>
+    </li>
+
+</ul>

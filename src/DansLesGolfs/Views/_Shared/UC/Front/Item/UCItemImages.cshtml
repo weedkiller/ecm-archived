@@ -1,0 +1,13 @@
+﻿@model List<ItemImage>
+
+@if (Model != null && Model.Any())
+{
+    foreach (ItemImage img in Model)
+    {
+        <div class="slide-image" style="background: url(@Html.GetItemImageUrl(img.ItemId, img, "large", "", 620, 462)) no-repeat center center;background-size: cover;" data-rstmb="@Html.GetItemImageUrl(img.ItemId, img, "thumbnail")"></div>
+    }
+}
+else
+{
+    <div class="slide-image" style="background: url(@Url.Content("~/Assets/Front/img/no-item-slide-image.png")) no-repeat center center;background-size: cover;" data-rstmb="@Url.Content("~/Assets/Front/img/no-item-slide-image.png")"></div>
+}

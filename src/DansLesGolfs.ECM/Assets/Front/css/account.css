@@ -1,0 +1,292 @@
+.account-box {
+    border: 1px solid #d0d0d0;
+}
+
+.account-box-header {
+    height: 35px;
+    background-color: #e7e7e7;
+    color: #f8407e;
+    font-weight: 700;
+    font-size: 17px;
+    padding: 10px;
+    border-bottom: 1px solid #d0d0d0;
+}
+
+.account-box-form {
+    padding: 10px;
+    background-color: #f5f5f5;
+}
+
+.require-box {
+    margin: 5px;
+}
+
+.require-pink {
+    color: #f7417e;
+}
+
+.remark-lime {
+    color: #96da51;
+}
+
+.account-box-form-title {
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+.account-box-form .form-group .control-label {
+    padding-bottom:5px;
+}
+.account-box-form .form-group .form-control {
+    height: 25px;
+}
+
+    .account-box-form .form-group .form-control.error {
+        border: 1px solid red;
+    }
+
+.account-box-form .form-group label.error {
+    margin-top: 5px;
+    color: red;
+}
+
+.account-box-form .form-group div.selector.fixedWidth {
+    width:100%;
+    padding-left:0;
+}
+.account-box-form .form-group div.selector.fixedWidth span {
+    width:100%;
+}
+
+.account-box-tab ul li {
+    height: 63px;
+    padding: 10px;
+    background-color: #f5f5f5;
+}
+
+    .account-box-tab ul li:hover {
+        background-color: #e5e5e5;
+    }
+
+    .account-box-tab ul li .icon-account-home {
+        display: inline-block;
+        background: url('../img/account/icon-account-home.png');
+        width: 30px;
+        height: 26px;
+        margin-top: 5px;
+    }
+
+    .account-box-tab ul li:hover .icon-account-home {
+        background: url('../img/account/icon-account-home-hover.png');
+    }
+
+    .account-box-tab ul li .icon-account-mail {
+        display: inline-block;
+        /*background: url('../img/account/icon-account-mail.png');*/
+        background: url('../img/account/icon-mail.png');
+        width: 28px;
+        height: 18px;
+        margin-top: 13px;
+    }
+
+    .account-box-tab ul li:hover .icon-account-mail {
+        /*background: url('../img/account/icon-account-mail-hover.png');*/
+        background: url('../img/account/icon-account-mail-hover.png');
+    }
+
+    .account-box-tab ul li .icon-account-vector {
+        display: inline-block;
+        background: url('../img/account/icon-account-vector.png');
+        width: 18px;
+        height: 42px;
+        margin-left: 5px;
+    }
+
+    .account-box-tab ul li:hover .icon-account-vector {
+        background: url('../img/account/icon-account-vector-hover.png');
+    }
+
+    .account-box-tab ul li .icon-account-truck {
+        display: inline-block;
+        background: url('../img/account/icon-account-truck.png');
+        width: 31px;
+        height: 22px;
+        margin-top: 7px;
+        margin-left: -1px;
+    }
+
+    .account-box-tab ul li:hover .icon-account-truck {
+        background: url('../img/account/icon-account-truck-hover.png');
+    }
+
+    .account-box-tab ul li .icon-account-key {
+        display: inline-block;
+        background: url('../img/account/icon-account-key.png');
+        width: 17px;
+        height: 31px;
+        margin-top: 2px;
+        margin-left: 6px;
+    }
+
+    .account-box-tab ul li:hover .icon-account-key {
+        background: url('../img/account/icon-account-key-hover.png');
+    }
+
+    .account-box-tab ul li .icon-account-user {
+        display: inline-block;
+        background: url('../img/account/icon-account-user.png');
+        width: 32px;
+        height: 23px;
+        margin-top: 5px;
+    }
+
+    .account-box-tab ul li:hover .icon-account-user {
+        background: url('../img/account/icon-account-user-hover.png');
+    }
+
+    .account-box-tab ul li .icon-account-pricetag {
+        display: inline-block;
+        background: url('../img/account/icon-account-pricetag.png');
+        width: 25px;
+        height: 24px;
+        margin-top: 6px;
+        margin-left: 2px;
+    }
+
+    .account-box-tab ul li:hover .icon-account-pricetag {
+        background: url('../img/account/icon-account-pricetag-hover.png');
+    }
+
+    .account-box-tab ul li .icon-account-creditcard {
+        display: inline-block;
+        background: url('../img/account/icon-account-creditcard.png');
+        width: 32px;
+        height: 22px;
+        margin-top: 7px;
+    }
+
+    .account-box-tab ul li:hover .icon-account-creditcard {
+        background: url('../img/account/icon-account-creditcard-hover.png');
+    }
+
+    .account-box-tab ul li .icon-account-archive {
+        display: inline-block;
+        background: url('../img/account/icon-account-archive.png');
+        width: 32px;
+        height: 22px;
+        margin-top: 7px;
+    }
+
+    .account-box-tab ul li:hover .icon-account-archive {
+        background: url('../img/account/icon-account-archive-hover.png');
+    }
+
+    .account-box-tab ul li a {
+        float: left;
+        width: 100%;
+    }
+
+    .account-box-tab ul li .account-box-tab-li-icon {
+        float: left;
+        width: 50px;
+    }
+
+    .account-box-tab ul li .account-box-tab-li-message {
+        float: left;
+    }
+
+    .account-box-tab ul li .account-box-tab-li-message-header {
+        color: #f7417e;
+        font-size: 17px;
+        font-weight: 700;
+        margin: 5px 0;
+    }
+
+    .account-box-tab ul li .account-box-tab-li-message-remark {
+        color: #8e8f91;
+    }
+
+
+/* Account/Message */
+.account-box-table-tools {
+    background-color:#f5f5f5;
+    padding:8px 0;
+}
+.account-box-table-tool-cbx {
+    float:left;
+    width:29px;
+    padding:0 8px;
+}
+
+.account-box-table-tool-btn button,
+.account-box-table-tool-btn select {
+    float:left;
+    border:1px solid #e5e5e5;
+    background-color:#FFF;
+    margin-right:2px;
+}
+.account-box-table-tool-btn-delete {
+    width:84px;
+    height:18px;
+}
+.account-box-table-tool-btn-archiver {
+    width:84px;
+    height:18px;
+}
+.account-box-table-tool-btn-transfer {
+    width:84px;
+    height:18px;
+}
+.account-box-table-tool-btn-move {
+    width:84px;
+    height:18px;
+}
+.account-box-table-tool-btn-mark {
+    width:101px;
+    height:18px;
+}
+.account-box-table-tool-search input {
+    width:105px;
+    height:18px;
+    float:left;
+}
+.account-box-table-tool-search button {
+    width:25px;
+    height:18px;
+    text-align: center;
+    padding: 0;
+    background-color:#6bb721;
+    border: none;
+    color:#FFF;
+}
+.account-box-table-header {
+
+}
+.account-box-table-header-cbx {
+    padding: 8px;
+}
+.account-box-table-header-from {
+
+}
+.account-box-table-header-to {
+
+}
+.account-box-table-header-subject {
+
+}
+.account-box-table-header-date {
+
+}
+.account-box-table table {
+    margin-bottom:0;
+}
+.account-box-table table tbody tr td {
+    padding-top:20px;
+    padding-bottom:20px;
+}
+.account-box-table table tbody tr td.cbx {
+    width:29px;
+}
+
+.text-center {
+    text-align:center;
+}

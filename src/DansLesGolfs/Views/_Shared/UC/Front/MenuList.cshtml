@@ -1,0 +1,8 @@
+﻿@{
+    int menuCategoryId = ViewBag.MenuCategoryId != null ? (int)ViewBag.MenuCategoryId : 0;
+    Dictionary<int, string> menuList = (Dictionary<int, string>)ViewBag.GreenFeeCategories;
+    bool greenFeeHasChildActive = menuList != null && menuList.ContainsKey(menuCategoryId);
+}
+<nav id="main-menu">
+    @ViewBag.DLGMainMenu
+</nav>

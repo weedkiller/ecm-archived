@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="aeb8adaff5b849c79b66535c3d0757dc" Name="Diagram1" ZoomLevel="48">
+        <EntityTypeShape EntityType="DLGModel.Address" Width="1.5" PointX="9.75" PointY="89.25" />
+        <EntityTypeShape EntityType="DLGModel.Ad" Width="1.5" PointX="8" PointY="1" />
+        <EntityTypeShape EntityType="DLGModel.Adset" Width="1.5" PointX="5.75" PointY="1.5" />
+        <EntityTypeShape EntityType="DLGModel.Category" Width="1.5" PointX="23" PointY="88.5" />
+        <EntityTypeShape EntityType="DLGModel.City" Width="1.5" PointX="5.25" PointY="89" />
+        <EntityTypeShape EntityType="DLGModel.Content" Width="1.5" PointX="25.25" PointY="85.875" />
+        <EntityTypeShape EntityType="DLGModel.Country" Width="1.5" PointX="0.75" PointY="92.25" />
+        <EntityTypeShape EntityType="DLGModel.Coupon" Width="1.5" PointX="15.75" PointY="75.75" />
+        <EntityTypeShape EntityType="DLGModel.CouponGroup" Width="1.5" PointX="8.25" PointY="71.875" />
+        <EntityTypeShape EntityType="DLGModel.CourseType" Width="1.5" PointX="28.75" PointY="79.25" />
+        <EntityTypeShape EntityType="DLGModel.Creditcardassociation" Width="1.5" PointX="5.75" PointY="4.75" />
+        <EntityTypeShape EntityType="DLGModel.CustomerAddress" Width="1.5" PointX="3" PointY="101.375" />
+        <EntityTypeShape EntityType="DLGModel.CustomerCreditCard" Width="1.5" PointX="9.75" PointY="127.875" />
+        <EntityTypeShape EntityType="DLGModel.DLGCard" Width="1.5" PointX="17.25" PointY="79.375" />
+        <EntityTypeShape EntityType="DLGModel.DLGCardBalance" Width="1.5" PointX="17.75" PointY="90.375" />
+        <EntityTypeShape EntityType="DLGModel.DLGCardStyle" Width="1.5" PointX="17.25" PointY="114.875" />
+        <EntityTypeShape EntityType="DLGModel.EmailAccount" Width="1.5" PointX="0.75" PointY="7.75" />
+        <EntityTypeShape EntityType="DLGModel.EmailingAttachment" Width="1.5" PointX="15" PointY="104.25" />
+        <EntityTypeShape EntityType="DLGModel.EmailLog" Width="1.5" PointX="28.25" PointY="82" />
+        <EntityTypeShape EntityType="DLGModel.EmailTemplate" Width="1.5" PointX="9.75" PointY="82" />
+        <EntityTypeShape EntityType="DLGModel.EmailTemplateAttachment" Width="1.5" PointX="12" PointY="77.625" />
+        <EntityTypeShape EntityType="DLGModel.EmailTemplateLang" Width="1.5" PointX="12" PointY="81.25" />
+        <EntityTypeShape EntityType="DLGModel.EmailTemplateVariable" Width="1.5" PointX="2.75" PointY="7.75" />
+        <EntityTypeShape EntityType="DLGModel.EmailTracking" Width="1.5" PointX="33.25" PointY="88" />
+        <EntityTypeShape EntityType="DLGModel.EmailUnsubscription" Width="1.5" PointX="7.75" PointY="4.75" />
+        <EntityTypeShape EntityType="DLGModel.GolfBrand" Width="1.5" PointX="18.5" PointY="75.875" />
+        <EntityTypeShape EntityType="DLGModel.Impressum" Width="1.5" PointX="23" PointY="120.375" />
+        <EntityTypeShape EntityType="DLGModel.Interest" Width="1.5" PointX="25.25" PointY="92.125" />
+        <EntityTypeShape EntityType="DLGModel.InterestLang" Width="1.5" PointX="30.5" PointY="92.125" />
+        <EntityTypeShape EntityType="DLGModel.Item" Width="1.5" PointX="15" PointY="85.375" />
+        <EntityTypeShape EntityType="DLGModel.ItemCategory" Width="1.5" PointX="12.75" PointY="90.125" />
+        <EntityTypeShape EntityType="DLGModel.ItemChoice" Width="1.5" PointX="26.25" PointY="95" />
+        <EntityTypeShape EntityType="DLGModel.ItemConversionTracking" Width="1.5" PointX="17.25" PointY="103.625" />
+        <EntityTypeShape EntityType="DLGModel.ItemImage" Width="1.5" PointX="17.25" PointY="120.125" />
+        <EntityTypeShape EntityType="DLGModel.ItemLang" Width="1.5" PointX="23.25" PointY="95.375" />
+        <EntityTypeShape EntityType="DLGModel.ItemModifier" Width="1.5" PointX="17.25" PointY="99.875" />
+        <EntityTypeShape EntityType="DLGModel.ItemPosition" Width="1.5" PointX="17.25" PointY="117.625" />
+        <EntityTypeShape EntityType="DLGModel.ItemReview" Width="1.5" PointX="25.25" PointY="99.625" />
+        <EntityTypeShape EntityType="DLGModel.ItemType" Width="1.5" PointX="10.5" PointY="72.875" />
+        <EntityTypeShape EntityType="DLGModel.Language" Width="1.5" PointX="12.75" PointY="73.5" />
+        <EntityTypeShape EntityType="DLGModel.MailingList" Width="1.5" PointX="23" PointY="126.875" />
+        <EntityTypeShape EntityType="DLGModel.Menu" Width="1.5" PointX="0.75" PointY="4.25" />
+        <EntityTypeShape EntityType="DLGModel.MenuItem" Width="1.5" PointX="3" PointY="4" />
+        <EntityTypeShape EntityType="DLGModel.Modifier" Width="1.5" PointX="12.75" PointY="85.375" />
+        <EntityTypeShape EntityType="DLGModel.ModifierChoice" Width="1.5" PointX="18" PointY="95.375" />
+        <EntityTypeShape EntityType="DLGModel.ModifierChoiceLang" Width="1.5" PointX="20.25" PointY="103.125" />
+        <EntityTypeShape EntityType="DLGModel.ModifierLang" Width="1.5" PointX="15" PointY="82" />
+        <EntityTypeShape EntityType="DLGModel.NetMessageCampaign" Width="1.5" PointX="4.75" PointY="7.75" />
+        <EntityTypeShape EntityType="DLGModel.Option" Width="1.5" PointX="6.75" PointY="8.75" />
+        <EntityTypeShape EntityType="DLGModel.Order" Width="1.5" PointX="18" PointY="84.625" />
+        <EntityTypeShape EntityType="DLGModel.OrderItem" Width="1.5" PointX="32" PointY="95.75" />
+        <EntityTypeShape EntityType="DLGModel.Post" Width="1.5" PointX="8.75" PointY="8.75" />
+        <EntityTypeShape EntityType="DLGModel.Region" Width="1.5" PointX="3" PointY="90.375" />
+        <EntityTypeShape EntityType="DLGModel.ReservationAPI" Width="1.5" PointX="18.5" PointY="106.625" />
+        <EntityTypeShape EntityType="DLGModel.RestaurantProductCategory" Width="1.5" PointX="25.75" PointY="107.875" />
+        <EntityTypeShape EntityType="DLGModel.RestaurantSupplier" Width="1.5" PointX="26.75" PointY="103.875" />
+        <EntityTypeShape EntityType="DLGModel.z" Width="1.5" PointX="0.75" PointY="0.875" />
+        <EntityTypeShape EntityType="DLGModel.ShippingTypeLang" Width="1.5" PointX="3" PointY="0.875" />
+        <EntityTypeShape EntityType="DLGModel.Site" Width="1.5" PointX="20.75" PointY="81.875" />
+        <EntityTypeShape EntityType="DLGModel.SiteCentralLineSEO" Width="1.5" PointX="23" PointY="75" />
+        <EntityTypeShape EntityType="DLGModel.SiteCommercialFollowUp" Width="1.5" PointX="23" PointY="66.5" />
+        <EntityTypeShape EntityType="DLGModel.SiteCommunication" Width="1.5" PointX="23" PointY="103" />
+        <EntityTypeShape EntityType="DLGModel.SiteEvent" Width="1.5" PointX="23" PointY="112.125" />
+        <EntityTypeShape EntityType="DLGModel.SiteFinancial" Width="1.5" PointX="23" PointY="129.625" />
+        <EntityTypeShape EntityType="DLGModel.SiteImage" Width="1.5" PointX="23" PointY="71.875" />
+        <EntityTypeShape EntityType="DLGModel.SiteLang" Width="1.5" PointX="31" PointY="82.75" />
+        <EntityTypeShape EntityType="DLGModel.SiteRestaurantProductCategory" Width="1.5" PointX="28" PointY="98.125" />
+        <EntityTypeShape EntityType="DLGModel.SiteRestaurantSupplier" Width="1.5" PointX="29" PointY="95.125" />
+        <EntityTypeShape EntityType="DLGModel.SiteReview" Width="1.5" PointX="28" PointY="85.625" />
+        <EntityTypeShape EntityType="DLGModel.SlideImage" Width="1.5" PointX="9.75" PointY="4.75" />
+        <EntityTypeShape EntityType="DLGModel.SponsorEmail" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DLGModel.State" Width="1.5" PointX="5.25" PointY="92.25" />
+        <EntityTypeShape EntityType="DLGModel.Supplier" Width="1.5" PointX="9.75" PointY="96.25" />
+        <EntityTypeShape EntityType="DLGModel.Tax" Width="1.5" PointX="12.75" PointY="102.375" />
+        <EntityTypeShape EntityType="DLGModel.TeeSheet" Width="1.5" PointX="23.25" PointY="81.375" />
+        <EntityTypeShape EntityType="DLGModel.Title" Width="1.5" PointX="5.25" PointY="95.5" />
+        <EntityTypeShape EntityType="DLGModel.TitleLang" Width="1.5" PointX="20" PointY="78.625" />
+        <EntityTypeShape EntityType="DLGModel.TopNavLink" Width="1.5" PointX="10.75" PointY="7.75" />
+        <EntityTypeShape EntityType="DLGModel.UnsubscribeReason" Width="1.5" PointX="10.75" PointY="10.75" />
+        <EntityTypeShape EntityType="DLGModel.UserMessage" Width="1.5" PointX="9.75" PointY="188.25" />
+        <EntityTypeShape EntityType="DLGModel.UserMessageAttached" Width="1.5" PointX="12" PointY="188.875" />
+        <EntityTypeShape EntityType="DLGModel.UserType" Width="1.5" PointX="5.25" PointY="86.125" />
+        <EntityTypeShape EntityType="DLGModel.VariationHD" Width="1.5" PointX="0.75" PointY="11.75" />
+        <EntityTypeShape EntityType="DLGModel.WebContent" Width="1.5" PointX="2.75" PointY="11.75" />
+        <EntityTypeShape EntityType="DLGModel.EmailingList" Width="1.5" PointX="15" PointY="101.875" />
+        <EntityTypeShape EntityType="DLGModel.Promotion" Width="1.5" PointX="4.75" PointY="11.75" />
+        <AssociationConnector Association="DLGModel.FK_Address_City_CityId" />
+        <AssociationConnector Association="DLGModel.FK_Address_Country_CountryId" />
+        <AssociationConnector Association="DLGModel.FK_Address_Title_TitleId" />
+        <AssociationConnector Association="DLGModel.FK_Order_Address_AddressId" />
+        <AssociationConnector Association="DLGModel.FK_Ads_Adset_AdsetId" />
+        <AssociationConnector Association="DLGModel.FK_Category_Site_SiteId" />
+        <AssociationConnector Association="DLGModel.FK_Content_Category_CategoryId" />
+        <AssociationConnector Association="DLGModel.FK_EmailTemplate_Category_CategoryId" />
+        <AssociationConnector Association="DLGModel.FK_Impressum_Category_CategoryId" />
+        <AssociationConnector Association="DLGModel.FK_City_Region_RegionId" />
+        <AssociationConnector Association="DLGModel.FK_CustomerAddress_Country_BusinessCountryId" />
+        <AssociationConnector Association="DLGModel.FK_CustomerAddress_Country_PersonalCountryId" />
+        <AssociationConnector Association="DLGModel.FK_OrderItem_Country_CountryId" />
+        <AssociationConnector Association="DLGModel.FK_Site_Country_CountryId" />
+        <AssociationConnector Association="DLGModel.FK_Coupon_CouponGroup_CouponGroupId" />
+        <AssociationConnector Association="DLGModel.FK_Order_Coupon_CouponId" />
+        <AssociationConnector Association="DLGModel.FK_OrderItem_Coupon_ItemCouponId" />
+        <AssociationConnector Association="DLGModel.FK_DLGCard_Item_ItemId" />
+        <AssociationConnector Association="DLGModel.FK_DLGCardBalance_DLGCard_DLGCardId" />
+        <AssociationConnector Association="DLGModel.FK_DLGCardStyle_Item_ItemId" />
+        <AssociationConnector Association="DLGModel.FK_EmailTemplateAttachment_EmailTemplate" />
+        <AssociationConnector Association="DLGModel.FK_EmailTemplateLang_EmailTemplate_TemplateId" />
+        <AssociationConnector Association="DLGModel.FK_Site_GolfBrand_GolfBrandId" />
+        <AssociationConnector Association="DLGModel.FK_Impressum_Site_SiteId" />
+        <AssociationConnector Association="DLGModel.FK_InterestLang_Interest_InterestId" />
+        <AssociationConnector Association="DLGModel.FK_InterestLang_Language_LangId" />
+        <AssociationConnector Association="DLGModel.FK_Item_ItemCategory_CategoryId" />
+        <AssociationConnector Association="DLGModel.FK_Item_ItemTypes_ItemTypeId" />
+        <AssociationConnector Association="DLGModel.FK_Item_Site_SiteId" />
+        <AssociationConnector Association="DLGModel.FK_Item_Supplier_SupplierId" />
+        <AssociationConnector Association="DLGModel.FK_Item_Tax_TaxId" />
+        <AssociationConnector Association="DLGModel.FK_ItemChoice_Item_ItemId" />
+        <AssociationConnector Association="DLGModel.FK_ItemConversionTracking_Item_ItemId" />
+        <AssociationConnector Association="DLGModel.FK_ItemImage_Item_ItemId" />
+        <AssociationConnector Association="DLGModel.FK_ItemLang_Item_ItemId" />
+        <AssociationConnector Association="DLGModel.FK_ItemModifier_Item_ItemId" />
+        <AssociationConnector Association="DLGModel.FK_ItemPosition_Item_ItemId" />
+        <AssociationConnector Association="DLGModel.FK_ItemReview_Item_ItemId" />
+        <AssociationConnector Association="DLGModel.FK_OrderItem_Item_ItemId" />
+        <AssociationConnector Association="DLGModel.FK_TeeSheet_Item_ItemId" />
+        <AssociationConnector Association="DLGModel.FK_ItemCategory_ItemTypes_ItemTypeId" />
+        <AssociationConnector Association="DLGModel.FK_ItemCategory_Site_SiteId" />
+        <AssociationConnector Association="DLGModel.FK_ItemChoice_Modifier_ModifierId" />
+        <AssociationConnector Association="DLGModel.FK_ItemChoice_ModifierChoice_ChoiceId" />
+        <AssociationConnector Association="DLGModel.FK_ItemLang_Language_LangId" />
+        <AssociationConnector Association="DLGModel.FK_ItemModifier_Modifier_ModifierId" />
+        <AssociationConnector Association="DLGModel.FK_Modifier_ItemTypes_ItemTypeId" />
+        <AssociationConnector Association="DLGModel.FK_ModifierChoiceLang_Language_LangId" />
+        <AssociationConnector Association="DLGModel.FK_ModifierLang_Language_LangId" />
+        <AssociationConnector Association="DLGModel.FK_SiteLang_Language_LangId" />
+        <AssociationConnector Association="DLGModel.FK_TitleLang_Language_LangId" />
+        <AssociationConnector Association="DLGModel.FK_MailingList_Site_SiteId" />
+        <AssociationConnector Association="DLGModel.FK_MenuItem_Menu_MenuId" />
+        <AssociationConnector Association="DLGModel.FK_ModifierChoice_Modifier_ModifierId" />
+        <AssociationConnector Association="DLGModel.FK_ModifierLang_Modifier_ModifierId" />
+        <AssociationConnector Association="DLGModel.FK_ModifierChoiceLang_ModifierChoice_ChoiceId" />
+        <AssociationConnector Association="DLGModel.FK_OrderItem_Order_OrderId" />
+        <AssociationConnector Association="DLGModel.FK_OrderItem_Site_SiteId" />
+        <AssociationConnector Association="DLGModel.FK_OrderItem_Tax_VatId" />
+        <AssociationConnector Association="DLGModel.FK_Site_Region_RegionId" />
+        <AssociationConnector Association="DLGModel.FK_State_Region_RegionId" />
+        <AssociationConnector Association="DLGModel.FK_Site_ReservationAPI_ReservationAPI" />
+        <AssociationConnector Association="DLGModel.FK_SiteRestaurantProductCategory_RestaurantProductCategory_RestaurantProductCategoryId" />
+        <AssociationConnector Association="DLGModel.FK_SiteRestaurantSupplier_RestaurantSupplier_RestaurantSupplierId" />
+        <AssociationConnector Association="DLGModel.FK_OrderItem_ShippingType_ShippingTypeId" />
+        <AssociationConnector Association="DLGModel.FK_Site_State_StateId" />
+        <AssociationConnector Association="DLGModel.FK_SiteCentralLineSEO_Site_SiteId" />
+        <AssociationConnector Association="DLGModel.FK_SiteCommercialFollowUp_Site_SiteId" />
+        <AssociationConnector Association="DLGModel.FK_SiteCommunication_Site_SiteId" />
+        <AssociationConnector Association="DLGModel.FK_SiteEvent_Site_SiteId" />
+        <AssociationConnector Association="DLGModel.FK_SiteFinancial_Site_SiteId" />
+        <AssociationConnector Association="DLGModel.FK_SiteImage_Site_SiteId" />
+        <AssociationConnector Association="DLGModel.FK_SiteLang_Site_SiteId" />
+        <AssociationConnector Association="DLGModel.FK_SiteRestaurantProductCategory_Site_SiteId" />
+        <AssociationConnector Association="DLGModel.FK_SiteRestaurantSupplier_Site_SiteId" />
+        <AssociationConnector Association="DLGModel.FK_SiteReview_Site_SiteId" />
+        <AssociationConnector Association="DLGModel.FK_TitleLang_Title_TitleId" />
+        <AssociationConnector Association="DLGModel.FK_UserMessageAttached_UserMessage_MessageId" />
+        <AssociationConnector Association="DLGModel.CouponGroupItem" />
+        <AssociationConnector Association="DLGModel.CouponGroupItemCategory" />
+        <AssociationConnector Association="DLGModel.CouponGroupItemType" />
+        <EntityTypeShape EntityType="DLGModel.Brand" Width="1.5" PointX="12.375" PointY="4.75" />
+        <EntityTypeShape EntityType="DLGModel.CustomerTypeLang" Width="1.5" PointX="25.25" PointY="66.625" />
+        <EntityTypeShape EntityType="DLGModel.User" Width="1.5" PointX="35" PointY="92.25" />
+        <AssociationConnector Association="DLGModel.FK_Address_Users_UserId" />
+        <AssociationConnector Association="DLGModel.FK_Users_City_CityId" />
+        <AssociationConnector Association="DLGModel.FK_Users_City_ShippingCityId" />
+        <AssociationConnector Association="DLGModel.FK_Users_Country_CountryId" />
+        <AssociationConnector Association="DLGModel.FK_Users_Country_ShippingCountryId" />
+        <AssociationConnector Association="DLGModel.FK_CustomerCreditCard_Users_UserId" />
+        <AssociationConnector Association="DLGModel.FK_CustomerTypeLang_Language_LangId" />
+        <AssociationConnector Association="DLGModel.FK_DLGCardBalance_Users_UserId" />
+        <AssociationConnector Association="DLGModel.FK_EmailTemplate_Users_UserId" />
+        <AssociationConnector Association="DLGModel.FK_Item_Users_UserId" />
+        <AssociationConnector Association="DLGModel.FK_ItemCategory_Users_UserId" />
+        <AssociationConnector Association="DLGModel.FK_ItemReview_Users_UserId" />
+        <AssociationConnector Association="DLGModel.FK_Modifier_Users_UserId" />
+        <AssociationConnector Association="DLGModel.FK_ModifierChoice_Users_UserId" />
+        <AssociationConnector Association="DLGModel.FK_Order_Users_CustomerId" />
+        <AssociationConnector Association="DLGModel.FK_Site_Users_UserId" />
+        <AssociationConnector Association="DLGModel.FK_Users_Site_SiteId" />
+        <AssociationConnector Association="DLGModel.FK_SiteReview_Users_UserId" />
+        <AssociationConnector Association="DLGModel.FK_Supplier_Users_UserId" />
+        <AssociationConnector Association="DLGModel.FK_Users_Title_TitleId" />
+        <AssociationConnector Association="DLGModel.FK_UserMessage_Users_FromUserId" />
+        <AssociationConnector Association="DLGModel.FK_UserMessage_Users_ToUserId" />
+        <AssociationConnector Association="DLGModel.FK_Users_UserTypes_UserTypeId" />
+        <EntityTypeShape EntityType="DLGModel.ItemPrice" Width="1.5" PointX="17.25" PointY="109.25" />
+        <AssociationConnector Association="DLGModel.FK_ItemPrice_Item_ItemId" />
+        <EntityTypeShape EntityType="DLGModel.Course" Width="1.5" PointX="36" PointY="84.5" />
+        <AssociationConnector Association="DLGModel.FK_Course_CourseType_CourseTypeId" />
+        <AssociationConnector Association="DLGModel.FK_Course_Site_SiteId" />
+        <AssociationConnector Association="DLGModel.FK_Item_Course_CourseId" />
+        <AssociationConnector Association="DLGModel.FK_TeeSheet_Course_CourseId" />
+        <EntityTypeShape EntityType="DLGModel.CustomerGroup" Width="1.5" PointX="23" PointY="62.875" />
+        <AssociationConnector Association="DLGModel.FK_CustomerGroup_Site_SiteId" />
+        <AssociationConnector Association="DLGModel.CustomerGroupCustomer" />
+        <EntityTypeShape EntityType="DLGModel.CustomerType" Width="1.5" PointX="30.25" PointY="86.25" />
+        <AssociationConnector Association="DLGModel.FK_CustomerType_Site_SiteId" />
+        <AssociationConnector Association="DLGModel.FK_CustomerTypeLang_CustomerType_CustomerTypeId" />
+        <AssociationConnector Association="DLGModel.FK_Users_CustomerType_CustomerTypeId" />
+        <AssociationConnector Association="DLGModel.FK_Users_CustomerType_SubCustomerTypeId" />
+        <AssociationConnector Association="DLGModel.CustomerGroupCustomerType" />
+        <EntityTypeShape EntityType="DLGModel.NetmessageReport" Width="1.5" PointX="13.375" PointY="9.25" />
+        <EntityTypeShape EntityType="DLGModel.NetmessageReportRecord" Width="1.5" PointX="15.625" PointY="6.75" />
+        <AssociationConnector Association="DLGModel.FK_NetmessageReportRecord_NetmessageReport" />
+        <EntityTypeShape EntityType="DLGModel.Emailing" Width="1.5" PointX="37.25" PointY="92.375" />
+        <AssociationConnector Association="DLGModel.FK_Emailing_EmailTemplate_TemplateId" />
+        <AssociationConnector Association="DLGModel.FK_Emailing_Site_SiteId" />
+        <AssociationConnector Association="DLGModel.FK_Emailing_Users_UserId" />
+        <AssociationConnector Association="DLGModel.FK_EmailingAttachment_Emailing" />
+        <AssociationConnector Association="DLGModel.FK_EmailingList_Emailing_EmailId" />
+        <AssociationConnector Association="DLGModel.FK_EmailTemplateLang_Emailing_CampaignId" />
+        <EntityTypeShape EntityType="DLGModel.EmailQue" Width="1.5" PointX="39.5" PointY="97.625" />
+        <AssociationConnector Association="DLGModel.FK_EmailQue_Emailing_EmailId" />
+        <AssociationConnector Association="DLGModel.FK_EmailLog_EmailQue_EmailQueId" />
+        <AssociationConnector Association="DLGModel.FK_EmailQue_Users_CustomerId" />
+        <AssociationConnector Association="DLGModel.FK_EmailTemplateLang_EmailQue_EmailQueId" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,305 @@
+﻿@{
+    Layout = "~/Views/_Shared/MP/_Layout.cshtml";
+}
+@section head
+{
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Assets/Libraries/fancybox/source/jquery.fancybox.css")" />
+    <style>
+        .customer-types {
+            height: 290px;
+            overflow: scroll;
+        }
+    </style>
+}
+@section foot
+{
+    <script src="@Url.Content("~/Assets/Libraries/uploadifive/jquery.uploadifive.min.js")"></script>
+    <script src="@Url.Content("~/Assets/Admin/scripts/page/customer-import.js")"></script>
+    <script>
+        window.localeTexts = {
+            none: '@Resources.None'
+        };
+
+        window.readMode = 'normal';
+
+        jQuery(document).ready(function ($) {
+            $('.info-form').validate();
+            $('#add-contact-button').click(function () {
+                var dialog = $('#contactListWindow').data('kendoWindow');
+                dialog.center().open();
+            });
+
+            $('#import-button').click(function () {
+                $('#import-panel').slideDown();
+            });
+
+            $('#contact-list-table thead th.checkboxes input[type=checkbox]').change(function (e) {
+                if (this.checked) {
+                    $('#contact-list-table tbody td.column-checkbox input[type=checkbox]').prop('checked', true);
+                } else {
+                    $('#contact-list-table tbody td.column-checkbox input[type=checkbox]').removeAttr('checked');
+                }
+            });
+
+            $('#contact-list-popup-table thead tr th:first-child input[type=checkbox]').change(function (e) {
+                if (this.checked) {
+                    $('#contact-list-popup-table tbody tr td:first-child input[type=checkbox]').prop('checked', true);
+                } else {
+                    $('#contact-list-popup-table tbody tr td:first-child input[type=checkbox]').removeAttr('checked');
+                }
+            });
+
+            $('#remove-selected-contact-link').click(function () {
+                $('#contact-list-table tbody td.column-checkbox input:checked').each(function (i) {
+                    $(this).closest('tr').remove();
+                    $('#contact-list-table thead th.checkboxes input[type=checkbox]').removeAttr('checked');
+                    $.uniform.update();
+                });
+            });
+
+            $('#contact-list-table tbody tr .delete-link').on('click', function () {
+                $(this).closest('tr').remove();
+            });
+
+            $('#contactListWindow #add-selected-button').click(function () {
+                var grid = $('#gridContactList').data('kendoGrid');
+                var rows = grid.select();
+                var ids = new Array();
+                rows.each(function () {
+                    var item = grid.dataItem(this);
+                    ids.push(item.UserId);
+                });
+                if (ids.length > 0) {
+                    addCustomersToCustomerGroup($('#id').val(), ids);
+                }
+
+                var dialog = $('#contactListWindow').data('kendoWindow');
+                dialog.close();
+            });
+
+            $('#contactListWindow #add-filtered-items-button').click(function () {
+                window.readMode = 'save';
+                var grid = $('#gridContactList').data('kendoGrid');
+                grid.dataSource.read();
+                window.readMode = 'normal';
+
+                var dialog = $('#contactListWindow').data('kendoWindow');
+                dialog.close();
+            });
+
+            $('.sync-customer-group-button').click(function () {
+                var $button = jQuery(this);
+                var id = jQuery(this).data('id');
+                var siteId = jQuery('#SiteId').val();
+                console.log(id, siteId);
+                if (!id || !siteId)
+                    return;
+
+                if (!confirm('@Resources.SyncConfirmText'))
+                    return;
+
+                jQuery.ajax({
+                    url: getUrl(`CustomerGroup/AjaxSyncCustomerGroups/${id}?siteId=${siteId}`),
+                    type: 'get',
+                    dataType: 'json',
+                    beforeSend: function () {
+                        showLoader(true);
+                    },
+                    success: function (result) {
+                        if (result.success) {
+                            showLoader(false);
+                            $button.attr('disabled', 'disabled');
+                        } else {
+                            console.error(result.message);
+                        }
+                    }
+                });
+            });
+
+            $('#SiteId').change(function () {
+                loadCustomerTypes();
+            }).trigger('change');
+
+            $('.select-customer-types-button').click(function () {
+                jQuery(this).closest('.row').find('.customer-types input').prop('checked', true);
+                $.uniform.update();
+            });
+
+            $('.deselect-customer-types-button').click(function () {
+                jQuery(this).closest('.row').find('.customer-types input').prop('checked', false);
+                $.uniform.update();
+            });
+        });
+
+        function addCustomersToCustomerGroup(id, userIds) {
+            $.ajax({
+                url: getUrl('CustomerGroup/AjaxAddCustomersIntoCustomerGroup'),
+                data: { id: id, userIds: userIds },
+                type: 'post',
+                dataType: 'json',
+                success: function (result) {
+                    if (result.isSuccess) {
+                        var grid = $('#gridCustomersInGroup').data('kendoGrid');
+                        grid.dataSource.read();
+                        grid.refresh();
+
+                    } else {
+                        console.error(result.message);
+                    }
+                },
+                error: function (xhr, msg) {
+                    console.error(xhr);
+                }
+            });
+        }
+
+        function contactListAdditionalData() {
+            return {
+                siteId: $('#SiteId').val(),
+                mode: window.readMode
+            };
+        }
+
+        function loadCustomerTypes() {
+            jQuery('.customer-types').closest('.row').hide();
+            var siteId = jQuery('#SiteId').val();
+            if (!siteId || siteId <= 0)
+                return;
+
+            jQuery.ajax({
+                url: getUrl(`CustomerGroup/AjaxGetCustomerTypes/${siteId}`),
+                type: 'get',
+                dataType: 'json',
+                beforeSend: function () {
+                    showLoader(true);
+                },
+                success: function (result) {
+                    showLoader(false);
+                    var html = '';
+                    if (result.success) {
+                        for (var obj of result.data) {
+                            html += `<li><label for="customer_type_${obj.id}"><input type="checkbox" id="customer_type_${obj.id}" name="CustomerTypes" value="${obj.id}" /> ${obj.name}</label>`;
+                        }
+                    } else {
+                        console.error(result.message);
+                    }
+                    var $customerTypes = jQuery('.customer-types');
+                    $customerTypes.html(html);
+
+                    var selected = $customerTypes.data('selected');
+                    if (selected) {
+                        var selectedIds = selected.toString().split(',');
+                        var selectors = [];
+                        for (var s of selectedIds) {
+                            selectors.push('input[value=' + s + ']');
+                        }
+                        $customerTypes.find(selectors.join(',')).prop('checked', true);
+                    }
+
+                    if ($customerTypes.find('li').length > 0) {
+                        $customerTypes.find('input').uniform();
+                        $customerTypes.closest('.row').show();
+                    }
+                },
+                error: function (xhr, msg) {
+                    console.error(xhr);
+                }
+            });
+        }
+    </script>
+
+}
+<form method="post" id="form-@ViewBag.ClassName" class="info-form">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        @Resources.CustomerGroupInformation
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    @if (ViewBag.LogonUserType == UserType.Type.SuperAdmin || ViewBag.LogonUserType == UserType.Type.Admin)
+                    {
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-3 control-label">
+                                    <label for="SiteId">@Resources.Site</label>
+                                </div>
+                                <div class="col-md-9">
+                                    @Html.DropDownList("SiteId", (IEnumerable<SelectListItem>)ViewBag.Sites, new { @class = "form-control", required = "required" })
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        @Html.Hidden("SiteId")
+                    }
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-3 control-label">
+                                <label for="CustomerGroupName">@Resources.CustomerGroupName</label>
+                            </div>
+                            <div class="col-md-9">
+                                @Html.TextBox("CustomerGroupName", (string)ViewBag.CustomerGroupName, new { Required = "Required", @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-3 control-label">
+                                <label for="CustomerGroupName">@Resources.CustomerTypes</label>
+                            </div>
+                            <div class="col-md-6">
+                                <ul class="checkbox-list customer-types" data-selected="@ViewBag.SelectedCustomerTypeIds"></ul>
+                            </div>
+                            <div class="col-md-3">
+                                <a class="select-customer-types-button btn btn-primary">@Resources.SelectAll</a>
+                                <a class="deselect-customer-types-button btn btn-primary">@Resources.DeselectAll</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-3 control-label">
+                                <label for="AutoSync">Auto-Sync</label>
+                            </div>
+                            <div class="col-md-9">
+                                @Html.CheckBox("AutoSync", (bool?)ViewBag.AutoSync)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @if (ViewBag.id != null && ((long)ViewBag.id) > 0)
+            {
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            @Resources.Contact
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="margin-bottom-10">
+                            <a class="btn btn-primary fancybox fancybox.inline" id="add-contact-button" href="javascript:void(0);">@Resources.Add</a>
+                            <a class="btn btn-primary" id="remove-selected-contact-link">@Resources.Remove</a>
+                            <a class="sync-customer-group-button btn btn-primary" data-id="@ViewBag.id" @(((bool)ViewBag.SyncInProcess) ? "disabled=\"disabled\"" : "")>Sync</a>
+                        </div>
+                        @Html.Partial("CustomersInGroupPartial", (List<User>)ViewBag.CustomerLists)
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    @Html.Hidden("id")
+    <input type="submit" id="submit" name="submit" value="@Resources.Save" class="btn btn-primary" />
+    <input type="reset" id="reset" name="reset" value="@Resources.Reset" class="btn" />
+    <a href="@Url.Content("~/CustomerGroup")" class="btn btn-default">@Resources.Back</a>
+</form>
+
+@(Html.Kendo().Window()
+        .Name("contactListWindow")
+        .Title(Resources.Customers)
+        .Visible(false)
+        .Content(Html.Partial("ContactGridPartial").ToString()))

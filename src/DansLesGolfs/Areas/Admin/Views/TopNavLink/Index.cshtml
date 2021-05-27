@@ -1,0 +1,36 @@
+﻿@using DansLesGolfs.Base
+@{
+    Layout = "~/Views/_Shared/MP/_Admin.cshtml";
+    List<TopNavLink> topNavLinks = (List<TopNavLink>)ViewBag.TopNavLinks;
+}
+@section head
+{
+}
+@section foot
+{
+    <script src="@Url.Content("~/Assets/Libraries/tinymce/plugins/moxiemanager/js/moxman.loader.min.js")"></script>
+    <script src="@Url.Content("~/Assets/Admin/scripts/page/topnav.js")"></script>
+}
+<div id="page-top-nav-link-manager">
+    <button id="add-link" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> @Resources.Add</button>
+    <button id="add-link" class="btn btn-primary hide"><span class="glyphicon glyphicon-trash"></span> @Resources.DeleteAll</button>
+    <button id="save-links-button" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> @Resources.Save</button>
+    <div id="top-nav-links-list">
+    </div>
+</div>
+<div id="ads-save-success-dialog" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">@Resources.SavedSuccessfully</h4>
+            </div>
+            <div class="modal-body">
+                <p>@Resources.SavedSuccessfully</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">@Resources.Close</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

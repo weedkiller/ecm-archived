@@ -1,0 +1,142 @@
+﻿<div id="topnav">
+    <div class="container">
+        <div class="row">
+
+            <!-- Language Switcher -->
+            <div id="language-switcher">
+                <ul>
+                    @if (CultureHelper.GetCurrentNeutralCulture() == "en")
+                    {
+                        <li>
+                            <a href="@Html.LanguageUrl("fr-FR;2")" class="fr">
+                                <img src="@Url.Content("~/Assets/Front/img/header_footer/flag-france.png")" />
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            <a href="@Html.LanguageUrl("en-US;1")" class="en">
+                                <img src="@Url.Content("~/Assets/Front/img/header_footer/flag-england.png")" />
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+            <!-- End Language Switcher -->
+            <!-- Gift Card -->
+            <div id="gift-card-voucher">
+                @*<a href="@Url.Content("~/TopNavIcon1")"><img src="@Url.Content("~/Assets/Front/img/header_footer/icon-classic-card.png")" /></a>
+                <a href="@Url.Content("~/TopNavIcon2")"><img src="@Url.Content("~/Assets/Front/img/header_footer/icon-gift-card_2.png")" /></a>
+                <a href="@Url.Content("~/DLGCard")"><img src="@Url.Content("~/Assets/Front/img/header_footer/icon-pink-card.png")" style="margin: 5px 0 0 3px;" /></a>*@
+                @if (ViewBag.DLGTopNavLinks != null)
+                {
+                    foreach(var link in (List<TopNavLink>)ViewBag.DLGTopNavLinks)
+                    {
+                        <a href="@link.LinkUrl"><img src="@link.ImageUrl"  /></a>
+                    }
+                }
+            </div>
+            <!-- End Gift Card -->
+            <!-- Panier box -->
+            <a id="panier" href="javascript:void(0);">
+                <span id="panier-img-left">
+                    <img src="@Url.Content("~/Assets/Front/img/header_footer/panier-img-left.png")" alt="Golfs" />
+                </span>
+                <span id="panier-text-middle">
+                    @Resources.Cart
+                </span>
+                <!--<span id="panier-noti-right">
+
+                </span>-->
+            </a>
+            <!-- End panier box -->
+            <!-- Search Box -->
+            <!--<div id="search-box">
+                <form id="search-form" action="@Url.Content("~/Product/Search")" method="post">
+                    <input type="text" id="q" name="q" placeholder="@Resources.SearchPlaceholder" value="@ViewBag.SearchTerm" />
+                    <input type="submit" id="search-form-submit" name="submit" value="OK" />
+                </form>
+            </div>-->
+            <!-- End Search Box -->
+            <!-- User Logon Widget -->
+            <div id="user-logon">
+                @Html.Partial("~/Views/_Shared/UC/Front/UserLogon.cshtml")
+                <!-- Log in box -->
+                <div id="regbar">
+
+                    <div id="navthing">
+
+                        <div class="login">
+
+                            <div class="arrow-up"></div>
+                            <div class="arrow-up-2"></div>
+
+                            <div class="formholder">
+                                <form action="#">
+                                    <div class="text-center">
+                                        <div class="label-danger label text-center error-message" style="margin: 0 auto;"></div>
+                                    </div>
+                                    <!-- User -->
+                                    <h4>@Resources.EnterYourLogin</h4>
+                                    <div>
+                                        <span>
+                                            <img src="@Url.Content("~/Assets/Front/img/header_footer/us.png")" />
+                                        </span>
+                                        <input placeholder="@Resources.Identification" id="us" type="text" name="username" class="contact-data" value="">
+                                    </div>
+
+                                    <!-- Password -->
+                                    <h4 style="margin-top: 10px;">@Resources.EnterYourPassword</h4>
+                                    <div style="float:left;">
+                                        <img src="@Url.Content("~/Assets/Front/img/header_footer/pass.png")" />
+                                    </div>
+
+                                    <div style="border: solid 1px #e5e5e5; float:left;">
+                                        <div style="float:left;">
+                                            <input placeholder="@Resources.Password" type="password" name="password" style="border:none;" id="pass" class="contact-data" value="">
+                                        </div>
+                                        <div style="float:right;">
+                                            <input style="border:none;" type="submit" class="btn login-ok" value="OK">
+                                        </div>
+                                    </div>
+                                    <input type="hidden" name="remember" value="true" />
+                                </form>
+                                <!-- forgot password-->
+                                <div id="forgot-passwrod-wrap">
+                                    <a class="forgot-password-link" href="#forgot-password-popup">
+                                        @Resources.ForgotPassword
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- End User Logon Widget -->
+
+        </div>
+    </div>
+</div>
+<div id="forgot-password-popup">
+    <h3>@Resources.ForgotPassword</h3>
+    <p>@Resources.ForgotPasswordDescription</p>
+    <form method="post" action="@Url.Content("~/ForgotPassword")">
+        <div class="margin-top-20">
+            <div class="control-label">
+                <label for="password-email">@Resources.EmailAddress</label>
+            </div>
+            <div id="password-recover-form" class="input-group">
+                <input type="email" name="Email" id="password-email" class="form-control" />
+                <div class="input-group-btn">
+                    <input type="submit" name="Submit" id="send-password-button" class="btn" value="&gt; @Resources.Send" />
+                </div>
+            </div>
+        </div>
+        <div class="error"></div>
+    </form>
+</div>

@@ -1,0 +1,24 @@
+﻿@model DansLesGolfs.BLL.Item
+@{
+    ViewBag.Title = Resources.PageNotFound;
+    Layout = "~/Views/_Shared/MP/Front/_FullWidth.cshtml";
+}
+@section head
+{
+    <link href="@Url.Content("~/Assets/Front/css/pages/nopermission.css")" rel="stylesheet" />
+}
+@section foot
+{
+}
+<div id="page-not-found">
+    <div class="row">
+        <div class="col-md-12 page-no-permission">
+            <h2 class="title">@Resources.NoPermissionErrorTitle</h2>
+            <div class="details">
+                <p>
+                    @Resources.NoPermissionErrorDetail<br />
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
